@@ -21,10 +21,12 @@
 <li><a href="#ui-display">3.2. UI Display</a></li>
 <li><a href="#get-interview-schedule-code-get-code-code-coming-in-v2-0-code">3.3. Get interview schedule <code>get</code> <code>[Coming in v2.0]</code></a></li>
 <li><a href="#delete-interviewer-interviewee-code-delete-code">3.4. Delete interviewer/interviewee <code>delete</code></a></li>
-<li><a href="#tag-interview-slot-code-tag-code-code-coming-in-v2-0-code">3.5. Tag interview slot <code>tag</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#scheduling-code-generate-code">3.6. Scheduling <code>generate</code></a></li>
-<li><a href="#sending-of-email-code-email-code">3.7. Sending of email <code>email</code></a></li>
-<li><a href="#recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code">3.8. Recording of additional statuses: <code>record</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#importing-existing-availabilities-code-import-code">3.5. Importing existing availabilities <code>import</code></a></li>
+<li><a href="#exporting-of-interview-schedule-code-export-code">3.6. Exporting of interview schedule <code>export</code></a></li>
+<li><a href="#tag-interview-slot-code-tag-code-code-coming-in-v2-0-code">3.7. Tag interview slot <code>tag</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#scheduling-code-generate-code">3.8. Scheduling <code>generate</code></a></li>
+<li><a href="#sending-of-email-code-email-code">3.9. Sending of email <code>email</code></a></li>
+<li><a href="#recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code">3.10. Recording of additional statuses: <code>record</code> <code>[Coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -279,7 +281,54 @@ Format: <code>delete interviewee NAME</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="tag-interview-slot-code-tag-code-code-coming-in-v2-0-code"><a class="link" href="#tag-interview-slot-code-tag-code-code-coming-in-v2-0-code">3.5. Tag interview slot <code>tag</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="importing-existing-availabilities-code-import-code"><a class="link" href="#importing-existing-availabilities-code-import-code">3.5. Importing existing availabilities <code>import</code></a></h3>
+<div class="sect3">
+<h4 id="importing-interviewers-availability"><a class="link" href="#importing-interviewers-availability">3.5.1. Importing interviewers’ availability</a></h4>
+<div class="paragraph">
+<p>Imports interviewers’ availability from a comma separated values (CSV) file.<br>
+Format: <code>import interviewer PATH_TO_FILE</code><br>
+    - PATH_TO_FILE is the absolute path to the file.<br>
+    - E.g C:\\Users\Bob\file.csv</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>import interviewer C:\Users\johndoe\Interviewers.csv</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="importing-interviewees-availability"><a class="link" href="#importing-interviewees-availability">3.5.2. Importing interviewees’ availability</a></h4>
+<div class="paragraph">
+<p>Imports interviewees’ availability from a comma separated values (CSV) file.<br>
+Format: <code>import interviewee PATH_TO_FILE</code><br>
+    - PATH_TO_FILE is the absolute path to the file.<br>
+    - E.g C:\\Users\Bob\file.csv</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>import interviewer C:\Users\johndoe\Interviewees.csv</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exporting-of-interview-schedule-code-export-code"><a class="link" href="#exporting-of-interview-schedule-code-export-code">3.6. Exporting of interview schedule <code>export</code></a></h3>
+<div class="paragraph">
+<p>Exports the allocated interview schedule timetable to a comma separated values (CSV) file.<br>
+Format: <code>export</code><br></p>
+</div>
+<div class="paragraph">
+<p>Note: This command requires the interview schedule to be generated first!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tag-interview-slot-code-tag-code-code-coming-in-v2-0-code"><a class="link" href="#tag-interview-slot-code-tag-code-code-coming-in-v2-0-code">3.7. Tag interview slot <code>tag</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Tags an interview slot with a name.<br>
 Format: <code>tag TAG_NAME</code><br></p>
@@ -290,16 +339,16 @@ Format: <code>filter tag TAG_NAME</code><br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="scheduling-code-generate-code"><a class="link" href="#scheduling-code-generate-code">3.6. Scheduling <code>generate</code></a></h3>
+<h3 id="scheduling-code-generate-code"><a class="link" href="#scheduling-code-generate-code">3.8. Scheduling <code>generate</code></a></h3>
 <div class="sect3">
-<h4 id="generating-timetable-of-all-available-time-slots"><a class="link" href="#generating-timetable-of-all-available-time-slots">3.6.1. Generating timetable of all available time slots</a></h4>
+<h4 id="generating-timetable-of-all-available-time-slots"><a class="link" href="#generating-timetable-of-all-available-time-slots">3.8.1. Generating timetable of all available time slots</a></h4>
 <div class="paragraph">
 <p>Generate the timetable of all available interview time slots based on the availability of interviewers.<br>
 Format: <code>generate timetable</code><br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="generating-full-interview-schedule"><a class="link" href="#generating-full-interview-schedule">3.6.2. Generating full interview schedule</a></h4>
+<h4 id="generating-full-interview-schedule"><a class="link" href="#generating-full-interview-schedule">3.8.2. Generating full interview schedule</a></h4>
 <div class="paragraph">
 <p>Schedule and allocate interviewees to the available interview slots based on the availability of interviewees and
 the timetable of all available interview time slots.<br>
@@ -311,9 +360,9 @@ Format: <code>generate schedule</code><br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sending-of-email-code-email-code"><a class="link" href="#sending-of-email-code-email-code">3.7. Sending of email <code>email</code></a></h3>
+<h3 id="sending-of-email-code-email-code"><a class="link" href="#sending-of-email-code-email-code">3.9. Sending of email <code>email</code></a></h3>
 <div class="sect3">
-<h4 id="sending-of-interview-time-slot-to-interviewees"><a class="link" href="#sending-of-interview-time-slot-to-interviewees">3.7.1. Sending of interview time slot to interviewees</a></h4>
+<h4 id="sending-of-interview-time-slot-to-interviewees"><a class="link" href="#sending-of-interview-time-slot-to-interviewees">3.9.1. Sending of interview time slot to interviewees</a></h4>
 <div class="paragraph">
 <p>Sends an email containing the interviewee’s allocated interview time slot to every interviewee, including other details such as the interviewer, time, date and location.</p>
 </div>
@@ -325,7 +374,7 @@ Format: <code>generate schedule</code><br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sending-of-interview-results-to-interviewees-code-coming-in-v2-0-code"><a class="link" href="#sending-of-interview-results-to-interviewees-code-coming-in-v2-0-code">3.7.2. Sending of interview results to interviewees <code>[Coming in v2.0]</code></a></h4>
+<h4 id="sending-of-interview-results-to-interviewees-code-coming-in-v2-0-code"><a class="link" href="#sending-of-interview-results-to-interviewees-code-coming-in-v2-0-code">3.9.2. Sending of interview results to interviewees <code>[Coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Sends an email containing the interviewee’s result/interview outcome and other details that you might want to include.</p>
 </div>
@@ -337,7 +386,7 @@ Format: <code>generate schedule</code><br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="checking-of-email-sending-queue-status-code-coming-in-v2-0-code"><a class="link" href="#checking-of-email-sending-queue-status-code-coming-in-v2-0-code">3.7.3. Checking of email sending queue status <code>[Coming in v2.0]</code></a></h4>
+<h4 id="checking-of-email-sending-queue-status-code-coming-in-v2-0-code"><a class="link" href="#checking-of-email-sending-queue-status-code-coming-in-v2-0-code">3.9.3. Checking of email sending queue status <code>[Coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Checks the status of the mail sending queue.</p>
 </div>
@@ -347,9 +396,9 @@ Format: <code>generate schedule</code><br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code"><a class="link" href="#recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code">3.8. Recording of additional statuses: <code>record</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code"><a class="link" href="#recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code">3.10. Recording of additional statuses: <code>record</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="sect3">
-<h4 id="recording-of-interviewee-s-attendance"><a class="link" href="#recording-of-interviewee-s-attendance">3.8.1. Recording of interviewee’s attendance</a></h4>
+<h4 id="recording-of-interviewee-s-attendance"><a class="link" href="#recording-of-interviewee-s-attendance">3.10.1. Recording of interviewee’s attendance</a></h4>
 <div class="paragraph">
 <p>Bring up the window to record the attendance of interviewees. You can navigate through the table in the window (GUI)
 using the directions key to record the attendance of the interviewees. Hit Enter at the target cell to record the
@@ -358,14 +407,14 @@ Format: <code>record attendance</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="recording-of-interview-result"><a class="link" href="#recording-of-interview-result">3.8.2. Recording of interview result</a></h4>
+<h4 id="recording-of-interview-result"><a class="link" href="#recording-of-interview-result">3.10.2. Recording of interview result</a></h4>
 <div class="paragraph">
 <p>Bring up the window to record the interview result. The way to record the result is the same as 2.12.1.<br>
 Format: <code>record result</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="ranking-of-interviewees"><a class="link" href="#ranking-of-interviewees">3.8.3. Ranking of interviewees</a></h4>
+<h4 id="ranking-of-interviewees"><a class="link" href="#ranking-of-interviewees">3.10.3. Ranking of interviewees</a></h4>
 <div class="paragraph">
 <p>Bring up the window to rank the interviewees. The way to record the result is the same as 2.12.1.<br>
 Format: <code>record rank</code></p>
@@ -464,4 +513,4 @@ Format: <code>record rank</code></p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-03 06:47:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-03 06:53:31 UTC</div></div></div></body></html>
