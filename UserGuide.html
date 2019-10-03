@@ -24,9 +24,11 @@
 <li><a href="#scheduling-code-generate-code">3.5. Scheduling <code>generate</code></a></li>
 <li><a href="#sending-of-email-code-email-code">3.6. Sending of email <code>email</code></a></li>
 <li><a href="#recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code">3.7. Recording of additional statuses: <code>record</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#ui-display">3.8. UI Display</a></li>
 </ul>
 </li>
-<li><a href="#command-summary">4. Command Summary</a></li>
+<li><a href="#faq">4. FAQ</a></li>
+<li><a href="#command-summary">5. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -284,8 +286,11 @@ Format: <code>record result</code></p>
 Format: <code>record rank</code></p>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="ui-display"><a class="link" href="#ui-display">3.8. UI Display</a></h3>
 <div class="sect3">
-<h4 id="display-data-of-interviewees"><a class="link" href="#display-data-of-interviewees">3.7.4. Display data of interviewees</a></h4>
+<h4 id="viewing-details-of-interviewees"><a class="link" href="#viewing-details-of-interviewees">3.8.1. Viewing details of interviewees</a></h4>
 <div class="paragraph">
 <p>You are able to view the list of interviewees and the following information:
 1. Name
@@ -298,24 +303,66 @@ Format: <code>record rank</code></p>
 <p>The interviewee list can be viewed by typing the following command<br>
 Format: <code>display interviewees</code></p>
 </div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="images/Ui/Interviewee.png" alt="Interviewee" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>In this screen, you can edit, add or delete interviewees accordingly by using the other features explained in
+this User Guide.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="display-weekly-schedule"><a class="link" href="#display-weekly-schedule">3.7.5. Display weekly schedule</a></h4>
+<h4 id="display-weekly-schedule"><a class="link" href="#display-weekly-schedule">3.8.2. Display weekly schedule</a></h4>
 <div class="paragraph">
 <p>Display the interviews that has been scheduled by the application. Allows you to have an weekly overview of
 interviews during that week by typing the following command<br>
 Format:  <code>display date: DATE (eg. 24/06/2019)</code></p>
 </div>
 <div class="paragraph">
-<p>Doing so will allow the scheduler to show the timetable for that week.
-== FAQ</p>
+<p>Doing so will allow the scheduler to show the timetable for that week.</p>
+</div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="images/Ui/Timetable.png" alt="Timetable" width="500">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="display-available-timeslots"><a class="link" href="#display-available-timeslots">3.8.3. Display available timeslots</a></h4>
+<div class="paragraph">
+<p>This is used to display the available timeslot that you have indicated in your excel sheet as you have imported
+into this scheduler. Using the following command<br>
+Format: <code>disply available date DATE (eg. 24/06/2019)</code></p>
+</div>
+<div class="paragraph">
+<p>This will also show a weekly timetable, however this timetable will show the timeslots that are available and the
+rest of the slots will be indicated by grey color to show that you are unavailable at that time. This also factors
+in the interviews that you have already scheduled.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code"><a class="link" href="#differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code">3.8.4. Differentiating the importance of timetable slots through colours <code>[Coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>As you can see from the timetable above, there are 2 different colours of time slots. This is implemented so you
+are able to differentiate which interviews are important by using the colour code as shown in the timetable.
+By default, the slots will be green in colour. However, you are able to change the colours based on importance using
+the following command<br>
+Format: <code>change DATE TIME IMPORTANCE</code></p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">4. Command Summary</a></h2>
+<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Table Command Summary</caption>
@@ -389,4 +436,4 @@ Format:  <code>display date: DATE (eg. 24/06/2019)</code></p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-03 04:00:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-03 06:26:37 UTC</div></div></div></body></html>
