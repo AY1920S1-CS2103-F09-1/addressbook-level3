@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import java.util.HashSet;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -23,6 +24,6 @@ public class Row {
     // Change this to return Interivewee instead later
     public Person getInterviewee(int index) {
         return new Person(new Name("John Doe"), new Phone("12345678"), new Email("johndoe@mail.com"),
-            new Address("Singapore"), null);
+            new Address("Singapore"), new HashSet<>());
     }
 }
