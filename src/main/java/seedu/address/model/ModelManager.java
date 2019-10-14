@@ -21,7 +21,7 @@ import seedu.address.model.person.Slot;
  * Represents the in-memory model of the address book data.
  */
 public class ModelManager implements Model {
-    public static final Schedule emptySchedule = new Schedule("", new LinkedList<>());
+    public static final Schedule EMPTY_SCHEDULE = new Schedule("", new LinkedList<>());
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
