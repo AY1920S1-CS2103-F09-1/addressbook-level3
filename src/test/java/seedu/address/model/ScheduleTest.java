@@ -90,11 +90,17 @@ public class ScheduleTest {
         return list;
     }
 
+    /**
+     * // TODO: Fill the javadoc up
+     * Test
+     * @param table test
+     * @return test
+     */
     private LinkedList<LinkedList<String>> toTwoDimensionalLinkedList(String[][] table) {
         LinkedList<LinkedList<String>> tableCopy = new LinkedList<>();
         for (String[] row : table) {
-           LinkedList<String> rowCopy = new LinkedList<>(Arrays.asList(row));
-           tableCopy.add(rowCopy);
+            LinkedList<String> rowCopy = new LinkedList<>(Arrays.asList(row));
+            tableCopy.add(rowCopy);
         }
         return tableCopy;
     }

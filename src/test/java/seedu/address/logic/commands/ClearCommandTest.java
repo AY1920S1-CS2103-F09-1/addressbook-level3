@@ -4,6 +4,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.LinkedList;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.AddressBook;
