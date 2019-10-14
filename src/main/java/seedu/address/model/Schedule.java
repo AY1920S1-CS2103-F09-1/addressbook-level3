@@ -10,33 +10,55 @@ import seedu.address.model.person.Slot;
 
 /**
  * Represents the interview schedule.
+ * The first row of the Schedule is the column titles, with the first cell as the date of the interview schedule.
+ * Subsequent rows are time slots, with the first cell of each row as the timing of all the time slots in the row.
  */
 public class Schedule {
     private String date;
-    private ObservableList<ObservableList<String>> data; // Exclude the first row which is the column titles
-    private ObservableList<String> columnTitles; // Including the date, which is the first item
+    private ObservableList<ObservableList<String>> table; // Include the first row which is the column titles
 
     public Schedule(String date, LinkedList<LinkedList<String>> list) {
         this.date = date;
-        ObservableList<ObservableList<String>> clone = copy(list);
-        this.columnTitles = clone.remove(0);
-        this.data = clone;
+        this.table = toTwoDimensionalObservableList(list);
     }
 
     public String getDate() {
         return date;
     }
 
-    public ObservableList<ObservableList<String>> getData() {
-        return data;
-    }
-
-    public ObservableList<String> getColumnNames() {
-        return columnTitles;
+    public ObservableList<ObservableList<String>> getTable() {
+        return table;
     }
 
     public Slot getInterviewSlot(String intervieweeName) {
-        return null;
+        String timeSlot = null;
+        int tableSize = table.size();
+
+        // Exclude search in the first row as the first row is column titles
+        for (int i = 1; i < tableSize; i++) {
+            ObservableList<String> row = table.get(i);
+            int rowSize = row.size();
+
+            // Exclude search in the first cell as the first cell is the time slot
+            for (int j = 1; j < rowSize; j++) {
+                String value = row.get(j);
+                if ("NA".equals(value)) {
+                    continue;
+                } else if (intervieweeName.equals(value)) {
+                    timeSlot = row.get(0);
+                }
+            }
+        }
+
+        if (timeSlot == null) {
+            return null;
+        } else {
+            String[] times = timeSlot.split("-");
+            String start = times[0].trim();
+            String end = times[1].trim();
+
+            return new Slot(start, end);
+        }
     }
 
     public boolean addInterviewer(Interviewer interviewer) {
@@ -50,12 +72,17 @@ public class Schedule {
         }
         Schedule sCasted = (Schedule) s;
         return date.equals(sCasted.date)
-            && columnTitles.equals(sCasted.columnTitles)
-            && data.equals(sCasted.data);
+            && table.equals(sCasted.table);
     }
 
-    @SuppressWarnings("unchecked")
-    public static ObservableList<ObservableList<String>> copy(LinkedList<LinkedList<String>> list) {
+    /**
+     * Convert a two-dimensional LinkedList into a two-dimensional Observable list.
+     *
+     * @param list a two-dimensional LinkedList
+     * @return the corresponding two-dimensional Observable list
+     */
+    public static ObservableList<ObservableList<String>> toTwoDimensionalObservableList(
+        LinkedList<LinkedList<String>> list) {
         LinkedList<ObservableList<String>> clone = new LinkedList<>();
 
         // Shallow copy can be used here as String is immutable.
