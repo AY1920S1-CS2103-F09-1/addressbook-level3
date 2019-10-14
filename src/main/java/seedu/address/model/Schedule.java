@@ -1,70 +1,69 @@
 package seedu.address.model;
 
+import java.util.LinkedList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import seedu.address.model.person.Interviewer;
+import seedu.address.model.person.Slot;
+
 /**
- * Encapsulates the schedule timetable in memory.
+ * Represents the interview schedule.
  */
 public class Schedule {
     private String date;
+    private ObservableList<ObservableList<String>> data; // Exclude the first row which is the column titles
+    private ObservableList<String> columnTitles; // Including the date, which is the first item
 
-    /**
-     * Returns the first row of table.
-     * @return the first row of table.
-     */
-    public Row getFirstRow() {
-        return new Row();
+    public Schedule(String date, LinkedList<LinkedList<String>> list) {
+        this.date = date;
+        ObservableList<ObservableList<String>> clone = copy(list);
+        this.columnTitles = clone.remove(0);
+        this.data = clone;
     }
 
-    /**
-     * Returns a row in the table.
-     * @param index the index of the row in the table.
-     * @return a row in the table.
-     */
-    public Row getRow(int index) {
-        return new Row();
+    public String getDate() {
+        return date;
     }
 
-    /**
-     * Returns a row in the table with the timing given
-     * @param timing timing of the row.
-     * @return a row in the table with the timing given
-     */
-    public Row getRow(String timing) {
-        return new Row();
+    public ObservableList<ObservableList<String>> getData() {
+        return data;
     }
 
-    /**
-     * Returns a column in the table.
-     * @param index index of the column in the table.
-     * @return a column in the table.
-     */
-    public Column getColumn(int index) {
-        return new Column();
+    public ObservableList<String> getColumnNames() {
+        return columnTitles;
     }
 
-    /**
-     * Returns a column in the table with the interviewer's description given.
-     * @param interviewerDesc the title of the column, which is the interviewer's description.
-     * @return a column in the table with the interviewer's description given.
-     */
-    public Column getColumn(String interviewerDesc) {
-        return new Column();
+    public Slot getInterviewSlot(String intervieweeName) {
+        return null;
     }
 
-    /**
-     * Deletes a column in the table with the index given.
-     * @param index the index of the column in the table.
-     * @return the deleted column in the table with the index given.
-     */
-    public Column deleteColumn(int index) {
-        return new Column();
+    public boolean addInterviewer(Interviewer interviewer) {
+        return true;
     }
 
-    /**
-     * Deletes a column in the table with the interviewer's description given.
-     * @param interviewerDesc the title of the column, which is the interviewer's description.
-     * @return the deleted column in the table with the interviewer's description given.
-     */
-    public Column deleteColumn(String interviewerDesc) {
-        return new Column();
+    @Override
+    public boolean equals(Object s) {
+        if (!(s instanceof Schedule)) {
+            return false;
+        }
+        Schedule sCasted = (Schedule) s;
+        return date.equals(sCasted.date)
+            && columnTitles.equals(sCasted.columnTitles)
+            && data.equals(sCasted.data);
+    }
+
+    @SuppressWarnings("unchecked")
+    public static ObservableList<ObservableList<String>> copy(LinkedList<LinkedList<String>> list) {
+        LinkedList<ObservableList<String>> clone = new LinkedList<>();
+
+        // Shallow copy can be used here as String is immutable.
+        list.forEach(row -> {
+            LinkedList<String> rowCopy = (LinkedList<String>) row.clone();
+            clone.add(FXCollections.observableList(rowCopy));
+        });
+
+        return FXCollections.observableList(clone);
     }
 }
