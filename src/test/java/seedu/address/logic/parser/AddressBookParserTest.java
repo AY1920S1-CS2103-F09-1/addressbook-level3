@@ -91,12 +91,12 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_email() throws Exception {
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE),
-                () -> parser.parseCommand(EmailCommand.COMMAND_WORD));
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE),
-                () -> parser.parseCommand(EmailCommand.COMMAND_WORD + " timeslot"));
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE),
-                () -> parser.parseCommand(EmailCommand.COMMAND_WORD + " invalidcommand"));
+        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE), ()
+            -> parser.parseCommand(EmailCommand.COMMAND_WORD));
+        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE), ()
+            -> parser.parseCommand(EmailCommand.COMMAND_WORD + " timeslot"));
+        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE), ()
+            -> parser.parseCommand(EmailCommand.COMMAND_WORD + " invalidcommand"));
 
         assertTrue(parser.parseCommand(
                 EmailCommand.COMMAND_WORD + " timeslot Alice") instanceof EmailCommand);
