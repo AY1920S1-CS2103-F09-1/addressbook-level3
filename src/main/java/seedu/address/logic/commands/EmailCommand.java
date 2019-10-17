@@ -7,6 +7,7 @@ import java.util.List;
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Interviewee;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 
@@ -26,10 +27,9 @@ public class EmailCommand extends Command {
             + "interviewee, including other details such as the interviewer, time, date and location.";
 
     public static final String MESSAGE_NOT_IMPLEMENTED_YET = "Email command not implemented yet";
-    public static final String MESSAGE_EMAIL_PERSON_SUCCESS = "Emailed interviewee: %1$s";
+    public static final String MESSAGE_EMAIL_INTERVIEWEE_SUCCESS = "Emailed interviewee: %1$s";
 
     private final Name intervieweeName;
-    private final String emailType;
 
     /**
      * Constructor for the EmailCommand class where no email type is specified.
@@ -37,39 +37,29 @@ public class EmailCommand extends Command {
      */
     public EmailCommand(Name intervieweeName) {
         this.intervieweeName = intervieweeName;
-        this.emailType = "";
-    }
-
-    /**
-     * Constructor for the EmailCommand class where both the Interviewee name and email type is specified.
-     * @param intervieweeName The name of the {@code Interviewee}.
-     * @param emailType The email type (should match the name of the {@code EmailType}.
-     */
-    public EmailCommand(Name intervieweeName, String emailType) {
-        this.intervieweeName = intervieweeName;
-        this.emailType = emailType;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        // TODO: Need to filter for Interviewees only
         List<Person> lastShownList = model.getFilteredPersonList();
-        Person personToEmail = null;
+        Interviewee intervieweeToEmail = null;
 
         for (Person person : lastShownList) {
-            if (person.getName().equals(this.intervieweeName)) {
-                personToEmail = person;
+            if (person instanceof Interviewee && person.getName().equals(this.intervieweeName)) {
+                intervieweeToEmail = (Interviewee) person;
                 break;
             }
         }
 
-        if (personToEmail == null) {
+        if (intervieweeToEmail == null) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_NAME);
         }
 
         // TODO: Implement email feature
-        // model.emailPerson(personToEmail);
-        // return new CommandResult(String.format(MESSAGE_EMAIL_PERSON_SUCCESS, personToEmail));
+        // model.emailInterviewee(intervieweeToEmail);
+        // return new CommandResult(String.format(MESSAGE_EMAIL_INTERVIEWEE_SUCCESS, intervieweeToEmail));
 
         throw new CommandException(MESSAGE_NOT_IMPLEMENTED_YET);
     }
@@ -78,7 +68,6 @@ public class EmailCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof EmailCommand // instanceof handles nulls
-                && intervieweeName.equals(((EmailCommand) other).intervieweeName)
-                && emailType.equals(((EmailCommand) other).emailType)); // state check
+                && intervieweeName.equals(((EmailCommand) other).intervieweeName)); // state check
     }
 }

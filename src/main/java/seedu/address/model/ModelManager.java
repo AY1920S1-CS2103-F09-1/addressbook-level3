@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.person.Interviewee;
 import seedu.address.model.person.Interviewer;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Slot;
@@ -113,6 +114,15 @@ public class ModelManager implements Model {
             observableLists.add(schedule.getObservableList());
         }
         return observableLists;
+    }
+
+    /**
+     * Emails the given Interviewee.
+     * The Interviewee must exist in the database.
+     */
+    @Override
+    public void emailInterviewee(Interviewee interviewee) {
+
     }
 
     /**
