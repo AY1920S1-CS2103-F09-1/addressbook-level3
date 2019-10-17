@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.io.IOException;
 import java.util.List;
 
 import seedu.address.commons.core.Messages;
