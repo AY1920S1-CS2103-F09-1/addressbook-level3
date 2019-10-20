@@ -131,6 +131,7 @@ public class ModelManager implements Model {
             titlesLists.add(schedule.getTitles());
         }
         return titlesLists;
+    }
 
     @Override
     public Interviewee getInterviewee(String intervieweeName) throws NoSuchElementException {
