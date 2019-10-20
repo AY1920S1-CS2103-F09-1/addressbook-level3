@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -106,19 +107,17 @@ public class AddCommandTest {
 
         @Override
         public void setSchedulesList(List<Schedule> schedulesList) {
-
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public LinkedList<Schedule> getSchedulesList() {
-            // TODO: Implementation
-            return null;
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public List<ObservableList<ObservableList<String>>> getObservableLists() {
-            // TODO: Implementation
-            return null;
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -129,22 +128,26 @@ public class AddCommandTest {
 
         @Override
         public void emailInterviewee(Interviewee interviewee) {
-            // TODO: Implementation
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Interviewee getInterviewee(String intervieweeName) {
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public List<Slot> getInterviewSlots(String intervieweeName) {
-            // TODO: Implementation
-            return null;
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public String hasInterviewer(Interviewer interviewer) {
-            // TODO: Implementation
-            return "";
+            throw new AssertionError("This method should not be called.");
         }
         @Override
         public void addInterviewer(Interviewer interviewer) {
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -179,6 +182,11 @@ public class AddCommandTest {
 
         @Override
         public void deletePerson(Person target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Person getPerson(String name) throws NoSuchElementException {
             throw new AssertionError("This method should not be called.");
         }
 
