@@ -121,6 +121,16 @@ public class ModelManager implements Model {
         return observableLists;
     }
 
+    /** Returns a list of lists of column titles, each list of column titles belong to a Schedule table*/
+    @Override
+    public List<List<String>> getTitlesLists() {
+        List<List<String>> titlesLists = new LinkedList<>();
+        for (Schedule schedule : schedulesList) {
+            titlesLists.add(schedule.getTitles());
+        }
+        return titlesLists;
+    }
+
     /**
      * Emails the given Interviewee.
      * The Interviewee must exist in the database.

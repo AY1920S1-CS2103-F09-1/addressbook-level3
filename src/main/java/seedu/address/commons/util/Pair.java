@@ -1,5 +1,10 @@
 package seedu.address.commons.util;
 
+/**
+ * Encapsulates a pair, with a head and a tail.
+ * @param <H> head of the pair.
+ * @param <T> tail of the pair.
+ */
 public class Pair<H, T> {
     private H head;
     private T tail;

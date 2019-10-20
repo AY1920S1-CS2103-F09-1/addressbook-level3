@@ -122,6 +122,12 @@ public class AddCommandTest {
         }
 
         @Override
+        public List<List<String>> getTitlesLists() {
+            // TODO: Implementation
+            return null;
+        }
+
+        @Override
         public void emailInterviewee(Interviewee interviewee) {
             // TODO: Implementation
         }

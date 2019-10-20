@@ -23,9 +23,13 @@ public class Schedule {
     public Schedule(String date, LinkedList<LinkedList<String>> list) {
         this.date = date;
 
-        // TODO: Abstract this out
         ObservableList<ObservableList<String>> table = toTwoDimensionalObservableList(list);
-        this.titles = table.remove(0);
+        if (table.isEmpty()) {
+            this.titles = FXCollections.observableList(new LinkedList<>());
+        } else {
+            this.titles = table.remove(0);
+        }
+
         this.data = table;
     }
 
