@@ -24,7 +24,9 @@
 <ul class="sectlevel2">
 <li><a href="#coming-soon-in-v1-3-scheduling-algorithm">3.1. [coming soon in v1.3] scheduling algorithm</a></li>
 <li><a href="#display-schedule-feature">3.2. Display Schedule Feature</a></li>
-<li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
+<li><a href="#import">3.3. Import</a></li>
+<li><a href="#coming-soon-in-v1-3-export">3.4. [Coming soon in v1.3] Export</a></li>
+<li><a href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></li>
 </ul>
 </li>
 </ul>
@@ -392,7 +394,104 @@ list of ObservableList of interviewee.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></h3>
+<h3 id="import"><a class="link" href="#import">3.3. Import</a></h3>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.3.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The import feature uses <code>CsvReader</code> in the Model to read the given .csv file and stores the data into the model.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import interviewer &lt;csv file&gt;</code> stores the read data as a list of <code>Schedule</code> objects in the model.</p>
+</li>
+<li>
+<p><code>import interviewee &lt;csv file&gt;</code> stores the read data as a list of <code>Interviewee</code> objects in the model.</p>
+</li>
+<li>
+<p><code>CsvReader</code> makes use of <code>BufferedReader</code> to read data from the given file.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ImportSequenceDiagram.png" alt="ImportSequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Given above is an example of a sequence diagram for importing interviewer&#8217;s schedules. It applies to both importing interviewee&#8217;s and interviewer&#8217;s data.</p>
+</div>
+<div class="paragraph">
+<p>As seen in the above sequence diagram, the execution of the import feature consists of these steps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: <code>LogicManager</code> will start executing the command by parsing it over to <code>AddressBookParser</code>.</p>
+</li>
+<li>
+<p>Step 2: <code>AddressBookParser</code> will then look and initialise an <code>ImportCommand</code> instance and return it to <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>Step 3: <code>LogicManager</code> will then call execute() on the returned <code>ImportCommand</code>  object.</p>
+</li>
+<li>
+<p>Step 4: During the execute() method, the method will initialise a <code>CsvReader</code> object to <code>read()</code> data from the the given .csv file.</p>
+</li>
+<li>
+<p>Step 5: The read data will then be stored as either <code>scheduleList</code> or <code>intervieweeList</code> in the model.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ImportActivityDiagram.png" alt="ImportActivityDiagram">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="coming-soon-in-v1-3-export"><a class="link" href="#coming-soon-in-v1-3-export">3.4. [Coming soon in v1.3] Export</a></h3>
+<div class="sect3">
+<h4 id="implementation-proposed"><a class="link" href="#implementation-proposed">3.4.1. Implementation [Proposed]</a></h4>
+<div class="paragraph">
+<p>The Export command gets the scheduled time slots from the Model and writes them in the specified .csv file.
+CsvWriter facilitates the writing to the specified file.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CsvWriter makes use of <code>BufferedWriter</code> to write data into the specified file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below shows the sequence diagram of an example export command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ExportSequenceDiagram.png" alt="ExportSequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>The implementation is very similar to the Import feature. The only differences are in the Model where CsvWriter gets
+the scheduled time slots from the Model and proceeds to write it into the specified file using a <code>BufferedWriter</code>.</p>
+</div>
+<div class="paragraph">
+<p>The Activity Diagram below summarises the execution of the export command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ExportActivityDiagram.png" alt="ExportActivityDiagram">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></h3>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -563,13 +662,13 @@ list of ObservableList of interviewee.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">secretary of NUS CCA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">very busy secretary of NUS CCA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">automate the process of scheduling interviews</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">lighten my workload</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">secretary of NUS CCA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">forgetful secretary of NUS CCA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">mark an interviewee as 'completed interview'</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">track and manage uncompleted interviews</p></td>
 </tr>
@@ -617,7 +716,7 @@ list of ObservableList of interviewee.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">secretary of NUS CCA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">busy secretary of NUS CCA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">share the current scheduled timeslots with another secretary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">give them access to help with the scheduling of interviews as well</p></td>
 </tr>
@@ -1060,4 +1159,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 03:37:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 03:39:17 UTC</div></div></div></body></html>
