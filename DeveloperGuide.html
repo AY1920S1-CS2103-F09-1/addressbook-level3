@@ -22,14 +22,12 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#logic">3.1. Logic</a></li>
-<li><a href="#coming-soon-in-v1-3-scheduling-algorithm">3.2. [coming soon in v1.3] scheduling algorithm</a></li>
-<li><a href="#display-schedule-feature">3.3. Display Schedule Feature</a></li>
-<li><a href="#import">3.4. Import</a></li>
-<li><a href="#coming-soon-in-v1-3-export">3.5. [Coming soon in v1.3] Export</a></li>
-<li><a href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></li>
-<li><a href="#coming-soon-in-v1-3-email">3.7. [Coming soon in v1.3] Email</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#add-interviewee-interviewer-feature">3.1. Add Interviewee/Interviewer feature</a></li>
+<li><a href="#coming-soon-in-v1-3-scheduling-algorithm">3.2. [Coming soon in v1.3] Scheduling Algorithm</a></li>
+<li><a href="#import">3.3. Import</a></li>
+<li><a href="#coming-soon-in-v1-3-export">3.4. [Coming soon in v1.3] Export</a></li>
+<li><a href="#coming-soon-in-v1-3-email">3.5. [Coming soon in v1.3] Email</a></li>
+<li><a href="#logging">3.6. Logging</a></li>
 <li><a href="#configuration">Configuration</a></li>
 </ul>
 </li>
@@ -196,14 +194,62 @@ The following class plays an important role at the architecture level:</p>
 </li>
 </ul>
 </div>
+<div class="sect3">
+<h4 id="schedule-view"><a class="link" href="#schedule-view">2.2.1. Schedule View</a></h4>
+<div class="paragraph">
+<p>The display schedule feature extends Scheduler to display multiple tables of schedule per day. It is a component in the "MainWindow" class
+stored in a "ScheduleViewPanel" class. Within the "ScheduleViewPanel" class, objects of "ScheduleView" class are stored into the panel.</p>
+</div>
+<div class="paragraph">
+<p>ScheduleViewPanel implements the following function:
+*<code>fillPanel()</code>&#8201;&#8212;&#8201;Fill the ScheduleView component with the schedule tables for each day.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example scenario of what will be displayed to the user.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application. The Ui will start and the MainWindow will be displayed first.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. MainWindow will call all the children such as the HelpWindow, CommandBox, Result Display, StatusBarFooter and ScheduleViewPanel.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. Once ScheduleViewPanel is called, it will take in a list of titles and ObservableList data from the Logic class. The list of titles
+consist of the title column for each schedule table and the ObservableList data consists of the time slots allocated to each interviewee.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. ScheduleViewPanel will call the ScheduleView class to fill each table and populate each table with the data given by the Logic class.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. ScheduleView will have a .fxml file of a table and it will first be filled with the column titles, followed by the time slots and the
+interviewee allocated to each time slots. The slot that has no interviewee will be displayed as "0".</p>
+</div>
+<div class="paragraph">
+<p>Step 6. Once the data is populated, the MainWindow will display the schedules of each day arranged in a table format.</p>
+</div>
+<div class="paragraph">
+<p>Step 7. Once User imports a new .csv file, it will call the RefreshListener Interface. RefreshListenerManager will then take in the new titles and
+list of ObservableList of interviewee.</p>
+</div>
+<div class="paragraph">
+<p>Step 8. The RefreshListenerManager will call the MainWindow to refresh the ScheduleViewPanel.</p>
+</div>
+<div class="paragraph">
+<p>Step 9. ScheduleViewPanel will firstly clear all the data and input the updated data from the .csv file.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
-<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
+<img src="images/LogicClassDiagram1_2.png" alt="LogicClassDiagram1 2">
 </div>
 <div class="title">Figure 5. Structure of the Logic Component</div>
+</div>
+<div class="paragraph">
+<p>Users should be able to manually key in input (i.e add interviewers and interviewees). We therefore changed the Logic
+package accordingly to suit our needs.</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -333,21 +379,7 @@ table in the imported interviewer&#8217;s availability. The data of the <code>Sc
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="logic"><a class="link" href="#logic">3.1. Logic</a></h3>
-<div class="paragraph">
-<p>Users should be able to manually key in input (i.e add interviewers and interviewees). We therefore changed the Logic
-package accordingly to suit our needs.</p>
-</div>
-<div class="paragraph">
-<p>Below is the <strong>Class diagram</strong> <code>(as of v1.2)</code>:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/LogicClassDiagram1_2.png" alt="LogicClassDiagram1 2">
-</div>
-</div>
-<div class="sect3">
-<h4 id="add-interviewee-interviewer-feature"><a class="link" href="#add-interviewee-interviewer-feature">3.1.1. Add Interviewee/Interviewer feature</a></h4>
+<h3 id="add-interviewee-interviewer-feature"><a class="link" href="#add-interviewee-interviewer-feature">3.1. Add Interviewee/Interviewer feature</a></h3>
 <div class="paragraph">
 <p>The add command is facilitated by the <code>AddCommandParser</code> class. It extends <code>AddCommandParser</code> by allowing it to parse
 prefixes specific to our Scheduler app, namely:</p>
@@ -403,9 +435,8 @@ classes were added:</p>
 </div>
 </div>
 </div>
-</div>
 <div class="sect2">
-<h3 id="coming-soon-in-v1-3-scheduling-algorithm"><a class="link" href="#coming-soon-in-v1-3-scheduling-algorithm">3.2. [coming soon in v1.3] scheduling algorithm</a></h3>
+<h3 id="coming-soon-in-v1-3-scheduling-algorithm"><a class="link" href="#coming-soon-in-v1-3-scheduling-algorithm">3.2. [Coming soon in v1.3] Scheduling Algorithm</a></h3>
 <div class="paragraph">
 <p>The scheduling of interviews is essentially a <a href="https://www.geeksforgeeks.org/maximum-bipartite-matching/">maximum bipartite matching problem</a>.
 The application is trying to find the <strong>maximum number of matching</strong> between available interview slots
@@ -450,56 +481,9 @@ allocated time slots to the interviewees, which the changes will then be reflect
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-schedule-feature"><a class="link" href="#display-schedule-feature">3.3. Display Schedule Feature</a></h3>
+<h3 id="import"><a class="link" href="#import">3.3. Import</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.3.1. Proposed Implementation</a></h4>
-<div class="paragraph">
-<p>The display schedule feature extends Scheduler to display multiple tables of schedule per day. It is a component in the "MainWindow" class
-stored in a "ScheduleViewPanel" class. Within the "ScheduleViewPanel" class, objects of "ScheduleView" class are stored into the panel.</p>
-</div>
-<div class="paragraph">
-<p>ScheduleViewPanel implements the following function:
-*<code>fillPanel()</code>&#8201;&#8212;&#8201;Fill the ScheduleView component with the schedule tables for each day.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example scenario of what will be displayed to the user.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application. The Ui will start and the MainWindow will be displayed first.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. MainWindow will call all the children such as the HelpWindow, CommandBox, Result Display, StatusBarFooter and ScheduleViewPanel.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. Once ScheduleViewPanel is called, it will take in a list of titles and ObservableList data from the Logic class. The list of titles
-consist of the title column for each schedule table and the ObservableList data consists of the time slots allocated to each interviewee.</p>
-</div>
-<div class="paragraph">
-<p>Step 4. ScheduleViewPanel will call the ScheduleView class to fill each table and populate each table with the data given by the Logic class.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. ScheduleView will have a .fxml file of a table and it will first be filled with the column titles, followed by the time slots and the
-interviewee allocated to each time slots. The slot that has no interviewee will be displayed as "0".</p>
-</div>
-<div class="paragraph">
-<p>Step 6. Once the data is populated, the MainWindow will display the schedules of each day arranged in a table format.</p>
-</div>
-<div class="paragraph">
-<p>Step 7. Once User imports a new .csv file, it will call the RefreshListener Interface. RefreshListenerManager will then take in the new titles and
-list of ObservableList of interviewee.</p>
-</div>
-<div class="paragraph">
-<p>Step 8. The RefreshListenerManager will call the MainWindow to refresh the ScheduleViewPanel.</p>
-</div>
-<div class="paragraph">
-<p>Step 9. ScheduleViewPanel will firstly clear all the data and input the updated data from the .csv file.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="import"><a class="link" href="#import">3.4. Import</a></h3>
-<div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.4.1. Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.3.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The import feature uses <code>CsvReader</code> in the Model to read the given .csv file and stores the data into the model.</p>
 </div>
@@ -557,9 +541,9 @@ list of ObservableList of interviewee.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="coming-soon-in-v1-3-export"><a class="link" href="#coming-soon-in-v1-3-export">3.5. [Coming soon in v1.3] Export</a></h3>
+<h3 id="coming-soon-in-v1-3-export"><a class="link" href="#coming-soon-in-v1-3-export">3.4. [Coming soon in v1.3] Export</a></h3>
 <div class="sect3">
-<h4 id="implementation-proposed"><a class="link" href="#implementation-proposed">3.5.1. Implementation [Proposed]</a></h4>
+<h4 id="implementation-proposed"><a class="link" href="#implementation-proposed">3.4.1. Implementation [Proposed]</a></h4>
 <div class="paragraph">
 <p>The Export command gets the scheduled time slots from the Model and writes them in the specified .csv file.
 CsvWriter facilitates the writing to the specified file.</p>
@@ -594,13 +578,9 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.6. [Proposed] Data Encryption</a></h3>
-
-</div>
-<div class="sect2">
-<h3 id="coming-soon-in-v1-3-email"><a class="link" href="#coming-soon-in-v1-3-email">3.7. [Coming soon in v1.3] Email</a></h3>
+<h3 id="coming-soon-in-v1-3-email"><a class="link" href="#coming-soon-in-v1-3-email">3.5. [Coming soon in v1.3] Email</a></h3>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">3.7.1. Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.5.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The Email feature makes use of the <code>java.awt.Desktop</code> package to activate the default Mail client of the user.</p>
 </div>
@@ -660,7 +640,7 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -1341,4 +1321,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 11:52:59 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 12:49:19 UTC</div></div></div></body></html>
