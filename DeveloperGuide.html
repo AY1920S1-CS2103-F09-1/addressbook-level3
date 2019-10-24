@@ -23,24 +23,8 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#coming-soon-in-v1-3-scheduling-algorithm">3.1. [coming soon in v1.3] scheduling algorithm</a></li>
-<li><a href="#logging">3.2. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#documentation">4. Documentation</a></li>
-<li><a href="#testing">5. Testing</a></li>
-<li><a href="#dev-ops">6. Dev Ops</a></li>
-<li><a href="#product-scope">Appendix A: Product Scope</a></li>
-<li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a></li>
-<li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
-<li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
-<ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">G.2. Deleting a person</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#display-schedule-feature">3.2. Display Schedule Feature</a></li>
+<li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
 </ul>
 </li>
 </ul>
@@ -361,14 +345,66 @@ scheduled time slots, which the changes will be reflected in ui.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.2. Logging</a></h3>
+<h3 id="display-schedule-feature"><a class="link" href="#display-schedule-feature">3.2. Display Schedule Feature</a></h3>
+<div class="sect3">
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.2.1. Proposed Implementation</a></h4>
+<div class="paragraph">
+<p>The display schedule feature extends Scheduler to display multiple tables of schedule per day. It is a component in the "MainWindow" class
+stored in a "ScheduleViewPanel" class. Within the "ScheduleViewPanel" class, objects of "ScheduleView" class are stored into the panel.</p>
+</div>
+<div class="paragraph">
+<p>ScheduleViewPanel implements the following function:
+*<code>fillPanel()</code>&#8201;&#8212;&#8201;Fill the ScheduleView component with the schedule tables for each day.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example scenario of what will be displayed to the user.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application. The Ui will start and the MainWindow will be displayed first.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. MainWindow will call all the children such as the HelpWindow, CommandBox, Result Display, StatusBarFooter and ScheduleViewPanel.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. Once ScheduleViewPanel is called, it will take in a list of titles and ObservableList data from the Logic class. The list of titles
+consist of the title column for each schedule table and the ObservableList data consists of the time slots allocated to each interviewee.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. ScheduleViewPanel will call the ScheduleView class to fill each table and populate each table with the data given by the Logic class.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. ScheduleView will have a .fxml file of a table and it will first be filled with the column titles, followed by the time slots and the
+interviewee allocated to each time slots. The slot that has no interviewee will be displayed as "0".</p>
+</div>
+<div class="paragraph">
+<p>Step 6. Once the data is populated, the MainWindow will display the schedules of each day arranged in a table format.</p>
+</div>
+<div class="paragraph">
+<p>Step 7. Once User imports a new .csv file, it will call the RefreshListener Interface. RefreshListenerManager will then take in the new titles and
+list of ObservableList of interviewee.</p>
+</div>
+<div class="paragraph">
+<p>Step 8. The RefreshListenerManager will call the MainWindow to refresh the ScheduleViewPanel.</p>
+</div>
+<div class="paragraph">
+<p>Step 9. ScheduleViewPanel will firstly clear all the data and input the updated data from the .csv file.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>=== Logging</p>
+</div>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.3, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">[Implementation-Configuration]</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -379,60 +415,39 @@ scheduled time slots, which the changes will be reflected in ui.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Logging Levels</strong></p>
+<p><strong>Logging Levels</strong>
+* <code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application
+* <code>WARNING</code> : Can continue, but with caution
+* <code>INFO</code> : Information showing the noteworthy actions by the App
+* <code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
-</li>
-<li>
-<p><code>WARNING</code> : Can continue, but with caution</p>
-</li>
-<li>
-<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
-</li>
-<li>
-<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
-</li>
-</ul>
+<div id="Implementation-Configuration" class="paragraph">
+<p>=== Configuration</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.3. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
+<div class="paragraph">
+<p>== Documentation</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Documentation.html">here</a>.</p>
 </div>
+<div class="paragraph">
+<p>== Testing</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">5. Testing</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Testing.html">here</a>.</p>
 </div>
+<div class="paragraph">
+<p>== Dev Ops</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="DevOps.html">here</a>.</p>
 </div>
+<div class="paragraph">
+<p>== Product Scope</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="product-scope"><a class="link" href="#product-scope">Appendix A: Product Scope</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Target user profile</strong>:</p>
 </div>
@@ -458,11 +473,9 @@ scheduled time slots, which the changes will be reflected in ui.</p>
 <div class="paragraph">
 <p><strong>Value proposition</strong>: manage the scheduling of interviews faster with CLI than mouse/GUI driven apps.</p>
 </div>
+<div class="paragraph">
+<p>== User Stories</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="user-stories"><a class="link" href="#user-stories">Appendix B: User Stories</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
 </div>
@@ -628,11 +641,9 @@ scheduled time slots, which the changes will be reflected in ui.</p>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>== Use Cases</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>Scheduler</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
@@ -834,11 +845,9 @@ scheduled time slots, which the changes will be reflected in ui.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>== Non Functional Requirements</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
-<div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -861,11 +870,9 @@ scheduled time slots, which the changes will be reflected in ui.</p>
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>== Glossary</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
-<div class="sectionbody">
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><a id="availabilities"></a> Availabilities</dt>
@@ -906,11 +913,9 @@ scheduled time slots, which the changes will be reflected in ui.</p>
 </dd>
 </dl>
 </div>
+<div class="paragraph">
+<p>== Product Survey</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Product Name</strong></p>
 </div>
@@ -943,11 +948,9 @@ scheduled time slots, which the changes will be reflected in ui.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>== Instructions for Manual Testing</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
 </div>
@@ -963,8 +966,9 @@ These instructions only provide a starting point for testers to work on; testers
 </tr>
 </table>
 </div>
-<div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<div class="paragraph">
+<p>=== Launch and Shutdown</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1000,9 +1004,9 @@ Expected: The most recent window size and location is retained.</p>
 <div class="paragraph">
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
+<div class="paragraph">
+<p>=== Deleting a person</p>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">G.2. Deleting a person</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1032,9 +1036,9 @@ Expected: Similar to previous.</p>
 <div class="paragraph">
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
+<div class="paragraph">
+<p>=== Saving data</p>
 </div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1054,4 +1058,6 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 03:32:52 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 03:37:17 UTC</div></div></div></body></html>
