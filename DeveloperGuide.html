@@ -22,7 +22,7 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#coming-soon-in-v1-3-scheduling-algorithm">3.1. [coming soon in v1.3] scheduling algorithm</a></li>
+<li><a href="#coming-soon-in-v1-3-scheduling-algorithm">3.1. [Coming soon in v1.3] Scheduling Algorithm</a></li>
 <li><a href="#display-schedule-feature">3.2. Display Schedule Feature</a></li>
 <li><a href="#import">3.3. Import</a></li>
 <li><a href="#coming-soon-in-v1-3-export">3.4. [Coming soon in v1.3] Export</a></li>
@@ -269,16 +269,27 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the imported interviewer&#8217;s availability data as <code>Schedule</code>. Each <code>Schedule</code> represents an availability table.
-The data of the <code>Schedule</code> can be changed after running the scheduling algorithm.</p>
+<p>stores a list of <code>Schedule</code>. Each <code>Schedule</code> represents a schedule timetable.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes a list of <code>ObservableList&lt;ObservableList&lt;String&gt;&gt;</code> that can be 'observed' by the UI. Each of the
+<code>ObservableList&lt;ObservableList&lt;String&gt;&gt;</code> represents the data of a <code>Schedule</code> object.
+The <code>ObservableList&lt;ObservableList&lt;String&gt;&gt;</code> objects are bound to the UI so that the UI automatically updates  when the data of the <code>Schedule</code> objects changes.</p>
+</li>
+<li>
+<p>exposes a list of <code>ObservableList&lt;Interviewee&gt;</code> that can be 'observed' by the UI.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
 </li>
 </ul>
+</div>
+<div class="sect3">
+<h4 id="schedule"><a class="link" href="#schedule">2.4.1. Schedule</a></h4>
+<div class="paragraph">
+<p>The <code>Schedule</code> objects are filled up and created by the imported interviewer&#8217;s availability. The inner data of a <code>Schedule</code> object is the same as the corresponding availability
+table in the imported interviewer&#8217;s availability. The data of the <code>Schedule</code> can be changed after running the scheduling algorithm.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -321,15 +332,15 @@ The data of the <code>Schedule</code> can be changed after running the schedulin
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="coming-soon-in-v1-3-scheduling-algorithm"><a class="link" href="#coming-soon-in-v1-3-scheduling-algorithm">3.1. [coming soon in v1.3] scheduling algorithm</a></h3>
+<h3 id="coming-soon-in-v1-3-scheduling-algorithm"><a class="link" href="#coming-soon-in-v1-3-scheduling-algorithm">3.1. [Coming soon in v1.3] Scheduling Algorithm</a></h3>
 <div class="paragraph">
-<p>the scheduling of interviews is essentially a <a href="https://www.geeksforgeeks.org/maximum-bipartite-matching/">maximum bipartite matching problem</a>.
-the application is trying to find the <strong>maximum number of matching</strong> between available interview slots
+<p>The scheduling of interviews is essentially a <a href="https://www.geeksforgeeks.org/maximum-bipartite-matching/">maximum bipartite matching problem</a>.
+The application is trying to find the <strong>maximum number of matching</strong> between available interview slots
 and interviewees.</p>
 </div>
 <div class="paragraph">
-<p>in this application, the selected algorithm is <a href="https://www.geeksforgeeks.org/hopcroft-karp-algorithm-for-maximum-matching-set-1-introduction/">hopcroft-karp algorithm</a>.
-the complexity of the algorithm is o(√v x e), which is reasonably fast. the relevant details of the algorithm are as below:</p>
+<p>In this application, the selected algorithm is <a href="https://www.geeksforgeeks.org/hopcroft-karp-algorithm-for-maximum-matching-set-1-introduction/">hopcroft-karp algorithm</a>.
+The complexity of the algorithm is o(√v x e), which is reasonably fast. The relevant details of the algorithm are as below:</p>
 </div>
 <div class="paragraph">
 <p><strong>Vertex</strong></p>
@@ -339,15 +350,15 @@ the complexity of the algorithm is o(√v x e), which is reasonably fast. the re
 </div>
 <div class="paragraph">
 <p><strong>Matching Criteria</strong><br>
-an interviewee matches an interview slot if <strong>all</strong> the criteria below are fulfilled:</p>
+An interviewee matches an interview slot if <strong>all</strong> the criteria below are fulfilled:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>the timing of the slot matches one of the available timings of the interviewee.</p>
+<p>The timing of the slot matches one of the available timings of the interviewee.</p>
 </li>
 <li>
-<p>the department of the time slot matches the department of choice of the interviewee.</p>
+<p>The department of the time slot matches the department of choice of the interviewee.</p>
 </li>
 </ol>
 </div>
@@ -356,13 +367,13 @@ an interviewee matches an interview slot if <strong>all</strong> the criteria be
 Include an <strong>activity diagram</strong> here to summarise the algorithm.</p>
 </div>
 <div class="paragraph">
-<p>The proposed implementation of this algorithm is to encapsulate the logic of the algorithm into a <code>command</code> class under the
-<code>logic</code> component, possibly with the help of some auxiliary classes. the command is then invoked when the user key in the relevant
+<p>The proposed implementation of this algorithm is to encapsulate the logic of the algorithm into a <code>Command</code> class under
+<code>Logic</code> component, possibly with the help of some auxiliary classes. The command is then invoked when the user key in the relevant
 command keyword (refer user guide).</p>
 </div>
 <div class="paragraph">
-<p>when the scheduling algorithm has finished running, it will update the data in the <code>schedule</code> objects to reflect the
-scheduled time slots, which the changes will be reflected in ui.</p>
+<p>When the scheduling algorithm has finished running, it will update the data in the <code>Schedule</code> objects to reflect the
+allocated time slots to the interviewees, which the changes will then be reflected automatically in the UI.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1257,4 +1268,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 04:00:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 05:12:11 UTC</div></div></div></body></html>
