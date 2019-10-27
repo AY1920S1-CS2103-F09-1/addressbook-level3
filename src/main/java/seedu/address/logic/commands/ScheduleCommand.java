@@ -1,7 +1,10 @@
 package seedu.address.logic.commands;
 
+import java.util.List;
+
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.InterviewSlot;
 
 /**
  * Schedules the interviews using the interviewer's availability data and interviewee's selected slots.
@@ -16,6 +19,13 @@ public class ScheduleCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+
         throw new CommandException(MESSAGE_NOT_IMPLEMENTED_YET);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+            || other instanceof ScheduleCommand; // instanceof handles nulls
     }
 }
