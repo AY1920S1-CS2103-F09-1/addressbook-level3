@@ -4,17 +4,39 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Interviewee;
 import seedu.address.model.person.Interviewer;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.Slot;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
+
+    /* TODO: REMOVE THE FOLLOWING LINES AFTER THEIR USAGE IS REMOVED */
+    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+
+    ObservableList<Person> getFilteredPersonList();
+
+    void updateFilteredPersonList(Predicate<Person> predicate);
+
+    boolean hasPerson(Person person);
+
+    void deletePerson(Person person);
+
+    void addPerson(Person person);
+
+    Person getPerson(String name) throws NoSuchElementException;
+
+    void setPerson(Person target, Person editedPerson);
+
+    /* TODO: REMOVE ABOVE LINES */
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */

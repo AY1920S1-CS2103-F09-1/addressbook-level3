@@ -13,7 +13,6 @@ import seedu.address.model.ReadOnlyInterviewerList;
 import seedu.address.model.Schedule;
 import seedu.address.model.person.Interviewee;
 import seedu.address.model.person.Interviewer;
-import seedu.address.model.person.Person;
 
 /**
  * API of the Logic component
@@ -27,6 +26,11 @@ public interface Logic {
      * @throws ParseException If an error occurs during parsing.
      */
     CommandResult execute(String commandText) throws CommandException, ParseException;
+
+    /* TODO: REMOVE THE FOLLOWING LINES AFTER THEIR USAGE IS REMOVED */
+    Path getAddressBookFilePath();
+
+    /* TODO: REMOVE ABOVE LINES */
 
     /**
      * Returns the list of Interviewees.
@@ -43,18 +47,28 @@ public interface Logic {
     List<Interviewer> getInterviewers();
 
     /**
+     * Returns the IntervieweeList.
+     */
+    ReadOnlyIntervieweeList getIntervieweeList();
+
+    /**
+     * Returns the InterviewerList.
+     */
+    ReadOnlyInterviewerList getInterviewerList();
+
+    /**
      * Returns an unmodifiable view of the list of Interviewees.
      *
      * @see seedu.address.model.Model#getIntervieweeList()
      */
-    ObservableList<Interviewee> getIntervieweeList();
+    ObservableList<Interviewee> getObservableIntervieweeList();
 
     /**
      * Returns an unmodifiable view of the list of Interviewers.
      *
      * @see seedu.address.model.Model#getInterviewerList()
      */
-    ObservableList<Interviewer> getInterviewerList();
+    ObservableList<Interviewer> getObservableInterviewerList();
 
     /**
      * Returns the user prefs' file path to the list of Interviewees.

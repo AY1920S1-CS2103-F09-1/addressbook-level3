@@ -37,7 +37,9 @@ public class JsonSerializableInterviewerList {
      * @param source future changes to this will not affect the created {@code JsonSerializableInterviewerList}.
      */
     public JsonSerializableInterviewerList(ReadOnlyInterviewerList source) {
-        this.interviewers.addAll(source.getInterviewerList().stream().map(JsonAdaptedInterviewer::new).collect(Collectors.toList()));
+        this.interviewers.addAll(source.getInterviewerList().stream()
+                .map(JsonAdaptedInterviewer::new)
+                .collect(Collectors.toList()));
     }
 
     /**

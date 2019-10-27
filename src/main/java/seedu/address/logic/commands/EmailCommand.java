@@ -10,7 +10,6 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Interviewee;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
 
 /**
  * Handles the sending of emails to interviewers/interviewees based on the email addresses associated with

@@ -17,7 +17,7 @@ import seedu.address.model.ReadOnlyIntervieweeList;
 /**
  * A class to address Interviewee data stored as a JSON file on the hard disk.
  */
-public class JsonIntervieweeListStorage implements IntervieweeListStorage{
+public class JsonIntervieweeListStorage implements IntervieweeListStorage {
 
     private static final Logger logger = LogsCenter.getLogger(JsonIntervieweeListStorage.class);
 

@@ -62,7 +62,8 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public Optional<ReadOnlyIntervieweeList> readIntervieweeList(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyIntervieweeList> readIntervieweeList(Path filePath) throws DataConversionException,
+            IOException {
         logger.fine("Attempting to read interviewee data from file: " + filePath);
         return this.intervieweeListStorage.readIntervieweeList(filePath);
     }
@@ -91,7 +92,8 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public Optional<ReadOnlyInterviewerList> readInterviewerList(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyInterviewerList> readInterviewerList(Path filePath) throws DataConversionException,
+            IOException {
         logger.fine("Attempting to read interviewer data from file: " + filePath);
         return this.interviewerListStorage.readInterviewerList(filePath);
     }

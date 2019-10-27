@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -19,6 +20,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Interviewee;
 import seedu.address.model.person.Interviewer;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.Slot;
 
 /**
@@ -56,6 +58,37 @@ public class ModelManager implements Model {
     public ModelManager() {
         this(new IntervieweeList(), new InterviewerList(), new UserPrefs(), new LinkedList<>());
     }
+
+    /* TODO: REMOVE THE FOLLOWING LINES AFTER THEIR USAGE IS REMOVED */
+    public ObservableList<Person> getFilteredPersonList() {
+        return null;
+    }
+
+    public void updateFilteredPersonList(Predicate<Person> predicate) {
+
+    }
+
+    public boolean hasPerson(Person person) {
+        return true;
+    }
+
+    public void deletePerson(Person person) {
+
+    }
+
+    public void addPerson(Person person) {
+
+    }
+
+    public Person getPerson(String name) throws NoSuchElementException {
+        return null;
+    }
+
+    public void setPerson(Person target, Person editedPerson) {
+
+    }
+
+    /* TODO: REMOVE ABOVE LINES */
 
     //=========== UserPrefs ==================================================================================
 

@@ -14,6 +14,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
+import seedu.address.model.ReadOnlyIntervieweeList;
+import seedu.address.model.ReadOnlyInterviewerList;
 import seedu.address.model.Schedule;
 import seedu.address.model.person.Interviewee;
 import seedu.address.model.person.Interviewer;
@@ -35,6 +37,13 @@ public class LogicManager implements Logic {
         this.storage = storage;
         addressBookParser = new AddressBookParser();
     }
+
+    /* TODO: REMOVE THE FOLLOWING LINES AFTER THEIR USAGE IS REMOVED */
+    public Path getAddressBookFilePath() {
+        return this.model.getIntervieweeListFilePath();
+    }
+
+    /* TODO: REMOVE ABOVE LINES */
 
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
@@ -65,12 +74,22 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<Interviewee> getIntervieweeList() {
+    public ReadOnlyIntervieweeList getIntervieweeList() {
+        return model.getIntervieweeList();
+    }
+
+    @Override
+    public ReadOnlyInterviewerList getInterviewerList() {
+        return model.getInterviewerList();
+    }
+
+    @Override
+    public ObservableList<Interviewee> getObservableIntervieweeList() {
         return model.getObservableIntervieweeList();
     }
 
     @Override
-    public ObservableList<Interviewer> getInterviewerList() {
+    public ObservableList<Interviewer> getObservableInterviewerList() {
         return model.getObservableInterviewerList();
     }
 
