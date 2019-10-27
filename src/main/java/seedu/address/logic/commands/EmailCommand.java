@@ -43,7 +43,7 @@ public class EmailCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        // TODO: Need to filter for Interviewees only
+        // TODO: Need to filter for IntervieweeList only
         List<Person> lastShownList = model.getFilteredPersonList();
         // Interviewee intervieweeToEmail = new Interviewee.IntervieweeBuilder(lastShownList.get(1)).build();
         Interviewee intervieweeToEmail = null;

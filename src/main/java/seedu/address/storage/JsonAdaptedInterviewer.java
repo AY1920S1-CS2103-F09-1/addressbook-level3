@@ -61,7 +61,7 @@ public class JsonAdaptedInterviewer extends JsonAdaptedPerson {
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted interviewer.
      */
-    public Person toModelType() throws IllegalValueException {
+    public Interviewer toModelType() throws IllegalValueException {
         final String name = getName();
         final String phone = getPhone();
         final List<Tag> personTags = new ArrayList<>();
