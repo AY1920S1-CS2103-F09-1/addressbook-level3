@@ -318,12 +318,22 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ObservableList<Interviewee> getIntervieweeList() {
+    public ReadOnlyIntervieweeList getIntervieweeList() {
+        return this.intervieweeList;
+    }
+
+    @Override
+    public ReadOnlyInterviewerList getInterviewerList() {
+        return this.interviewerList;
+    }
+
+    @Override
+    public ObservableList<Interviewee> getObservableIntervieweeList() {
         return this.intervieweeList.getIntervieweeList();
     }
 
     @Override
-    public ObservableList<Interviewer> getInterviewerList() {
+    public ObservableList<Interviewer> getObservableInterviewerList() {
         return this.interviewerList.getInterviewerList();
     }
 

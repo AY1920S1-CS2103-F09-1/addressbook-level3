@@ -8,8 +8,11 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyIntervieweeList;
+import seedu.address.model.ReadOnlyInterviewerList;
 import seedu.address.model.Schedule;
+import seedu.address.model.person.Interviewee;
+import seedu.address.model.person.Interviewer;
 import seedu.address.model.person.Person;
 
 /**
@@ -26,19 +29,42 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the AddressBook.
+     * Returns the list of Interviewees.
      *
-     * @see seedu.address.model.Model#getAddressBook()
+     * @see seedu.address.model.Model#getInterviewees()
      */
-    ReadOnlyAddressBook getAddressBook();
-
-    /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<Person> getFilteredPersonList();
+    List<Interviewee> getInterviewees();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the list of Interviewers.
+     *
+     * @see seedu.address.model.Model#getInterviewers()
      */
-    Path getAddressBookFilePath();
+    List<Interviewer> getInterviewers();
+
+    /**
+     * Returns an unmodifiable view of the list of Interviewees.
+     *
+     * @see seedu.address.model.Model#getIntervieweeList()
+     */
+    ObservableList<Interviewee> getIntervieweeList();
+
+    /**
+     * Returns an unmodifiable view of the list of Interviewers.
+     *
+     * @see seedu.address.model.Model#getInterviewerList()
+     */
+    ObservableList<Interviewer> getInterviewerList();
+
+    /**
+     * Returns the user prefs' file path to the list of Interviewees.
+     */
+    Path getIntervieweeListFilePath();
+
+    /**
+     * Returns the user prefs' file path to the list of Interviewers.
+     */
+    Path getInterviewerListFilePath();
 
     /**
      * Returns the list of Schedules.

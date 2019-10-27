@@ -14,9 +14,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.Schedule;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Interviewee;
+import seedu.address.model.person.Interviewer;
 import seedu.address.storage.Storage;
 
 /**
@@ -45,7 +45,8 @@ public class LogicManager implements Logic {
         commandResult = command.execute(model);
 
         try {
-            storage.saveAddressBook(model.getAddressBook());
+            storage.saveIntervieweeList(model.getIntervieweeList());
+            storage.saveInterviewerList(model.getInterviewerList());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -54,18 +55,33 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return model.getAddressBook();
+    public List<Interviewee> getInterviewees() {
+        return model.getInterviewees();
     }
 
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return model.getFilteredPersonList();
+    public List<Interviewer> getInterviewers() {
+        return model.getInterviewers();
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return model.getAddressBookFilePath();
+    public ObservableList<Interviewee> getIntervieweeList() {
+        return model.getObservableIntervieweeList();
+    }
+
+    @Override
+    public ObservableList<Interviewer> getInterviewerList() {
+        return model.getObservableInterviewerList();
+    }
+
+    @Override
+    public Path getIntervieweeListFilePath() {
+        return model.getIntervieweeListFilePath();
+    }
+
+    @Override
+    public Path getInterviewerListFilePath() {
+        return model.getInterviewerListFilePath();
     }
 
     @Override

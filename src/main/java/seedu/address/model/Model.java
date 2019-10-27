@@ -184,13 +184,23 @@ public interface Model {
     void addInterviewer(Interviewer interviewer);
 
     /**
+     * Returns the IntervieweeList.
+     */
+    ReadOnlyIntervieweeList getIntervieweeList();
+
+    /**
+     * Returns the InterviewerList.
+     */
+    ReadOnlyInterviewerList getInterviewerList();
+
+    /**
      * Returns an unmodifiable view of the Interviewee list.
      */
-    ObservableList<Interviewee> getIntervieweeList();
+    ObservableList<Interviewee> getObservableIntervieweeList();
 
     /**
      * Returns an unmodifiable view of the Interviewer list.
      */
-    ObservableList<Interviewer> getInterviewerList();
+    ObservableList<Interviewer> getObservableInterviewerList();
 
 }
