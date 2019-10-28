@@ -3,11 +3,13 @@ package seedu.address.logic.graph;
 import java.util.Objects;
 
 public abstract class Vertex<U, V> {
+    private int index;
     private U item;
     private V partner;
 
-    public Vertex(U item) {
+    public Vertex(U item, int index) {
         this.item = item;
+        this.index = index;
     }
 
     public void match(V partner) {
@@ -22,11 +24,23 @@ public abstract class Vertex<U, V> {
         return this.partner != null;
     }
 
+    public int getIndex() {
+        return index;
+    }
+
+    public U getItem() {
+        return item;
+    }
+
+    /**
+     * Returns true if the index and the item and its partner that the vertex is holding is equal to those of other.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this
             || other instanceof Vertex && Objects.equals(item, ((Vertex) other).item)
-                && Objects.equals(partner, ((Vertex) other).partner);
+                && Objects.equals(partner, ((Vertex) other).partner)
+                && index == ((Vertex) other).index;
     }
 
     @Override

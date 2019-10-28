@@ -1,8 +1,8 @@
 package seedu.address.logic.graph;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -20,9 +20,9 @@ class BipartiteGraphGeneratorTest {
         List<Interviewee> interviewees = SampleInterviewee.getSampleIntervieweesForGraphOne();
         BipartiteGraphGenerator generator = new BipartiteGraphGenerator(interviewers, interviewees);
 
-        List<Pair<IntervieweeVertex, List<InterviewSlotVertex>>> expectedGraph = SampleGraph.getSampleGraphOne();
-        List<Pair<IntervieweeVertex, List<InterviewSlotVertex>>> resultantGraph = generator.getGraph();
+        BipartiteGraph expectedGraph = SampleGraph.getSampleGraphOne();
+        BipartiteGraph resultGraph = generator.getGraph();
 
-        assertEquals(resultantGraph, expectedGraph);
+        assertEquals(expectedGraph, resultGraph);
     }
 }
