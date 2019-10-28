@@ -29,7 +29,7 @@ public class BipartiteGraphGenerator {
      * The interviewees and interview slots are each wrapped in a vertex.
      * An interviewee is only added to the graph if it can match at least one of the interview slots and vice versa.
      */
-    private List<Pair<IntervieweeVertex, List<InterviewSlotVertex>>> getGraph() {
+    public List<Pair<IntervieweeVertex, List<InterviewSlotVertex>>> getGraph() {
         List<Pair<Department, List<InterviewSlot>>> list = generateInterviewSlots(interviewers);
         List<Pair<IntervieweeVertex, List<InterviewSlotVertex>>> graph = new LinkedList<>();
 
@@ -64,7 +64,7 @@ public class BipartiteGraphGenerator {
      */
     private List<InterviewSlot> getInterviewSlot(List<Pair<Department, List<InterviewSlot>>> list,
                                                  Department departmentOfChoice) {
-        Pair<Department, List<InterviewSlot>> departmentListPair = getPair(list, departmentOfChoice);
+        Pair<Department, List<InterviewSlot>> departmentListPair = getDepartmentListPair(list, departmentOfChoice);
 
         return departmentListPair.getTail();
     }
@@ -73,7 +73,7 @@ public class BipartiteGraphGenerator {
      * Fill up the given list with the matching available interview slots (wrapping each of them in a vertex)
      * based on the desired slots of the interviewee.
      */
-    private void fill(List<InterviewSlotVertex> interviewSlotVertices, List<InterviewSlot> availableSlots,
+    public static void fill(List<InterviewSlotVertex> interviewSlotVertices, List<InterviewSlot> availableSlots,
                       List<Slot> desiredSlots) {
         ListIterator<InterviewSlot> availableSlotsIterator = availableSlots.listIterator();
         ListIterator<Slot> desiredSlotsIterator = desiredSlots.listIterator();
@@ -109,12 +109,12 @@ public class BipartiteGraphGenerator {
      * interviewer. Thus, the actual structure of the list is a list of pairs, with the head being the department,
      * and the tail being the list of available interview slots of that department.
      */
-    private List<Pair<Department, List<InterviewSlot>>> generateInterviewSlots(List<Interviewer> interviewers) {
+    public static List<Pair<Department, List<InterviewSlot>>> generateInterviewSlots(List<Interviewer> interviewers) {
         List<Pair<Department, List<InterviewSlot>>> list = new LinkedList<>();
 
         for (Interviewer interviewer : interviewers) {
             Department department = interviewer.getDepartment();
-            Pair<Department, List<InterviewSlot>> pair = getPair(list, department);
+            Pair<Department, List<InterviewSlot>> pair = getDepartmentListPair(list, department);
 
             List<Slot> slots = interviewer.getAvailabilities();
             List<InterviewSlot> interviewSlots = pair.getTail();
@@ -136,14 +136,14 @@ public class BipartiteGraphGenerator {
      * If the department does not already exist in the list, a new pair for the department will be created, with
      * the list of associated interview slots being empty.
      */
-    private Pair<Department, List<InterviewSlot>> getPair(List<Pair<Department, List<InterviewSlot>>> list,
-                                                          Department department) {
+    public static Pair<Department, List<InterviewSlot>> getDepartmentListPair(List<Pair<Department,
+        List<InterviewSlot>>> list, Department department) {
         int size = list.size();
         Pair<Department, List<InterviewSlot>> pair = null;
 
         for (int i = 0; i < size; i++) {
             Pair<Department, List<InterviewSlot>> currPair = list.get(i);
-            Department currDepartment = pair.getHead();
+            Department currDepartment = currPair.getHead();
             if (currDepartment.equals(department)) {
                 pair = currPair;
                 break;

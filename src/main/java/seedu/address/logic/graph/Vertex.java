@@ -1,5 +1,7 @@
 package seedu.address.logic.graph;
 
+import java.util.Objects;
+
 public abstract class Vertex<U, V> {
     private U item;
     private V partner;
@@ -21,7 +23,14 @@ public abstract class Vertex<U, V> {
     }
 
     @Override
+    public boolean equals(Object other) {
+        return other == this
+            || other instanceof Vertex && Objects.equals(item, ((Vertex) other).item)
+                && Objects.equals(partner, ((Vertex) other).partner);
+    }
+
+    @Override
     public String toString() {
-        return String.format("U: %s, V: %s", item.toString(), partner.toString());
+        return String.format("U: %s, V: %s", String.valueOf(item), String.valueOf(partner));
     }
 }
