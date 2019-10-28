@@ -1,6 +1,6 @@
-package seedu.address.logic;
+package seedu.address.logic.graph;
 
-public class Vertex<U, V> {
+public abstract class Vertex<U, V> {
     private U item;
     private V partner;
 
@@ -18,5 +18,10 @@ public class Vertex<U, V> {
 
     public boolean isMatched() {
         return this.partner != null;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("U: %s, V: %s", item.toString(), partner.toString());
     }
 }

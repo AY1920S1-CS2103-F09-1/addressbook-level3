@@ -1,5 +1,6 @@
 package seedu.address.model.person;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -116,6 +117,7 @@ public class Interviewee extends Person {
     }
 
     public List<Slot> getAvailableTimeslots() {
+        Collections.sort(availableTimeslots);
         return availableTimeslots;
     }
 

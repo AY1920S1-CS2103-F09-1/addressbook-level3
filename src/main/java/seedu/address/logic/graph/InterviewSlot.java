@@ -14,12 +14,4 @@ public class InterviewSlot extends Slot {
     public Interviewer getInterviewer() {
         return interviewer;
     }
-
-    // The date-time format of interview slot and slot given must be the same
-    public boolean timingMatch(Slot slot) {
-        String thisDateTime = super.toString();
-        String otherDateTime = slot.toString();
-
-        return thisDateTime.equals(otherDateTime);
-    }
 }

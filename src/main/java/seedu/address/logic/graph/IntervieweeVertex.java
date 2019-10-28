@@ -1,4 +1,9 @@
 package seedu.address.logic.graph;
 
-public class IntervieweeVertex {
+import seedu.address.model.person.Interviewee;
+
+public class IntervieweeVertex extends Vertex<Interviewee, InterviewSlot> {
+    public IntervieweeVertex(Interviewee interviewee) {
+        super(interviewee);
+    }
 }
