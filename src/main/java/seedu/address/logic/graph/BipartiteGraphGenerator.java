@@ -98,7 +98,6 @@ public class BipartiteGraphGenerator {
             try {
                 if (comp == 0) {
                     interviewSlotVertices.add(availableSlotVertex);
-                    desiredSlot = desiredSlotsIterator.next();
                     availableSlotVertex = availableSlotsIterator.next();
                 } else if (comp > 0) {
                     availableSlotVertex = availableSlotsIterator.next();
