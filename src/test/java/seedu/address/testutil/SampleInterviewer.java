@@ -95,7 +95,7 @@ public class SampleInterviewer {
     /**
      * Returns sample slots for the sample graph 1 in the sample graph data.
      */
-    public static List<Interviewer> getSampleInterviewersForGraphOne() {
+    public static List<Interviewer> getSampleInterviewersForGraph1() {
         List<Slot> slots = SampleSlot.getSampleSlotsForGraph1();
 
         List<Slot> slots1 = new LinkedList<>();

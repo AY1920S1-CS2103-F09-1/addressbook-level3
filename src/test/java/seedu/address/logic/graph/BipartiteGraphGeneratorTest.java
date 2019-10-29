@@ -1,6 +1,7 @@
 package seedu.address.logic.graph;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.List;
 
@@ -15,13 +16,14 @@ import seedu.address.testutil.SampleInterviewer;
 class BipartiteGraphGeneratorTest {
     @Test
     public void getGraph_sampleDataFromGraphOne_returnSampleGraphOne() {
-        List<Interviewer> interviewers = SampleInterviewer.getSampleInterviewersForGraphOne();
-        List<Interviewee> interviewees = SampleInterviewee.getSampleIntervieweesForGraphOne();
+        List<Interviewer> interviewers = SampleInterviewer.getSampleInterviewersForGraph1();
+        List<Interviewee> interviewees = SampleInterviewee.getSampleIntervieweesForGraph1();
         BipartiteGraphGenerator generator = new BipartiteGraphGenerator(interviewers, interviewees);
 
         BipartiteGraph expectedGraph = SampleGraph.getSampleGraphOne();
         BipartiteGraph resultGraph = generator.getGraph();
 
+        assert expectedGraph != resultGraph : fail("The two graphs are the same objects!");
         assertEquals(expectedGraph, resultGraph);
     }
 }

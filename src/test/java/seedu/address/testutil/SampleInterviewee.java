@@ -18,7 +18,7 @@ public class SampleInterviewee {
     /**
      * Returns sample interviewees for the graph 1 in the sample graph data.
      */
-    public static List<Interviewee> getSampleIntervieweesForGraphOne() {
+    public static List<Interviewee> getSampleIntervieweesForGraph1() {
         List<Slot> slots = SampleSlot.getSampleSlotsForGraph1();
 
         List<Slot> slots1 = new LinkedList<>();

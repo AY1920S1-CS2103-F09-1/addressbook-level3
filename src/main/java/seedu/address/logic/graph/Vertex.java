@@ -2,6 +2,11 @@ package seedu.address.logic.graph;
 
 import java.util.Objects;
 
+/**
+ * Represents a vertex in a bipartite graph.
+ * @param <U> the item that this vertex holds or encapsulates.
+ * @param <V> the vertex that this vertex is matched to.
+ */
 public abstract class Vertex<U, V> {
     private int index;
     private U item;
@@ -30,6 +35,10 @@ public abstract class Vertex<U, V> {
 
     public U getItem() {
         return item;
+    }
+
+    public V getPartner() {
+        return partner;
     }
 
     /**

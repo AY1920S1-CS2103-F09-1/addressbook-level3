@@ -1,5 +1,6 @@
 package seedu.address.logic.graph;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class BipartiteGraphGenerator {
         List<Pair<Department, List<InterviewSlotVertex>>> list = result.getHead();
         int numSlots = result.getTail();
 
-        List<Pair<IntervieweeVertex, List<InterviewSlotVertex>>> graph = new LinkedList<>();
+        List<Pair<IntervieweeVertex, List<InterviewSlotVertex>>> graph = new ArrayList<>(interviewees.size());
         int currIntervieweeVertexIndex = 0;
 
         for (Interviewee interviewee : interviewees) {

@@ -2,7 +2,6 @@ package seedu.address.logic.graph;
 
 import java.util.List;
 import seedu.address.commons.util.Pair;
-import seedu.address.model.person.Department;
 
 /**
  * Encapsulates a bipartite graph of interviewees vertices and interview slot vertices. Serves as a container
@@ -28,8 +27,19 @@ public class BipartiteGraph {
         return numInterviewSlots;
     }
 
-    public List<Pair<IntervieweeVertex, List<InterviewSlotVertex>>> getGraph() {
-        return graph;
+    /**
+     * Returns the pair of intervieweeVertex and list of associated interview slots vertices based on the
+     * given @code{index} of the intervieweeVertex.
+     */
+    public Pair<IntervieweeVertex, List<InterviewSlotVertex>> getIntervieweePair(int index) {
+        return graph.get(index);
+    }
+
+    /**
+     * Returns the list of interview slots associated with the interviewee vertex of @code{index}.
+     */
+    public List<InterviewSlotVertex> getInterviewSlotVertices(int index) {
+        return graph.get(index).getTail();
     }
 
     @Override

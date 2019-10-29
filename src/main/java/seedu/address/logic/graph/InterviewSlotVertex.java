@@ -1,8 +1,10 @@
 package seedu.address.logic.graph;
 
-import seedu.address.model.person.Interviewee;
-
-public class InterviewSlotVertex extends Vertex<InterviewSlot, Interviewee> implements Comparable<InterviewSlotVertex> {
+/**
+ * A vertex that wraps an interview slot into it.
+ */
+public class InterviewSlotVertex extends Vertex<InterviewSlot, IntervieweeVertex> implements
+    Comparable<InterviewSlotVertex> {
     public InterviewSlotVertex(InterviewSlot item, int index) {
         super(item, index);
     }
