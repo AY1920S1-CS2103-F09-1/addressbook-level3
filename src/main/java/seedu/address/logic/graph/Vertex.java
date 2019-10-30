@@ -54,6 +54,6 @@ public abstract class Vertex<U, V> {
 
     @Override
     public String toString() {
-        return String.format("U: %s, V: %s", String.valueOf(item), String.valueOf(partner));
+        return String.format("U: %s", item.toString());
     }
 }
