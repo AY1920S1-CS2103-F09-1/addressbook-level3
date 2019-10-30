@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import seedu.address.testutil.SampleGraph;
 import seedu.address.testutil.TestUtil;
@@ -25,7 +26,8 @@ class DfsHopCroftKarpTest {
         boolean[] isUsedSlot = new boolean[numSlots];
         TestUtil.fillWithSubLists(interviewSlotPredecessors, numSlots);
 
-        List<InterviewSlotVertex> lastLayer = new BfsHopCroftKarp(subjectGraph).execute(intervieweePredecessor, interviewSlotPredecessors);
+        List<InterviewSlotVertex> lastLayer = new BfsHopCroftKarp(subjectGraph).execute(intervieweePredecessor,
+            interviewSlotPredecessors);
         new DfsHopCroftKarp(subjectGraph).execute(lastLayer, intervieweePredecessor, interviewSlotPredecessors,
             isUsedInterviewee, isUsedSlot);
 
@@ -36,6 +38,8 @@ class DfsHopCroftKarpTest {
             if (intervieweeVertex.isMatched()) {
                 // System.out.printf("%s: allocated slot: %s\n", intervieweeVertex.getItem().getName(),
                 //    intervieweeVertex.getPartner().getItem());
+                assertTrue(isUsedInterviewee[intervieweeVertex.getIndex()]);
+                assertTrue(isUsedSlot[intervieweeVertex.getPartner().getIndex()]);
                 numMatched++;
             }
         }
