@@ -14,11 +14,16 @@ public class SampleInterviewSlotVertex {
     public static List<InterviewSlotVertex> getSampleInterviewSlotVerticesGraph1() {
         List<Interviewer> interviewers = SampleInterviewer.getSampleInterviewersForGraph1();
 
-        InterviewSlot interviewSlot0 = new InterviewSlot("26/10/2019 18:00-18:30", interviewers.get(0));
-        InterviewSlot interviewSlot1 = new InterviewSlot("26/10/2019 18:30-19:00", interviewers.get(0));
-        InterviewSlot interviewSlot2 = new InterviewSlot("27/10/2019 20:00-20:30", interviewers.get(1));
-        InterviewSlot interviewSlot3 = new InterviewSlot("27/10/2019 20:30-21:00", interviewers.get(1));
-        InterviewSlot interviewSlot4 = new InterviewSlot("28/10/2019 19:00-19:30", interviewers.get(2));
+        InterviewSlot interviewSlot0 = new InterviewSlot("26/10/2019", "18:00", "18:30",
+            interviewers.get(0));
+        InterviewSlot interviewSlot1 = new InterviewSlot("26/10/2019", "18:30", "19:00",
+            interviewers.get(0));
+        InterviewSlot interviewSlot2 = new InterviewSlot("27/10/2019", "20:00", "20:30",
+            interviewers.get(1));
+        InterviewSlot interviewSlot3 = new InterviewSlot("27/10/2019", "20:30", "21:00",
+            interviewers.get(1));
+        InterviewSlot interviewSlot4 = new InterviewSlot("28/10/2019", "19:00", "19:30",
+            interviewers.get(2));
 
         InterviewSlotVertex interviewSlotVertex0 = new InterviewSlotVertex(interviewSlot0, 0);
         InterviewSlotVertex interviewSlotVertex1 = new InterviewSlotVertex(interviewSlot1, 1);
