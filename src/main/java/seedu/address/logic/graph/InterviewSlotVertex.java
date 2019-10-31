@@ -1,5 +1,7 @@
 package seedu.address.logic.graph;
 
+import seedu.address.model.person.InterviewSlot;
+
 /**
  * A vertex that wraps an interview slot into it.
  */

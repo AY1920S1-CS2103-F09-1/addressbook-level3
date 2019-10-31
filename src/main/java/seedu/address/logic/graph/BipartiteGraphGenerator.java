@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
 
 import seedu.address.commons.util.Pair;
 import seedu.address.model.person.Department;
+import seedu.address.model.person.InterviewSlot;
 import seedu.address.model.person.Interviewee;
 import seedu.address.model.person.Interviewer;
 import seedu.address.model.person.Slot;
@@ -30,7 +31,7 @@ public class BipartiteGraphGenerator {
      * The interviewees and interview slots are each wrapped in a vertex.
      * An interviewee is only added to the graph if it can match at least one of the interview slots and vice versa.
      */
-    public BipartiteGraph getGraph() {
+    public BipartiteGraph generate() {
         Pair<List<Pair<Department, List<InterviewSlotVertex>>>, Integer> result =
             generateInterviewSlotsVertices(interviewers);
         List<Pair<Department, List<InterviewSlotVertex>>> list = result.getHead();

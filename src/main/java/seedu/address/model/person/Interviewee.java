@@ -15,8 +15,9 @@ public class Interviewee extends Person {
     private final Faculty faculty;
     private final Integer yearOfStudy;
     private final List<Department> departmentChoices; // choice of departments
-    private final List<Slot> availableTimeslots; // allocated interview time slots
+    private final List<Slot> availableTimeslots;
     private final Emails emails; // personal, NUS emails etc
+    private InterviewSlot allocatedSlot;
 
     /**
      * Every field must be present and not null.
@@ -29,6 +30,7 @@ public class Interviewee extends Person {
         this.yearOfStudy = yearOfStudy;
         this.departmentChoices = departmentChoices;
         this.availableTimeslots = availableTimeslots;
+        this.allocatedSlot = null;
         this.emails = emails;
     }
 
@@ -123,6 +125,18 @@ public class Interviewee extends Person {
 
     public Emails getEmails() {
         return emails;
+    }
+
+    public InterviewSlot getAllocatedSlot() {
+        return allocatedSlot;
+    }
+
+    public void setAllocatedSlot(InterviewSlot slot) {
+        this.allocatedSlot = slot;
+    }
+
+    public void clearAllocatedSlot() {
+        this.allocatedSlot = null;
     }
 
     /**

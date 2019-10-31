@@ -21,7 +21,7 @@ class BipartiteGraphGeneratorTest {
         BipartiteGraphGenerator generator = new BipartiteGraphGenerator(interviewers, interviewees);
 
         BipartiteGraph expectedGraph = SampleGraph.getSampleGraphOne();
-        BipartiteGraph resultGraph = generator.getGraph();
+        BipartiteGraph resultGraph = generator.generate();
 
         assert expectedGraph != resultGraph : fail("The two graphs are the same objects!");
         assertEquals(expectedGraph, resultGraph);

@@ -225,4 +225,8 @@ public interface Model {
      */
     ObservableList<Interviewer> getObservableInterviewerList();
 
+    /**
+     * Clears the allocated slot of all interviewees.
+     */
+    void clearAllAllocatedSlot();
 }

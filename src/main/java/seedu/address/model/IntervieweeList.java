@@ -92,6 +92,15 @@ public class IntervieweeList implements ReadOnlyIntervieweeList {
         this.interviewees.remove(key);
     }
 
+    /**
+     * Clears the allocated slot of all the interviewees
+     */
+    public void clearAllAllocatedSlots() {
+        for (Interviewee interviewee : interviewees) {
+            interviewee.clearAllocatedSlot();
+        }
+    }
+
     @Override
     public String toString() {
         return this.getIntervieweeList().size() + " interviewees";
