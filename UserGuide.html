@@ -19,11 +19,11 @@
 <ul class="sectlevel2">
 <li><a href="#viewing-help">3.1. Viewing help</a></li>
 <li><a href="#importing-existing-availabilities-code-import-code">3.2. Importing existing availabilities <code>import</code></a></li>
-<li><a href="#add-interviewers-interviewees-code-add-code">3.3. Add interviewers/interviewees <code>add</code></a></li>
-<li><a href="#ui-display">3.4. UI Display</a></li>
-<li><a href="#get-interview-schedule-code-get-code-code-coming-in-v2-0-code">3.5. Get interview schedule <code>get</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#changing-availabilities-code-edit-code-code-coming-in-v2-0-code">3.6. Changing availabilities <code>edit</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#delete-interviewer-interviewee-code-delete-code">3.7. Delete interviewer/interviewee <code>delete</code></a></li>
+<li><a href="#add-interviewees-interviewers-code-add-code">3.3. Add interviewees/interviewers <code>add</code></a></li>
+<li><a href="#edit-interviewees-interviewers">3.4. Edit interviewees/interviewers</a></li>
+<li><a href="#delete-interviewees-interviewers-code-delete-code">3.5. Delete interviewees/interviewers <code>delete</code></a></li>
+<li><a href="#ui-display">3.6. UI Display</a></li>
+<li><a href="#get-interview-schedule-code-get-code-code-coming-in-v2-0-code">3.7. Get interview schedule <code>get</code> <code>[Coming in v2.0]</code></a></li>
 <li><a href="#tag-interview-slot-code-tag-code-code-coming-in-v2-0-code">3.8. Tag interview slot <code>tag</code> <code>[Coming in v2.0]</code></a></li>
 <li><a href="#scheduling-code-schedule-code">3.9. Scheduling <code>schedule</code></a></li>
 <li><a href="#exporting-of-interview-schedule-code-export-code-coming-soon-in-v1-4">3.10. Exporting of interview schedule <code>export</code> [Coming soon in v1.4]</a></li>
@@ -178,41 +178,194 @@ Format: <code>import interviewee PATH_TO_FILE</code><br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-interviewers-interviewees-code-add-code"><a class="link" href="#add-interviewers-interviewees-code-add-code">3.3. Add interviewers/interviewees <code>add</code></a></h3>
+<h3 id="add-interviewees-interviewers-code-add-code"><a class="link" href="#add-interviewees-interviewers-code-add-code">3.3. Add interviewees/interviewers <code>add</code></a></h3>
 <div class="paragraph">
-<p>Manually add a new interviewer to the database.<br>
-Format: <code>add interviewer name:"NAME" slot:SLOT&#8230;&#8203;</code><br></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>add interviewee name:"John Doe" slot:"20/09/2019 18:00 - 20/09/2019 21:00"
-add interviewee name:"Mary Jane" slot:"20/09/2019 18:00 - 20/09/2019 19:00" slot:"20/09/2019 20:00 - 20/09/2019 21:00"</pre>
-</div>
+<p>Manually add a new entity to the database.</p>
 </div>
 <div class="paragraph">
-<p>Notes:</p>
+<p>Format: <code>add r/ROLE n/NAME p/PHONE [t/TAG]&#8230;&#8203; [f/FACULTY] [ep/PERSONAL_EMAIL] [ew/NUS_WORK_EMAIL] [y/YEAR_OF_STUDY] [d/DEPARTMENT]&#8230;&#8203; [s/SLOT]&#8230;&#8203;</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>An interviewee can have multiple slots (given by multiple “slot:” arguments)</p>
+<p>A <code>&#8230;&#8203;</code> at the end of a field indicates that multiple arguments with those prefixes can be added, such as multiple slots.</p>
 </li>
 <li>
-<p>Slots should be given in the format: <code>DD/MM/YYYY HH:MM - DD/MM/YYYY HH:MM</code>, where the first date and time is the starting time and the second date and time is the ending time of availability.</p>
+<p>The command format differs on the <code>r/ROLE</code> prefix supplied.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If <code>interviewee</code> is supplied, refer to "Adding a new interviewee" below.</p>
 </li>
 <li>
-<p>The starting date should be a date and time that is earlier than the ending date</p>
+<p>If <code>interviewer</code> is supplied, refer to "Adding a new interviewer" below.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="adding-a-new-interviewee"><a class="link" href="#adding-a-new-interviewee">3.3.1. Adding a new interviewee</a></h4>
+<div class="paragraph">
+<p>Manually add a new interviewee to the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: add <code>r/interviewee</code> <code>n/NAME</code> <code>p/PHONE</code> <code>[t/TAG]&#8230;&#8203;</code> <code>f/FACULTY</code> <code>ep/PERSONAL_EMAIL</code> <code>ew/NUS_WORK_EMAIL</code> <code>y/YEAR_OF_STUDY</code><br>
+<code>[d/DEPARTMENT]&#8230;&#8203;</code> <code>[s/SLOT]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>add r/interviewee n/John Doe p/88888888 t/CAP5 t/dog lover f/School of Computing ep/JohnDoe@gmail.com ew/JohnDoe@u.nus.edu y/2018 d/Marketing s/20/09/2019 18:00-19:00</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An interviewee can have multiple <code>s/SLOT</code>, <code>d/DEPARTMENT</code> and <code>t/TAG</code> arguments</p>
+</li>
+<li>
+<p>Slots should be given in the format: <code>DD/MM/YYYY HH:MM-HH:MM</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>the first <code>HH:MM</code> refers to the starting time and the second <code>HH:MM</code> is the ending time of availability.</p>
+</li>
+<li>
+<p>The starting time must be earlier than the ending time.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="ui-display"><a class="link" href="#ui-display">3.4. UI Display</a></h3>
 <div class="sect3">
-<h4 id="viewing-schedules"><a class="link" href="#viewing-schedules">3.4.1. Viewing Schedules</a></h4>
+<h4 id="adding-a-new-interviewer"><a class="link" href="#adding-a-new-interviewer">3.3.2. Adding a new interviewer</a></h4>
+<div class="paragraph">
+<p>Manually add a new interviewer to the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: add <code>r/interviewer</code> <code>n/NAME</code> <code>p/PHONE</code> <code>[t/TAG]&#8230;&#8203;</code> <code>d/DEPARTMENT</code> <code>ew/NUS_WORK_EMAIL</code> <code>s/SLOT&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>add r/interviewer n/Mary Jane p/99999999 ew/MaryJane@u.nus.edu d/Marketing s/20/09/2019 18:00-19:00</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-interviewees-interviewers"><a class="link" href="#edit-interviewees-interviewers">3.4. Edit interviewees/interviewers</a></h3>
+<div class="paragraph">
+<p>Manually edit an entity in the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit NAME r/ROLE p/PHONE [t/TAG]&#8230;&#8203; f/FACULTY ep/PERSONAL_EMAIL ew/NUS_WORK_EMAIL y/YEAR_OF_STUDY [d/DEPARTMENT]&#8230;&#8203; [s/SLOT]&#8230;&#8203;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>NAME</code> must be provided after <code>edit</code> and before the first prefix <code>r/ROLE</code>.</p>
+</li>
+<li>
+<p>A <code>&#8230;&#8203;</code> at the end of a field indicates that multiple arguments with those prefixes can be added, such as multiple slots.</p>
+</li>
+<li>
+<p>The command format differs on the <code>r/ROLE</code> prefix supplied.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If <code>interviewee</code> is supplied, refer to "Edit an existing interviewee" below.</p>
+</li>
+<li>
+<p>If <code>interviewer</code> is supplied, refer to "Edit an existing interviewer" below.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="edit-an-existing-interviewee"><a class="link" href="#edit-an-existing-interviewee">3.4.1. Edit an existing interviewee</a></h4>
+<div class="paragraph">
+<p>Manually edit an existing interviewee in the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: edit <code>NAME</code> <code>r/interviewee</code> <code>p/PHONE</code> <code>[t/TAG]&#8230;&#8203;</code> <code>f/FACULTY</code> <code>ep/PERSONAL_EMAIL</code> <code>ew/NUS_WORK_EMAIL</code> <code>y/YEAR_OF_STUDY</code>
+<code>[d/DEPARTMENT]&#8230;&#8203;</code> <code>[s/SLOT]&#8230;&#8203;</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>NAME</code> and <code>r/interviewee</code> are compulsory arguments, and one other argument following <code>r/interviewee</code> must be present.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-an-existing-interviewer-interview-slot"><a class="link" href="#edit-an-existing-interviewer-interview-slot">3.4.2. Edit an existing interviewer (interview slot)</a></h4>
+<div class="paragraph">
+<p>Manually edit an existing interviewer in the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: edit <code>NAME</code> <code>r/interviewer</code> <code>p/PHONE</code> <code>[t/TAG]&#8230;&#8203;</code> <code>d/DEPARTMENT</code> <code>ew/NUS_WORK_EMAIL</code> <code>s/SLOT&#8230;&#8203;</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete-interviewees-interviewers-code-delete-code"><a class="link" href="#delete-interviewees-interviewers-code-delete-code">3.5. Delete interviewees/interviewers <code>delete</code></a></h3>
+<div class="paragraph">
+<p>Manually delete an entity from the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete NAME r/ROLE</code></p>
+</div>
+<div class="sect3">
+<h4 id="delete-an-existing-interviewee"><a class="link" href="#delete-an-existing-interviewee">3.5.1. Delete an existing interviewee</a></h4>
+<div class="paragraph">
+<p>Deletes the specified interviewee from the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: delete <code>NAME</code> <code>r/interviewee</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>delete John Doe r/interviewee</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-an-existing-interviewer-interview-slot"><a class="link" href="#delete-an-existing-interviewer-interview-slot">3.5.2. Delete an existing interviewer (interview slot)</a></h4>
+<div class="paragraph">
+<p>Deletes the specified interviewer from the database</p>
+</div>
+<div class="paragraph">
+<p>Format: delete <code>NAME</code> <code>r/interviewee</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>delete Bohn Doe r/interviewer</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ui-display"><a class="link" href="#ui-display">3.6. UI Display</a></h3>
+<div class="sect3">
+<h4 id="viewing-schedules"><a class="link" href="#viewing-schedules">3.6.1. Viewing Schedules</a></h4>
 <div class="paragraph">
 <p>When the Scheduler starts, interview schedules will be displayed for you. The data will be displayed in a table format,
 with each table representing the schedule for each day. In the first column, the date of that interview schedule will be
@@ -230,7 +383,7 @@ occupying that time slot, it will be displayed as "0".</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-details-of-interviewees"><a class="link" href="#viewing-details-of-interviewees">3.4.2. Viewing details of interviewees</a></h4>
+<h4 id="viewing-details-of-interviewees"><a class="link" href="#viewing-details-of-interviewees">3.6.2. Viewing details of interviewees</a></h4>
 <div class="paragraph">
 <p>You can to view the list of interviewees and the following information:
 1. Name
@@ -258,7 +411,7 @@ this User Guide.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code"><a class="link" href="#differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code">3.4.3. Differentiating the importance of timetable slots through colours <code>[Coming in v2.0]</code></a></h4>
+<h4 id="differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code"><a class="link" href="#differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code">3.6.3. Differentiating the importance of timetable slots through colours <code>[Coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>As you can see from the timetable above, there are 2 different colours of time slots. This is implemented so you
 are able to differentiate which interviews are important by using the colour code as shown in the timetable.
@@ -269,7 +422,7 @@ Format: <code>change DATE TIME IMPORTANCE</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="get-interview-schedule-code-get-code-code-coming-in-v2-0-code"><a class="link" href="#get-interview-schedule-code-get-code-code-coming-in-v2-0-code">3.5. Get interview schedule <code>get</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="get-interview-schedule-code-get-code-code-coming-in-v2-0-code"><a class="link" href="#get-interview-schedule-code-get-code-code-coming-in-v2-0-code">3.7. Get interview schedule <code>get</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Find an interviewer/interviewee and display his/her interview schedule.<br>
 Format: <code>get NAME</code><br></p>
@@ -280,40 +433,6 @@ Format: <code>get NAME</code><br></p>
 <div class="literalblock">
 <div class="content">
 <pre>get "John Doe"</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="changing-availabilities-code-edit-code-code-coming-in-v2-0-code"><a class="link" href="#changing-availabilities-code-edit-code-code-coming-in-v2-0-code">3.6. Changing availabilities <code>edit</code> <code>[Coming in v2.0]</code></a></h3>
-<div class="sect3">
-<h4 id="changing-availabilities-of-existing-interviewer-interview-slot"><a class="link" href="#changing-availabilities-of-existing-interviewer-interview-slot">3.6.1. Changing availabilities of existing interviewer (interview slot)</a></h4>
-<div class="paragraph">
-<p>Change the specified interviewer from the database<br>
-Format: <code>edit interviewer NAME</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="changing-availabilities-of-existing-interviewee"><a class="link" href="#changing-availabilities-of-existing-interviewee">3.6.2. Changing availabilities of existing interviewee</a></h4>
-<div class="paragraph">
-<p>Change the specified interviewee from the database.<br>
-Format: <code>edit interviewee NAME</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="delete-interviewer-interviewee-code-delete-code"><a class="link" href="#delete-interviewer-interviewee-code-delete-code">3.7. Delete interviewer/interviewee <code>delete</code></a></h3>
-<div class="sect3">
-<h4 id="delete-existing-interviewer-interview-slot"><a class="link" href="#delete-existing-interviewer-interview-slot">3.7.1. Delete existing interviewer (interview slot)</a></h4>
-<div class="paragraph">
-<p>Deletes the specified interviewer from the database<br>
-Format: <code>delete interviewer NAME</code><br></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-existing-interviewee"><a class="link" href="#delete-existing-interviewee">3.7.2. Delete existing interviewee</a></h4>
-<div class="paragraph">
-<p>Deletes the specified interviewee from the database.<br>
-Format: <code>delete interviewee NAME</code></p>
 </div>
 </div>
 </div>
@@ -498,4 +617,4 @@ Format: <code>record rank</code></p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 14:56:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 15:55:10 UTC</div></div></div></body></html>
