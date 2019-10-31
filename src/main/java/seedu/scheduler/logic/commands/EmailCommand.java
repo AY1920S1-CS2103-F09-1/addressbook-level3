@@ -6,7 +6,6 @@ import static seedu.scheduler.commons.core.Messages.MESSAGE_INVALID_PERSON_NAME;
 import java.io.IOException;
 import java.util.List;
 
-import seedu.scheduler.commons.core.Messages;
 import seedu.scheduler.logic.commands.exceptions.CommandException;
 import seedu.scheduler.model.Model;
 import seedu.scheduler.model.person.Interviewee;

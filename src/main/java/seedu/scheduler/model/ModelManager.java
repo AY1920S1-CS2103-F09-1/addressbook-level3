@@ -271,7 +271,7 @@ public class ModelManager implements Model {
 
         String sb = "mailto:"
                 + encodeForEmail(intervieweeEmails)
-                + "?cc=" +  encodeForEmail(ccEmails)
+                + "?cc=" + encodeForEmail(ccEmails)
                 + "&subject="
                 + encodeForEmail(this.userPrefs.getEmailSubject())
                 + "&body="
@@ -280,6 +280,12 @@ public class ModelManager implements Model {
         desktop.mail(uri);
     }
 
+    /**
+     * This method encodes the given String into a format that can be used to generate the email message
+     * contents.
+     * @param input The String to encode
+     * @return The encoded message
+     */
     public String encodeForEmail(String input) {
         try {
             return URLEncoder.encode(input,
