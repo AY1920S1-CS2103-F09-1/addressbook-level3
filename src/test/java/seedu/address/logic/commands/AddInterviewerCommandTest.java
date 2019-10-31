@@ -10,6 +10,7 @@ import static seedu.address.testutil.TypicalPersons.ALICE_INTERVIEWER;
 import static seedu.address.testutil.TypicalPersons.BOB_INTERVIEWEE;
 
 import java.nio.file.Path;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -132,6 +133,16 @@ class AddInterviewerCommandTest {
      * A default model stub that have all of the methods failing.
      */
     private class ModelStub implements Model {
+
+        @Override
+        public void setEmptyScheduleList() throws ParseException {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public List<Schedule> getEmptyScheduleList() {
+            throw new AssertionError("This method should not be called.");
+        }
 
         @Override
         public void setIntervieweeList(List<Interviewee> interviewees) {
@@ -314,6 +325,11 @@ class AddInterviewerCommandTest {
 
         @Override
         public boolean hasInterviewee(Interviewee interviewee) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void clearAllAllocatedSlot() {
             throw new AssertionError("This method should not be called.");
         }
     }

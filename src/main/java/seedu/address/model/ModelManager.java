@@ -8,6 +8,12 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.file.Path;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -19,6 +25,7 @@ import javafx.collections.transformation.FilteredList;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.person.Department;
 import seedu.address.model.person.Interviewee;
 import seedu.address.model.person.Interviewer;
 import seedu.address.model.person.Name;
@@ -30,7 +37,7 @@ import seedu.address.ui.RefreshListener;
  * Represents the in-memory model of the schedule table data.
  */
 public class ModelManager implements Model {
-    public static final Schedule EMPTY_SCHEDULE = new Schedule("", new LinkedList<>());
+    private static List<Schedule> emptyScheduleList = new ArrayList<>();
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final UserPrefs userPrefs;
@@ -248,6 +255,39 @@ public class ModelManager implements Model {
         URI uri = URI.create(sb);
         desktop.mail(uri);
     }
+    // ================================== Refresh Listener ======================================
+    public void addRefreshListener(RefreshListener listener) {
+        this.refreshListener = listener;
+    }
+
+    //=========== Schedule ================================================================================
+    public void setEmptyScheduleList() throws ParseException {
+        emptyScheduleList = this.generateEmptyScheduleList();
+    }
+
+    public List<Schedule> getEmptyScheduleList() {
+        return emptyScheduleList;
+    }
+
+    /**
+     * Generates an empty schedule list from the current interviewer list. Used to generate GUI after user imports data.
+     * @return ArrayList of {@Code Schedule}
+     * @throws ParseException when timings are not of HH:mm format
+     */
+    private ArrayList<Schedule> generateEmptyScheduleList() throws ParseException {
+        ArrayList<Schedule> emptyScheduleList = new ArrayList<>();
+        HashSet<String> dates = new HashSet<>();
+        String startTime = userPrefs.getStartTime();
+        String endTime = userPrefs.getEndTime();
+        int duration = userPrefs.getDurationPerSlot();
+        ObservableList<Interviewer> listOfInterviewers = interviewerList.getEntityList();
+        for (Interviewer interviewer: listOfInterviewers) {
+            List<Slot> availabilities = interviewer.getAvailabilities();
+            for (Slot slot: availabilities) {
+                String date = slot.date;
+                dates.add(date);
+            }
+        }
 
     // ================================== Refresh Listener ======================================
     public void addRefreshListener(RefreshListener listener) {
@@ -255,12 +295,100 @@ public class ModelManager implements Model {
     }
 
     // ============================================ Schedule ===================================================
+        ArrayList<String> headers = new ArrayList<>();
+        for (Interviewer interviewer: listOfInterviewers) {
+            Name name = interviewer.getName();
+            Department department = interviewer.getDepartment();
+            headers.add(stringifyHeadersForTable(name, department));
+        }
+        ArrayList<String> datesList = new ArrayList<>(dates);
+
+        for (String date: datesList) {
+            LinkedList<LinkedList<String>> table = new LinkedList<>();
+            LinkedList<String> fullHeader = new LinkedList<>();
+            fullHeader.add(date);
+            for (String header: headers) {
+                fullHeader.add(header);
+            }
+            table.add(fullHeader);
+            String currentTime = startTime;
+            while (!isGreaterThanOrEqual(currentTime, endTime)) {
+                LinkedList<String> row = new LinkedList<>();
+                String nextTimeSlot = addTime(duration, currentTime);
+                row.add(currentTime + "-" + nextTimeSlot);
+                Slot currentSlot = new Slot(date, currentTime, nextTimeSlot);
+                for (int i = 0; i < listOfInterviewers.size(); i++) {
+                    Interviewer currentInterviewer = listOfInterviewers.get(i);
+                    if (currentInterviewer.isAvailable(currentSlot)) {
+                        row.add("1");
+                    } else {
+                        row.add("0");
+                    }
+                }
+                currentTime = nextTimeSlot;
+                table.add(row);
+            }
+            emptyScheduleList.add(new Schedule(date, table));
+        }
+        return emptyScheduleList;
+    }
 
     /**
-     * Adds the given interviewer to schedule(s) in which the interviewer's availability fall. If the interviewer's
-     * availability does not fall within any of the schedule, then the interviewer will not be added into any of
-     * the schedule.
+     * Adds the given duration to the given time.
+     * @param duration amount of time to add
+     * @param currentTime original time
+     * @return String result after addition
+     * @throws ParseException when String currentTime is not of HH:mm format
      */
+    private static String addTime(int duration, String currentTime) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        Date date = dateFormat.parse(currentTime);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MINUTE, duration);
+        String newTime = dateFormat.format(cal.getTime());
+        return newTime;
+    }
+
+    /**
+     * Compares 2 given times as String in format HH:mm, and returns true if the first is greater than the second.
+     * @param currentTime
+     * @param endTime
+     * @return True if currentTime is greater or equals to endTime
+     * @throws ParseException
+     */
+    private static boolean isGreaterThanOrEqual(String currentTime, String endTime) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        Date currentTimeAsDate = dateFormat.parse(currentTime);
+        Date endTimeAsDate = dateFormat.parse(endTime);
+        return currentTimeAsDate.after(endTimeAsDate) || currentTimeAsDate.equals(endTimeAsDate);
+    }
+
+    /**
+     * Static method to combine name and department into one string used for headers.
+     * @param name
+     * @param department
+     * @return Header as String
+     */
+    private static String stringifyHeadersForTable(Name name, Department department) {
+        return department.toString() + " - " + name.toString();
+    }
+
+    /**
+     * Replaces schedule data with the data in {@code schedule}.
+     * @param list
+     */
+    @Override
+    public void setSchedulesList(List<Schedule> list) {
+        schedulesList.clear();
+        schedulesList.addAll(cloneSchedulesList(list));
+        if (refreshListener != null) {
+            refreshListener.scheduleDataUpdated();
+        }
+        logger.fine("Schedules list is reset");
+    }
+
+
     @Override
     public void addInterviewerToSchedule(Interviewer interviewer) {
         interviewerList.addEntity(interviewer);
@@ -323,7 +451,11 @@ public class ModelManager implements Model {
         return observableLists;
     }
 
-    /** Returns the schedulesList **/
+    /**
+     * Adds the given interviewer to schedule(s) in which the interviewer's availability fall.
+     * If the interviewer's availability does not fall within any of the schedule, then the interviewer will not
+     * be added into any of the schedule.
+     */
     @Override
     public List<Schedule> getSchedulesList() {
         return schedulesList;
@@ -392,6 +524,11 @@ public class ModelManager implements Model {
     }
 
     // ===========================================================================================================
+
+    @Override
+    public void clearAllAllocatedSlot() {
+        this.intervieweeList.clearAllAllocatedSlots();
+    }
 
     @Override
     public boolean equals(Object obj) {

@@ -11,7 +11,7 @@ import seedu.address.model.tag.Tag;
  */
 public class Interviewer extends Person {
 
-    // Each availability is given as a string in this format DD/MM/YYYY HH:MM - HH:MM
+    // Each availability is given as a string in this format DD/MM/YYYY HH:MM-HH:MM
     private final List<Slot> availabilities;
     private final Department department;
     private final Email email;
@@ -92,9 +92,23 @@ public class Interviewer extends Person {
         return email;
     }
 
-    public void setAvailabilities(List<Slot> availabilities) {
+    public void setAvailabilities(List<Slot> slots) {
         this.availabilities.clear();
-        this.availabilities.addAll(availabilities);
+        this.availabilities.addAll(slots);
+    }
+
+    /**
+     * Checks if interviewer is available for the given slot.
+     * @param slot
+     * @return True if interviewer is available, false otherwise
+     */
+    public boolean isAvailable(Slot slot) {
+        for (Slot availableSlot: availabilities) {
+            if (availableSlot.equals(slot)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

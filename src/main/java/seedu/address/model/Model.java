@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.text.ParseException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
@@ -24,6 +25,10 @@ public interface Model {
     Predicate<Interviewer> PREDICATE_SHOW_ALL_INTERVIEWERS = unused -> true;
 
     // ==================================IntervieweeList and InterviewerList ======================================
+
+    void setEmptyScheduleList() throws ParseException;
+
+    List<Schedule> getEmptyScheduleList();
 
     /**
      * Replaces the list of IntervieweeList data with the data in {@code interviewees}
@@ -215,6 +220,11 @@ public interface Model {
      * Returns the user prefs' GUI settings.
      */
     GuiSettings getGuiSettings();
+
+    /**
+     * Clears the allocated slot of all interviewees.
+     */
+    void clearAllAllocatedSlot();
 
     /**
      * Sets the user prefs' GUI settings.
