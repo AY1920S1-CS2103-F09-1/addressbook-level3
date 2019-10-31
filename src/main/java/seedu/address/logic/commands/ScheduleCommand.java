@@ -27,7 +27,6 @@ public class ScheduleCommand extends Command {
         + "availability and the interviewee's selected time slot.\n"
         + "Parameters: none\n"
         + "Example: " + COMMAND_WORD + " (no other word should follow after it)";
-    public static final String MESSAGE_NOT_IMPLEMENTED_YET = "Schedule command not implemented yet";
     private static final Logger logger = LogsCenter.getLogger(ScheduleCommand.class);
 
     private List<Pair<IntervieweeVertex, List<InterviewSlotVertex>>> graph;

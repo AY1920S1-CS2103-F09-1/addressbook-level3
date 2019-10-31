@@ -13,7 +13,6 @@ import seedu.address.testutil.SampleInterviewSlotVertex;
 import seedu.address.testutil.TestUtil;
 
 public class BfsHopCroftKarpTest {
-
     @Test
     public void bfs_sampleGraphOneAfterOneIteration_success() {
         BipartiteGraph subjectGraph = SampleGraph.getSampleGraphOne();
@@ -31,6 +30,4 @@ public class BfsHopCroftKarpTest {
         // resultVertices.forEach(System.out::println);
         assertEquals(resultVertices, expectedVertices);
     }
-
-
 }

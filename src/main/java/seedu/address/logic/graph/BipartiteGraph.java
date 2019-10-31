@@ -14,7 +14,7 @@ public class BipartiteGraph {
     private int numInterviewSlots;
 
     public BipartiteGraph(List<Pair<IntervieweeVertex, List<InterviewSlotVertex>>> graph,
-                          int numInterviewees, int numInterviewSlots) {
+            int numInterviewees, int numInterviewSlots) {
         this.graph = graph;
         this.numInterviewees = numInterviewees;
         this.numInterviewSlots = numInterviewSlots;

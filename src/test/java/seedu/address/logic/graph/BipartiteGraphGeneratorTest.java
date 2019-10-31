@@ -1,7 +1,7 @@
 package seedu.address.logic.graph;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ class BipartiteGraphGeneratorTest {
         BipartiteGraph expectedGraph = SampleGraph.getSampleGraphOne();
         BipartiteGraph resultGraph = generator.generate();
 
-        assert expectedGraph != resultGraph : fail("The two graphs are the same objects!");
+        assertNotSame(expectedGraph, resultGraph);
         assertEquals(expectedGraph, resultGraph);
     }
 }

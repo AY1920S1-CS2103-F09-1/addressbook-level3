@@ -1,7 +1,6 @@
 package seedu.address.logic.graph;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,9 +28,9 @@ class DfsHopCroftKarpTest {
         TestUtil.fillWithSubLists(interviewSlotPredecessors, numSlots);
 
         List<InterviewSlotVertex> lastLayer = new BfsHopCroftKarp(subjectGraph).execute(intervieweePredecessor,
-            interviewSlotPredecessors);
-        new DfsHopCroftKarp(subjectGraph).execute(lastLayer, intervieweePredecessor, interviewSlotPredecessors,
-            isUsedInterviewee, isUsedSlot);
+                interviewSlotPredecessors);
+        DfsHopCroftKarp dfs = new DfsHopCroftKarp(subjectGraph);
+        dfs.execute(lastLayer, intervieweePredecessor, interviewSlotPredecessors, isUsedInterviewee, isUsedSlot);
 
         // Check the graph
         int numMatched = 0;
@@ -48,6 +47,6 @@ class DfsHopCroftKarpTest {
 
         // For the case of sample graph one, there must be at least 3 interviewee vertices that are matched after
         // one iteration of bfs and dfs.
-        assert numMatched > 2 : fail("Something is wrong!");
+        assertTrue(numMatched > 2);
     }
 }

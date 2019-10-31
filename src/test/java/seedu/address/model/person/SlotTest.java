@@ -72,25 +72,12 @@ class SlotTest {
         Slot testSlot5 = new Slot("28/10/2019", "12:01", "13:00");
         Slot testSlot6 = new Slot("28/10/2019", "12:00", "13:01");
 
-        String errMessage = "T%d: %d\n";
-
-        int comp1 = subjectSlot.compareTo(testSlot1);
-        assert comp1 < 0 : fail(String.format(errMessage, 1, comp1));
-
-        int comp2 = subjectSlot.compareTo(testSlot2);
-        assert comp2 < 0 : fail(String.format(errMessage, 2, comp2));
-
-        int comp3 = subjectSlot.compareTo(testSlot3);
-        assert comp3 < 0 : fail(String.format(errMessage, 3, comp3));
-
-        int comp4 = subjectSlot.compareTo(testSlot4);
-        assert comp4 < 0 : fail(String.format(errMessage, 4, comp4));
-
-        int comp5 = subjectSlot.compareTo(testSlot5);
-        assert comp5 < 0 : fail(String.format(errMessage, 5, comp5));
-
-        int comp6 = subjectSlot.compareTo(testSlot6);
-        assert comp6 < 0 : fail(String.format(errMessage, 6, comp6));
+        assertTrue(subjectSlot.compareTo(testSlot1) < 0);
+        assertTrue(subjectSlot.compareTo(testSlot2) < 0);
+        assertTrue(subjectSlot.compareTo(testSlot3) < 0);
+        assertTrue(subjectSlot.compareTo(testSlot4) < 0);
+        assertTrue(subjectSlot.compareTo(testSlot5) < 0);
+        assertTrue(subjectSlot.compareTo(testSlot6) < 0);
     }
 
     @Test
@@ -103,24 +90,11 @@ class SlotTest {
         Slot testSlot5 = new Slot("09/08/2019", "07:59", "08:01");
         Slot testSlot6 = new Slot("09/08/2019", "08:00", "08:30");
 
-        String errMessage = "T%d: %d\n";
-
-        int comp1 = subjectSlot.compareTo(testSlot1);
-        assert comp1 > 0 : fail(String.format(errMessage, 1, comp1));
-
-        int comp2 = subjectSlot.compareTo(testSlot2);
-        assert comp2 > 0 : fail(String.format(errMessage, 2, comp2));
-
-        int comp3 = subjectSlot.compareTo(testSlot3);
-        assert comp3 > 0 : fail(String.format(errMessage, 3, comp3));
-
-        int comp4 = subjectSlot.compareTo(testSlot4);
-        assert comp4 > 0 : fail(String.format(errMessage, 4, comp4));
-
-        int comp5 = subjectSlot.compareTo(testSlot5);
-        assert comp5 > 0 : fail(String.format(errMessage, 5, comp5));
-
-        int comp6 = subjectSlot.compareTo(testSlot6);
-        assert comp6 > 0 : fail(String.format(errMessage, 6, comp6));
+        assertTrue(subjectSlot.compareTo(testSlot1) > 0);
+        assertTrue(subjectSlot.compareTo(testSlot2) > 0);
+        assertTrue(subjectSlot.compareTo(testSlot3) > 0);
+        assertTrue(subjectSlot.compareTo(testSlot4) > 0);
+        assertTrue(subjectSlot.compareTo(testSlot5) > 0);
+        assertTrue(subjectSlot.compareTo(testSlot6) > 0);
     }
 }

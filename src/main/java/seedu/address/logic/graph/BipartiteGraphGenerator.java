@@ -78,7 +78,7 @@ public class BipartiteGraphGenerator {
      * Returns the sorted available interview slots based on the department of choice of the interviewee.
      */
     private List<InterviewSlotVertex> getInterviewSlotVertices(List<Pair<Department, List<InterviewSlotVertex>>> list,
-                                                               Department departmentOfChoice) {
+            Department departmentOfChoice) {
         Pair<Department, List<InterviewSlotVertex>> departmentListPair =
             getDepartmentListPair(list, departmentOfChoice);
 
@@ -90,7 +90,7 @@ public class BipartiteGraphGenerator {
      * based on the desired slots of the interviewee.
      */
     private void fill(List<InterviewSlotVertex> interviewSlotVertices,
-                            List<Slot> desiredSlots, List<InterviewSlotVertex> availableSlots) {
+            List<Slot> desiredSlots, List<InterviewSlotVertex> availableSlots) {
         ListIterator<InterviewSlotVertex> availableSlotsIterator = availableSlots.listIterator();
         ListIterator<Slot> desiredSlotsIterator = desiredSlots.listIterator();
 
@@ -125,7 +125,7 @@ public class BipartiteGraphGenerator {
      * and the tail being the list of available interview slots of that department.
      */
     private Pair<List<Pair<Department, List<InterviewSlotVertex>>>, Integer> generateInterviewSlotsVertices(
-        List<Interviewer> interviewers) {
+            List<Interviewer> interviewers) {
         List<Pair<Department, List<InterviewSlotVertex>>> list = new LinkedList<>();
         int currNumSlots = 0;
 

@@ -82,7 +82,7 @@ public class BfsHopCroftKarp {
      * Returns a list of unmatched interview slot vertices in the next layer.
      */
     private List<Vertex> findUnmatchedVertices(Vertex u, Queue<Vertex> nextLayer,
-                                               List<List<IntervieweeVertex>> interviewSlotPredecessors) {
+            List<List<IntervieweeVertex>> interviewSlotPredecessors) {
         List<InterviewSlotVertex> associatedSlotVertices = graph.getInterviewSlotVertices(u.getIndex());
         List<Vertex> unmatchedVertices = new LinkedList<>();
 
@@ -107,7 +107,7 @@ public class BfsHopCroftKarp {
      * returns null.
      */
     private Vertex findMatchedVertex(Vertex u, Queue<Vertex> nextLayer,
-                                     List<InterviewSlotVertex> intervieweePredecessor) {
+            List<InterviewSlotVertex> intervieweePredecessor) {
         IntervieweeVertex v = (IntervieweeVertex) u.getPartner();
         intervieweePredecessor.add(v.getIndex(), (InterviewSlotVertex) u);
 

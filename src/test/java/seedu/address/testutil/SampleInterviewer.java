@@ -111,11 +111,11 @@ public class SampleInterviewer {
         slots1.add(slots.get(4));
 
         Interviewer interviewer1 = new Interviewer.InterviewerBuilder(new Name("Chris"), new Phone("12345678"),
-            new HashSet<>()).department(new Department("Technical")).availabilities(slots1).build();
+                new HashSet<>()).department(new Department("Technical")).availabilities(slots1).build();
         Interviewer interviewer2 = new Interviewer.InterviewerBuilder(new Name("John"), new Phone("12345678"),
-            new HashSet<>()).department(new Department("Technical")).availabilities(slots2).build();
+                new HashSet<>()).department(new Department("Technical")).availabilities(slots2).build();
         Interviewer interviewer3 = new Interviewer.InterviewerBuilder(new Name("Barry"), new Phone("12345678"),
-            new HashSet<>()).department(new Department("Technical")).availabilities(slots3).build();
+                new HashSet<>()).department(new Department("Technical")).availabilities(slots3).build();
 
         Interviewer[] interviewersArr = new Interviewer[]{interviewer1, interviewer2, interviewer3};
         return Arrays.asList(interviewersArr);

@@ -14,7 +14,7 @@ public class ScheduleCommandParserTest {
     @Test
     public void parse_nonEmptyArg_throwsParseException() {
         assertParseFailure(parser, "hello", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-            ScheduleCommand.MESSAGE_USAGE));
+                ScheduleCommand.MESSAGE_USAGE));
     }
 
     @Test
