@@ -42,7 +42,7 @@ public class HopCroftKarp {
      * interviewee and interview slots are tracked inside the given bipartite graph.
      */
     public void execute() {
-        logger.fine("Hopcroft Karp algorithm starting...");
+        logger.info("Hopcroft Karp algorithm starting...");
         initialiseHopCroftKarp();
         List<InterviewSlotVertex> lastLayer = new LinkedList<>();
 
@@ -56,7 +56,7 @@ public class HopCroftKarp {
             cleanUp();
         } while (!lastLayer.isEmpty()); // while there exists an augmenting path(s)
 
-        logger.fine("Hopcroft Karp algorithm terminates");
+        logger.info("Hopcroft Karp algorithm terminates");
     }
 
     /**

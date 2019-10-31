@@ -34,7 +34,7 @@ public class ScheduleCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        logger.fine("Starting to schedule interviews");
+        logger.info("Starting to schedule interviews");
         model.clearAllAllocatedSlot();
 
         List<Interviewer> interviewers = model.getUnfilteredInterviewerList();
@@ -46,7 +46,7 @@ public class ScheduleCommand extends Command {
 
         List<Interviewee> intervieweesWithSlots = assignSlotToInterviewees(graph);
         String resultMessage = generateResultMessage(intervieweesWithSlots);
-        logger.fine("Finish scheduling interviews");
+        logger.info("Finish scheduling interviews");
 
         return new CommandResult(resultMessage);
     }

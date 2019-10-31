@@ -35,7 +35,7 @@ public class BipartiteGraphGenerator {
      * An interviewee is only added to the graph if it can match at least one of the interview slots and vice versa.
      */
     public BipartiteGraph generate() {
-        logger.fine("Starting to generate bipartite graph");
+        logger.info("Starting to generate bipartite graph");
 
         Pair<List<Pair<Department, List<InterviewSlotVertex>>>, Integer> result =
             generateInterviewSlotsVertices(interviewers);
@@ -70,7 +70,7 @@ public class BipartiteGraphGenerator {
             }
         }
 
-        logger.fine("Bipartite graph of interviewees and interview slots is generated");
+        logger.info("Bipartite graph of interviewees and interview slots is generated");
         return new BipartiteGraph(graph, interviewees.size(), numSlots);
     }
 
