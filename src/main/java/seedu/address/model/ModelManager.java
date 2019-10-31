@@ -289,12 +289,6 @@ public class ModelManager implements Model {
             }
         }
 
-    // ================================== Refresh Listener ======================================
-    public void addRefreshListener(RefreshListener listener) {
-        this.refreshListener = listener;
-    }
-
-    // ============================================ Schedule ===================================================
         ArrayList<String> headers = new ArrayList<>();
         for (Interviewer interviewer: listOfInterviewers) {
             Name name = interviewer.getName();
@@ -410,21 +404,6 @@ public class ModelManager implements Model {
             }
         }
         return date;
-    }
-
-    /**
-     * Replaces schedule data with the data in {@code schedule}.
-     */
-    @Override
-    public void setSchedulesList(List<Schedule> list) {
-        schedulesList.clear();
-        schedulesList.addAll(cloneSchedulesList(list));
-
-        if (refreshListener != null) {
-            refreshListener.scheduleDataUpdated();
-        }
-
-        logger.fine("Schedules list is reset");
     }
 
     /**
@@ -545,9 +524,9 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return userPrefs.equals(other.userPrefs)
-            && intervieweeList.equals(other.intervieweeList)
-            && interviewerList.equals(other.interviewerList)
-            && filteredInterviewees.equals(other.filteredInterviewees)
-            && filteredInterviewers.equals(other.filteredInterviewers);
+                && intervieweeList.equals(other.intervieweeList)
+                && interviewerList.equals(other.interviewerList)
+                && filteredInterviewees.equals(other.filteredInterviewees)
+                && filteredInterviewers.equals(other.filteredInterviewers);
     }
 }
