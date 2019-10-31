@@ -51,7 +51,7 @@ public class HopCroftKarp {
             // If augmenting path(s) is found
             if (!lastLayer.isEmpty()) {
                 new DfsHopCroftKarp(graph).execute(lastLayer, intervieweePredecessor, interviewSlotPredecessors,
-                    usedInterviewees, usedSlots);
+                        usedInterviewees, usedSlots);
             }
             cleanUp();
         } while (!lastLayer.isEmpty()); // while there exists an augmenting path(s)

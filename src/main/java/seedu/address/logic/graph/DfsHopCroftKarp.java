@@ -30,8 +30,8 @@ public class DfsHopCroftKarp {
      * @param lastLayer last layer of the layered graph.
      */
     public void execute(List<InterviewSlotVertex> lastLayer, List<InterviewSlotVertex> intervieweePredecessors,
-                        List<List<IntervieweeVertex>> interviewSlotPredecessors,
-                        boolean[] isUsedInterviewee, boolean[] isUsedSlot) {
+            List<List<IntervieweeVertex>> interviewSlotPredecessors,
+            boolean[] isUsedInterviewee, boolean[] isUsedSlot) {
         this.lastLayer = lastLayer;
         this.intervieweePredecessor = intervieweePredecessors;
         this.interviewSlotPredecessors = interviewSlotPredecessors;

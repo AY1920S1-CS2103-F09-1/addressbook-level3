@@ -6,7 +6,7 @@ import seedu.address.model.person.InterviewSlot;
  * A vertex that wraps an interview slot into it.
  */
 public class InterviewSlotVertex extends Vertex<InterviewSlot, IntervieweeVertex> implements
-    Comparable<InterviewSlotVertex> {
+        Comparable<InterviewSlotVertex> {
     public InterviewSlotVertex(InterviewSlot item, int index) {
         super(item, index);
     }

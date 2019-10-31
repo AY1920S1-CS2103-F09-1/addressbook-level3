@@ -38,7 +38,7 @@ public class BipartiteGraphGenerator {
         logger.info("Starting to generate bipartite graph");
 
         Pair<List<Pair<Department, List<InterviewSlotVertex>>>, Integer> result =
-            generateInterviewSlotsVertices(interviewers);
+                generateInterviewSlotsVertices(interviewers);
         List<Pair<Department, List<InterviewSlotVertex>>> list = result.getHead();
         int numSlots = result.getTail();
 
@@ -64,7 +64,7 @@ public class BipartiteGraphGenerator {
             if (!interviewSlotVertices.isEmpty()) {
                 IntervieweeVertex intervieweeVertex = new IntervieweeVertex(interviewee, currIntervieweeVertexIndex);
                 Pair<IntervieweeVertex, List<InterviewSlotVertex>> vertexListPair =
-                    new Pair<>(intervieweeVertex, interviewSlotVertices);
+                        new Pair<>(intervieweeVertex, interviewSlotVertices);
                 graph.add(vertexListPair);
                 currIntervieweeVertexIndex++;
             }
@@ -80,7 +80,7 @@ public class BipartiteGraphGenerator {
     private List<InterviewSlotVertex> getInterviewSlotVertices(List<Pair<Department, List<InterviewSlotVertex>>> list,
             Department departmentOfChoice) {
         Pair<Department, List<InterviewSlotVertex>> departmentListPair =
-            getDepartmentListPair(list, departmentOfChoice);
+                getDepartmentListPair(list, departmentOfChoice);
 
         return departmentListPair.getTail();
     }
@@ -156,7 +156,7 @@ public class BipartiteGraphGenerator {
      * the list of associated interview slots being empty.
      */
     private Pair<Department, List<InterviewSlotVertex>> getDepartmentListPair(List<Pair<Department,
-        List<InterviewSlotVertex>>> list, Department department) {
+            List<InterviewSlotVertex>>> list, Department department) {
         int size = list.size();
         Pair<Department, List<InterviewSlotVertex>> pair = null;
 

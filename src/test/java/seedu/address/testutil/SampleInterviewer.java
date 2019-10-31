@@ -28,7 +28,7 @@ public class SampleInterviewer {
 
     public static Interviewer getInterviewerMultipleValidAvailabilities() {
         String[] availabilities = new String[]{"10/09/2019 18:30-19:00", "10/09/2019 19:00-19:30",
-            "10/09/2019 20:00-20:30"};
+                "10/09/2019 20:00-20:30"};
         return getAlicePauline(availabilities);
     }
 
@@ -42,7 +42,7 @@ public class SampleInterviewer {
 
     public static Interviewer getInterviewerMultipleAvailabilitiesSomeInvalid() {
         String[] availabilities = new String[]{"08/09/2019 18:30-19:00", "10/09/2019 19:00-19:30",
-            "10/09/2019 20:00-20:30", "10/09/2019 23:00-23:30"};
+                "10/09/2019 20:00-20:30", "10/09/2019 23:00-23:30"};
         return getAlicePauline(availabilities);
     }
 
@@ -67,7 +67,7 @@ public class SampleInterviewer {
         Interviewer hazel = getInterviewer("Hazel", "Welfare");
 
         String[] availabilitiesAsArray = new String[]{"10/09/2019 18:30-19:00", "10/09/2019 19:00-19:30",
-            "10/09/2019 20:00-20:30", "10/09/2019 20:30-21:00"};
+                "10/09/2019 20:00-20:30", "10/09/2019 20:30-21:00"};
         List<String> availabilities = Arrays.asList(availabilitiesAsArray);
         hazel.setAvailabilities(availabilities.stream().map(Slot::fromString).collect(Collectors.toList()));
 

@@ -25,7 +25,7 @@ public class BfsHopCroftKarp {
      *                                  interviewee(s) that can match the interview slot.
      */
     public List<InterviewSlotVertex> execute(List<InterviewSlotVertex> intervieweePredecessor,
-                                             List<List<IntervieweeVertex>> interviewSlotPredecessors) {
+            List<List<IntervieweeVertex>> interviewSlotPredecessors) {
         Queue<Vertex> currentLayer = initialiseBfs();
         Queue<Vertex> nextLayer = new LinkedList<>();
         List<InterviewSlotVertex> unmatchedSlotVertices = new LinkedList<>();
