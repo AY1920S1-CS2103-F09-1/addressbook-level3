@@ -1,5 +1,9 @@
 package seedu.address.model.person;
 
+/**
+ * Represents an interview slot with information regarding the interviewer that will be doing the interview
+ * during that slot.
+ */
 public class InterviewSlot extends Slot {
     private Interviewer interviewer;
 

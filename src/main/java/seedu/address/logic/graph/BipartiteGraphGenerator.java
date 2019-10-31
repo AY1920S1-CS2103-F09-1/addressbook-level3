@@ -6,7 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.Pair;
 import seedu.address.model.person.Department;
 import seedu.address.model.person.InterviewSlot;
@@ -18,6 +20,7 @@ import seedu.address.model.person.Slot;
  * Generates a bipartite graph of interviewees linked to the the available interview slots.
  */
 public class BipartiteGraphGenerator {
+    private static final Logger logger = LogsCenter.getLogger(BipartiteGraph.class);
     private List<Interviewer> interviewers;
     private List<Interviewee> interviewees;
 
@@ -32,6 +35,8 @@ public class BipartiteGraphGenerator {
      * An interviewee is only added to the graph if it can match at least one of the interview slots and vice versa.
      */
     public BipartiteGraph generate() {
+        logger.fine("Starting to generate bipartite graph");
+
         Pair<List<Pair<Department, List<InterviewSlotVertex>>>, Integer> result =
             generateInterviewSlotsVertices(interviewers);
         List<Pair<Department, List<InterviewSlotVertex>>> list = result.getHead();
@@ -65,6 +70,7 @@ public class BipartiteGraphGenerator {
             }
         }
 
+        logger.fine("Bipartite graph of interviewees and interview slots is generated");
         return new BipartiteGraph(graph, interviewees.size(), numSlots);
     }
 

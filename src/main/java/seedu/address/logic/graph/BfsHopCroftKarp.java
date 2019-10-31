@@ -15,8 +15,14 @@ public class BfsHopCroftKarp {
     }
 
     /**
-     * Returns a list consisting the vertices in the last layer of the layered graph if augmenting path(s)
-     * is found, otherwise an empty list is returned.
+     * Returns a list consisting unmatched interview slot vertices in the last layer of the layered graph if augmenting
+     * path(s) is found, otherwise an empty list is returned. The given predecessors array are used to record the
+     * structure of the layered graph.
+     *
+     * @param intervieweePredecessor a list used to keep track of the predecessor of an interviewee, which is a
+     *                               slot matched to it.
+     * @param interviewSlotPredecessors a list used to keep track of predecessor(s) of an interview slot, which is
+     *                                  interviewee(s) that can match the interview slot.
      */
     public List<InterviewSlotVertex> execute(List<InterviewSlotVertex> intervieweePredecessor,
                                              List<List<IntervieweeVertex>> interviewSlotPredecessors) {

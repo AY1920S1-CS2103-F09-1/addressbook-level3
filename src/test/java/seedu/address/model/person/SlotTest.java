@@ -53,8 +53,8 @@ class SlotTest {
 
     @Test
     public void compareTo_equalDate_returnZero() {
-        Slot subjectSlot = new Slot("28/10/2019 10:00-10:30");
-        Slot testSlot = new Slot("28/10/2019 10:00-10:30");
+        Slot subjectSlot = new Slot("28/10/2019", "10:00", "10:30");
+        Slot testSlot = new Slot("28/10/2019", "10:00", "10:30");
 
         String errMessage = "T%d: %d\n";
 
@@ -64,13 +64,13 @@ class SlotTest {
 
     @Test
     public void compareTo_laterDate_returnLesserThanZero() {
-        Slot subjectSlot = new Slot("28/10/2019 12:00-13:00");
-        Slot testSlot1 = new Slot("01/11/2019 12:00-13:00");
-        Slot testSlot2 = new Slot("01/11/2020 09:00-10:00");
-        Slot testSlot3 = new Slot("01/11/2019 18:00-19:00");
-        Slot testSlot4 = new Slot("28/10/2019 12:30-13:00");
-        Slot testSlot5 = new Slot("28/10/2019 12:01-13:00");
-        Slot testSlot6 = new Slot("28/10/2019 12:00-13:01");
+        Slot subjectSlot = new Slot("28/10/2019", "12:00", "13:00");
+        Slot testSlot1 = new Slot("01/11/2019", "12:00", "13:00");
+        Slot testSlot2 = new Slot("01/11/2020", "09:00", "10:00");
+        Slot testSlot3 = new Slot("01/11/2019", "18:00", "19:00");
+        Slot testSlot4 = new Slot("28/10/2019", "12:30", "13:00");
+        Slot testSlot5 = new Slot("28/10/2019", "12:01", "13:00");
+        Slot testSlot6 = new Slot("28/10/2019", "12:00", "13:01");
 
         String errMessage = "T%d: %d\n";
 
@@ -95,13 +95,13 @@ class SlotTest {
 
     @Test
     public void compareTo_earlierDate_returnGreaterThanZero() {
-        Slot subjectSlot = new Slot("09/08/2019 08:00-10:00");
-        Slot testSlot1 = new Slot("01/01/2019 08:00-10:00");
-        Slot testSlot2 = new Slot("01/01/2010 10:00-12:00");
-        Slot testSlot3 = new Slot("01/01/2019 07:00-08:00");
-        Slot testSlot4 = new Slot("09/08/2019 07:00-08:00");
-        Slot testSlot5 = new Slot("09/08/2019 07:59-08:01");
-        Slot testSlot6 = new Slot("09/08/2019 08:00-08:30");
+        Slot subjectSlot = new Slot("09/08/2019", "08:00", "10:00");
+        Slot testSlot1 = new Slot("01/01/2019", "08:00", "10:00");
+        Slot testSlot2 = new Slot("01/01/2010", "10:00", "12:00");
+        Slot testSlot3 = new Slot("01/01/2019", "07:00", "08:00");
+        Slot testSlot4 = new Slot("09/08/2019", "07:00", "08:00");
+        Slot testSlot5 = new Slot("09/08/2019", "07:59", "08:01");
+        Slot testSlot6 = new Slot("09/08/2019", "08:00", "08:30");
 
         String errMessage = "T%d: %d\n";
 

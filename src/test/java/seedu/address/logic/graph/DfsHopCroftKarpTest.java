@@ -1,12 +1,14 @@
 package seedu.address.logic.graph;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.testutil.SampleGraph;
 import seedu.address.testutil.TestUtil;
 

@@ -310,5 +310,10 @@ class AddIntervieweeCommandTest {
         public boolean hasInterviewee(Interviewee interviewee) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void clearAllAllocatedSlot() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 }

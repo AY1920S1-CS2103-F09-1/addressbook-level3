@@ -73,6 +73,7 @@ public class IntervieweeList implements ReadAndWriteList<Interviewee> {
         return interviewees.asUnmodifiableObservableList();
     }
 
+
     /**
      * Replaces the contents of the interviewee list with {@code interviewees}.
      * {@code interviewees} must not contain duplicate interviewees.

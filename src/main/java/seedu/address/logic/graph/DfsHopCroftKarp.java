@@ -23,6 +23,12 @@ public class DfsHopCroftKarp {
         this.graph = graph;
     }
 
+    /**
+     * Executes depth-first search on the layered graph and tries to augment the number of matching between
+     * interviewee vertex and interview slot vertex.
+     *
+     * @param lastLayer last layer of the layered graph.
+     */
     public void execute(List<InterviewSlotVertex> lastLayer, List<InterviewSlotVertex> intervieweePredecessors,
                         List<List<IntervieweeVertex>> interviewSlotPredecessors,
                         boolean[] isUsedInterviewee, boolean[] isUsedSlot) {
@@ -42,6 +48,10 @@ public class DfsHopCroftKarp {
         }
     }
 
+    /**
+     * Executes depth-first-search through the layered graph recursively to try to search for
+     * a complete augmenting path, starting from the given free vertex in the last layer of the layered graph.
+     */
     private void dfs(Vertex u, List<Vertex> path) {
         // If hits the first layer (i.e. don't have predecessor)
         if (!hasPredecessor(u)) {

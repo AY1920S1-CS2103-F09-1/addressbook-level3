@@ -16,7 +16,8 @@ import seedu.address.model.person.Interviewee;
 public class SampleGraph {
     public static BipartiteGraph getSampleGraphOne() {
         List<Interviewee> interviewees = SampleInterviewee.getSampleIntervieweesForGraph1();
-        List<InterviewSlotVertex> sampleSlotsVertices = SampleInterviewSlotVertex.getSampleInterviewSlotVerticesGraph1();
+        List<InterviewSlotVertex> sampleSlotsVertices =
+            SampleInterviewSlotVertex.getSampleInterviewSlotVerticesGraph1();
 
         LinkedList<InterviewSlotVertex> list0 = new LinkedList<>();
         list0.add(sampleSlotsVertices.get(0));

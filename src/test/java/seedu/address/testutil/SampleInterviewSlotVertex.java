@@ -3,8 +3,8 @@ package seedu.address.testutil;
 import java.util.ArrayList;
 import java.util.List;
 
-import seedu.address.logic.graph.InterviewSlot;
 import seedu.address.logic.graph.InterviewSlotVertex;
+import seedu.address.model.person.InterviewSlot;
 import seedu.address.model.person.Interviewer;
 
 /**

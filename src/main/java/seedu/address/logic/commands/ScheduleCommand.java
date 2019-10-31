@@ -2,8 +2,10 @@ package seedu.address.logic.commands;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.Pair;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.graph.BipartiteGraph;
@@ -26,15 +28,17 @@ public class ScheduleCommand extends Command {
         + "Parameters: none\n"
         + "Example: " + COMMAND_WORD + " (no other word should follow after it)";
     public static final String MESSAGE_NOT_IMPLEMENTED_YET = "Schedule command not implemented yet";
+    private static final Logger logger = LogsCenter.getLogger(ScheduleCommand.class);
 
     private List<Pair<IntervieweeVertex, List<InterviewSlotVertex>>> graph;
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        logger.fine("Starting to schedule interviews");
         model.clearAllAllocatedSlot();
 
-        List<Interviewer> interviewers = model.getInterviewers();
-        List<Interviewee> interviewees = model.getInterviewees();
+        List<Interviewer> interviewers = model.getUnfilteredInterviewerList();
+        List<Interviewee> interviewees = model.getUnfilteredIntervieweeList();
 
         BipartiteGraph graph = new BipartiteGraphGenerator(interviewers, interviewees).generate();
         HopCroftKarp algorithm = new HopCroftKarp(graph);
@@ -42,6 +46,8 @@ public class ScheduleCommand extends Command {
 
         List<Interviewee> intervieweesWithSlots = assignSlotToInterviewees(graph);
         String resultMessage = generateResultMessage(intervieweesWithSlots);
+        logger.fine("Finish scheduling interviews");
+
         return new CommandResult(resultMessage);
     }
 
@@ -51,7 +57,11 @@ public class ScheduleCommand extends Command {
             || other instanceof ScheduleCommand; // instanceof handles nulls
     }
 
-    public List<Interviewee> assignSlotToInterviewees(BipartiteGraph graph) {
+    /**
+     * Attaches the interview slot that the interviewee is allocated to(after running the HopCroftKarp algorithm)
+     * to it and returns a list of interviewee which are successfully allocated an interview slot.
+     */
+    private List<Interviewee> assignSlotToInterviewees(BipartiteGraph graph) {
         List<Interviewee> intervieweesWithSlot = new LinkedList<>();
         int numInterviewees = graph.getNumInterviewees();
 
@@ -69,7 +79,10 @@ public class ScheduleCommand extends Command {
         return intervieweesWithSlot;
     }
 
-    public String generateResultMessage(List<Interviewee> interviewees) {
+    /**
+     * Returns the result of the scheduling as a string message.
+     */
+    private String generateResultMessage(List<Interviewee> interviewees) {
         StringBuilder builder = new StringBuilder(300);
         builder.append("Successfully scheduled!\n");
 
