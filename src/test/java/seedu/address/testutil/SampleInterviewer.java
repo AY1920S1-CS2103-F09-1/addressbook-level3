@@ -58,7 +58,8 @@ public class SampleInterviewer {
                 .email(email)
                 .department(department)
                 .build();
-        alicePauline.setAvailabilities(Arrays.stream(availabilities).map(Slot::new).collect(Collectors.toList()));
+        alicePauline.setAvailabilities(
+                Arrays.stream(availabilities).map(Slot::fromString).collect(Collectors.toList()));
         return alicePauline;
     }
 
@@ -68,7 +69,7 @@ public class SampleInterviewer {
         String[] availabilitiesAsArray = new String[]{"10/09/2019 18:30-19:00", "10/09/2019 19:00-19:30",
             "10/09/2019 20:00-20:30", "10/09/2019 20:30-21:00"};
         List<String> availabilities = Arrays.asList(availabilitiesAsArray);
-        hazel.setAvailabilities(availabilities.stream().map(Slot::new).collect(Collectors.toList()));
+        hazel.setAvailabilities(availabilities.stream().map(Slot::fromString).collect(Collectors.toList()));
 
         return hazel;
     }
