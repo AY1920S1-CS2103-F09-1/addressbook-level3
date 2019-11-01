@@ -160,10 +160,36 @@ The templates for the import commands can be found here:</p>
 <p>After you have imported the data, you will need to type <code>clear</code> to clear the imported data before you can import another interviewer&#8217;s
 availability or interviewees details .csv file.</p>
 </div>
+<div class="ulist NOTE">
+<ul class="NOTE">
+<li>
+<p>The duration of each timeslot is set as 30mins long in the UserPrefs. Will allow user to edit UserPrefs in v1.4.</p>
+</li>
+<li>
+<p>Data to be imported should only be in english and should strictly follow the format of the templates given above.</p>
+</li>
+</ul>
+</div>
 <div class="sect3">
 <h4 id="importing-interviewers-availability"><a class="link" href="#importing-interviewers-availability">3.2.1. Importing interviewers’ availability</a></h4>
 <div class="paragraph">
 <p>Imports interviewers’ availability from a comma separated values (CSV) file.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A "1" in a timeslot represents AVAILABLE and "0" represents UNAVAILABLE.</p>
+</li>
+<li>
+<p>The headers should also be in the format <code>DEPARTMENT - INTERVIEWER&#8217;S_NAME</code>.</p>
+</li>
+<li>
+<p>Each timeslot should also be in the format <code>HH:mm - HH:mm</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The schedule displayed will only show timeslots from 10:00 to 21:00 daily.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>import interviewer PATH_TO_FILE</code><br>
@@ -182,8 +208,17 @@ availability or interviewees details .csv file.</p>
 <div class="sect3">
 <h4 id="importing-interviewees-availability"><a class="link" href="#importing-interviewees-availability">3.2.2. Importing interviewees’ availability</a></h4>
 <div class="paragraph">
-<p>Imports interviewees’ availability from a comma separated values (CSV) file.<br>
-Format: <code>import interviewee PATH_TO_FILE</code><br>
+<p>Imports interviewees’ availability from a comma separated values (CSV) file.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each timeslot should be in the format <code>HH:mm - HH:mm</code>. Use commas to separate the timeslots if there are more than 1.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Format: <code>import interviewee PATH_TO_FILE</code><br>
     - PATH_TO_FILE is the absolute path to the file.<br>
     - E.g C:\\Users\Bob\file.csv</p>
 </div>
@@ -659,4 +694,4 @@ Format: <code>record rank</code></p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 02:54:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 02:57:13 UTC</div></div></div></body></html>
