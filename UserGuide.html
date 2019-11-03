@@ -15,24 +15,30 @@
 <li><a href="#import-your-csv-file-into-the-application">2.1. Import your csv file into the application</a></li>
 </ul>
 </li>
-<li><a href="#Features">3. Features</a>
+<li><a href="#user-preferences">3. User Preferences</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help">3.1. Viewing help</a></li>
-<li><a href="#importing-existing-availabilities-code-import-code">3.2. Importing existing availabilities <code>import</code></a></li>
-<li><a href="#add-interviewees-interviewers-code-add-code">3.3. Add interviewees/interviewers <code>add</code></a></li>
-<li><a href="#edit-interviewees-interviewers-code-edit-code-code-coming-in-v2-0-code">3.4. Edit interviewees/interviewers <code>edit</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#delete-interviewees-interviewers-code-delete-code">3.5. Delete interviewees/interviewers <code>delete</code></a></li>
-<li><a href="#ui-display">3.6. UI Display</a></li>
-<li><a href="#get-interview-schedule-code-get-code-code-coming-in-v2-0-code">3.7. Get interview schedule <code>get</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#tag-interview-slot-code-tag-code-code-coming-in-v2-0-code">3.8. Tag interview slot <code>tag</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#scheduling-code-schedule-code">3.9. Scheduling <code>schedule</code></a></li>
-<li><a href="#exporting-of-interview-schedule-code-export-code-coming-soon-in-v1-4">3.10. Exporting of interview schedule <code>export</code> [Coming soon in v1.4]</a></li>
-<li><a href="#sending-of-email-code-email-code">3.11. Sending of email <code>email</code></a></li>
-<li><a href="#recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code">3.12. Recording of additional statuses: <code>record</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#working-hours">3.1. Working Hours</a></li>
+<li><a href="#duration-of-time-slot">3.2. Duration of Time slot</a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#Features">4. Features</a>
+<ul class="sectlevel2">
+<li><a href="#viewing-help">4.1. Viewing help</a></li>
+<li><a href="#importing-existing-availabilities-code-import-code">4.2. Importing existing availabilities <code>import</code></a></li>
+<li><a href="#add-interviewees-interviewers-code-add-code">4.3. Add interviewees/interviewers <code>add</code></a></li>
+<li><a href="#edit-interviewees-interviewers-code-edit-code-code-coming-in-v2-0-code">4.4. Edit interviewees/interviewers <code>edit</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#delete-interviewees-interviewers-code-delete-code">4.5. Delete interviewees/interviewers <code>delete</code></a></li>
+<li><a href="#ui-display">4.6. UI Display</a></li>
+<li><a href="#get-interview-schedule-code-get-code-code-coming-in-v2-0-code">4.7. Get interview schedule <code>get</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#tag-interview-slot-code-tag-code-code-coming-in-v2-0-code">4.8. Tag interview slot <code>tag</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#scheduling-code-schedule-code">4.9. Scheduling <code>schedule</code></a></li>
+<li><a href="#exporting-of-interview-schedule-code-export-code-coming-soon-in-v1-4">4.10. Exporting of interview schedule <code>export</code> [Coming soon in v1.4]</a></li>
+<li><a href="#sending-of-email-code-email-code">4.11. Sending of email <code>email</code></a></li>
+<li><a href="#recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code">4.12. Recording of additional statuses: <code>record</code> <code>[Coming in v2.0]</code></a></li>
+</ul>
+</li>
+<li><a href="#faq">5. FAQ</a></li>
+<li><a href="#command-summary">6. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -116,7 +122,65 @@ Converting your Excel file into .csv format
 </div>
 </div>
 <div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
+<h2 id="user-preferences"><a class="link" href="#user-preferences">3. User Preferences</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scheduler is initialised with default user preferences.</p>
+</div>
+<div class="paragraph">
+<p>If you wish to make changes to the user preferences, do the following steps:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: Run scheduler.jar at least once. You should notice new files added to the folder containing the application.</p>
+</li>
+<li>
+<p>Step 2: Open preferences.json using any word editor, eg. notepad.</p>
+</li>
+<li>
+<p>Step 3: Edit the relevant user preference fields.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The details of each user preference field is explained further in the following sections.</p>
+</div>
+<div class="sect2">
+<h3 id="working-hours"><a class="link" href="#working-hours">3.1. Working Hours</a></h3>
+<div class="paragraph">
+<p>Each time slot, that an interviewer or interviewee indicates, must be within the <code>startTime</code> and <code>endTime</code> of the pre-defined
+working hours for it to be displayed in the schedules.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong><br>
+<code>startTime</code> and <code>endTime</code> are defined as strings. It has to follow the string format "HH:mm".</p>
+</div>
+<div class="paragraph">
+<p><strong>Default values:</strong><br>
+<code>startTime</code>: "10:00"<br>
+<code>endTime</code>: "21:00"</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="duration-of-time-slot"><a class="link" href="#duration-of-time-slot">3.2. Duration of Time slot</a></h3>
+<div class="paragraph">
+<p>Each time slot, that an interviewer or interviewee indicates, must be strictly of this pre-defined duration for it to be
+ displayed in the schedules. It is represented by <code>duration</code> in the user preference file.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong><br>
+<code>duration</code> is defined as a positive integer representing the number of minutes of each time slot.</p>
+</div>
+<div class="paragraph">
+<p><strong>Default values:</strong><br>
+<code>duration</code>: 30</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Features"><a class="link" href="#Features">4. Features</a></h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
@@ -134,14 +198,14 @@ Converting your Excel file into .csv format
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help"><a class="link" href="#viewing-help">3.1. Viewing help</a></h3>
+<h3 id="viewing-help"><a class="link" href="#viewing-help">4.1. Viewing help</a></h3>
 <div class="paragraph">
 <p>Shows helpful information on using this software.
 Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="importing-existing-availabilities-code-import-code"><a class="link" href="#importing-existing-availabilities-code-import-code">3.2. Importing existing availabilities <code>import</code></a></h3>
+<h3 id="importing-existing-availabilities-code-import-code"><a class="link" href="#importing-existing-availabilities-code-import-code">4.2. Importing existing availabilities <code>import</code></a></h3>
 <div class="paragraph">
 <p>The to-be-imported interviewer availability and interviewee details .csv file needs to follow the format as the templates below.
 The templates for the import commands can be found here:</p>
@@ -163,7 +227,8 @@ availability or interviewees details .csv file.</p>
 <div class="ulist NOTE">
 <ul class="NOTE">
 <li>
-<p>The duration of each timeslot is set as 30mins long in the UserPrefs. Will allow user to edit UserPrefs in v1.4.</p>
+<p>Data in .csv file must follow the settings defined in the user preference file. View <a href="#User Prefences">User Prefences</a> if you wish to change the
+default settings.</p>
 </li>
 <li>
 <p>Data to be imported should only be in english and should strictly follow the format of the templates given above.</p>
@@ -171,7 +236,7 @@ availability or interviewees details .csv file.</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="importing-interviewers-availability"><a class="link" href="#importing-interviewers-availability">3.2.1. Importing interviewers’ availability</a></h4>
+<h4 id="importing-interviewers-availability"><a class="link" href="#importing-interviewers-availability">4.2.1. Importing interviewers’ availability</a></h4>
 <div class="paragraph">
 <p>Imports interviewers’ availability from a comma separated values (CSV) file.</p>
 </div>
@@ -206,14 +271,17 @@ availability or interviewees details .csv file.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="importing-interviewees-availability"><a class="link" href="#importing-interviewees-availability">3.2.2. Importing interviewees’ availability</a></h4>
+<h4 id="importing-interviewees-availability"><a class="link" href="#importing-interviewees-availability">4.2.2. Importing interviewees’ availability</a></h4>
 <div class="paragraph">
 <p>Imports interviewees’ availability from a comma separated values (CSV) file.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Each timeslot should be in the format <code>HH:mm - HH:mm</code>. Use commas to separate the timeslots if there are more than 1.</p>
+<p>Emails: Adding more than 1 personal or work email is allowed. Use whitespaces to separate each email.</p>
+</li>
+<li>
+<p>Timeslots: Each timeslot should be in the format <code>HH:mm - HH:mm</code>. Use commas to separate the timeslots if there are more than 1.</p>
 </li>
 </ul>
 </div>
@@ -233,7 +301,7 @@ availability or interviewees details .csv file.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-interviewees-interviewers-code-add-code"><a class="link" href="#add-interviewees-interviewers-code-add-code">3.3. Add interviewees/interviewers <code>add</code></a></h3>
+<h3 id="add-interviewees-interviewers-code-add-code"><a class="link" href="#add-interviewees-interviewers-code-add-code">4.3. Add interviewees/interviewers <code>add</code></a></h3>
 <div class="paragraph">
 <p>Manually add a new entity to the database.</p>
 </div>
@@ -261,7 +329,7 @@ availability or interviewees details .csv file.</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="adding-a-new-interviewee"><a class="link" href="#adding-a-new-interviewee">3.3.1. Adding a new interviewee</a></h4>
+<h4 id="adding-a-new-interviewee"><a class="link" href="#adding-a-new-interviewee">4.3.1. Adding a new interviewee</a></h4>
 <div class="paragraph">
 <p>Manually add a new interviewee to the database.</p>
 </div>
@@ -274,7 +342,7 @@ availability or interviewees details .csv file.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>add r/interviewee n/John Doe p/88888888 t/CAP5 t/dogLover f/School of Computing ep/JohnDoe@gmail.com ew/JohnDoe@u.nus.edu y/2018 d/Marketing s/20/09/2019 18:00-19:00</pre>
+<pre>add r/interviewee n/John Doe p/88888888 t/CAP5 t/dogLover f/School of Computing ep/JohnDoe@gmail.com ew/JohnDoe@u.nus.edu y/2018 d/Marketing s/20/09/2019 18:00-18:30</pre>
 </div>
 </div>
 <div class="ulist">
@@ -299,7 +367,7 @@ availability or interviewees details .csv file.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-a-new-interviewer"><a class="link" href="#adding-a-new-interviewer">3.3.2. Adding a new interviewer</a></h4>
+<h4 id="adding-a-new-interviewer"><a class="link" href="#adding-a-new-interviewer">4.3.2. Adding a new interviewer</a></h4>
 <div class="paragraph">
 <p>Manually add a new interviewer to the database.</p>
 </div>
@@ -311,13 +379,13 @@ availability or interviewees details .csv file.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>add r/interviewer n/Mary Jane p/99999999 ew/MaryJane@u.nus.edu d/Marketing s/20/09/2019 18:00-19:00</pre>
+<pre>add r/interviewer n/Mary Jane p/99999999 ew/MaryJane@u.nus.edu d/Marketing s/20/09/2019 18:00-18:30</pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-interviewees-interviewers-code-edit-code-code-coming-in-v2-0-code"><a class="link" href="#edit-interviewees-interviewers-code-edit-code-code-coming-in-v2-0-code">3.4. Edit interviewees/interviewers <code>edit</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="edit-interviewees-interviewers-code-edit-code-code-coming-in-v2-0-code"><a class="link" href="#edit-interviewees-interviewers-code-edit-code-code-coming-in-v2-0-code">4.4. Edit interviewees/interviewers <code>edit</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Manually edit an entity in the database.</p>
 </div>
@@ -348,7 +416,7 @@ availability or interviewees details .csv file.</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="edit-an-existing-interviewee-code-coming-in-v2-0-code"><a class="link" href="#edit-an-existing-interviewee-code-coming-in-v2-0-code">3.4.1. Edit an existing interviewee <code>[Coming in v2.0]</code></a></h4>
+<h4 id="edit-an-existing-interviewee-code-coming-in-v2-0-code"><a class="link" href="#edit-an-existing-interviewee-code-coming-in-v2-0-code">4.4.1. Edit an existing interviewee <code>[Coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Manually edit an existing interviewee in the database.</p>
 </div>
@@ -365,7 +433,7 @@ availability or interviewees details .csv file.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-an-existing-interviewer-interview-slot-code-coming-in-v2-0-code"><a class="link" href="#edit-an-existing-interviewer-interview-slot-code-coming-in-v2-0-code">3.4.2. Edit an existing interviewer (interview slot) <code>[Coming in v2.0]</code></a></h4>
+<h4 id="edit-an-existing-interviewer-interview-slot-code-coming-in-v2-0-code"><a class="link" href="#edit-an-existing-interviewer-interview-slot-code-coming-in-v2-0-code">4.4.2. Edit an existing interviewer (interview slot) <code>[Coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Manually edit an existing interviewer in the database.</p>
 </div>
@@ -375,7 +443,7 @@ availability or interviewees details .csv file.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-interviewees-interviewers-code-delete-code"><a class="link" href="#delete-interviewees-interviewers-code-delete-code">3.5. Delete interviewees/interviewers <code>delete</code></a></h3>
+<h3 id="delete-interviewees-interviewers-code-delete-code"><a class="link" href="#delete-interviewees-interviewers-code-delete-code">4.5. Delete interviewees/interviewers <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Manually delete an entity from the database.</p>
 </div>
@@ -390,7 +458,7 @@ availability or interviewees details .csv file.</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="delete-an-existing-interviewee"><a class="link" href="#delete-an-existing-interviewee">3.5.1. Delete an existing interviewee</a></h4>
+<h4 id="delete-an-existing-interviewee"><a class="link" href="#delete-an-existing-interviewee">4.5.1. Delete an existing interviewee</a></h4>
 <div class="paragraph">
 <p>Deletes the specified interviewee from the database.</p>
 </div>
@@ -407,7 +475,7 @@ availability or interviewees details .csv file.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-an-existing-interviewer-interview-slot"><a class="link" href="#delete-an-existing-interviewer-interview-slot">3.5.2. Delete an existing interviewer (interview slot)</a></h4>
+<h4 id="delete-an-existing-interviewer-interview-slot"><a class="link" href="#delete-an-existing-interviewer-interview-slot">4.5.2. Delete an existing interviewer (interview slot)</a></h4>
 <div class="paragraph">
 <p>Deletes the specified interviewer from the database</p>
 </div>
@@ -425,9 +493,9 @@ availability or interviewees details .csv file.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="ui-display"><a class="link" href="#ui-display">3.6. UI Display</a></h3>
+<h3 id="ui-display"><a class="link" href="#ui-display">4.6. UI Display</a></h3>
 <div class="sect3">
-<h4 id="viewing-schedules"><a class="link" href="#viewing-schedules">3.6.1. Viewing Schedules</a></h4>
+<h4 id="viewing-schedules"><a class="link" href="#viewing-schedules">4.6.1. Viewing Schedules</a></h4>
 <div class="paragraph">
 <p>When the Scheduler starts, interview schedules will be displayed for you. The data will be displayed in a table format,
 with each table representing the schedule for each day. In the first column, the date of that interview schedule will be
@@ -456,7 +524,7 @@ that interviewer is unavailable and "1" represents that the interviewer is avail
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-details-of-interviewees-coming-soon-in-v1-4"><a class="link" href="#viewing-details-of-interviewees-coming-soon-in-v1-4">3.6.2. Viewing details of interviewees [Coming soon in v1.4]</a></h4>
+<h4 id="viewing-details-of-interviewees-coming-soon-in-v1-4"><a class="link" href="#viewing-details-of-interviewees-coming-soon-in-v1-4">4.6.2. Viewing details of interviewees [Coming soon in v1.4]</a></h4>
 <div class="paragraph">
 <p>You can to view the list of interviewees and the following information:
 1. Name
@@ -484,7 +552,7 @@ this User Guide.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code"><a class="link" href="#differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code">3.6.3. Differentiating the importance of timetable slots through colours <code>[Coming in v2.0]</code></a></h4>
+<h4 id="differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code"><a class="link" href="#differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code">4.6.3. Differentiating the importance of timetable slots through colours <code>[Coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>As you can see from the timetable above, there are 2 different colours of time slots. This is implemented so you
 are able to differentiate which interviews are important by using the colour code as shown in the timetable.
@@ -495,7 +563,7 @@ Format: <code>change DATE TIME IMPORTANCE</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="get-interview-schedule-code-get-code-code-coming-in-v2-0-code"><a class="link" href="#get-interview-schedule-code-get-code-code-coming-in-v2-0-code">3.7. Get interview schedule <code>get</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="get-interview-schedule-code-get-code-code-coming-in-v2-0-code"><a class="link" href="#get-interview-schedule-code-get-code-code-coming-in-v2-0-code">4.7. Get interview schedule <code>get</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Find an interviewer/interviewee and display his/her interview schedule.<br>
 Format: <code>get NAME</code><br></p>
@@ -510,7 +578,7 @@ Format: <code>get NAME</code><br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="tag-interview-slot-code-tag-code-code-coming-in-v2-0-code"><a class="link" href="#tag-interview-slot-code-tag-code-code-coming-in-v2-0-code">3.8. Tag interview slot <code>tag</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="tag-interview-slot-code-tag-code-code-coming-in-v2-0-code"><a class="link" href="#tag-interview-slot-code-tag-code-code-coming-in-v2-0-code">4.8. Tag interview slot <code>tag</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Tags an interview slot with a name.<br>
 Format: <code>tag TAG_NAME</code><br></p>
@@ -521,9 +589,9 @@ Format: <code>filter tag TAG_NAME</code><br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="scheduling-code-schedule-code"><a class="link" href="#scheduling-code-schedule-code">3.9. Scheduling <code>schedule</code></a></h3>
+<h3 id="scheduling-code-schedule-code"><a class="link" href="#scheduling-code-schedule-code">4.9. Scheduling <code>schedule</code></a></h3>
 <div class="sect3">
-<h4 id="schedule-the-interviews"><a class="link" href="#schedule-the-interviews">3.9.1. Schedule the interviews</a></h4>
+<h4 id="schedule-the-interviews"><a class="link" href="#schedule-the-interviews">4.9.1. Schedule the interviews</a></h4>
 <div class="paragraph">
 <p>Schedule and allocate interviewees to the available interview slots based on the availability of interviewees and
 their choice of department. As of V1.3, the scheduling result is reflected on the console of the application. This will
@@ -533,7 +601,7 @@ Format: <code>schedule</code><br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting-of-interview-schedule-code-export-code-coming-soon-in-v1-4"><a class="link" href="#exporting-of-interview-schedule-code-export-code-coming-soon-in-v1-4">3.10. Exporting of interview schedule <code>export</code> [Coming soon in v1.4]</a></h3>
+<h3 id="exporting-of-interview-schedule-code-export-code-coming-soon-in-v1-4"><a class="link" href="#exporting-of-interview-schedule-code-export-code-coming-soon-in-v1-4">4.10. Exporting of interview schedule <code>export</code> [Coming soon in v1.4]</a></h3>
 <div class="paragraph">
 <p>Exports the allocated interview schedule timetable to a comma separated values (CSV) file.<br>
 Format: <code>export</code><br></p>
@@ -543,9 +611,9 @@ Format: <code>export</code><br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sending-of-email-code-email-code"><a class="link" href="#sending-of-email-code-email-code">3.11. Sending of email <code>email</code></a></h3>
+<h3 id="sending-of-email-code-email-code"><a class="link" href="#sending-of-email-code-email-code">4.11. Sending of email <code>email</code></a></h3>
 <div class="sect3">
-<h4 id="sending-of-interview-time-slot-to-interviewee-coming-soon-in-v1-4"><a class="link" href="#sending-of-interview-time-slot-to-interviewee-coming-soon-in-v1-4">3.11.1. Sending of interview time slot to interviewee [Coming soon in v1.4]</a></h4>
+<h4 id="sending-of-interview-time-slot-to-interviewee-coming-soon-in-v1-4"><a class="link" href="#sending-of-interview-time-slot-to-interviewee-coming-soon-in-v1-4">4.11.1. Sending of interview time slot to interviewee [Coming soon in v1.4]</a></h4>
 <div class="paragraph">
 <p>Sends an email containing the interviewee’s allocated interview time slot to a particular interviewee specified, including other details such as the interviewer, time, date and location.</p>
 </div>
@@ -557,7 +625,7 @@ Format: <code>export</code><br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sending-of-interview-time-slot-to-all-interviewees-coming-soon-in-v1-4"><a class="link" href="#sending-of-interview-time-slot-to-all-interviewees-coming-soon-in-v1-4">3.11.2. Sending of interview time slot to all interviewees [Coming soon in v1.4]</a></h4>
+<h4 id="sending-of-interview-time-slot-to-all-interviewees-coming-soon-in-v1-4"><a class="link" href="#sending-of-interview-time-slot-to-all-interviewees-coming-soon-in-v1-4">4.11.2. Sending of interview time slot to all interviewees [Coming soon in v1.4]</a></h4>
 <div class="paragraph">
 <p>Sends an email containing the interviewee&#8217;s allocated interview time slot to every interviewee, including other details such as the interviewer, time, date and location.</p>
 </div>
@@ -569,7 +637,7 @@ Format: <code>export</code><br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sending-of-interview-results-to-interviewees-code-coming-in-v2-0-code"><a class="link" href="#sending-of-interview-results-to-interviewees-code-coming-in-v2-0-code">3.11.3. Sending of interview results to interviewees <code>[Coming in v2.0]</code></a></h4>
+<h4 id="sending-of-interview-results-to-interviewees-code-coming-in-v2-0-code"><a class="link" href="#sending-of-interview-results-to-interviewees-code-coming-in-v2-0-code">4.11.3. Sending of interview results to interviewees <code>[Coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Sends an email containing the interviewee’s result/interview outcome and other details that you might want to include.</p>
 </div>
@@ -582,9 +650,9 @@ Format: <code>export</code><br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code"><a class="link" href="#recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code">3.12. Recording of additional statuses: <code>record</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code"><a class="link" href="#recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code">4.12. Recording of additional statuses: <code>record</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="sect3">
-<h4 id="recording-of-interviewee-s-attendance"><a class="link" href="#recording-of-interviewee-s-attendance">3.12.1. Recording of interviewee’s attendance</a></h4>
+<h4 id="recording-of-interviewee-s-attendance"><a class="link" href="#recording-of-interviewee-s-attendance">4.12.1. Recording of interviewee’s attendance</a></h4>
 <div class="paragraph">
 <p>Bring up the window to record the attendance of interviewees. You can navigate through the table in the window (GUI)
 using the directions key to record the attendance of the interviewees. Hit Enter at the target cell to record the
@@ -593,14 +661,14 @@ Format: <code>record attendance</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="recording-of-interview-result"><a class="link" href="#recording-of-interview-result">3.12.2. Recording of interview result</a></h4>
+<h4 id="recording-of-interview-result"><a class="link" href="#recording-of-interview-result">4.12.2. Recording of interview result</a></h4>
 <div class="paragraph">
 <p>Bring up the window to record the interview result. The way to record the result is the same as 2.12.1.<br>
 Format: <code>record result</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="ranking-of-interviewees"><a class="link" href="#ranking-of-interviewees">3.12.3. Ranking of interviewees</a></h4>
+<h4 id="ranking-of-interviewees"><a class="link" href="#ranking-of-interviewees">4.12.3. Ranking of interviewees</a></h4>
 <div class="paragraph">
 <p>Bring up the window to rank the interviewees. The way to record the result is the same as 2.12.1.<br>
 Format: <code>record rank</code></p>
@@ -610,13 +678,13 @@ Format: <code>record rank</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
 <div class="sectionbody">
 
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Table Command Summary</caption>
@@ -694,4 +762,4 @@ Format: <code>record rank</code></p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 03:19:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-03 01:22:08 UTC</div></div></div></body></html>
