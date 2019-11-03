@@ -613,39 +613,60 @@ Format: <code>export</code><br></p>
 <div class="sect2">
 <h3 id="sending-of-email-code-email-code"><a class="link" href="#sending-of-email-code-email-code">4.11. Sending of email <code>email</code></a></h3>
 <div class="sect3">
-<h4 id="sending-of-interview-time-slot-to-interviewee-coming-soon-in-v1-4"><a class="link" href="#sending-of-interview-time-slot-to-interviewee-coming-soon-in-v1-4">4.11.1. Sending of interview time slot to interviewee [Coming soon in v1.4]</a></h4>
+<h4 id="sending-of-interview-time-slot-to-interviewee"><a class="link" href="#sending-of-interview-time-slot-to-interviewee">4.11.1. Sending of interview time slot to interviewee</a></h4>
 <div class="paragraph">
-<p>Sends an email containing the interviewee’s allocated interview time slot to a particular interviewee specified, including other details such as the interviewer, time, date and location.</p>
+<p>Opens an email dialog containing the interviewee’s allocated interview time slot to a particular interviewee specified, including other details such as the interviewer and location.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>email timeslot NAME</code></p>
+<p>Format: <code>email ct/timeslot n/INTERVIEWEE NAME</code></p>
 </div>
 <div class="paragraph">
-<p><strong>Note:</strong> The email will only be sent if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
+<p><strong>Note:</strong> The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sending-of-interview-time-slot-to-all-interviewees-coming-soon-in-v1-4"><a class="link" href="#sending-of-interview-time-slot-to-all-interviewees-coming-soon-in-v1-4">4.11.2. Sending of interview time slot to all interviewees [Coming soon in v1.4]</a></h4>
+<h4 id="sending-of-interview-time-slot-to-all-interviewees"><a class="link" href="#sending-of-interview-time-slot-to-all-interviewees">4.11.2. Sending of interview time slot to all interviewees</a></h4>
 <div class="paragraph">
-<p>Sends an email containing the interviewee&#8217;s allocated interview time slot to every interviewee, including other details such as the interviewer, time, date and location.</p>
+<p>Opens an email dialog containing the interviewee&#8217;s allocated interview time slot to every interviewee, including other details such as the interviewer and location. A summary report is then generated at the end of the command execution.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>email timeslots</code></p>
+<p>Format: <code>email ct/alltimeslot</code></p>
 </div>
 <div class="paragraph">
-<p><strong>Note:</strong> The email will only be sent if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
+<p><strong>Note:</strong> The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sending-of-interview-results-to-interviewees-code-coming-in-v2-0-code"><a class="link" href="#sending-of-interview-results-to-interviewees-code-coming-in-v2-0-code">4.11.3. Sending of interview results to interviewees <code>[Coming in v2.0]</code></a></h4>
+<h4 id="checking-status-of-emails-sent"><a class="link" href="#checking-status-of-emails-sent">4.11.3. Checking status of emails sent</a></h4>
 <div class="paragraph">
-<p>Sends an email containing the interviewee’s result/interview outcome and other details that you might want to include.</p>
+<p>Provides a summary report of the number of interviewees with emails sent and the total number of interviewees stored in the database.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>email results</code></p>
+<p>Format: <code>email ct/status</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sending-of-interview-results-to-an-interviewee-code-coming-in-v2-0-code"><a class="link" href="#sending-of-interview-results-to-an-interviewee-code-coming-in-v2-0-code">4.11.4. Sending of interview results to an interviewee <code>[Coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>Opens an email dialog containing the interviewee’s result/interview outcome and other details that you might want to include.</p>
 </div>
 <div class="paragraph">
-<p><strong>Note:</strong> This email will only be sent if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
+<p>Format: <code>email ct/results n/INTERVIEWEE NAME</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> The email dialog will only appear if the interviewee&#8217;s email is present in the database and the interview results has been updated.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sending-of-interview-results-to-all-interviewees-code-coming-in-v2-0-code"><a class="link" href="#sending-of-interview-results-to-all-interviewees-code-coming-in-v2-0-code">4.11.5. Sending of interview results to all interviewees <code>[Coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>Opens an email dialog containing the interviewee&#8217;s result/interview outcome and other details that you might want to include for all interviewees.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>email ct/allresults</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> The email dialog will only appear if the interviewee&#8217;s email is present in the database and the interview results has been updated.</p>
 </div>
 </div>
 </div>
@@ -748,10 +769,10 @@ Format: <code>record rank</code></p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>export</code><br></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Email blast</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>email timeslots</code><br>
- <code>email results</code><br>
- <code>email status</code><br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Email interviewee</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>email ct/timeslot n/INTERVIEWEE NAME</code><br>
+ <code>email ct/alltimeslot</code><br>
+ <code>email ct/status</code><br></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Record</p></td>
@@ -762,4 +783,4 @@ Format: <code>record rank</code></p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-03 01:22:08 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-03 12:30:32 UTC</div></div></div></body></html>
