@@ -19,6 +19,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -493,7 +494,7 @@ public class ModelManager implements Model {
      * Returns the interview slot allocated to the interviewee with the {@code intervieweeName}.
      */
     @Override
-    public InterviewSlot getInterviewSlot(String intervieweeName) {
+    public Optional<InterviewSlot> getInterviewSlot(String intervieweeName) {
         return intervieweeList.getEntity(new Name(intervieweeName)).getAllocatedSlot();
     }
 
