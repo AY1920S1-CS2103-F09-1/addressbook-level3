@@ -2,7 +2,6 @@ package seedu.scheduler.model;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,10 +33,6 @@ public class Schedule {
     }
 
     private Schedule() {
-    }
-
-    public String getDate() {
-        return date;
     }
 
     public ObservableList<String> getTitles() {
@@ -99,81 +94,6 @@ public class Schedule {
     public String generateColumnTitle(Interviewer interviewer) {
         return String.format("%s - %s", interviewer.getDepartment().toString(),
             interviewer.getName().toString());
-    }
-
-    /**
-     * Adds the interviewer and his availabilities into this table.
-     * The interviewer will not be added if none of the his availabilities fall in the table.
-     */
-    public boolean addInterviewer(Interviewer interviewer) {
-        String columnTitle = generateColumnTitle(interviewer);
-        List<String> availabilities = interviewer.getAvailabilities()
-                    .stream()
-                    .map(Slot::toString)
-                    .collect(Collectors.toList());
-
-        boolean added = false;
-        int currRowIndex = 0;
-        for (String availability : availabilities) {
-            if (currRowIndex > data.size()) {
-                break;
-            }
-
-            List<String> dateAndTime = getDateAndTime(availability);
-            String date = dateAndTime.get(0);
-            String time = dateAndTime.get(1);
-
-            if (!this.date.equals(date)) {
-                continue;
-            }
-
-            // Iterate through the table rows
-            int i;
-            int tableSize = data.size();
-            for (i = currRowIndex; i < tableSize; i++) {
-                ObservableList<String> currRow = data.get(i);
-                String currRowTime = currRow.get(0);
-
-                if (!currRowTime.equals(time)) {
-                    continue;
-                } else {
-                    currRow.add("1");
-                    added = true;
-                    break;
-                }
-            }
-            currRowIndex = i;
-        }
-
-        if (added) {
-            int initialRowSize = titles.size();
-            titles.add(columnTitle);
-
-            // Add 0 to other rows to ensure that the table rows size are correct
-            for (int i = 0; i < data.size(); i++) {
-                ObservableList<String> currRow = data.get(i);
-                if (currRow.size() == initialRowSize) {
-                    currRow.add("0");
-                }
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // DD/MM/YYYY HH:MM - HH:MM (No trailing whitespace!)
-    // e.g. 9/10/2019 18:00 - 18:30
-    private List<String> getDateAndTime(String dateTimeString) {
-        String date = dateTimeString.split(" ")[0];
-        int firstWhiteSpaceIndex = dateTimeString.indexOf(" ");
-        String time = dateTimeString.substring(firstWhiteSpaceIndex + 1).trim();
-
-        List<String> dateAndTime = new LinkedList<>();
-        dateAndTime.add(date);
-        dateAndTime.add(time);
-
-        return dateAndTime;
     }
 
     @Override

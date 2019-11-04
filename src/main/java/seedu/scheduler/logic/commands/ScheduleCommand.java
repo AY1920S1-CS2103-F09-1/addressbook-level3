@@ -1,6 +1,5 @@
 package seedu.scheduler.logic.commands;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
@@ -16,7 +15,9 @@ import seedu.scheduler.logic.graph.InterviewerSlot;
 import seedu.scheduler.logic.graph.InterviewerSlotVertex;
 import seedu.scheduler.model.Model;
 import seedu.scheduler.model.person.Interviewee;
+import seedu.scheduler.model.person.IntervieweeSlot;
 import seedu.scheduler.model.person.Interviewer;
+import seedu.scheduler.model.person.Slot;
 
 /**
  * Schedules the interviews using the interviewer's availability data and interviewee's selected slots.
@@ -48,7 +49,7 @@ public class ScheduleCommand extends Command {
             HopCroftKarp algorithm = new HopCroftKarp(graph);
             algorithm.execute();
 
-            List<Interviewee> intervieweesWithSlots = assignSlotToInterviewees(graph);
+            assignSlots(graph);
             //String allocationResult = generateResultMessage(intervieweesWithSlots);
             String allocationResult = "Temporary message";
 
@@ -70,11 +71,10 @@ public class ScheduleCommand extends Command {
     }
 
     /**
-     * Attaches the interview slot that the interviewee is allocated to(after running the HopCroftKarp algorithm)
-     * to it and returns a list of interviewee which are successfully allocated an interview slot.
+     * Attaches the allocated interview slot the corresponding interviewee and also to the interviewer (after running
+     * the HopCroftKarp algorithm).
      */
-    private List<Interviewee> assignSlotToInterviewees(BipartiteGraph graph) {
-        List<Interviewee> intervieweesWithSlot = new LinkedList<>();
+    private void assignSlots(BipartiteGraph graph) {
         int numInterviewees = graph.getNumInterviewees();
 
         IntStream.range(0, numInterviewees).forEach(i -> {
@@ -83,11 +83,12 @@ public class ScheduleCommand extends Command {
             if (vertex.isMatched()) {
                 Interviewee interviewee = vertex.getItem();
                 InterviewerSlot interviewerSlot = vertex.getPartner().getItem();
-                interviewee.setAllocatedSlot(interviewerSlot.getSlot());
-                intervieweesWithSlot.add(interviewee);
+                Interviewer interviewer = interviewerSlot.getInterviewer();
+                Slot slot = interviewerSlot.getSlot();
+
+                interviewee.setAllocatedSlot(slot);
+                interviewer.addIntervieweeSlot(new IntervieweeSlot(interviewee, slot));
             }
         });
-
-        return intervieweesWithSlot;
     }
 }

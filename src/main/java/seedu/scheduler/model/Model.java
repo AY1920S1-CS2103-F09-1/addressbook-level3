@@ -203,15 +203,6 @@ public interface Model {
      * @throws ParseException
      */
     void setEmptyScheduleList() throws ParseException;
-    /**
-     * Adds an interviewer to one of the schedules if the interviewer's availability fall within those schedules
-     * and returns true. Otherwise, the method will not addEntity the interviewer and return false.
-     */
-    void addInterviewerToSchedule(Interviewer interviewer);
-    /**
-     * Returns the date of the schedule in which the interviewer exists in, otherwise return empty string.
-     */
-    String scheduleHasInterviewer(Interviewer interviewer);
 
     /**
      * Replaces schedule data with the data in {@code schedule}.

@@ -100,13 +100,12 @@ public class Interviewer extends Person {
         this.availabilities.addAll(slots);
     }
 
-    public List<IntervieweeSlot> getInterviewingSlots() {
+    public List<IntervieweeSlot> getIntervieweeSlots() {
         return interviewingSlots;
     }
 
-    public void setInterviewingSlots(List<IntervieweeSlot> slots) {
-        this.interviewingSlots.clear();
-        this.interviewingSlots.addAll(slots);
+    public void addIntervieweeSlot(IntervieweeSlot slot) {
+        this.interviewingSlots.add(slot);
     }
 
     /**

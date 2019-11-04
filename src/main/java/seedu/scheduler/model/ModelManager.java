@@ -466,29 +466,6 @@ public class ModelManager implements Model {
         }
     }
 
-    @Override
-    public void addInterviewerToSchedule(Interviewer interviewer) {
-        interviewerList.addEntity(interviewer);
-        for (Schedule schedule : schedulesList) {
-            schedule.addInterviewer(interviewer);
-        }
-    }
-
-    /**
-     * Returns the date of the first schedule in which the interviewer exists in, otherwise return empty string.
-     */
-    @Override
-    public String scheduleHasInterviewer(Interviewer interviewer) {
-        String date = "";
-        for (Schedule schedule : schedulesList) {
-            if (schedule.hasInterviewer(interviewer)) {
-                date = schedule.getDate();
-                break;
-            }
-        }
-        return date;
-    }
-
     /**
      * Returns the interview slot allocated to the interviewee with the {@code intervieweeName}.
      * @return
