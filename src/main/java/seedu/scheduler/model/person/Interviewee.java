@@ -130,10 +130,6 @@ public class Interviewee extends Person {
         return availableTimeslots;
     }
 
-    public Emails getEmails() {
-        return emails;
-    }
-
     public InterviewSlot getAllocatedSlot() {
         return allocatedSlot;
     }
@@ -144,6 +140,10 @@ public class Interviewee extends Person {
 
     public void clearAllocatedSlot() {
         this.allocatedSlot = null;
+    }
+
+    public Emails getEmails() {
+        return emails;
     }
 
     public boolean getEmailSent() {

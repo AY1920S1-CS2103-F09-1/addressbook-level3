@@ -57,6 +57,7 @@ public class ScheduleCommand extends Command {
         }
 
         logger.info("Finish scheduling interviews");
+        model.setScheduled(true);
         String finalMessage = String.format("%s\n%s", message, result);
         return new CommandResult(finalMessage);
     }
