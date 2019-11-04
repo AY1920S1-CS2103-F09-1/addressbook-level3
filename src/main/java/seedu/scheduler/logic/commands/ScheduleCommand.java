@@ -11,10 +11,10 @@ import seedu.scheduler.logic.commands.exceptions.CommandException;
 import seedu.scheduler.logic.graph.BipartiteGraph;
 import seedu.scheduler.logic.graph.BipartiteGraphGenerator;
 import seedu.scheduler.logic.graph.HopCroftKarp;
-import seedu.scheduler.logic.graph.InterviewSlotVertex;
 import seedu.scheduler.logic.graph.IntervieweeVertex;
+import seedu.scheduler.logic.graph.InterviewerSlot;
+import seedu.scheduler.logic.graph.InterviewerSlotVertex;
 import seedu.scheduler.model.Model;
-import seedu.scheduler.model.person.InterviewSlot;
 import seedu.scheduler.model.person.Interviewee;
 import seedu.scheduler.model.person.Interviewer;
 
@@ -29,7 +29,7 @@ public class ScheduleCommand extends Command {
         + "Example: " + COMMAND_WORD + " (no other word should follow after it)";
     private static final Logger logger = LogsCenter.getLogger(ScheduleCommand.class);
 
-    private List<Pair<IntervieweeVertex, List<InterviewSlotVertex>>> graph;
+    private List<Pair<IntervieweeVertex, List<InterviewerSlotVertex>>> graph;
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -49,7 +49,8 @@ public class ScheduleCommand extends Command {
             algorithm.execute();
 
             List<Interviewee> intervieweesWithSlots = assignSlotToInterviewees(graph);
-            String allocationResult = generateResultMessage(intervieweesWithSlots);
+            //String allocationResult = generateResultMessage(intervieweesWithSlots);
+            String allocationResult = "Temporary message";
 
             if (!allocationResult.isEmpty()) {
                 result = String.format("Result:\n %s", allocationResult);
@@ -81,29 +82,12 @@ public class ScheduleCommand extends Command {
 
             if (vertex.isMatched()) {
                 Interviewee interviewee = vertex.getItem();
-                InterviewSlot slot = vertex.getPartner().getItem();
-                interviewee.setAllocatedSlot(slot);
+                InterviewerSlot interviewerSlot = vertex.getPartner().getItem();
+                interviewee.setAllocatedSlot(interviewerSlot.getSlot());
                 intervieweesWithSlot.add(interviewee);
             }
         });
 
         return intervieweesWithSlot;
-    }
-
-    /**
-     * Returns the result of the scheduling as a string message.
-     * The given list of interviewees are all allocated with an interview slot.
-     */
-    private String generateResultMessage(List<Interviewee> interviewees) {
-        StringBuilder builder = new StringBuilder(300);
-
-        String resultMessage = "Name: %s, allocated slot: %s, interviewer: %s, department: %s\n";
-        interviewees.stream().map(interviewee -> {
-            InterviewSlot slot = interviewee.getAllocatedSlot().get();
-            return String.format(resultMessage, interviewee.getName(), slot.getDateTime(), slot.getInterviewerName(),
-                slot.getDepartment());
-        }).forEach(builder::append);
-
-        return builder.toString();
     }
 }

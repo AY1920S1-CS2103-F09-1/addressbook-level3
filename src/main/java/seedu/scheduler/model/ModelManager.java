@@ -30,7 +30,6 @@ import javafx.collections.transformation.FilteredList;
 import seedu.scheduler.commons.core.GuiSettings;
 import seedu.scheduler.commons.core.LogsCenter;
 import seedu.scheduler.model.person.Department;
-import seedu.scheduler.model.person.InterviewSlot;
 import seedu.scheduler.model.person.Interviewee;
 import seedu.scheduler.model.person.Interviewer;
 import seedu.scheduler.model.person.Name;
@@ -492,9 +491,10 @@ public class ModelManager implements Model {
 
     /**
      * Returns the interview slot allocated to the interviewee with the {@code intervieweeName}.
+     * @return
      */
     @Override
-    public Optional<InterviewSlot> getInterviewSlot(String intervieweeName) {
+    public Optional<Slot> getAllocatedSlot(String intervieweeName) {
         return intervieweeList.getEntity(new Name(intervieweeName)).getAllocatedSlot();
     }
 

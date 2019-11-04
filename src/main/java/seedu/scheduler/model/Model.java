@@ -11,10 +11,10 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 
 import seedu.scheduler.commons.core.GuiSettings;
-import seedu.scheduler.model.person.InterviewSlot;
 import seedu.scheduler.model.person.Interviewee;
 import seedu.scheduler.model.person.Interviewer;
 import seedu.scheduler.model.person.Name;
+import seedu.scheduler.model.person.Slot;
 import seedu.scheduler.model.person.exceptions.PersonNotFoundException;
 import seedu.scheduler.ui.RefreshListener;
 
@@ -220,8 +220,9 @@ public interface Model {
 
     /**
      * Returns the interview slot allocated to the interviewee with the {@code intervieweeName}.
+     * @return
      */
-    Optional<InterviewSlot> getInterviewSlot(String intervieweeName);
+    Optional<Slot> getAllocatedSlot(String intervieweeName);
 
     /**
      * Returns a list of observable list of the schedules.
