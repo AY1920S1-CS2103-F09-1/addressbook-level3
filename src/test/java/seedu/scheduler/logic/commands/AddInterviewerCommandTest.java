@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -305,7 +306,7 @@ class AddInterviewerCommandTest {
         }
 
         @Override
-        public InterviewSlot getInterviewSlot(String intervieweeName) {
+        public Optional<InterviewSlot> getInterviewSlot(String intervieweeName) {
             throw new AssertionError("This method should not be called.");
         }
 
