@@ -342,7 +342,9 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Generates an empty schedule list from the current interviewer list. Used to generate GUI after user imports data.
+     * Generates an empty schedule list from the current interviewer list. Used to generate GUI after user imports data
+     * and also before the user runs a schedule command.
+     *
      * @return ArrayList of {@Code Schedule}
      * @throws ParseException when timings are not of HH:mm format
      */
@@ -512,7 +514,7 @@ public class ModelManager implements Model {
         List<Interviewer> interviewers = interviewerList.getEntityList();
         for (Interviewer interviewer : interviewers) {
             for (Schedule schedule : schedulesList) {
-                schedule.addAllocatedInterviewees(interviewer, interviewer.getIntervieweeSlots());
+                schedule.addAllocatedInterviewees(interviewer, interviewer.getAllocatedSlots());
             }
         }
 
@@ -562,8 +564,17 @@ public class ModelManager implements Model {
     // ===========================================================================================================
 
     @Override
-    public void clearAllAllocatedSlot() {
+    public void resetDataBeforeScheduling() {
+        // Clear all allocated slots
         this.intervieweeList.clearAllAllocatedSlots();
+        this.interviewerList.clearAllAllocatedSlots();
+
+        // Clear the interviewees from the schedule
+        for (Schedule schedule : schedulesList) {
+            schedule.clearAllocatedInterviewees();
+        }
+
+        logger.info("Clear all allocated slots");
     }
 
     @Override

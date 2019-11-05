@@ -29,9 +29,10 @@ public class BipartiteGraphGenerator {
     }
 
     /**
-     * Returns a graph of interviewees matched to available interview slots.
+     * Returns a graph of interviewees matched to available interview slots. Note that there may be presence of
+     * interviewees that are not linked to any interview slot at all as the availabilities of the interviewee does not
+     * match any of the available interview slot.
      * The interviewees and interview slots are each wrapped in a vertex.
-     * An interviewee is only added to the graph if it can match at least one of the interview slots and vice versa.
      */
     public BipartiteGraph generate() {
         logger.info("Starting to generate bipartite graph");
@@ -59,14 +60,11 @@ public class BipartiteGraphGenerator {
             // each of them in a vertex)
             fill(interviewSlotVertices, desiredSlots, availableSlots);
 
-            // Only add the interviewee into the graph if it can match to at least one available interview slots
-            if (!interviewSlotVertices.isEmpty()) {
-                IntervieweeVertex intervieweeVertex = new IntervieweeVertex(interviewee, currIntervieweeVertexIndex);
-                Pair<IntervieweeVertex, List<InterviewerSlotVertex>> vertexListPair =
-                        new Pair<>(intervieweeVertex, interviewSlotVertices);
-                graph.add(vertexListPair);
-                currIntervieweeVertexIndex++;
-            }
+            IntervieweeVertex intervieweeVertex = new IntervieweeVertex(interviewee, currIntervieweeVertexIndex);
+            Pair<IntervieweeVertex, List<InterviewerSlotVertex>> vertexListPair =
+                    new Pair<>(intervieweeVertex, interviewSlotVertices);
+            graph.add(vertexListPair);
+            currIntervieweeVertexIndex++;
         }
 
         logger.info("Bipartite graph of interviewees and interview slots is generated");

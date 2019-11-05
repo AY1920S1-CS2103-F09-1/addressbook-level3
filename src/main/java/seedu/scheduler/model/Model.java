@@ -200,7 +200,7 @@ public interface Model {
     // ============================================ Schedule ===================================================
 
     /**
-     * Generates a list of schedules from the current list of interviewers.
+     * Generates a list of empty schedules from the current list of interviewers.
      * @throws ParseException
      */
     void setEmptyScheduleList() throws ParseException;
@@ -247,9 +247,9 @@ public interface Model {
     GuiSettings getGuiSettings();
 
     /**
-     * Clears the allocated slot of all interviewees.
+     * Resets the relevant data before running a schedule command.
      */
-    void clearAllAllocatedSlot();
+    void resetDataBeforeScheduling();
 
     /**
      * Sets the user prefs' GUI settings.

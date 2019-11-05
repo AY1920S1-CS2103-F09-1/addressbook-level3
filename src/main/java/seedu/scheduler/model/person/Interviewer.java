@@ -15,7 +15,7 @@ public class Interviewer extends Person {
 
     // Each availability is given as a string in this format DD/MM/YYYY HH:MM-HH:MM
     private final List<Slot> availabilities;
-    private final List<IntervieweeSlot> intervieweesSlots;
+    private final List<IntervieweeSlot> allocatedSlots;
     private final Department department;
     private final Email email;
 
@@ -28,7 +28,7 @@ public class Interviewer extends Person {
         this.department = department;
         this.email = email;
         this.availabilities = availabilities;
-        this.intervieweesSlots = new ArrayList<>();
+        this.allocatedSlots = new ArrayList<>();
     }
 
     /**
@@ -101,13 +101,17 @@ public class Interviewer extends Person {
         this.availabilities.addAll(slots);
     }
 
-    public List<IntervieweeSlot> getIntervieweeSlots() {
-        Collections.sort(intervieweesSlots);
-        return intervieweesSlots;
+    public List<IntervieweeSlot> getAllocatedSlots() {
+        Collections.sort(allocatedSlots);
+        return allocatedSlots;
     }
 
-    public void addIntervieweeSlot(IntervieweeSlot slot) {
-        this.intervieweesSlots.add(slot);
+    public void addAllocatedSlot(IntervieweeSlot slot) {
+        this.allocatedSlots.add(slot);
+    }
+
+    public void clearAllocatedSlots() {
+        this.allocatedSlots.clear();
     }
 
     /**

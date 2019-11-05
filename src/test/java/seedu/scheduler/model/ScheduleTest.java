@@ -60,10 +60,10 @@ public class ScheduleTest {
 
         // The slots and the interviewer falls in the schedule, and the slot is available for interview,
         // i.e. the slot is "1".
-        johnathan.addIntervieweeSlot(new IntervieweeSlot(interviewee1, Slot.fromString("10/09/2019 18:30-19:00")));
-        johnathan.addIntervieweeSlot(new IntervieweeSlot(interviewee2, Slot.fromString("10/09/2019 19:00-19:30")));
+        johnathan.addAllocatedSlot(new IntervieweeSlot(interviewee1, Slot.fromString("10/09/2019 18:30-19:00")));
+        johnathan.addAllocatedSlot(new IntervieweeSlot(interviewee2, Slot.fromString("10/09/2019 19:00-19:30")));
 
-        assertDoesNotThrow(() -> subjectSchedule.addAllocatedInterviewees(johnathan, johnathan.getIntervieweeSlots()));
+        assertDoesNotThrow(() -> subjectSchedule.addAllocatedInterviewees(johnathan, johnathan.getAllocatedSlots()));
         assertEquals(subjectSchedule, expectedSchedule);
     }
 
@@ -75,22 +75,22 @@ public class ScheduleTest {
 
         // Interviewer not in schedule
         Interviewer ben = SampleInterviewer.getInterviewer("Ben", "Presidential");
-        ben.addIntervieweeSlot(new IntervieweeSlot(interviewees.get(0), Slot.fromString("10/09/2019 18:30-19:00")));
-        assertDoesNotThrow(() -> subjectSchedule.addAllocatedInterviewees(ben, ben.getIntervieweeSlots()));
+        ben.addAllocatedSlot(new IntervieweeSlot(interviewees.get(0), Slot.fromString("10/09/2019 18:30-19:00")));
+        assertDoesNotThrow(() -> subjectSchedule.addAllocatedInterviewees(ben, ben.getAllocatedSlots()));
         assertEquals(subjectSchedule, expectedSchedule);
 
         // Slot's date is not the same as schedule
         Interviewer johnathan = SampleInterviewer.getInterviewer("Johnathan", "Technical");
-        johnathan.addIntervieweeSlot(new IntervieweeSlot(interviewees.get(0),
+        johnathan.addAllocatedSlot(new IntervieweeSlot(interviewees.get(0),
                 Slot.fromString("25/10/2019 18:30-19:00")));
-        assertDoesNotThrow(() -> subjectSchedule.addAllocatedInterviewees(johnathan, johnathan.getIntervieweeSlots()));
+        assertDoesNotThrow(() -> subjectSchedule.addAllocatedInterviewees(johnathan, johnathan.getAllocatedSlots()));
         assertEquals(subjectSchedule, expectedSchedule);
 
         // Slot's timing is not in the schedule
         Interviewer james = SampleInterviewer.getInterviewer("James", "Logistics");
-        james.addIntervieweeSlot(new IntervieweeSlot(interviewees.get(0),
+        james.addAllocatedSlot(new IntervieweeSlot(interviewees.get(0),
                 Slot.fromString("10/09/2019 01:00-02:00")));
-        assertDoesNotThrow(() -> subjectSchedule.addAllocatedInterviewees(james, james.getIntervieweeSlots()));
+        assertDoesNotThrow(() -> subjectSchedule.addAllocatedInterviewees(james, james.getAllocatedSlots()));
         assertEquals(subjectSchedule, expectedSchedule);
     }
 
@@ -101,9 +101,9 @@ public class ScheduleTest {
         Interviewee interviewee1 = SampleInterviewee.getSampleIntervieweesForGraph1().get(0);
 
         // The slot in which the interviewee to be added is not available for interview, i.e. is "0" instead of "1".
-        johnathan.addIntervieweeSlot(new IntervieweeSlot(interviewee1, Slot.fromString("10/09/2019 20:30-21:00")));
+        johnathan.addAllocatedSlot(new IntervieweeSlot(interviewee1, Slot.fromString("10/09/2019 20:30-21:00")));
         assertThrows(ScheduleException.class, () ->
-                subjectSchedule.addAllocatedInterviewees(johnathan, johnathan.getIntervieweeSlots()));
+                subjectSchedule.addAllocatedInterviewees(johnathan, johnathan.getAllocatedSlots()));
     }
 
     @Test

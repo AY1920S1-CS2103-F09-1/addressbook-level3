@@ -346,7 +346,7 @@ class AddInterviewerCommandTest {
         }
 
         @Override
-        public void clearAllAllocatedSlot() {
+        public void resetDataBeforeScheduling() {
             throw new AssertionError("This method should not be called.");
         }
     }
