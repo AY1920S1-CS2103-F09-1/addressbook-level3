@@ -29,6 +29,7 @@ import javafx.collections.transformation.FilteredList;
 
 import seedu.scheduler.commons.core.GuiSettings;
 import seedu.scheduler.commons.core.LogsCenter;
+import seedu.scheduler.commons.exceptions.ScheduleException;
 import seedu.scheduler.model.person.Department;
 import seedu.scheduler.model.person.Interviewee;
 import seedu.scheduler.model.person.Interviewer;
@@ -497,7 +498,6 @@ public class ModelManager implements Model {
         return schedulesList;
     }
 
-    /** Returns a list of lists of column titles, each list of column titles belong to a Schedule table*/
     @Override
     public List<List<String>> getTitlesLists() {
         List<List<String>> titlesLists = new LinkedList<>();
@@ -505,6 +505,17 @@ public class ModelManager implements Model {
             titlesLists.add(schedule.getTitles());
         }
         return titlesLists;
+    }
+
+    @Override
+    public void updateSchedulesAfterScheduling() throws ScheduleException {
+        List<Interviewer> interviewers = interviewerList.getEntityList();
+        for (Interviewer interviewer : interviewers) {
+            for (Schedule schedule : schedulesList) {
+                schedule.addAllocatedInterviewees(interviewer, interviewer.getIntervieweeSlots());
+            }
+        }
+        refreshListener.scheduleDataUpdated();
     }
 
     /**
@@ -517,20 +528,6 @@ public class ModelManager implements Model {
         List<Schedule> listClone = new LinkedList<>();
         for (Schedule schedule : list) {
             listClone.add(Schedule.cloneSchedule(schedule));
-        }
-        return listClone;
-    }
-
-    /**
-     * Returns the deep copy of the interviewee's list given.
-     *
-     * @param list the list of interviewees to be copied.
-     * @return a deep copy of interviewee's list.
-     */
-    private static List<Interviewee> cloneIntervieweesList(List<Interviewee> list) {
-        List<Interviewee> listClone = new LinkedList<>();
-        for (Interviewee interviewee : list) {
-            listClone.add(interviewee);
         }
         return listClone;
     }

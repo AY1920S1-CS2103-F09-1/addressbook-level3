@@ -79,7 +79,7 @@ public class SampleInterviewer {
         return bernard;
     }
 
-    private static Interviewer getInterviewer(String nameString, String departmentString) {
+    public static Interviewer getInterviewer(String nameString, String departmentString) {
         Person alice = TypicalPersons.ALICE;
         Department department = new Department(departmentString);
         Name name = new Name(nameString);

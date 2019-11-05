@@ -11,6 +11,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 
 import seedu.scheduler.commons.core.GuiSettings;
+import seedu.scheduler.commons.exceptions.ScheduleException;
 import seedu.scheduler.model.person.Interviewee;
 import seedu.scheduler.model.person.Interviewer;
 import seedu.scheduler.model.person.Name;
@@ -215,9 +216,7 @@ public interface Model {
      */
     Optional<Slot> getAllocatedSlot(String intervieweeName);
 
-    /**
-     * Returns a list of observable list of the schedules.
-     */
+    /** Returns a list of observable list of the schedules **/
     List<ObservableList<ObservableList<String>>> getObservableLists();
 
     /** Returns the schedulesList **/
@@ -226,6 +225,10 @@ public interface Model {
     /** Returns a list of lists of column titles, each list of column titles belong to a Schedule table*/
     List<List<String>> getTitlesLists();
 
+    /**
+     * Updates the schedules after schedule command is executed by placing the interviewees into their allocated slot.
+     **/
+    void updateSchedulesAfterScheduling() throws ScheduleException;
     // ============================================ User Prefs ===================================================
 
     /**

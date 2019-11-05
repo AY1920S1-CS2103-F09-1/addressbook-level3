@@ -1,6 +1,7 @@
 package seedu.scheduler.model.person;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -14,7 +15,7 @@ public class Interviewer extends Person {
 
     // Each availability is given as a string in this format DD/MM/YYYY HH:MM-HH:MM
     private final List<Slot> availabilities;
-    private final List<IntervieweeSlot> interviewingSlots;
+    private final List<IntervieweeSlot> intervieweesSlots;
     private final Department department;
     private final Email email;
 
@@ -27,7 +28,7 @@ public class Interviewer extends Person {
         this.department = department;
         this.email = email;
         this.availabilities = availabilities;
-        this.interviewingSlots = new ArrayList<>();
+        this.intervieweesSlots = new ArrayList<>();
     }
 
     /**
@@ -101,11 +102,12 @@ public class Interviewer extends Person {
     }
 
     public List<IntervieweeSlot> getIntervieweeSlots() {
-        return interviewingSlots;
+        Collections.sort(intervieweesSlots);
+        return intervieweesSlots;
     }
 
     public void addIntervieweeSlot(IntervieweeSlot slot) {
-        this.interviewingSlots.add(slot);
+        this.intervieweesSlots.add(slot);
     }
 
     /**

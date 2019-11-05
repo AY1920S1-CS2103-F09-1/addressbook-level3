@@ -301,6 +301,11 @@ class AddInterviewerCommandTest {
         }
 
         @Override
+        public void updateSchedulesAfterScheduling() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void emailInterviewee(Interviewee interviewee) {
             throw new AssertionError("This method should not be called.");
         }
@@ -327,16 +332,6 @@ class AddInterviewerCommandTest {
 
         @Override
         public boolean hasInterviewee(Name toFind) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void addInterviewerToSchedule(Interviewer interviewer) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public String scheduleHasInterviewer(Interviewer interviewer) {
             throw new AssertionError("This method should not be called.");
         }
 

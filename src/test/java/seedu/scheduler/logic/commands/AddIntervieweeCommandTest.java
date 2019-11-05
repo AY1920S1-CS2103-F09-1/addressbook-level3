@@ -295,16 +295,6 @@ class AddIntervieweeCommandTest {
         }
 
         @Override
-        public void addInterviewerToSchedule(Interviewer interviewer) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public String scheduleHasInterviewer(Interviewer interviewer) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void setSchedulesList(List<Schedule> schedulesList) {
             throw new AssertionError("This method should not be called.");
         }
@@ -331,6 +321,12 @@ class AddIntervieweeCommandTest {
 
         @Override
         public List<List<String>> getTitlesLists() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+
+        @Override
+        public void updateSchedulesAfterScheduling() {
             throw new AssertionError("This method should not be called.");
         }
 
