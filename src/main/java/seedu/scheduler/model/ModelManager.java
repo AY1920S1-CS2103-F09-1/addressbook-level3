@@ -515,7 +515,10 @@ public class ModelManager implements Model {
                 schedule.addAllocatedInterviewees(interviewer, interviewer.getIntervieweeSlots());
             }
         }
-        refreshListener.scheduleDataUpdated();
+
+        if (refreshListener != null) {
+            refreshListener.scheduleDataUpdated();
+        }
     }
 
     /**

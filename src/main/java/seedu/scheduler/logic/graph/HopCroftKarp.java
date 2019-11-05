@@ -43,6 +43,10 @@ public class HopCroftKarp {
      */
     public void execute() {
         logger.info("Hopcroft Karp algorithm starting...");
+
+        if (graph.isEmpty()) {
+            return;
+        }
         initialiseHopCroftKarp();
         List<InterviewerSlotVertex> lastLayer = new LinkedList<>();
 

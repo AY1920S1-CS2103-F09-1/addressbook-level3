@@ -74,9 +74,9 @@ public class ScheduleTest {
         List<Interviewee> interviewees = SampleInterviewee.getSampleIntervieweesForGraph1();
 
         // Interviewer not in schedule
-        Interviewer Ben = SampleInterviewer.getInterviewer("Ben", "Presidential");
-        Ben.addIntervieweeSlot(new IntervieweeSlot(interviewees.get(0), Slot.fromString("10/09/2019 18:30-19:00")));
-        assertDoesNotThrow(() -> subjectSchedule.addAllocatedInterviewees(Ben, Ben.getIntervieweeSlots()));
+        Interviewer ben = SampleInterviewer.getInterviewer("Ben", "Presidential");
+        ben.addIntervieweeSlot(new IntervieweeSlot(interviewees.get(0), Slot.fromString("10/09/2019 18:30-19:00")));
+        assertDoesNotThrow(() -> subjectSchedule.addAllocatedInterviewees(ben, ben.getIntervieweeSlots()));
         assertEquals(subjectSchedule, expectedSchedule);
 
         // Slot's date is not the same as schedule

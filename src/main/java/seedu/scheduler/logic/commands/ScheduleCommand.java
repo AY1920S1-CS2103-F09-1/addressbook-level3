@@ -2,9 +2,9 @@ package seedu.scheduler.logic.commands;
 
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.stream.IntStream;
 
 import seedu.scheduler.commons.core.LogsCenter;
+import seedu.scheduler.commons.exceptions.ScheduleException;
 import seedu.scheduler.commons.util.Pair;
 import seedu.scheduler.logic.commands.exceptions.CommandException;
 import seedu.scheduler.logic.graph.BipartiteGraph;
@@ -41,27 +41,25 @@ public class ScheduleCommand extends Command {
         List<Interviewee> interviewees = model.getUnfilteredIntervieweeList();
 
         BipartiteGraph graph = new BipartiteGraphGenerator(interviewers, interviewees).generate();
-
         String message = "Successfully scheduled!";
-        String result = "Result:\nNo matching is found";
 
-        if (!graph.isEmpty()) {
-            HopCroftKarp algorithm = new HopCroftKarp(graph);
-            algorithm.execute();
+        HopCroftKarp algorithm = new HopCroftKarp(graph);
+        algorithm.execute();
 
-            assignSlots(graph);
-            //String allocationResult = generateResultMessage(intervieweesWithSlots);
-            String allocationResult = "Temporary message";
-
-            if (!allocationResult.isEmpty()) {
-                result = String.format("Result:\n %s", allocationResult);
+        boolean isNonEmptyResult = assignSlots(graph);
+        if (isNonEmptyResult) {
+            try {
+                model.updateSchedulesAfterScheduling();
+            } catch (ScheduleException e) {
+                throw new CommandException("Error occurs!", e);
             }
+        } else {
+            message = message + "\nNo matching is found!\n";
         }
 
         logger.info("Finish scheduling interviews");
         model.setScheduled(true);
-        String finalMessage = String.format("%s\n%s", message, result);
-        return new CommandResult(finalMessage);
+        return new CommandResult(message);
     }
 
     @Override
@@ -72,15 +70,18 @@ public class ScheduleCommand extends Command {
 
     /**
      * Attaches the allocated interview slot the corresponding interviewee and also to the interviewer (after running
-     * the HopCroftKarp algorithm).
+     * the HopCroftKarp algorithm). Returns true if at least one interviewee is allocated with a slot.
      */
-    private void assignSlots(BipartiteGraph graph) {
+    private boolean assignSlots(BipartiteGraph graph) {
         int numInterviewees = graph.getNumInterviewees();
+        boolean isNonEmptyResult = false;
 
-        IntStream.range(0, numInterviewees).forEach(i -> {
+        for (int i = 0; i < numInterviewees; i++) {
             IntervieweeVertex vertex = graph.getIntervieweePair(i).getHead();
 
             if (vertex.isMatched()) {
+                isNonEmptyResult = true;
+
                 Interviewee interviewee = vertex.getItem();
                 InterviewerSlot interviewerSlot = vertex.getPartner().getItem();
                 Interviewer interviewer = interviewerSlot.getInterviewer();
@@ -89,6 +90,8 @@ public class ScheduleCommand extends Command {
                 interviewee.setAllocatedSlot(slot);
                 interviewer.addIntervieweeSlot(new IntervieweeSlot(interviewee, slot));
             }
-        });
+        }
+
+        return isNonEmptyResult;
     }
 }
