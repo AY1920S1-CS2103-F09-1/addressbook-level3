@@ -7,12 +7,14 @@
 </div>
 </div>
 <div id="toc" class="toc">
-<div id="toctitle"></div>
+<div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
 <li><a href="#quick-start">2. Quick Start</a>
 <ul class="sectlevel2">
 <li><a href="#import-your-csv-file-into-the-application">2.1. Import your csv file into the application</a></li>
+<li><a href="#manually-add-interviewees-and-interviewers">2.2. Manually add interviewees and interviewers</a></li>
+<li><a href="#tip-converting-an-excel-file-in-csv-format">2.3. TIP: Converting an Excel file in .csv format</a></li>
 </ul>
 </li>
 <li><a href="#user-preferences">3. User Preferences</a>
@@ -23,18 +25,62 @@
 </li>
 <li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help">4.1. Viewing help</a></li>
-<li><a href="#importing-existing-availabilities-code-import-code">4.2. Importing existing availabilities <code>import</code></a></li>
-<li><a href="#add-interviewees-interviewers-code-add-code">4.3. Add interviewees/interviewers <code>add</code></a></li>
-<li><a href="#edit-interviewees-interviewers-code-edit-code-code-coming-in-v2-0-code">4.4. Edit interviewees/interviewers <code>edit</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#delete-interviewees-interviewers-code-delete-code">4.5. Delete interviewees/interviewers <code>delete</code></a></li>
-<li><a href="#ui-display">4.6. UI Display</a></li>
+<li><a href="#viewing-help-code-help-code">4.1. Viewing help <code>help</code></a></li>
+<li><a href="#importing-existing-availabilities-code-import-code">4.2. Importing existing availabilities <code>import</code></a>
+<ul class="sectlevel3">
+<li><a href="#importing-interviewers-availability">4.2.1. Importing interviewers’ availability</a></li>
+<li><a href="#importing-interviewees-availability">4.2.2. Importing interviewees’ availability</a></li>
+</ul>
+</li>
+<li><a href="#add-interviewees-interviewers-manually-code-add-code">4.3. Add interviewees/interviewers manually <code>add</code></a>
+<ul class="sectlevel3">
+<li><a href="#adding-a-new-interviewee">4.3.1. Adding a new interviewee</a></li>
+<li><a href="#adding-a-new-interviewer">4.3.2. Adding a new interviewer</a></li>
+</ul>
+</li>
+<li><a href="#edit-interviewees-interviewers-manually-code-edit-code">4.4. Edit interviewees/interviewers manually <code>edit</code></a>
+<ul class="sectlevel3">
+<li><a href="#edit-an-existing-interviewee">4.4.1. Edit an existing interviewee</a></li>
+<li><a href="#edit-an-existing-interviewer">4.4.2. Edit an existing interviewer</a></li>
+</ul>
+</li>
+<li><a href="#delete-interviewees-interviewers-manually-code-delete-code">4.5. Delete interviewees/interviewers manually <code>delete</code></a>
+<ul class="sectlevel3">
+<li><a href="#delete-an-existing-interviewee">4.5.1. Delete an existing interviewee</a></li>
+<li><a href="#delete-an-existing-interviewer">4.5.2. Delete an existing interviewer</a></li>
+</ul>
+</li>
+<li><a href="#ui-display">4.6. UI Display</a>
+<ul class="sectlevel3">
+<li><a href="#viewing-schedules">4.6.1. Viewing Schedules</a></li>
+<li><a href="#viewing-details-of-interviewees-coming-soon-in-v1-4">4.6.2. Viewing details of interviewees [Coming soon in v1.4]</a></li>
+<li><a href="#differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code">4.6.3. Differentiating the importance of timetable slots through colours <code>[Coming in v2.0]</code></a></li>
+</ul>
+</li>
 <li><a href="#get-interview-schedule-code-get-code-code-coming-in-v2-0-code">4.7. Get interview schedule <code>get</code> <code>[Coming in v2.0]</code></a></li>
 <li><a href="#tag-interview-slot-code-tag-code-code-coming-in-v2-0-code">4.8. Tag interview slot <code>tag</code> <code>[Coming in v2.0]</code></a></li>
-<li><a href="#scheduling-code-schedule-code">4.9. Scheduling <code>schedule</code></a></li>
+<li><a href="#scheduling-code-schedule-code">4.9. Scheduling <code>schedule</code></a>
+<ul class="sectlevel3">
+<li><a href="#schedule-the-interviews">4.9.1. Schedule the interviews</a></li>
+</ul>
+</li>
 <li><a href="#exporting-of-interview-schedule-code-export-code">4.10. Exporting of interview schedule <code>export</code></a></li>
-<li><a href="#sending-of-email-code-email-code">4.11. Sending of email <code>email</code></a></li>
-<li><a href="#recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code">4.12. Recording of additional statuses: <code>record</code> <code>[Coming in v2.0]</code></a></li>
+<li><a href="#sending-of-email-code-email-code">4.11. Sending of email <code>email</code></a>
+<ul class="sectlevel3">
+<li><a href="#sending-of-interview-time-slot-to-interviewee">4.11.1. Sending of interview time slot to interviewee</a></li>
+<li><a href="#sending-of-interview-time-slot-to-all-interviewees">4.11.2. Sending of interview time slot to all interviewees</a></li>
+<li><a href="#checking-status-of-emails-sent">4.11.3. Checking status of emails sent</a></li>
+<li><a href="#sending-of-interview-results-to-an-interviewee-code-coming-in-v2-0-code">4.11.4. Sending of interview results to an interviewee <code>[Coming in v2.0]</code></a></li>
+<li><a href="#sending-of-interview-results-to-all-interviewees-code-coming-in-v2-0-code">4.11.5. Sending of interview results to all interviewees <code>[Coming in v2.0]</code></a></li>
+</ul>
+</li>
+<li><a href="#recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code">4.12. Recording of additional statuses: <code>record</code> <code>[Coming in v2.0]</code></a>
+<ul class="sectlevel3">
+<li><a href="#recording-of-interviewee-s-attendance">4.12.1. Recording of interviewee’s attendance</a></li>
+<li><a href="#recording-of-interview-result">4.12.2. Recording of interview result</a></li>
+<li><a href="#ranking-of-interviewees">4.12.3. Ranking of interviewees</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
@@ -46,8 +92,11 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Scheduler is an app that can automate the scheduling of interviews for secretaries in NUS CCAs. It is optimised for
-people who <strong>prefer typing in a Command Line Interface (CLI)</strong> to quickly access the functionalities of an app.<br></p>
+<p>Due to vastly different timetables, scheduling interviews that don&#8217;t clash for applicants to positions in an NUS
+Co-Curricular Activity (CCA) can be difficult. Scheduler is an app that can automate this scheduling of interviews for
+secretaries in NUS CCAs. Given templates adapted from exported NUSync CCA sign-up lists, Scheduler generates an optimal
+matching of interviewees to time slots. Scheduler also supports manual input. It is optimised for people who <strong>prefer
+typing in a Command Line Interface (CLI)</strong> to quickly access the functionalities of an app.<br></p>
 </div>
 <div class="paragraph">
 <p>Click on <a href="#quick-start">Quick Start</a> to get started!</p>
@@ -58,23 +107,103 @@ people who <strong>prefer typing in a Command Line Interface (CLI)</strong> to q
 <h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This guide shows you how to import your interview schedules into Scheduler to begin managing your interview schedule.
+<p>This guide shows you how to import your interviewee and interviewer schedules into Scheduler to begin managing your interview schedule.
 It also shows you basic tips on how to add or delete and edit interviewers/interviewees based on your changing needs.</p>
 </div>
 <div class="sect2">
 <h3 id="import-your-csv-file-into-the-application"><a class="link" href="#import-your-csv-file-into-the-application">2.1. Import your csv file into the application</a></h3>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Converting your Excel file into .csv format
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>To begin, let&#8217;s download some comma-separated value (.csv) files with dummy data and import that data into Scheduler.</p>
 </div>
+<div class="paragraph">
+<p>Click <a href="#importing-existing-availabilities-code-import-code">this link</a> to download and import a .csv file of availabilities into Scheduler!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="manually-add-interviewees-and-interviewers"><a class="link" href="#manually-add-interviewees-and-interviewers">2.2. Manually add interviewees and interviewers</a></h3>
+<div class="paragraph">
+<p>Forgot to include some data before importing? No problem!</p>
+</div>
+<div class="paragraph">
+<p>To add an interviewee, use the <code>add</code> command. Here we add an interviewee with the following characteristics:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Name</strong> - John Doe</p>
+</li>
+<li>
+<p><strong>Phone number</strong> - 91234567</p>
+</li>
+<li>
+<p><strong>Faculty</strong> - School of Computing</p>
+</li>
+<li>
+<p><strong>Year of study</strong> - 2019</p>
+</li>
+<li>
+<p><strong>Department of interest</strong> - Marketing</p>
+</li>
+<li>
+<p><strong>Personal Email</strong> - <a href="mailto:john_doe@gmail.com">john_doe@gmail.com</a></p>
+</li>
+<li>
+<p><strong>Work email</strong> (should be an NUS email) - <a href="mailto:john_doe@u.nus.edu">john_doe@u.nus.edu</a></p>
+</li>
+<li>
+<p><strong>Preferred time slots</strong> - 17/10/2019, 1pm to 2pm</p>
+<div class="literalblock">
+<div class="content">
+<pre>add r/interviewee n/John Doe p/91234567 f/School of Computing y/2019 ep/john_doe@gmail.com ew/john_doe@u.nus.edu d/Marketing s/17/10/2019 13:00-14:00</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Note that all fields specified above are <strong>compulsory</strong> when adding an interviewee manually.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Similarly, to add an interviewer with the characteristics:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Name</strong> - Bohn Coe</p>
+</li>
+<li>
+<p><strong>Phone number</strong> - 9765421</p>
+</li>
+<li>
+<p><strong>Work email</strong> (should be an NUS email) - <a href="mailto:bohn_coe@u.nus.edu">bohn_coe@u.nus.edu</a></p>
+</li>
+<li>
+<p><strong>Department</strong> - Marketing</p>
+</li>
+<li>
+<p><strong>Available time slots</strong> - 17/10/2019, 1pm to 2pm</p>
+<div class="literalblock">
+<div class="content">
+<pre>add r/interviewer n/Bohn Coe p/97654321 ew/bohn_coe@u.nus.edu d/Marketing s/17/10/2019 13:00-14:00</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Again, the fields specified above are *compulsory when adding an interviewer manually.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tip-converting-an-excel-file-in-csv-format"><a class="link" href="#tip-converting-an-excel-file-in-csv-format">2.3. TIP: Converting an Excel file in .csv format</a></h3>
 <div class="paragraph">
 <p>1) Open Excel and click <strong>File &#8594; Open</strong>.</p>
 </div>
@@ -149,7 +278,7 @@ Converting your Excel file into .csv format
 <div class="sect2">
 <h3 id="working-hours"><a class="link" href="#working-hours">3.1. Working Hours</a></h3>
 <div class="paragraph">
-<p>Each time slot, that an interviewer or interviewee indicates, must be within the <code>startTime</code> and <code>endTime</code> of the pre-defined
+<p>Each time slot that an interviewer or interviewee indicates, must be within the <code>startTime</code> and <code>endTime</code> of the pre-defined
 working hours for it to be displayed in the schedules.</p>
 </div>
 <div class="paragraph">
@@ -165,7 +294,7 @@ working hours for it to be displayed in the schedules.</p>
 <div class="sect2">
 <h3 id="duration-of-time-slot"><a class="link" href="#duration-of-time-slot">3.2. Duration of Time slot</a></h3>
 <div class="paragraph">
-<p>Each time slot, that an interviewer or interviewee indicates, must be strictly of this pre-defined duration for it to be
+<p>Each time slot that an interviewer or interviewee indicates, must be strictly of this pre-defined duration for it to be
  displayed in the schedules. It is represented by <code>duration</code> in the user preference file.</p>
 </div>
 <div class="paragraph">
@@ -175,6 +304,13 @@ working hours for it to be displayed in the schedules.</p>
 <div class="paragraph">
 <p><strong>Default values:</strong><br>
 <code>duration</code>: 30</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When adding interviewees or interviewers manually into Scheduler, the <code>SLOT</code> input provided must have a duration (in minutes) that matches <code>duration</code>.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -190,15 +326,46 @@ working hours for it to be displayed in the schedules.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user, e.g. in <code>add interviewee name:"NAME" slot:"SLOT"</code>,
-<code>NAME</code> and <code>slot</code> are parameters that need to be provided by the user, e.g. "John Doe" and "20/09/2019 1800 - 20/09/2019 21:00".</p>
+<p>Words in <code>UPPER_CASE</code> are the <strong>parameters</strong> to be supplied by the user.</p>
+</li>
+<li>
+<p>Items in square brackets <code>[]</code> are optional.</p>
+</li>
+<li>
+<p>Items with <code>&#8230;&#8203;</code> after them can be used multiple times, including zero times.</p>
+</li>
+<li>
+<p><strong>Parameters</strong> can be in any order. E.g if a command specifies <code>n/NAME p/PHONE</code>, passing the input as <code>p/PHONE n/NAME</code> is also acceptable.</p>
+</li>
+<li>
+<p>Example: <code>add r/interviewee n/NAME p/PHONE f/FACULTY y/YEAR_OF_STUDY ep/PERSONAL_EMAIL ew/NUS_WORK_EMAIL d/DEPARTMENT&#8230;&#8203; s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>NAME</code>, <code>PHONE</code>. <code>FACULTY</code>, <code>YEAR_OF_STUDY</code>, <code>PERSONAL_EMAIL</code>, <code>NUS_WORK_EMAIL</code>, <code>DEPARTMENT</code>, <code>SLOT</code> and <code>TAG</code> are to be supplied by the user.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Valid input: <code>add r/interviewee n/John Doe p/88888888 f/School of Computing y/2019 ep/john_doe@gmail.com ew/john_doe@u.nus.edu d/Marketing s/17/10/2019 13:00-14:00 t/friends</code></p>
+</li>
+<li>
+<p><code>t/friends</code> is optional, and can be omitted from the command.</p>
+</li>
+<li>
+<p>Multiple tags can be supplied as input in place of just <code>t/friends</code>: <code>t/friends t/strong t/likesDogs</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help"><a class="link" href="#viewing-help">4.1. Viewing help</a></h3>
+<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.1. Viewing help <code>help</code></a></h3>
 <div class="paragraph">
 <p>Shows helpful information on using this software.
 Format: <code>help</code></p>
@@ -227,7 +394,7 @@ availability or interviewees details .csv file.</p>
 <div class="ulist NOTE">
 <ul class="NOTE">
 <li>
-<p>Data in .csv file must follow the settings defined in the user preference file. View <a href="#User Prefences">User Prefences</a> if you wish to change the
+<p>Data in .csv file must follow the settings defined in the user preference file. View <a href="#user-preferences">User Preferences</a> if you wish to change the
 default settings.</p>
 </li>
 <li>
@@ -301,30 +468,17 @@ default settings.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-interviewees-interviewers-code-add-code"><a class="link" href="#add-interviewees-interviewers-code-add-code">4.3. Add interviewees/interviewers <code>add</code></a></h3>
+<h3 id="add-interviewees-interviewers-manually-code-add-code"><a class="link" href="#add-interviewees-interviewers-manually-code-add-code">4.3. Add interviewees/interviewers manually <code>add</code></a></h3>
 <div class="paragraph">
-<p>Manually add a new entity to the database.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>add r/ROLE n/NAME p/PHONE [t/TAG]&#8230;&#8203; [f/FACULTY] [ep/PERSONAL_EMAIL] [ew/NUS_WORK_EMAIL] [y/YEAR_OF_STUDY] [d/DEPARTMENT]&#8230;&#8203; [s/SLOT]&#8230;&#8203;</code></p>
+<p>Manually add a new entity to the database. The command format differs on the <code>r/ROLE</code> prefix supplied:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>A <code>&#8230;&#8203;</code> at the end of a field indicates that multiple arguments with those prefixes can be added, such as multiple slots.</p>
+<p>If <code>interviewee</code> is supplied, refer to <a href="#adding-a-new-interviewee">Adding a new interviewee</a> below.</p>
 </li>
 <li>
-<p>The command format differs on the <code>r/ROLE</code> prefix supplied.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>If <code>interviewee</code> is supplied, refer to "Adding a new interviewee" below.</p>
-</li>
-<li>
-<p>If <code>interviewer</code> is supplied, refer to "Adding a new interviewer" below.</p>
-</li>
-</ul>
-</div>
+<p>If <code>interviewer</code> is supplied, refer to <a href="#adding-a-new-interviewer">Adding a new interviewer</a> below.</p>
 </li>
 </ul>
 </div>
@@ -334,8 +488,7 @@ default settings.</p>
 <p>Manually add a new interviewee to the database.</p>
 </div>
 <div class="paragraph">
-<p>Format: add <code>r/interviewee</code> <code>n/NAME</code> <code>p/PHONE</code> <code>[t/TAG]&#8230;&#8203;</code> <code>f/FACULTY</code> <code>ep/PERSONAL_EMAIL</code> <code>ew/NUS_WORK_EMAIL</code> <code>y/YEAR_OF_STUDY</code><br>
-<code>[d/DEPARTMENT]&#8230;&#8203;</code> <code>[s/SLOT]&#8230;&#8203;</code></p>
+<p>Format: <code>add r/interviewee n/NAME p/PHONE f/FACULTY y/YEAR_OF_STUDY ep/PERSONAL_EMAIL ew/NUS_WORK_EMAIL d/DEPARTMENT&#8230;&#8203; s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -345,25 +498,44 @@ default settings.</p>
 <pre>add r/interviewee n/John Doe p/88888888 t/CAP5 t/dogLover f/School of Computing ep/JohnDoe@gmail.com ew/JohnDoe@u.nus.edu y/2018 d/Marketing s/20/09/2019 18:00-18:30</pre>
 </div>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>An interviewee can have multiple <code>s/SLOT</code>, <code>d/DEPARTMENT</code> and <code>t/TAG</code> arguments</p>
+<p><code>s/SLOT</code> must follow the format: <code>dd/MM/yyyy HH:mm-HH:mm</code>, where <strong>dd/MM/yyyy</strong> refers to a <strong>date</strong>, the leftmost <strong>HH:mm</strong> refers to the <strong>start duration</strong>
+and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</strong>.</p>
 </li>
 <li>
-<p>Slots should be given in the format: <code>DD/MM/YYYY HH:MM-HH:MM</code></p>
+<p>The date <strong>dd/MM/yyyy</strong> must strictly be a valid date, i.e 30/02/2019  cannot be supplied as a date.</p>
+</li>
+<li>
+<p>The duration of a <code>s/SLOT</code> must follow these constraints:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>the first <code>HH:MM</code> refers to the starting time and the second <code>HH:MM</code> is the ending time of availability.</p>
+<p>A duration must be in 24-hour format.</p>
 </li>
 <li>
-<p>The starting time must be earlier than the ending time.</p>
+<p>The range of durations available for input must be within <a href="#working-hours">Working Hours</a>.</p>
+</li>
+<li>
+<p>The start duration must be earlier than the end duration, and only start at the start of a new hour or new half-hour
+(i.e 13:00 is a valid start duration, while 13:10 is not).</p>
+</li>
+<li>
+<p>The time elapsed from the start duration to end duration must follow the number of minutes as specified
+by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#duration-of-time-slot">Duration of Time slot</a>.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -372,78 +544,235 @@ default settings.</p>
 <p>Manually add a new interviewer to the database.</p>
 </div>
 <div class="paragraph">
-<p>Format: add <code>r/interviewer</code> <code>n/NAME</code> <code>p/PHONE</code> <code>[t/TAG]&#8230;&#8203;</code> <code>d/DEPARTMENT</code> <code>ew/NUS_WORK_EMAIL</code> <code>s/SLOT&#8230;&#8203;</code></p>
+<p>Format: <code>add r/interviewer n/NAME p/PHONE ew/NUS_WORK_EMAIL d/DEPARTMENT  s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>add r/interviewer n/Mary Jane p/99999999 ew/MaryJane@u.nus.edu d/Marketing s/20/09/2019 18:00-18:30</pre>
+<pre>add r/interviewer n/Mary Jane p/98765432 ew/mary_jane@u.nus.edu d/Marketing s/20/09/2019 18:00-18:30</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>s/SLOT</code> must follow the format: <code>dd/MM/yyyy HH:mm-HH:mm</code>, where <strong>dd/MM/yyyy</strong> refers to a <strong>date</strong>, the leftmost <strong>HH:mm</strong> refers to the <strong>start duration</strong>
+and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</strong>.</p>
+</li>
+<li>
+<p>The date <strong>dd/MM/yyyy</strong> must strictly be a valid date, i.e 30/02/2019  cannot be supplied as a date.</p>
+</li>
+<li>
+<p>The duration of a <code>s/SLOT</code> must follow these constraints:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A duration must be in 24-hour format.</p>
+</li>
+<li>
+<p>The range of durations available for input must be within <a href="#working-hours">Working Hours</a>.</p>
+</li>
+<li>
+<p>The start duration must be earlier than the end duration, and only start at the start of a new hour or new half-hour
+(i.e 13:00 is a valid start duration, while 13:10 is not).</p>
+</li>
+<li>
+<p>The time elapsed from the start duration to end duration must follow the number of minutes as specified
+by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#duration-of-time-slot">Duration of Time slot</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-interviewees-interviewers-code-edit-code-code-coming-in-v2-0-code"><a class="link" href="#edit-interviewees-interviewers-code-edit-code-code-coming-in-v2-0-code">4.4. Edit interviewees/interviewers <code>edit</code> <code>[Coming in v2.0]</code></a></h3>
+<h3 id="edit-interviewees-interviewers-manually-code-edit-code"><a class="link" href="#edit-interviewees-interviewers-manually-code-edit-code">4.4. Edit interviewees/interviewers manually <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Manually edit an entity in the database.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>edit NAME r/ROLE p/PHONE [t/TAG]&#8230;&#8203; f/FACULTY ep/PERSONAL_EMAIL ew/NUS_WORK_EMAIL y/YEAR_OF_STUDY [d/DEPARTMENT]&#8230;&#8203; [s/SLOT]&#8230;&#8203;</code></p>
+<p>Manually edit an entity in the database. The command format depends on the <code>r/ROLE</code> prefix supplied:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>NAME</code> must be provided after <code>edit</code> and before the first prefix <code>r/ROLE</code>.</p>
+<p>If <code>interviewee</code> is supplied, refer to <a href="#edit-an-existing-interviewee">Edit an existing interviewee</a> below.</p>
 </li>
 <li>
-<p>A <code>&#8230;&#8203;</code> at the end of a field indicates that multiple arguments with those prefixes can be added, such as multiple slots.</p>
-</li>
-<li>
-<p>The command format differs on the <code>r/ROLE</code> prefix supplied.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>If <code>interviewee</code> is supplied, refer to "Edit an existing interviewee" below.</p>
-</li>
-<li>
-<p>If <code>interviewer</code> is supplied, refer to "Edit an existing interviewer" below.</p>
-</li>
-</ul>
-</div>
+<p>If <code>interviewer</code> is supplied, refer to <a href="#edit-an-existing-interviewer">Edit an existing interviewer</a> below.</p>
 </li>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="edit-an-existing-interviewee-code-coming-in-v2-0-code"><a class="link" href="#edit-an-existing-interviewee-code-coming-in-v2-0-code">4.4.1. Edit an existing interviewee <code>[Coming in v2.0]</code></a></h4>
+<h4 id="edit-an-existing-interviewee"><a class="link" href="#edit-an-existing-interviewee">4.4.1. Edit an existing interviewee</a></h4>
 <div class="paragraph">
 <p>Manually edit an existing interviewee in the database.</p>
 </div>
 <div class="paragraph">
-<p>Format: edit <code>NAME</code> <code>r/interviewee</code> <code>p/PHONE</code> <code>[t/TAG]&#8230;&#8203;</code> <code>f/FACULTY</code> <code>ep/PERSONAL_EMAIL</code> <code>ew/NUS_WORK_EMAIL</code> <code>y/YEAR_OF_STUDY</code>
-<code>[d/DEPARTMENT]&#8230;&#8203;</code> <code>[s/SLOT]&#8230;&#8203;</code></p>
+<p>Format: <code>edit NAME r/interviewee [p/PHONE] [f/FACULTY] [y/YEAR_OF_STUDY] [ep/PERSONAL_EMAIL] [ew/NUS_WORK_EMAIL]
+[d/DEPARTMENT]&#8230;&#8203; [s/SLOT]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>NAME</code> and <code>r/interviewee</code> are compulsory arguments, and one other argument following <code>r/interviewee</code> must be present.</p>
+<p>An empty tag prefix <code>t/</code> can be supplied to reset the tags of an interviewee.</p>
+</li>
+<li>
+<p>If a department prefix <code>d/</code> is supplied, at least one valid, non-empty department must be provided.</p>
+</li>
+<li>
+<p>If a slot prefix <code>s/</code> is supplied, at least one valid, non-empty slot must be provided.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>edit John Doe r/interviewee p/91234567 f/School of Computing s/05/11/2019 18:00-19:00</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The interviewee to be edited must exist in the Scheduler.</p>
+</li>
+<li>
+<p><code>NAME</code> must be provided after <code>edit</code> and before the first prefix <code>r/ROLE</code>.</p>
+</li>
+<li>
+<p>At least one optional argument must be supplied, i.e <code>edit NAME r/interviewee</code> is not valid input.</p>
+</li>
+<li>
+<p><code>s/SLOT</code> must follow the format: <code>dd/MM/yyyy HH:mm-HH:mm</code>, where <strong>dd/MM/yyyy</strong> refers to a <strong>date</strong>, the leftmost <strong>HH:mm</strong> refers to the <strong>start duration</strong>
+and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</strong>.</p>
+</li>
+<li>
+<p>The date <strong>dd/MM/yyyy</strong> must strictly be a valid date, i.e 30/02/2019  cannot be supplied as a date.</p>
+</li>
+<li>
+<p>The duration of a <code>s/SLOT</code> must follow these constraints:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A duration must be in 24-hour format.</p>
+</li>
+<li>
+<p>The range of durations available for input must be within <a href="#working-hours">Working Hours</a>.</p>
+</li>
+<li>
+<p>The start duration must be earlier than the end duration, and only start at the start of a new hour or new half-hour
+(i.e 13:00 is a valid start duration, while 13:10 is not).</p>
+</li>
+<li>
+<p>The time elapsed from the start duration to end duration must follow the number of minutes as specified
+by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#duration-of-time-slot">Duration of Time slot</a>.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
+</div>
+</div>
 <div class="sect3">
-<h4 id="edit-an-existing-interviewer-interview-slot-code-coming-in-v2-0-code"><a class="link" href="#edit-an-existing-interviewer-interview-slot-code-coming-in-v2-0-code">4.4.2. Edit an existing interviewer (interview slot) <code>[Coming in v2.0]</code></a></h4>
+<h4 id="edit-an-existing-interviewer"><a class="link" href="#edit-an-existing-interviewer">4.4.2. Edit an existing interviewer</a></h4>
 <div class="paragraph">
 <p>Manually edit an existing interviewer in the database.</p>
 </div>
 <div class="paragraph">
-<p>Format: edit <code>NAME</code> <code>r/interviewer</code> <code>p/PHONE</code> <code>[t/TAG]&#8230;&#8203;</code> <code>d/DEPARTMENT</code> <code>ew/NUS_WORK_EMAIL</code> <code>s/SLOT&#8230;&#8203;</code></p>
+<p>Format: <code>edit NAME r/interviewer [p/PHONE] [t/TAG]&#8230;&#8203; [d/DEPARTMENT] [ew/NUS_WORK_EMAIL] [s/SLOT&#8230;&#8203;]</code></p>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An empty tag prefix <code>t/</code> can be supplied to reset the tags of an interviewee.</p>
+</li>
+<li>
+<p>If a slot prefix <code>s/</code> is supplied, at least one valid, non-empty slot must be provided.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>edit John Doe r/interviewee p/91234567 f/School of Computing s/05/11/2019 18:00-19:00</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The interviewer to be edited must exist in the Scheduler.</p>
+</li>
+<li>
+<p><code>NAME</code> must be provided after <code>edit</code> and before the first prefix <code>r/ROLE</code>.</p>
+</li>
+<li>
+<p>At least one optional argument must be supplied, i.e <code>edit NAME r/interviewer</code> is not valid input.</p>
+</li>
+<li>
+<p><code>s/SLOT</code> must follow the format: <code>dd/MM/yyyy HH:mm-HH:mm</code>, where <strong>dd/MM/yyyy</strong> refers to a <strong>date</strong>, the leftmost <strong>HH:mm</strong> refers to the <strong>start duration</strong>
+and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</strong>.</p>
+</li>
+<li>
+<p>The date <strong>dd/MM/yyyy</strong> must strictly be a valid date, i.e 30/02/2019  cannot be supplied as a date.</p>
+</li>
+<li>
+<p>The duration of a <code>s/SLOT</code> must follow these constraints:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A duration must be in 24-hour format.</p>
+</li>
+<li>
+<p>The range of durations available for input must be within <a href="#working-hours">Working Hours</a>.</p>
+</li>
+<li>
+<p>The start duration must be earlier than the end duration, and only start at the start of a new hour or new half-hour
+(i.e 13:00 is a valid start duration, while 13:10 is not).</p>
+</li>
+<li>
+<p>The time elapsed from the start duration to end duration must follow the number of minutes as specified
+by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#duration-of-time-slot">Duration of Time slot</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-interviewees-interviewers-code-delete-code"><a class="link" href="#delete-interviewees-interviewers-code-delete-code">4.5. Delete interviewees/interviewers <code>delete</code></a></h3>
+<h3 id="delete-interviewees-interviewers-manually-code-delete-code"><a class="link" href="#delete-interviewees-interviewers-manually-code-delete-code">4.5. Delete interviewees/interviewers manually <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Manually delete an entity from the database.</p>
 </div>
@@ -453,7 +782,10 @@ default settings.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Scheduler guarantees there cannot be multiple interviewees or interviewers with the same name.</p>
+<p>If <code>interviewee</code> is supplied as <code>ROLE</code>, refer to <a href="#delete-an-existing-interviewee">Delete an existing interviewee</a>.</p>
+</li>
+<li>
+<p>If <code>interviewer</code> is supplied as <code>ROLE</code>, refer to <a href="#delete-an-existing-interviewer">Delete an existing interviewer</a>.</p>
 </li>
 </ul>
 </div>
@@ -463,7 +795,7 @@ default settings.</p>
 <p>Deletes the specified interviewee from the database.</p>
 </div>
 <div class="paragraph">
-<p>Format: delete <code>NAME</code> <code>r/interviewee</code></p>
+<p>Format: <code>delete NAME r/interviewee</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -473,14 +805,28 @@ default settings.</p>
 <pre>delete John Doe r/interviewee</pre>
 </div>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The interviewee with <code>NAME</code> must exist in the Scheduler.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="delete-an-existing-interviewer-interview-slot"><a class="link" href="#delete-an-existing-interviewer-interview-slot">4.5.2. Delete an existing interviewer (interview slot)</a></h4>
+<h4 id="delete-an-existing-interviewer"><a class="link" href="#delete-an-existing-interviewer">4.5.2. Delete an existing interviewer</a></h4>
 <div class="paragraph">
-<p>Deletes the specified interviewer from the database</p>
+<p>Deletes the specified interviewer from the database.</p>
 </div>
 <div class="paragraph">
-<p>Format: delete <code>NAME</code> <code>r/interviewee</code></p>
+<p>Format: <code>delete NAME r/interviewee</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -488,6 +834,20 @@ default settings.</p>
 <div class="literalblock">
 <div class="content">
 <pre>delete Bohn Doe r/interviewer</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The interviewer with <code>NAME</code> must exist in the Scheduler.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -526,20 +886,44 @@ that interviewer is unavailable and "1" represents that the interviewer is avail
 <div class="sect3">
 <h4 id="viewing-details-of-interviewees-coming-soon-in-v1-4"><a class="link" href="#viewing-details-of-interviewees-coming-soon-in-v1-4">4.6.2. Viewing details of interviewees [Coming soon in v1.4]</a></h4>
 <div class="paragraph">
-<p>You can to view the list of interviewees and the following information:
-1. Name
-2. NUS Email
-3. Personal Email
-4. Mobile Number
-5. Faculty/School
-6. Academic Year
-7. Choice of Department 1
-8. Choice of Department 2
-9. Preferred Time Slots</p>
+<p>You can view the list of interviewees and the following information:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Name</p>
+</li>
+<li>
+<p>NUS Email</p>
+</li>
+<li>
+<p>Personal Email</p>
+</li>
+<li>
+<p>Mobile Number</p>
+</li>
+<li>
+<p>Faculty/School</p>
+</li>
+<li>
+<p>Academic Year</p>
+</li>
+<li>
+<p>Choice of Department 1</p>
+</li>
+<li>
+<p>Choice of Department 2</p>
+</li>
+<li>
+<p>Preferred Time Slots</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>The interviewee list can be viewed by typing the following command<br>
-Format: <code>display interviewees</code></p>
+<p>The interviewee list can be viewed by typing the following command</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>display interviewees</code></p>
 </div>
 <div class="imageblock" style="text-align: left">
 <div class="content">
@@ -557,16 +941,20 @@ this User Guide.</p>
 <p>As you can see from the timetable above, there are 2 different colours of time slots. This is implemented so you
 are able to differentiate which interviews are important by using the colour code as shown in the timetable.
 By default, the slots will be green in colour. However, you are able to change the colours based on importance using
-the following command<br>
-Format: <code>change DATE TIME IMPORTANCE</code></p>
+the following command.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>change DATE TIME IMPORTANCE</code></p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="get-interview-schedule-code-get-code-code-coming-in-v2-0-code"><a class="link" href="#get-interview-schedule-code-get-code-code-coming-in-v2-0-code">4.7. Get interview schedule <code>get</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p>Find an interviewer/interviewee and display his/her interview schedule.<br>
-Format: <code>get NAME</code><br></p>
+<p>Find an interviewer/interviewee and display his/her interview schedule.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>get NAME</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -580,12 +968,16 @@ Format: <code>get NAME</code><br></p>
 <div class="sect2">
 <h3 id="tag-interview-slot-code-tag-code-code-coming-in-v2-0-code"><a class="link" href="#tag-interview-slot-code-tag-code-code-coming-in-v2-0-code">4.8. Tag interview slot <code>tag</code> <code>[Coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p>Tags an interview slot with a name.<br>
-Format: <code>tag TAG_NAME</code><br></p>
+<p>Tags an interview slot with a name.</p>
 </div>
 <div class="paragraph">
-<p>User will also be able to filter by tags.<br>
-Format: <code>filter tag TAG_NAME</code><br></p>
+<p>Format: <code>tag TAG_NAME</code></p>
+</div>
+<div class="paragraph">
+<p>User will also be able to filter by tags.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>filter tag TAG_NAME</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -595,18 +987,30 @@ Format: <code>filter tag TAG_NAME</code><br></p>
 <div class="paragraph">
 <p>Schedule and allocate interviewees to the available interview slots based on the availability of interviewees and
 their choice of department. As of V1.3, the scheduling result is reflected on the console of the application. This will
-be updated such that the result is reflected in the displayed interview timetable at v1.4.<br>
-Format: <code>schedule</code><br></p>
+be updated such that the result is reflected in the displayed interview timetable at v1.4.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>schedule</code></p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="exporting-of-interview-schedule-code-export-code"><a class="link" href="#exporting-of-interview-schedule-code-export-code">4.10. Exporting of interview schedule <code>export</code></a></h3>
 <div class="paragraph">
-<p>Exports the allocated interview schedule timetable to the indicated comma separated values (CSV) file.<br>
-Format: <code>export fp/FILE_PATH</code><br>
-    - PATH_TO_FILE is the absolute path to the file.<br>
-    - E.g C:\\Users\Bob\file.csv</p>
+<p>Exports the allocated interview schedule timetable to the indicated comma separated values (CSV) file.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>export fp/FILE_PATH</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>PATH_TO_FILE is the absolute path to the file.</p>
+</li>
+<li>
+<p>E.g C:\\Users\Bob\file.csv</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -617,7 +1021,7 @@ Format: <code>export fp/FILE_PATH</code><br>
 </div>
 </div>
 <div class="paragraph">
-<p>Note:</p>
+<p>Notes:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -625,7 +1029,7 @@ Format: <code>export fp/FILE_PATH</code><br>
 <p>This command requires the interview schedule to be generated first!</p>
 </li>
 <li>
-<p>If 'FILE_PATH' is a valid .csv file but does not exist, it will be created.</p>
+<p>If <code>FILE_PATH</code> is a valid .csv file but does not exist, it will be created.</p>
 </li>
 </ul>
 </div>
@@ -641,7 +1045,14 @@ Format: <code>export fp/FILE_PATH</code><br>
 <p>Format: <code>email ct/timeslot n/INTERVIEWEE NAME</code></p>
 </div>
 <div class="paragraph">
-<p><strong>Note:</strong> The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
+<p>Notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -653,7 +1064,14 @@ Format: <code>export fp/FILE_PATH</code><br>
 <p>Format: <code>email ct/alltimeslot</code></p>
 </div>
 <div class="paragraph">
-<p><strong>Note:</strong> The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
+<p>Notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -674,7 +1092,14 @@ Format: <code>export fp/FILE_PATH</code><br>
 <p>Format: <code>email ct/results n/INTERVIEWEE NAME</code></p>
 </div>
 <div class="paragraph">
-<p><strong>Note:</strong> The email dialog will only appear if the interviewee&#8217;s email is present in the database and the interview results has been updated.</p>
+<p>Note:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The email dialog will only appear if the interviewee&#8217;s email is present in the database and the interview results has been updated.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -686,7 +1111,14 @@ Format: <code>export fp/FILE_PATH</code><br>
 <p>Format: <code>email ct/allresults</code></p>
 </div>
 <div class="paragraph">
-<p><strong>Note:</strong> The email dialog will only appear if the interviewee&#8217;s email is present in the database and the interview results has been updated.</p>
+<p>Note:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The email dialog will only appear if the interviewee&#8217;s email is present in the database and the interview results has been updated.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -697,22 +1129,28 @@ Format: <code>export fp/FILE_PATH</code><br>
 <div class="paragraph">
 <p>Bring up the window to record the attendance of interviewees. You can navigate through the table in the window (GUI)
 using the directions key to record the attendance of the interviewees. Hit Enter at the target cell to record the
-attendance.<br>
-Format: <code>record attendance</code></p>
+attendance.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>record attendance</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="recording-of-interview-result"><a class="link" href="#recording-of-interview-result">4.12.2. Recording of interview result</a></h4>
 <div class="paragraph">
-<p>Bring up the window to record the interview result. The way to record the result is the same as 2.12.1.<br>
-Format: <code>record result</code></p>
+<p>Bring up the window to record the interview result. The way to record the result is the same as 2.12.1.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>record result</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="ranking-of-interviewees"><a class="link" href="#ranking-of-interviewees">4.12.3. Ranking of interviewees</a></h4>
 <div class="paragraph">
-<p>Bring up the window to rank the interviewees. The way to record the result is the same as 2.12.1.<br>
-Format: <code>record rank</code></p>
+<p>Bring up the window to rank the interviewees. The way to record the result is the same as 2.12.1.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>record rank</code></p>
 </div>
 </div>
 </div>
@@ -721,7 +1159,10 @@ Format: <code>record rank</code></p>
 <div class="sect1">
 <h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p><strong>Q:</strong> Where can I download the application?<br>
+<strong>A:</strong> Check out the assets in our project release page <a href="https://github.com/AY1920S1-CS2103-F09-1/main/releases" class="bare">https://github.com/AY1920S1-CS2103-F09-1/main/releases</a> to download our latest releases!</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -754,27 +1195,30 @@ Format: <code>record rank</code></p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code><br></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add interviewers/interviewees</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add interviewer name:"NAME" slot:SLOT&#8230;&#8203;</code><br>
- <code>add interviewee name:"NAME" slot:SLOT&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add interviewee</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add r/interviewee n/NAME p/PHONE f/FACULTY y/YEAR_OF_STUDY ep/PERSONAL_EMAIL ew/NUS_WORK_EMAIL
+d/DEPARTMENT&#8230;&#8203; s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Get interview schedule for interviewer/interviewee</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>get NAME</code><br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add interviewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add r/interviewer n/NAME p/PHONE ew/NUS_WORK_EMAIL d/DEPARTMENT  s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Edit availability of interveiwer/interviewee</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit interviewer NAME</code><br>
- <code>edit interviewee NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit interviewee</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit NAME r/interviewee [p/PHONE] [f/FACULTY] [y/YEAR_OF_STUDY] [ep/PERSONAL_EMAIL] [ew/NUS_WORK_EMAIL]
+[d/DEPARTMENT]&#8230;&#8203; [s/SLOT]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Delete interviewer/interviewee</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete interviewer NAME</code><br>
- <code>delete interviewee NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit interviewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit NAME r/interviewer [p/PHONE] [t/TAG]&#8230;&#8203; [d/DEPARTMENT] [ew/NUS_WORK_EMAIL] [s/SLOT&#8230;&#8203;]</code><br></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Tag interview slot</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tag TAG_NAME</code><br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete interviewee</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete NAME r/interviewee</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete interviewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete NAME r/interviewer</code><br></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Filter</p></td>
@@ -803,4 +1247,4 @@ Format: <code>record rank</code></p>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 10:14:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 11:34:33 UTC</div></div></div></body></html>
