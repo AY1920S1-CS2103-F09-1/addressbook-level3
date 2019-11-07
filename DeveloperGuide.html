@@ -25,7 +25,7 @@
 <li><a href="#add-interviewee-interviewer-feature">3.1. Add Interviewee/Interviewer feature</a></li>
 <li><a href="#coming-soon-in-v1-3-scheduling-algorithm">3.2. [Coming soon in v1.3] Scheduling Algorithm</a></li>
 <li><a href="#import">3.3. Import</a></li>
-<li><a href="#coming-soon-in-v1-4-export">3.4. [Coming soon in v1.4] Export</a></li>
+<li><a href="#export">3.4. Export</a></li>
 <li><a href="#coming-soon-in-v1-4-email">3.5. [Coming soon in v1.4] Email</a></li>
 <li><a href="#display">3.6. Display</a></li>
 <li><a href="#logging">3.7. Logging</a></li>
@@ -587,10 +587,10 @@ allocated time slots to the interviewees, which the changes will then be reflect
 <p>Step 3: <code>LogicManager</code> will then call execute() on the returned <code>ImportCommand</code>  object.</p>
 </li>
 <li>
-<p>Step 4: During the execute() method, the method will initialise a <code>CsvReader</code> object to <code>read()</code> data from the the given .csv file.</p>
+<p>Step 4: During the execute() method, the method will initialise a <code>CsvReader</code> object to <code>readInterviewers()</code> from the the given .csv file.</p>
 </li>
 <li>
-<p>Step 5: The read data will then be stored as either <code>scheduleList</code> or <code>intervieweeList</code> in the model.</p>
+<p>Step 5: Each <code>Interviewer</code> object returned from Step 4 will then be added into model&#8217;s <code>interviewerList</code>.</p>
 </li>
 </ul>
 </div>
@@ -605,7 +605,7 @@ allocated time slots to the interviewees, which the changes will then be reflect
 </div>
 </div>
 <div class="sect2">
-<h3 id="coming-soon-in-v1-4-export"><a class="link" href="#coming-soon-in-v1-4-export">3.4. [Coming soon in v1.4] Export</a></h3>
+<h3 id="export"><a class="link" href="#export">3.4. Export</a></h3>
 <div class="sect3">
 <h4 id="implementation-proposed"><a class="link" href="#implementation-proposed">3.4.1. Implementation [Proposed]</a></h4>
 <div class="paragraph">
@@ -1455,4 +1455,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 14:30:07 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 14:30:35 UTC</div></div></div></body></html>

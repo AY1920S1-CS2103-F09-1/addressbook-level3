@@ -20,7 +20,7 @@
 <li><a href="#user-preferences">3. User Preferences</a>
 <ul class="sectlevel2">
 <li><a href="#working-hours">3.1. Working Hours</a></li>
-<li><a href="#duration-of-time-slot">3.2. Duration of Time slot</a></li>
+<li><a href="#duration-of-timeslot">3.2. Duration of Timeslot</a></li>
 </ul>
 </li>
 <li><a href="#Features">4. Features</a>
@@ -163,6 +163,9 @@ It also shows you basic tips on how to add or delete and edit interviewers/inter
 <li>
 <p>Note that all fields specified above are <strong>compulsory</strong> when adding an interviewee manually.</p>
 </li>
+<li>
+<p>Please also note that the added interviewee cannot be already present in the application data, ie. no duplicates are allowed.</p>
+</li>
 </ul>
 </div>
 </li>
@@ -196,6 +199,9 @@ It also shows you basic tips on how to add or delete and edit interviewers/inter
 <ul>
 <li>
 <p>Again, the fields specified above are *compulsory when adding an interviewer manually.</p>
+</li>
+<li>
+<p>Please also note that the added interviewer cannot be already present in the application data, ie. no duplicates are allowed.</p>
 </li>
 </ul>
 </div>
@@ -293,10 +299,11 @@ working hours for it to be displayed in the schedules.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="duration-of-time-slot"><a class="link" href="#duration-of-time-slot">3.2. Duration of Time slot</a></h3>
+<h3 id="duration-of-timeslot"><a class="link" href="#duration-of-timeslot">3.2. Duration of Timeslot</a></h3>
 <div class="paragraph">
 <p>Each time slot that an interviewer or interviewee indicates, must be strictly of this pre-defined duration for it to be
- displayed in the schedules. It is represented by <code>duration</code> in the user preference file.</p>
+ displayed in the schedules. This duration will also determine the number of timeslots daily, each with the indicated duration, from the <code>startTime</code> to <code>endTime</code> of pre-defined <a href="#working-hours">Working Hours</a>.
+<strong>It is represented by <code>duration</code> in the user preference file.</strong></p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong><br>
@@ -306,12 +313,46 @@ working hours for it to be displayed in the schedules.</p>
 <p><strong>Default values:</strong><br>
 <code>duration</code>: 30</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>When adding interviewees or interviewers manually into Scheduler, the <code>SLOT</code> input provided must have a duration (in minutes) that matches <code>duration</code>.</p>
-</li>
-</ul>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+When adding interviewees or interviewers manually into Scheduler, the <code>TIMESLOT</code> input provided must have a duration (in minutes) that matches <code>duration</code>.
+In addition, the <code>TIMESLOT</code> indicated must also strictly follow the start and end times of each time slot. Refer to the example below for a clearer idea.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>User preference:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>startTime: "10:00"
+endTime: "21:00"
+duration: 30</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Result:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Timeslots generated:
+10:00-10:30, 10:30-11:00, 11:00-11:30, .... , 20:00-20:30, 20:30-21:00
+//Timeslots are 30min intervals from 10:00 (startTime) to 21:00 (endTime)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As seen in the example above, each timeslot are 30min intervals from the start and end times of the Working Hours (10:00 to 21:00).
+The indicated timeslots for interviewer/interviewee has to be one of these timeslots, e.g. 10:30-11:00, and <strong>cannot be</strong> any other values, e.g. 10:40-11:05.
+<strong>Failure to do so will result in an inaccurate display of schedules.</strong></p>
 </div>
 </div>
 </div>
@@ -388,46 +429,77 @@ The templates for the import commands can be found here:</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>After you have imported the data, you will need to type <code>clear</code> to clear the imported data before you can import another interviewer&#8217;s
-availability or interviewees details .csv file.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you wish to import a new set of data of the same type, we strongly recommend that you use the <a href="#Clear">Clear</a> command to clear pre-existing data before re-importing newer data.
+This is because Scheduler does not allow duplicate persons, for both interviewer and interviewee. Unless you are very certain that the
+the second import does not contain any duplicate data, we would suggest that you run the 'clear' command beforehand.
+</td>
+</tr>
+</table>
 </div>
-<div class="ulist NOTE">
-<ul class="NOTE">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>Data in .csv file must follow the settings defined in the user preference file. View <a href="#user-preferences">User Preferences</a> if you wish to change the
 default settings.</p>
 </li>
 <li>
-<p>Data to be imported should only be in english and should strictly follow the format of the templates given above.</p>
+<p>Data to be imported should only be in english and should strictly follow the format of the templates given above, e.g. format of headers and timeslots.</p>
 </li>
 </ul>
 </div>
 <div class="sect3">
 <h4 id="importing-interviewers-availability"><a class="link" href="#importing-interviewers-availability">4.2.1. Importing interviewers’ availability</a></h4>
 <div class="paragraph">
-<p>Imports interviewers’ availability from a comma separated values (CSV) file.</p>
+<p>Imports interviewers’ availability from a comma separated values (CSV) file. After import command is ran, the GUI should display the imported data.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The schedule displayed will only show timeslots within the <a href="#working-hours">Working Hours</a> and <a href="#duration-of-timeslot">Duration</a> that the user has specified.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Key formatting information for Interviewer&#8217;s Data:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>A "1" in a timeslot represents AVAILABLE and "0" represents UNAVAILABLE.</p>
-</li>
-<li>
-<p>The headers should also be in the format <code>DEPARTMENT - INTERVIEWER&#8217;S_NAME</code>.</p>
+<p>The first column of each day&#8217;s schedule will consist of the timeslots for that day.</p>
 </li>
 <li>
 <p>Each timeslot should also be in the format <code>HH:mm - HH:mm</code>.</p>
 </li>
+<li>
+<p>The very first header at the top left-hand corner should indicate the day of the schedule. The subsequent headers should indicate the interviewers in the format <code>DEPARTMENT - INTERVIEWER&#8217;S_NAME</code>.</p>
+</li>
+<li>
+<p>A "1" in a timeslot represents that the interviewer in that column is <strong>available</strong> and "0" represents that he/she is <strong>unavailable</strong>.</p>
+</li>
+<li>
+<p>Separation of different days of schedules is made by leaving 2 empty lines after the end of the first table.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The schedule displayed will only show timeslots from 10:00 to 21:00 daily.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>import interviewer fp/PATH_TO_FILE</code><br>
+<p>Format of command: <code>import interviewer fp/PATH_TO_FILE</code><br>
     - PATH_TO_FILE is the absolute path to the file.<br>
-    - E.g C:\\Users\Bob\file.csv</p>
+    - E.g. C:\\Users\Bob\file.csv</p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -437,19 +509,56 @@ default settings.</p>
 <pre>import interviewer fp/C:\Users\johndoe\Interviewers.csv</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Timeslots must obey the allowed values that are specified in the <a href="#user-preferences">User Preferences</a>.</p>
+</li>
+<li>
+<p>Duplicate entries of the same interviewer (same name) cannot be presented in the CSV file to be imported.</p>
+</li>
+<li>
+<p>If none of the interviewers are available for a particular day, e.g. all "0" for all timeslots on that day, the GUI will not display the schedule for that day.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="importing-interviewees-availability"><a class="link" href="#importing-interviewees-availability">4.2.2. Importing interviewees’ availability</a></h4>
 <div class="paragraph">
 <p>Imports interviewees’ availability from a comma separated values (CSV) file.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There will be no changes in the schedules tab after the import of interviewee&#8217;s data. The changes will be made after <a href="#scheduling-code-schedule-code">Schedule</a> command has been ran.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Key formatting information for Interviewee&#8217;s Data:</p>
+</div>
 <div class="ulist">
 <ul>
+<li>
+<p>Headers specify the details of the Interviewee to be imported. The order of the headers must be strictly followed as shown in the above template.</p>
+</li>
 <li>
 <p>Emails: Adding more than 1 personal or work email is allowed. Use whitespaces to separate each email.</p>
 </li>
 <li>
-<p>Timeslots: Each timeslot should be in the format <code>HH:mm - HH:mm</code>. Use commas to separate the timeslots if there are more than 1.</p>
+<p>Timeslots: Each timeslot should be in the format <code>dd/MM/yyy HH:mm - HH:mm</code>. Use commas to separate the timeslots if there are more than 1.</p>
+</li>
+<li>
+<p>There can only be 1 unique value for all other fields. Commas should not be used in these fields.</p>
 </li>
 </ul>
 </div>
@@ -465,6 +574,19 @@ default settings.</p>
 <div class="content">
 <pre>import interviewer fp/C:\Users\johndoe\Interviewees.csv</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Timeslots must obey the allowed values that are specified in the <a href="#user-preferences">User Preferences</a>.</p>
+</li>
+<li>
+<p>Duplicate entries of the same interviewee cannot be presented in the CSV file to be imported.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -529,7 +651,7 @@ and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</str
 </li>
 <li>
 <p>The time elapsed from the start duration to end duration must follow the number of minutes as specified
-by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#duration-of-time-slot">Duration of Time slot</a>.</p>
+by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a>.</p>
 </li>
 </ul>
 </div>
@@ -585,7 +707,7 @@ and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</str
 </li>
 <li>
 <p>The time elapsed from the start duration to end duration must follow the number of minutes as specified
-by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#duration-of-time-slot">Duration of Time slot</a>.</p>
+by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a>.</p>
 </li>
 </ul>
 </div>
@@ -683,7 +805,7 @@ and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</str
 </li>
 <li>
 <p>The time elapsed from the start duration to end duration must follow the number of minutes as specified
-by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#duration-of-time-slot">Duration of Time slot</a>.</p>
+by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a>.</p>
 </li>
 </ul>
 </div>
@@ -761,7 +883,7 @@ and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</str
 </li>
 <li>
 <p>The time elapsed from the start duration to end duration must follow the number of minutes as specified
-by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#duration-of-time-slot">Duration of Time slot</a>.</p>
+by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a>.</p>
 </li>
 </ul>
 </div>
@@ -1000,7 +1122,7 @@ be updated such that the result is reflected in the displayed interview timetabl
 <div class="sect2">
 <h3 id="exporting-of-interview-schedule-code-export-code"><a class="link" href="#exporting-of-interview-schedule-code-export-code">4.10. Exporting of interview schedule <code>export</code></a></h3>
 <div class="paragraph">
-<p>Exports the allocated interview schedule timetable to the indicated comma separated values (CSV) file.</p>
+<p>Exports the allocated interview schedule timetable to the specified comma separated values (CSV) file.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>export fp/FILE_PATH</code></p>
@@ -1015,6 +1137,18 @@ be updated such that the result is reflected in the displayed interview timetabl
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If <code>FILE_PATH</code> is a valid .csv file but does not exist, it will be created in the specified path.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Example:</p>
 </div>
@@ -1024,17 +1158,49 @@ be updated such that the result is reflected in the displayed interview timetabl
 </div>
 </div>
 <div class="paragraph">
-<p>Notes:</p>
+<p>Exported data format:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>This command requires the interview schedule to be generated first!</p>
+<p>The exported data will follow the format of the schedules in 'schedules' tab.</p>
 </li>
 <li>
-<p>If <code>FILE_PATH</code> is a valid .csv file but does not exist, it will be created.</p>
+<p>Each schedule (table) will be separated from the previous with 2 empty lines.</p>
+</li>
+<li>
+<p>Timeslots with "0" indicates that the interviewer is not available for the timeslot.
+Timeslots with "1" indicates that it is an available slot that has not been filled up by an interviewee.</p>
+</li>
+<li>
+<p>Csv file can be converted into an excel file by following this guide - <a href="https://www.ablebits.com/office-addins-blog/2014/05/01/convert-csv-excel/" class="bare">https://www.ablebits.com/office-addins-blog/2014/05/01/convert-csv-excel/</a>.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This command requires the interview schedule to be generated first.</p>
+</li>
+<li>
+<p>Although the specified filepath does not need to exist, it needs to be of .csv extension.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The exported data will erase and replace all pre-existing data in the specified file.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1262,4 +1428,4 @@ d/DEPARTMENT&#8230;&#8203; s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 14:30:07 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 14:30:35 UTC</div></div></div></body></html>
