@@ -48,7 +48,7 @@ public class EmailCommand extends Command {
 
     public static final String EMAIL_MESSAGE_BODY = "Dear %1$s,\n\n"
             + "Thank you for applying for %2$s! Below are the details of the interview slot allocated to you:\n\n"
-            + "Interview slots: %3$s\n"
+            + "Allocated interview slot: %3$s\n"
             + "Location: %4$s\n\n"
             + "%5$s";
 
