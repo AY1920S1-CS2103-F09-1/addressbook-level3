@@ -1,7 +1,7 @@
 package seedu.scheduler.logic.commands;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -48,8 +48,8 @@ public class ScheduleCommand extends Command {
                 model.resetDataBeforeScheduling();
             }
 
-            List<Interviewer> interviewers = new LinkedList<>(model.getUnfilteredInterviewerList());
-            List<Interviewee> interviewees = new LinkedList<>(model.getUnfilteredIntervieweeList());
+            List<Interviewer> interviewers = new ArrayList<>(model.getUnfilteredInterviewerList());
+            List<Interviewee> interviewees = new ArrayList<>(model.getUnfilteredIntervieweeList());
 
             // To ensure fairer scheduling
             Collections.shuffle(interviewers);
