@@ -52,9 +52,10 @@
 </li>
 <li><a href="#ui-display">4.6. UI Display</a>
 <ul class="sectlevel3">
-<li><a href="#viewing-schedules">4.6.1. Viewing Schedules</a></li>
-<li><a href="#viewing-details-of-interviewees-coming-soon-in-v1-4">4.6.2. Viewing details of interviewees [Coming soon in v1.4]</a></li>
-<li><a href="#differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code">4.6.3. Differentiating the importance of timetable slots through colours <code>[Coming in v2.0]</code></a></li>
+<li><a href="#display-schedules">4.6.1. Display Schedules</a></li>
+<li><a href="#display-interviewee">4.6.2. Display Interviewee</a></li>
+<li><a href="#display-interviewer">4.6.3. Display interviewer</a></li>
+<li><a href="#differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code">4.6.4. Differentiating the importance of timetable slots through colours <code>[Coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#get-interview-schedule-code-get-code-code-coming-in-v2-0-code">4.7. Get interview schedule <code>get</code> <code>[Coming in v2.0]</code></a></li>
@@ -855,96 +856,98 @@ by the value of <code>duration</code> in <a href="#user-preferences">User Prefer
 <div class="sect2">
 <h3 id="ui-display"><a class="link" href="#ui-display">4.6. UI Display</a></h3>
 <div class="sect3">
-<h4 id="viewing-schedules"><a class="link" href="#viewing-schedules">4.6.1. Viewing Schedules</a></h4>
+<h4 id="display-schedules"><a class="link" href="#display-schedules">4.6.1. Display Schedules</a></h4>
 <div class="paragraph">
-<p>When the Scheduler starts, interview schedules will be displayed for you. The data will be displayed in a table format,
-with each table representing the schedule for each day. In the first column, the date of that interview schedule will be
-displayed, the rest of the columns are the departments and the name of their respective person in charge. Subsequent rows
-will be be displayed by showing the time slot first, with the person allocated to that time slot. If there are no interviewee
-occupying that time slot, it will be displayed as "0".</p>
+<p>Display multiple tables that consist information of the schedules generated in a day format. The columns will show the date of the schedule followed by
+the interviewers and their respective departments. The rows consists of the time slots as well as names of the interviewee.</p>
 </div>
 <div class="paragraph">
-<p>A sample output of the Schedule UI is shown below:</p>
+<p>Format: <code>display schedule</code></p>
 </div>
-<div class="imageblock" style="text-align: left">
+<div class="paragraph">
+<p>Notes:
+* You are also able to toggle to display schedule by clicking on the Schedules tab.</p>
+</div>
+<div class="exampleblock">
 <div class="content">
-<img src="images/Ui/Schedule.png" alt="Schedule" width="500">
-</div>
-</div>
 <div class="paragraph">
-<p>For v1.3, the format of the table is as follows.
-For the columns in the table, the first cell on the left will display the date of the schedule. It will be followed by the
-different departments of the interviewer. The rows display the time slots of availability of the interviewer. "0" represents
-that interviewer is unavailable and "1" represents that the interviewer is available.</p>
+<p>Constraints:</p>
 </div>
-<div class="imageblock" style="text-align: left">
-<div class="content">
-<img src="images/Ui/InterviewerSchedule.png" alt="InterviewerSchedule" width="500">
+<div class="ulist">
+<ul>
+<li>
+<p>The command must be exactly the same as the format.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-details-of-interviewees-coming-soon-in-v1-4"><a class="link" href="#viewing-details-of-interviewees-coming-soon-in-v1-4">4.6.2. Viewing details of interviewees [Coming soon in v1.4]</a></h4>
+<h4 id="display-interviewee"><a class="link" href="#display-interviewee">4.6.2. Display Interviewee</a></h4>
 <div class="paragraph">
-<p>You can view the list of interviewees and the following information:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Name</p>
-</li>
-<li>
-<p>NUS Email</p>
-</li>
-<li>
-<p>Personal Email</p>
-</li>
-<li>
-<p>Mobile Number</p>
-</li>
-<li>
-<p>Faculty/School</p>
-</li>
-<li>
-<p>Academic Year</p>
-</li>
-<li>
-<p>Choice of Department 1</p>
-</li>
-<li>
-<p>Choice of Department 2</p>
-</li>
-<li>
-<p>Preferred Time Slots</p>
-</li>
-</ol>
+<p>Display information of the interviewees in a table format.</p>
 </div>
 <div class="paragraph">
-<p>The interviewee list can be viewed by typing the following command</p>
+<p>Format: <code>display interviewee</code></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>display interviewees</code></p>
+<p>Notes:
+* You are also able to toggle to display schedule by clicking on the Interviewee tab.</p>
 </div>
-<div class="imageblock" style="text-align: left">
+<div class="exampleblock">
 <div class="content">
-<img src="images/Ui/Interviewee.png" alt="Interviewee" width="500">
-</div>
-</div>
 <div class="paragraph">
-<p>In this screen, you can edit, add or delete interviewees accordingly by using the other features explained in
-this User Guide.</p>
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The command must be exactly the same as the format.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code"><a class="link" href="#differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code">4.6.3. Differentiating the importance of timetable slots through colours <code>[Coming in v2.0]</code></a></h4>
+<h4 id="display-interviewer"><a class="link" href="#display-interviewer">4.6.3. Display interviewer</a></h4>
 <div class="paragraph">
-<p>As you can see from the timetable above, there are 2 different colours of time slots. This is implemented so you
-are able to differentiate which interviews are important by using the colour code as shown in the timetable.
-By default, the slots will be green in colour. However, you are able to change the colours based on importance using
-the following command.</p>
+<p>Display information of the interviewers in a table format.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>change DATE TIME IMPORTANCE</code></p>
+<p>Format: <code>display interviewer</code></p>
+</div>
+<div class="paragraph">
+<p>Notes:
+* You are also able to toggle to display schedule by clicking on the Interviewer tab.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The command must be exactly the same as the format.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code"><a class="link" href="#differentiating-the-importance-of-timetable-slots-through-colours-code-coming-in-v2-0-code">4.6.4. Differentiating the importance of timetable slots through colours <code>[Coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>To edit time slots and change their colour so to show the importance of that slots.
+There are 3 importance: Low, Medium and High.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>change s/SLOT IMPORTANCE</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>change s/17/10/2019 13:00-14:00 medium</code></p>
 </div>
 </div>
 </div>
@@ -1221,6 +1224,18 @@ d/DEPARTMENT&#8230;&#8203; s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete NAME r/interviewer</code><br></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display schedule</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>display schedule</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display interviewee</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>display interviewee</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display interviewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>display interviewer</code><br></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Filter</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter tag TAG_NAME</code><br></p></td>
 </tr>
@@ -1247,4 +1262,4 @@ d/DEPARTMENT&#8230;&#8203; s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 13:04:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 13:26:24 UTC</div></div></div></body></html>

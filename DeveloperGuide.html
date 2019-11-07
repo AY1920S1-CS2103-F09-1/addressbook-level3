@@ -27,7 +27,8 @@
 <li><a href="#import">3.3. Import</a></li>
 <li><a href="#coming-soon-in-v1-4-export">3.4. [Coming soon in v1.4] Export</a></li>
 <li><a href="#coming-soon-in-v1-4-email">3.5. [Coming soon in v1.4] Email</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
+<li><a href="#display">3.6. Display</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
 <li><a href="#configuration">Configuration</a></li>
 </ul>
 </li>
@@ -36,7 +37,11 @@
 <li><a href="#dev-ops">6. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a></li>
+<li><a href="#use-cases">Appendix C: Use Cases</a>
+<ul class="sectlevel2">
+<li><a href="#use-case-uc-5-display-list-of-interviewee">C.1. Use case: (UC-5) Display list of interviewee</a></li>
+</ul>
+</li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
 <li><a href="#product-survey">Appendix F: Product Survey</a></li>
@@ -197,8 +202,8 @@ The following class plays an important role at the architecture level:</p>
 <div class="sect3">
 <h4 id="schedule-view"><a class="link" href="#schedule-view">2.2.1. Schedule View</a></h4>
 <div class="paragraph">
-<p>The display schedule feature extends Scheduler to display multiple tables of schedule per day. It is a component in the "MainWindow" class
-stored in a "ScheduleViewPanel" class. Within the "ScheduleViewPanel" class, objects of "ScheduleView" class are stored into the panel.</p>
+<p>The display schedule feature extends Scheduler to display multiple tables of schedule per day. It is a component in the <code>MainWindow</code> class
+stored in a <code>ScheduleViewPanel</code> class. Within the <code>ScheduleViewPanel</code> class, objects of <code>ScheduleView</code> class are stored into the panel.</p>
 </div>
 <div class="paragraph">
 <p>ScheduleViewPanel implements the following function:
@@ -208,24 +213,18 @@ stored in a "ScheduleViewPanel" class. Within the "ScheduleViewPanel" class, obj
 <p>Given below is an example scenario of what will be displayed to the user.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application. The Ui will start and the MainWindow will be displayed first.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. MainWindow will call all the children such as the HelpWindow, CommandBox, Result Display, StatusBarFooter and ScheduleViewPanel.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. Once ScheduleViewPanel is called, it will take in a list of titles and ObservableList data from the Logic class. The list of titles
-consist of the title column for each schedule table and the ObservableList data consists of the time slots allocated to each interviewee.</p>
-</div>
-<div class="paragraph">
-<p>Step 4. ScheduleViewPanel will call the ScheduleView class to fill each table and populate each table with the data given by the Logic class.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. ScheduleView will have a .fxml file of a table and it will first be filled with the column titles, followed by the time slots and the
-interviewee allocated to each time slots. The slot that has no interviewee will be displayed as "0".</p>
-</div>
-<div class="paragraph">
-<p>Step 6. Once the data is populated, the MainWindow will display the schedules of each day arranged in a table format.</p>
+<p>*Step 1. The user launches the application. The Ui will start and the MainWindow will be displayed first.
+*Step 2. MainWindow will call all the children such as the HelpWindow, CommandBox, Result Display, StatusBarFooter, ScheduleViewPanel, IntervieweeListPanel
+and InterviewerListPanel.
+*Step 3. Once ScheduleViewPanel is called, it will take in a list of titles and ObservableList data from the Logic class. The list of titles
+consist of the title column for each schedule table and the ObservableList data consists of the time slots allocated to each interviewee.
+*Step 4. ScheduleViewPanel will call the ScheduleView class to fill each table and populate each table with the data given by the Logic class.
+*Step 5. ScheduleView will have a .fxml file of a table and it will first be filled with the column titles, followed by the time slots and the
+interviewee allocated to each time slots. The slot that has no interviewee will be displayed as "0".
+*Step 6. ScheduleViewPanel will call and instantiate the ScheduleView object into a list card.
+*Step 7. Once all the ScheduleView objects are instantiated into the respective list cards, the ScheduleView Panel will form a list of tables
+containing the schedules of the day.
+*Step 8. The MainWindow class will fill the Ui with the ScheduleViewPanel.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -234,16 +233,64 @@ interviewee allocated to each time slots. The slot that has no interviewee will 
 </div>
 </div>
 <div class="sect3">
-<h4 id="ui-refresh"><a class="link" href="#ui-refresh">2.2.2. UI Refresh</a></h4>
+<h4 id="interviewee-interviewer-list-view"><a class="link" href="#interviewee-interviewer-list-view">2.2.2. Interviewee/Interviewer List View</a></h4>
 <div class="paragraph">
-<p>Step 1. Once User imports a new .csv file, it will call the RefreshListener Interface. RefreshListenerManager will then take in the new titles and
-list of ObservableList of interviewee.</p>
+<p>Interviewee list view is generated by the class IntervieweeListPanel to display information of the interviewees. It is a component in the "MainWindow"
+class. IntervieweeListPanel uses a TableView class to display the information of interviewees in a table format. It contains a static method to populate
+the table with data:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>initialise()</code>&#8201;&#8212;&#8201;To first set the columns, and afterwards fill the columns with the data provided.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Step 2. The RefreshListenerManager will call the MainWindow to refresh the ScheduleViewPanel.</p>
+<p>Interviewee list will provide the following information:
+*1. Name
+*2. NUS/Personal emails
+*3. Faculty
+*4. Academic Year
+*5. Department Choice
+*6. Available Time Slots
+*7. Allocated Time Slot
+*8. Tags</p>
 </div>
 <div class="paragraph">
-<p>Step 3  . ScheduleViewPanel will firstly clear all the data and input the updated data from the .csv file.</p>
+<p>Interviewer list view has the similar steps of displaying information of the interviewers. The difference is in the details of the interviewers.</p>
+</div>
+<div class="paragraph">
+<p>The interviewer list will provide the following information:
+*1. Name
+*2. Department
+*3. Available Time Slots</p>
+</div>
+<div class="paragraph">
+<p>Given below is a scenario of how the IntervieweeListPanel/InterviewerListPanel is filled.</p>
+</div>
+<div class="paragraph">
+<p>*Step 1. The user launches the application. The Ui will start and the MainWindow will be displayed first.
+*Step 2. MainWindow will call all the children such as the HelpWindow, CommandBox, Result Display, StatusBarFooter, ScheduleViewPanel, IntervieweeListPanel
+and InterviewerListPanel.
+*Step 3. Once IntervieweeListPanel is called, it will take in an ObservableList data from the Logic class. It contains all the information of the list
+of interviewees
+*Step 4. The class will initialise, setting the necessary columns.
+*Step 5. Using the method <code>setItems()</code> from the tableView, data will be populated to their respective columns and form the interviewee list.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="interviewer-list-view"><a class="link" href="#interviewer-list-view">2.2.3. Interviewer List View</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="ui-refresh-during-data-import"><a class="link" href="#ui-refresh-during-data-import">2.2.4. UI Refresh During Data Import</a></h4>
+<div class="paragraph">
+<p>*Step 1. Once User imports a new .csv file, it will call the RefreshListener Interface.
+*Step 2. UiManager will receive this method through the RefreshListener, thus calling dataUpdated to MainWindow class.
+*Step 3. The RefreshListenerManager will call the MainWindow to refresh the ScheduleViewPanel.
+*Step 4. ScheduleViewPanel will firstly clear all the data and input the updated data from the .csv file.
+*Step 5. ScheduleViewPanel object will then be returned to the MainWindow and display the updated data.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -657,7 +704,36 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="display"><a class="link" href="#display">3.6. Display</a></h3>
+<div class="sect3">
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.6.1. Implementation</a></h4>
+<div class="paragraph">
+<p>The display feature allows user to toggle views of schedules, interviewer list and interviewee list. It uses an interface named TabListener and contains
+the following method:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>changeTabSchedule()</code> allows user to change to schedule view.</p>
+</li>
+<li>
+<p><code>changeTabInterviewee()</code> allows user to change to interviewee list view.</p>
+</li>
+<li>
+<p><code>changeTabInterviewer()</code> allows user to change to interviewer list view.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The activity diagram will provide the overall flow of this implementation.</p>
+</div>
+<div class="paragraph">
+<p>image::DisplayActivity.png</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -1118,6 +1194,47 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 </li>
 </ul>
 </div>
+<div class="sect2">
+<h3 id="use-case-uc-5-display-list-of-interviewee"><a class="link" href="#use-case-uc-5-display-list-of-interviewee">C.1. Use case: (UC-5) Display list of interviewee</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User request to change display to interviewee.</p>
+</li>
+<li>
+<p>Scheduler change to display the list of interviewees.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong>
+* 1a. User does a typo while entering the command.
+* 1a1. Scheduler display invalid command to the user.</p>
+</div>
+<div class="paragraph">
+<p>+
+Use case resumes at step 1.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1b. User left the command blank after typing <code>display</code>.</p>
+</li>
+<li>
+<p>1b1. Scheduler display invalid command to user.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1338,4 +1455,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 13:04:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 13:26:24 UTC</div></div></div></body></html>
