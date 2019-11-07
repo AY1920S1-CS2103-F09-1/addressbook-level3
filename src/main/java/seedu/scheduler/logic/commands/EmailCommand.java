@@ -115,7 +115,7 @@ public class EmailCommand extends Command {
         try {
             model.emailInterviewee(toEmail);
             toEmail.setEmailSent(true);
-        } catch (IOException ioe) {
+        } catch (UnsupportedOperationException | IOException | SecurityException ioe) {
             // Happens when the mail client cannot be launched, should prompt the user to open a URL instead
             throw new CommandException(MESSAGE_EMAIL_CLIENT_ERROR);
         }
