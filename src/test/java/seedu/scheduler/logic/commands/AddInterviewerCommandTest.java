@@ -9,35 +9,18 @@ import static seedu.scheduler.testutil.TypicalPersons.ALICE_INTERVIEWEE;
 import static seedu.scheduler.testutil.TypicalPersons.ALICE_INTERVIEWER;
 import static seedu.scheduler.testutil.TypicalPersons.BOB_INTERVIEWEE_MANUAL;
 
-import java.nio.file.Path;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
-import javafx.collections.ObservableList;
-
-import seedu.scheduler.commons.core.GuiSettings;
 import seedu.scheduler.logic.commands.exceptions.CommandException;
 import seedu.scheduler.model.IntervieweeList;
-import seedu.scheduler.model.Model;
 import seedu.scheduler.model.ModelStub;
 import seedu.scheduler.model.ReadAndWriteList;
-import seedu.scheduler.model.ReadOnlyUserPrefs;
-import seedu.scheduler.model.Schedule;
 import seedu.scheduler.model.person.Interviewee;
 import seedu.scheduler.model.person.Interviewer;
-import seedu.scheduler.model.person.Name;
-import seedu.scheduler.model.person.Slot;
-import seedu.scheduler.model.person.exceptions.PersonNotFoundException;
-import seedu.scheduler.ui.RefreshListener;
-import seedu.scheduler.ui.TabListener;
 
 class AddInterviewerCommandTest {
 

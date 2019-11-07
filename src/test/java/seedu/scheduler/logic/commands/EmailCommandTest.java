@@ -1,15 +1,17 @@
 package seedu.scheduler.logic.commands;
 
 import static seedu.scheduler.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.scheduler.logic.commands.CommandTestUtil.*;
+import static seedu.scheduler.logic.commands.CommandTestUtil.VALID_SLOT_AMY;
+import static seedu.scheduler.logic.commands.CommandTestUtil.assertCommandFailure;
+import static seedu.scheduler.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.scheduler.logic.commands.EmailCommand.MESSAGE_EMAIL_ALL_SUCCESS;
 import static seedu.scheduler.logic.commands.EmailCommand.MESSAGE_EMAIL_CLIENT_ERROR;
 import static seedu.scheduler.logic.commands.EmailCommand.MESSAGE_NO_SLOTS_ALLOCATED;
 import static seedu.scheduler.logic.commands.EmailCommand.MESSAGE_STATUS;
 import static seedu.scheduler.logic.commands.EmailCommand.MESSAGE_USAGE;
+import static seedu.scheduler.testutil.TypicalPersons.ALICE_INTERVIEWEE;
 import static seedu.scheduler.testutil.TypicalPersons.getTypicalIntervieweeList;
 import static seedu.scheduler.testutil.TypicalPersons.getTypicalInterviewerList;
-import static seedu.scheduler.testutil.TypicalPersons.ALICE_INTERVIEWEE;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -20,17 +22,13 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.scheduler.commons.core.Messages;
-import seedu.scheduler.model.IntervieweeList;
-import seedu.scheduler.model.InterviewerList;
 import seedu.scheduler.model.Model;
 import seedu.scheduler.model.ModelManager;
 import seedu.scheduler.model.ModelStub;
-import seedu.scheduler.model.ReadAndWriteList;
 import seedu.scheduler.model.ReadOnlyList;
 import seedu.scheduler.model.ReadOnlyUserPrefs;
 import seedu.scheduler.model.Schedule;
 import seedu.scheduler.model.UserPrefs;
-import seedu.scheduler.model.person.Email;
 import seedu.scheduler.model.person.Interviewee;
 import seedu.scheduler.model.person.Interviewer;
 import seedu.scheduler.model.person.Name;
@@ -81,7 +79,8 @@ public class EmailCommandTest {
         }
     }
 
-    // Note: This method is disabled until we find a suitable way of testing without an annoying popup
+    // Note: This method is disabled until we find a suitable way of testing without an annoying popup of the
+    // mail client
     // @Test
     // public void execute_emailTimeslotSubcommand_success() {
     //     EmailCommand emailCommand = new EmailCommand("timeslot", ALICE_INTERVIEWEE.getName());
@@ -103,11 +102,11 @@ public class EmailCommandTest {
 
     @Test
     public void execute_emailAllTimeslotSubcommand_successWithAllSkipped() {
-        model = new ModelStubWithAllSlotsAllocated(getTypicalIntervieweeList(), getTypicalInterviewerList(), 
+        model = new ModelStubWithAllSlotsAllocated(getTypicalIntervieweeList(), getTypicalInterviewerList(),
                 new UserPrefs(), new LinkedList<>());
         expectedModel = new ModelStubWithAllSlotsAllocated(getTypicalIntervieweeList(), getTypicalInterviewerList(),
                 new UserPrefs(), new LinkedList<>());
-        
+
         EmailCommand emailCommand = new EmailCommand("alltimeslot");
 
         for (Interviewee interviewee : model.getUnfilteredIntervieweeList()) {
