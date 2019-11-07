@@ -13,6 +13,7 @@ import static seedu.scheduler.testutil.TypicalPersons.ALICE_INTERVIEWEE;
 import static seedu.scheduler.testutil.TypicalPersons.getTypicalIntervieweeList;
 import static seedu.scheduler.testutil.TypicalPersons.getTypicalInterviewerList;
 
+import java.awt.Desktop;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -73,9 +74,11 @@ public class EmailCommandTest {
 
     @Test
     public void execute_emailTimeslotSubcommand_mailClientError() {
-        if (!java.awt.Desktop.isDesktopSupported()) {
+        if (!Desktop.isDesktopSupported() && !Desktop.getDesktop().isSupported(Desktop.Action.MAIL)) {
             EmailCommand emailCommand = new EmailCommand("timeslot", ALICE_INTERVIEWEE.getName());
+            ALICE_INTERVIEWEE.setAllocatedSlot(Slot.fromString(VALID_SLOT_AMY));
             assertCommandFailure(emailCommand, model, MESSAGE_EMAIL_CLIENT_ERROR);
+            ALICE_INTERVIEWEE.clearAllocatedSlot();
         }
     }
 
