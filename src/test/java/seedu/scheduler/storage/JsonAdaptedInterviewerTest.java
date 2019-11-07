@@ -29,8 +29,8 @@ import seedu.scheduler.model.tag.Tag;
 
 public class JsonAdaptedInterviewerTest {
 
-    List<JsonAdaptedSlot> jsonAvailabilities;
-    List<JsonAdaptedTag> jsonTagged;
+    private List<JsonAdaptedSlot> jsonAvailabilities;
+    private List<JsonAdaptedTag> jsonTagged;
 
     @BeforeEach
     public void setUp() {

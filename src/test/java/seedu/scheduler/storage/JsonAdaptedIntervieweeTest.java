@@ -39,10 +39,10 @@ import seedu.scheduler.model.tag.Tag;
 
 class JsonAdaptedIntervieweeTest {
 
-    List<JsonAdaptedDepartment> jsonDepartmentChoices;
-    List<JsonAdaptedSlot> jsonAvailableTimeslots;
-    HashMap<String, List<String>> jsonEmails;
-    List<JsonAdaptedTag> jsonTagged;
+    private List<JsonAdaptedDepartment> jsonDepartmentChoices;
+    private List<JsonAdaptedSlot> jsonAvailableTimeslots;
+    private HashMap<String, List<String>> jsonEmails;
+    private List<JsonAdaptedTag> jsonTagged;
 
     @BeforeEach
     public void setUp() {
