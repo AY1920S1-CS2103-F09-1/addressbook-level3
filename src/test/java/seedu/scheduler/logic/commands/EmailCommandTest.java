@@ -74,7 +74,7 @@ public class EmailCommandTest {
 
     @Test
     public void execute_emailTimeslotSubcommand_mailClientError() {
-        if (!Desktop.isDesktopSupported() && !Desktop.getDesktop().isSupported(Desktop.Action.MAIL)) {
+        if (!Desktop.isDesktopSupported() || !Desktop.getDesktop().isSupported(Desktop.Action.MAIL)) {
             EmailCommand emailCommand = new EmailCommand("timeslot", ALICE_INTERVIEWEE.getName());
             ALICE_INTERVIEWEE.setAllocatedSlot(Slot.fromString(VALID_SLOT_AMY));
             assertCommandFailure(emailCommand, model, MESSAGE_EMAIL_CLIENT_ERROR);
