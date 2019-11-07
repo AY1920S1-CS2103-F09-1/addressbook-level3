@@ -629,6 +629,37 @@ There will be no changes in the schedules tab after the import of interviewee&#8
 <div class="ulist">
 <ul>
 <li>
+<p>A <code>n/NAME</code> must only contain alphanumeric characters and spaces, and should not be blank.</p>
+</li>
+<li>
+<p>A <code>p/PHONE</code> must only contain numbers, and should be at least 3 digits long.</p>
+</li>
+<li>
+<p>A <code>f/FACULTY</code> can take any value in english, but should not be blank.</p>
+</li>
+<li>
+<p>A <code>y/YEAR_OF_STUDY</code> must be a positive integer.</p>
+</li>
+<li>
+<p>A <code>ep/PERSONAL_EMAIL</code> or <code>ew/NUS_WORK_EMAIL</code> must be of format local-part@domain.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The local-part must only contain alphanumeric characters and special characters ( !#$%&amp;'*+/=?`{|}~^.- ), excluding the parenthesis.</p>
+</li>
+<li>
+<p>The domain name must at least be 2 characters long, start and end with alphanumeric characters and consist of alphanumeric characters, with a period or a hyphen for the characters in-between, if any.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A <code>d/DEPARTMENT</code> can take any value in english, but should not be blank.</p>
+</li>
+<li>
+<p>A <code>t/TAG</code> must only be alphanumeric and one word, i.e <code>t/catLover</code> is correct while <code>t/cat lover</code> is not.</p>
+</li>
+<li>
 <p><code>s/SLOT</code> must follow the format: <code>dd/MM/yyyy HH:mm-HH:mm</code>, where <strong>dd/MM/yyyy</strong> refers to a <strong>date</strong>, the leftmost <strong>HH:mm</strong> refers to the <strong>start duration</strong>
 and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</strong>.</p>
 </li>
@@ -646,12 +677,9 @@ and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</str
 <p>The range of durations available for input must be within <a href="#working-hours">Working Hours</a>.</p>
 </li>
 <li>
-<p>The start duration must be earlier than the end duration, and only start at the start of a new hour or new half-hour
-(i.e 13:00 is a valid start duration, while 13:10 is not).</p>
-</li>
-<li>
-<p>The time elapsed from the start duration to end duration must follow the number of minutes as specified
-by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a>.</p>
+<p>The start duration must be earlier than the end duration, and be in increments of <code>duration</code>.
+The time elapsed from the start duration to end duration must also follow the number of minutes as specified
+by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a> for more details.</p>
 </li>
 </ul>
 </div>
@@ -685,6 +713,31 @@ by the value of <code>duration</code> in <a href="#user-preferences">User Prefer
 <div class="ulist">
 <ul>
 <li>
+<p>A <code>n/NAME</code> must only contain alphanumeric characters and spaces, and should not be blank.</p>
+</li>
+<li>
+<p>A <code>p/PHONE</code> must only contain numbers, and should be at least 3 digits long.</p>
+</li>
+<li>
+<p>A <code>ew/NUS_WORK_EMAIL</code> must be of format local-part@domain.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The local-part must only contain alphanumeric characters and special characters ( !#$%&amp;'*+/=?`{|}~^.- ), excluding the parenthesis.</p>
+</li>
+<li>
+<p>The domain name must at least be 2 characters long, start and end with alphanumeric characters and consist of alphanumeric characters, with a period or a hyphen for the characters in-between, if any.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A <code>d/DEPARTMENT</code> can take any value in english, but should not be blank.</p>
+</li>
+<li>
+<p>A <code>t/TAG</code> must only be alphanumeric and one word, i.e <code>t/catLover</code> is correct while <code>t/cat lover</code> is not.</p>
+</li>
+<li>
 <p><code>s/SLOT</code> must follow the format: <code>dd/MM/yyyy HH:mm-HH:mm</code>, where <strong>dd/MM/yyyy</strong> refers to a <strong>date</strong>, the leftmost <strong>HH:mm</strong> refers to the <strong>start duration</strong>
 and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</strong>.</p>
 </li>
@@ -702,12 +755,9 @@ and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</str
 <p>The range of durations available for input must be within <a href="#working-hours">Working Hours</a>.</p>
 </li>
 <li>
-<p>The start duration must be earlier than the end duration, and only start at the start of a new hour or new half-hour
-(i.e 13:00 is a valid start duration, while 13:10 is not).</p>
-</li>
-<li>
-<p>The time elapsed from the start duration to end duration must follow the number of minutes as specified
-by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a>.</p>
+<p>The start duration must be earlier than the end duration, and be in increments of <code>duration</code>.
+The time elapsed from the start duration to end duration must also follow the number of minutes as specified
+by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a> for more details.</p>
 </li>
 </ul>
 </div>
@@ -783,6 +833,37 @@ by the value of <code>duration</code> in <a href="#user-preferences">User Prefer
 <p>At least one optional argument must be supplied, i.e <code>edit NAME r/interviewee</code> is not valid input.</p>
 </li>
 <li>
+<p>A <code>n/NAME</code> must only contain alphanumeric characters and spaces, and should not be blank.</p>
+</li>
+<li>
+<p>A <code>p/PHONE</code> must only contain numbers, and should be at least 3 digits long.</p>
+</li>
+<li>
+<p>A <code>f/FACULTY</code> can take any value in english, but should not be blank.</p>
+</li>
+<li>
+<p>A <code>y/YEAR_OF_STUDY</code> must be a positive integer.</p>
+</li>
+<li>
+<p>A <code>ep/PERSONAL_EMAIL</code> or <code>ew/NUS_WORK_EMAIL</code> must be of format local-part@domain.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The local-part must only contain alphanumeric characters and special characters ( !#$%&amp;'*+/=?`{|}~^.- ), excluding the parenthesis.</p>
+</li>
+<li>
+<p>The domain name must at least be 2 characters long, start and end with alphanumeric characters and consist of alphanumeric characters, with a period or a hyphen for the characters in-between, if any.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A <code>d/DEPARTMENT</code> can take any value in english, but should not be blank.</p>
+</li>
+<li>
+<p>A <code>t/TAG</code> must only be alphanumeric and one word, i.e <code>t/catLover</code> is correct while <code>t/cat lover</code> is not.</p>
+</li>
+<li>
 <p><code>s/SLOT</code> must follow the format: <code>dd/MM/yyyy HH:mm-HH:mm</code>, where <strong>dd/MM/yyyy</strong> refers to a <strong>date</strong>, the leftmost <strong>HH:mm</strong> refers to the <strong>start duration</strong>
 and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</strong>.</p>
 </li>
@@ -800,12 +881,9 @@ and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</str
 <p>The range of durations available for input must be within <a href="#working-hours">Working Hours</a>.</p>
 </li>
 <li>
-<p>The start duration must be earlier than the end duration, and only start at the start of a new hour or new half-hour
-(i.e 13:00 is a valid start duration, while 13:10 is not).</p>
-</li>
-<li>
-<p>The time elapsed from the start duration to end duration must follow the number of minutes as specified
-by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a>.</p>
+<p>The start duration must be earlier than the end duration, and be in increments of <code>duration</code>.
+The time elapsed from the start duration to end duration must also follow the number of minutes as specified
+by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a> for more details.</p>
 </li>
 </ul>
 </div>
@@ -861,6 +939,31 @@ by the value of <code>duration</code> in <a href="#user-preferences">User Prefer
 <p>At least one optional argument must be supplied, i.e <code>edit NAME r/interviewer</code> is not valid input.</p>
 </li>
 <li>
+<p>A <code>n/NAME</code> must only contain alphanumeric characters and spaces, and should not be blank.</p>
+</li>
+<li>
+<p>A <code>p/PHONE</code> must only contain numbers, and should be at least 3 digits long.</p>
+</li>
+<li>
+<p>A <code>ew/NUS_WORK_EMAIL</code> must be of format local-part@domain.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The local-part must only contain alphanumeric characters and special characters ( !#$%&amp;'*+/=?`{|}~^.- ), excluding the parenthesis.</p>
+</li>
+<li>
+<p>The domain name must at least be 2 characters long, start and end with alphanumeric characters and consist of alphanumeric characters, with a period or a hyphen for the characters in-between, if any.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A <code>d/DEPARTMENT</code> can take any value in english, but should not be blank.</p>
+</li>
+<li>
+<p>A <code>t/TAG</code> must only be alphanumeric and one word, i.e <code>t/catLover</code> is correct while <code>t/cat lover</code> is not.</p>
+</li>
+<li>
 <p><code>s/SLOT</code> must follow the format: <code>dd/MM/yyyy HH:mm-HH:mm</code>, where <strong>dd/MM/yyyy</strong> refers to a <strong>date</strong>, the leftmost <strong>HH:mm</strong> refers to the <strong>start duration</strong>
 and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</strong>.</p>
 </li>
@@ -878,12 +981,9 @@ and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</str
 <p>The range of durations available for input must be within <a href="#working-hours">Working Hours</a>.</p>
 </li>
 <li>
-<p>The start duration must be earlier than the end duration, and only start at the start of a new hour or new half-hour
-(i.e 13:00 is a valid start duration, while 13:10 is not).</p>
-</li>
-<li>
-<p>The time elapsed from the start duration to end duration must follow the number of minutes as specified
-by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a>.</p>
+<p>The start duration must be earlier than the end duration, and be in increments of <code>duration</code>.
+The time elapsed from the start duration to end duration must also follow the number of minutes as specified
+by the value of <code>duration</code> in <a href="#user-preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a> for more details.</p>
 </li>
 </ul>
 </div>
@@ -1428,4 +1528,4 @@ d/DEPARTMENT&#8230;&#8203; s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br>
 </tbody>
 </table>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 15:39:07 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 15:50:20 UTC</div></div></div></body></html>

@@ -3,15 +3,21 @@
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Scheduler</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103-F09-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Ang Wei Heng Kendrick - Project Portfolio</h1></div><div id="content"><div class="sect1">
 <h2 id="project-scheduler"><a class="link" href="#project-scheduler">PROJECT: Scheduler</a></h2>
 <div class="sectionbody">
-<hr>
+
 </div>
 </div>
 <div class="sect1">
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Scheduler is a desktop application which is used to automate the process of scheduling interviews.
-Its main feature is matching interviewees with interview time slots to generate an interview timetable.
+<p>People who hold leadership positions, especially those in student-led clubs, have to usually schedule interviews with those interested in applying to
+leadership positions. Usually, there are clashing preferred time slots between interviewees, which the interviewer has to resolve.
+We found that the current practice of constant back-and-forth messaging between interviewees and interviewers to resolve this to
+be inefficient. We therefore came up with Scheduler, a desktop application used to automate the process of interview scheduling.</p>
+</div>
+<div class="paragraph">
+<p>Its main feature is matching interviewees with interview time slots to generate an optimal interview timetable, and works with
+two types of data: data on interviewees and interviewers.
 The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
 </div>
 </div>
@@ -22,32 +28,73 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>:</p>
+<p><strong>Major enhancement</strong>: added the <strong>ability to manually add, edit and delete entities (interviewees and interviewers)</strong> in Scheduler.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does:</p>
+<p>What it does: This allows the user to manually alter the data currently in Scheduler .</p>
 </li>
 <li>
-<p>Justification:</p>
+<p>Justification: This feature is necessary to the product as interview schedules change frequently - interviewees may suddenly
+be unable to attend an interview, withdraw from the interview. Interviewers may also be forced to
+withdraw due to urgent business. There may also be more applicants, and hence interviewees. In these cases, the ability to
+manually change data in Scheduler is essential.</p>
 </li>
 <li>
-<p>Highlights:</p>
+<p>Highlights: This enhancement deeply affects the foundational structure of Scheduler. It required an in-depth understanding of
+the existing code base. The implementation too was challenging as it required changes to existing commands and needed to be
+designed such that enhancements could be easily added.</p>
 </li>
 <li>
-<p>Credits:</p>
+<p>Credits: Joshua Bloch, author of Effective Java, for his ideas on Builder patterns as a way to generate objects with optional parameters.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>:</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=kendrickang&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote additional tests for existing features to increase coverage to above 75%: <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/148">#148</a>, <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/154">#154</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Did cosmetic and structural tweaks to existing contents of the User Guide to improve readability: <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/156">#156</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contributed to forum discussions: <a href="https://github.com/nus-cs2103-AY1920S1/forum/issues/88#issuecomment-533785777">#1</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
@@ -74,8 +121,7 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </li>
 </ul>
 </div>
-</li>
-</ul>
+</div>
 </div>
 </div>
 </div>
@@ -92,14 +138,496 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </tr>
 </tbody>
 </table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">include</dt>
-<dd>
-<p>== Contributions to the Developer Guide</p>
-</dd>
-</dl>
+<div class="sect2">
+<h3 id="add-interviewees-interviewers-manually-code-add-code"><a class="link" href="#add-interviewees-interviewers-manually-code-add-code">Add interviewees/interviewers manually <code>add</code></a></h3>
+<div class="paragraph">
+<p>Manually add a new entity to the database. The command format differs on the <code>r/ROLE</code> prefix supplied:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>If <code>interviewee</code> is supplied, refer to <a href="#adding-a-new-interviewee">Adding a new interviewee</a> below.</p>
+</li>
+<li>
+<p>If <code>interviewer</code> is supplied, refer to <a href="#adding-a-new-interviewer">Adding a new interviewer</a> below.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="adding-a-new-interviewee"><a class="link" href="#adding-a-new-interviewee">Adding a new interviewee</a></h4>
+<div class="paragraph">
+<p>Manually add a new interviewee to the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add r/interviewee n/NAME p/PHONE f/FACULTY y/YEAR_OF_STUDY ep/PERSONAL_EMAIL ew/NUS_WORK_EMAIL d/DEPARTMENT&#8230;&#8203; s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>add r/interviewee n/John Doe p/88888888 t/CAP5 t/dogLover f/School of Computing ep/JohnDoe@gmail.com ew/JohnDoe@u.nus.edu y/2018 d/Marketing s/20/09/2019 18:00-18:30</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>n/NAME</code> must only contain alphanumeric characters and spaces, and should not be blank.</p>
+</li>
+<li>
+<p>A <code>p/PHONE</code> must only contain numbers, and should be at least 3 digits long.</p>
+</li>
+<li>
+<p>A <code>f/FACULTY</code> can take any value in english, but should not be blank.</p>
+</li>
+<li>
+<p>A <code>y/YEAR_OF_STUDY</code> must be a positive integer.</p>
+</li>
+<li>
+<p>A <code>ep/PERSONAL_EMAIL</code> or <code>ew/NUS_WORK_EMAIL</code> must be of format local-part@domain.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The local-part must only contain alphanumeric characters and special characters ( !#$%&amp;'*+/=?`{|}~^.- ), excluding the parenthesis.</p>
+</li>
+<li>
+<p>The domain name must at least be 2 characters long, start and end with alphanumeric characters and consist of alphanumeric characters, with a period or a hyphen for the characters in-between, if any.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A <code>d/DEPARTMENT</code> can take any value in english, but should not be blank.</p>
+</li>
+<li>
+<p>A <code>t/TAG</code> must only be alphanumeric and one word, i.e <code>t/catLover</code> is correct while <code>t/cat lover</code> is not.</p>
+</li>
+<li>
+<p><code>s/SLOT</code> must follow the format: <code>dd/MM/yyyy HH:mm-HH:mm</code>, where <strong>dd/MM/yyyy</strong> refers to a <strong>date</strong>, the leftmost <strong>HH:mm</strong> refers to the <strong>start duration</strong>
+and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</strong>.</p>
+</li>
+<li>
+<p>The date <strong>dd/MM/yyyy</strong> must strictly be a valid date, i.e 30/02/2019  cannot be supplied as a date.</p>
+</li>
+<li>
+<p>The duration of a <code>s/SLOT</code> must follow these constraints:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A duration must be in 24-hour format.</p>
+</li>
+<li>
+<p>The range of durations available for input must be within <a href="#Working Hours">Working Hours</a>.</p>
+</li>
+<li>
+<p>The start duration must be earlier than the end duration, and be in increments of <code>duration</code>.
+The time elapsed from the start duration to end duration must also follow the number of minutes as specified
+by the value of <code>duration</code> in <a href="#User Preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a> for more details.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-a-new-interviewer"><a class="link" href="#adding-a-new-interviewer">Adding a new interviewer</a></h4>
+<div class="paragraph">
+<p>Manually add a new interviewer to the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add r/interviewer n/NAME p/PHONE ew/NUS_WORK_EMAIL d/DEPARTMENT  s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>add r/interviewer n/Mary Jane p/98765432 ew/mary_jane@u.nus.edu d/Marketing s/20/09/2019 18:00-18:30</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>n/NAME</code> must only contain alphanumeric characters and spaces, and should not be blank.</p>
+</li>
+<li>
+<p>A <code>p/PHONE</code> must only contain numbers, and should be at least 3 digits long.</p>
+</li>
+<li>
+<p>A <code>ew/NUS_WORK_EMAIL</code> must be of format local-part@domain.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The local-part must only contain alphanumeric characters and special characters ( !#$%&amp;'*+/=?`{|}~^.- ), excluding the parenthesis.</p>
+</li>
+<li>
+<p>The domain name must at least be 2 characters long, start and end with alphanumeric characters and consist of alphanumeric characters, with a period or a hyphen for the characters in-between, if any.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A <code>d/DEPARTMENT</code> can take any value in english, but should not be blank.</p>
+</li>
+<li>
+<p>A <code>t/TAG</code> must only be alphanumeric and one word, i.e <code>t/catLover</code> is correct while <code>t/cat lover</code> is not.</p>
+</li>
+<li>
+<p><code>s/SLOT</code> must follow the format: <code>dd/MM/yyyy HH:mm-HH:mm</code>, where <strong>dd/MM/yyyy</strong> refers to a <strong>date</strong>, the leftmost <strong>HH:mm</strong> refers to the <strong>start duration</strong>
+and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</strong>.</p>
+</li>
+<li>
+<p>The date <strong>dd/MM/yyyy</strong> must strictly be a valid date, i.e 30/02/2019  cannot be supplied as a date.</p>
+</li>
+<li>
+<p>The duration of a <code>s/SLOT</code> must follow these constraints:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A duration must be in 24-hour format.</p>
+</li>
+<li>
+<p>The range of durations available for input must be within <a href="#Working Hours">Working Hours</a>.</p>
+</li>
+<li>
+<p>The start duration must be earlier than the end duration, and be in increments of <code>duration</code>.
+The time elapsed from the start duration to end duration must also follow the number of minutes as specified
+by the value of <code>duration</code> in <a href="#User Preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a> for more details.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-interviewees-interviewers-manually-code-edit-code"><a class="link" href="#edit-interviewees-interviewers-manually-code-edit-code">Edit interviewees/interviewers manually <code>edit</code></a></h3>
+<div class="paragraph">
+<p>Manually edit an entity in the database. The command format depends on the <code>r/ROLE</code> prefix supplied:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If <code>interviewee</code> is supplied, refer to <a href="#edit-an-existing-interviewee">Edit an existing interviewee</a> below.</p>
+</li>
+<li>
+<p>If <code>interviewer</code> is supplied, refer to <a href="#edit-an-existing-interviewer">Edit an existing interviewer</a> below.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="edit-an-existing-interviewee"><a class="link" href="#edit-an-existing-interviewee">Edit an existing interviewee</a></h4>
+<div class="paragraph">
+<p>Manually edit an existing interviewee in the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit NAME r/interviewee [p/PHONE] [f/FACULTY] [y/YEAR_OF_STUDY] [ep/PERSONAL_EMAIL] [ew/NUS_WORK_EMAIL]
+[d/DEPARTMENT]&#8230;&#8203; [s/SLOT]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An empty tag prefix <code>t/</code> can be supplied to reset the tags of an interviewee.</p>
+</li>
+<li>
+<p>If a department prefix <code>d/</code> is supplied, at least one valid, non-empty department must be provided.</p>
+</li>
+<li>
+<p>If a slot prefix <code>s/</code> is supplied, at least one valid, non-empty slot must be provided.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>edit John Doe r/interviewee p/91234567 f/School of Computing s/05/11/2019 18:00-19:00</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The interviewee to be edited must exist in the Scheduler.</p>
+</li>
+<li>
+<p><code>NAME</code> must be provided after <code>edit</code> and before the first prefix <code>r/ROLE</code>.</p>
+</li>
+<li>
+<p>At least one optional argument must be supplied, i.e <code>edit NAME r/interviewee</code> is not valid input.</p>
+</li>
+<li>
+<p>A <code>n/NAME</code> must only contain alphanumeric characters and spaces, and should not be blank.</p>
+</li>
+<li>
+<p>A <code>p/PHONE</code> must only contain numbers, and should be at least 3 digits long.</p>
+</li>
+<li>
+<p>A <code>f/FACULTY</code> can take any value in english, but should not be blank.</p>
+</li>
+<li>
+<p>A <code>y/YEAR_OF_STUDY</code> must be a positive integer.</p>
+</li>
+<li>
+<p>A <code>ep/PERSONAL_EMAIL</code> or <code>ew/NUS_WORK_EMAIL</code> must be of format local-part@domain.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The local-part must only contain alphanumeric characters and special characters ( !#$%&amp;'*+/=?`{|}~^.- ), excluding the parenthesis.</p>
+</li>
+<li>
+<p>The domain name must at least be 2 characters long, start and end with alphanumeric characters and consist of alphanumeric characters, with a period or a hyphen for the characters in-between, if any.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A <code>d/DEPARTMENT</code> can take any value in english, but should not be blank.</p>
+</li>
+<li>
+<p>A <code>t/TAG</code> must only be alphanumeric and one word, i.e <code>t/catLover</code> is correct while <code>t/cat lover</code> is not.</p>
+</li>
+<li>
+<p><code>s/SLOT</code> must follow the format: <code>dd/MM/yyyy HH:mm-HH:mm</code>, where <strong>dd/MM/yyyy</strong> refers to a <strong>date</strong>, the leftmost <strong>HH:mm</strong> refers to the <strong>start duration</strong>
+and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</strong>.</p>
+</li>
+<li>
+<p>The date <strong>dd/MM/yyyy</strong> must strictly be a valid date, i.e 30/02/2019  cannot be supplied as a date.</p>
+</li>
+<li>
+<p>The duration of a <code>s/SLOT</code> must follow these constraints:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A duration must be in 24-hour format.</p>
+</li>
+<li>
+<p>The range of durations available for input must be within <a href="#Working Hours">Working Hours</a>.</p>
+</li>
+<li>
+<p>The start duration must be earlier than the end duration, and be in increments of <code>duration</code>.
+The time elapsed from the start duration to end duration must also follow the number of minutes as specified
+by the value of <code>duration</code> in <a href="#User Preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a> for more details.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-an-existing-interviewer"><a class="link" href="#edit-an-existing-interviewer">Edit an existing interviewer</a></h4>
+<div class="paragraph">
+<p>Manually edit an existing interviewer in the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit NAME r/interviewer [p/PHONE] [t/TAG]&#8230;&#8203; [d/DEPARTMENT] [ew/NUS_WORK_EMAIL] [s/SLOT&#8230;&#8203;]</code></p>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An empty tag prefix <code>t/</code> can be supplied to reset the tags of an interviewee.</p>
+</li>
+<li>
+<p>If a slot prefix <code>s/</code> is supplied, at least one valid, non-empty slot must be provided.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>edit John Doe r/interviewee p/91234567 f/School of Computing s/05/11/2019 18:00-19:00</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The interviewer to be edited must exist in the Scheduler.</p>
+</li>
+<li>
+<p><code>NAME</code> must be provided after <code>edit</code> and before the first prefix <code>r/ROLE</code>.</p>
+</li>
+<li>
+<p>At least one optional argument must be supplied, i.e <code>edit NAME r/interviewer</code> is not valid input.</p>
+</li>
+<li>
+<p>A <code>n/NAME</code> must only contain alphanumeric characters and spaces, and should not be blank.</p>
+</li>
+<li>
+<p>A <code>p/PHONE</code> must only contain numbers, and should be at least 3 digits long.</p>
+</li>
+<li>
+<p>A <code>ew/NUS_WORK_EMAIL</code> must be of format local-part@domain.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The local-part must only contain alphanumeric characters and special characters ( !#$%&amp;'*+/=?`{|}~^.- ), excluding the parenthesis.</p>
+</li>
+<li>
+<p>The domain name must at least be 2 characters long, start and end with alphanumeric characters and consist of alphanumeric characters, with a period or a hyphen for the characters in-between, if any.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A <code>d/DEPARTMENT</code> can take any value in english, but should not be blank.</p>
+</li>
+<li>
+<p>A <code>t/TAG</code> must only be alphanumeric and one word, i.e <code>t/catLover</code> is correct while <code>t/cat lover</code> is not.</p>
+</li>
+<li>
+<p><code>s/SLOT</code> must follow the format: <code>dd/MM/yyyy HH:mm-HH:mm</code>, where <strong>dd/MM/yyyy</strong> refers to a <strong>date</strong>, the leftmost <strong>HH:mm</strong> refers to the <strong>start duration</strong>
+and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</strong>.</p>
+</li>
+<li>
+<p>The date <strong>dd/MM/yyyy</strong> must strictly be a valid date, i.e 30/02/2019  cannot be supplied as a date.</p>
+</li>
+<li>
+<p>The duration of a <code>s/SLOT</code> must follow these constraints:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A duration must be in 24-hour format.</p>
+</li>
+<li>
+<p>The range of durations available for input must be within <a href="#Working Hours">Working Hours</a>.</p>
+</li>
+<li>
+<p>The start duration must be earlier than the end duration, and be in increments of <code>duration</code>.
+The time elapsed from the start duration to end duration must also follow the number of minutes as specified
+by the value of <code>duration</code> in <a href="#User Preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a> for more details.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete-interviewees-interviewers-manually-code-delete-code"><a class="link" href="#delete-interviewees-interviewers-manually-code-delete-code">Delete interviewees/interviewers manually <code>delete</code></a></h3>
+<div class="paragraph">
+<p>Manually delete an entity from the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete NAME r/ROLE</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If <code>interviewee</code> is supplied as <code>ROLE</code>, refer to <a href="#delete-an-existing-interviewee">Delete an existing interviewee</a>.</p>
+</li>
+<li>
+<p>If <code>interviewer</code> is supplied as <code>ROLE</code>, refer to <a href="#delete-an-existing-interviewer">Delete an existing interviewer</a>.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="delete-an-existing-interviewee"><a class="link" href="#delete-an-existing-interviewee">Delete an existing interviewee</a></h4>
+<div class="paragraph">
+<p>Deletes the specified interviewee from the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete NAME r/interviewee</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>delete John Doe r/interviewee</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The interviewee with <code>NAME</code> must exist in the Scheduler.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-an-existing-interviewer"><a class="link" href="#delete-an-existing-interviewer">Delete an existing interviewer</a></h4>
+<div class="paragraph">
+<p>Deletes the specified interviewer from the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete NAME r/interviewee</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>delete Bohn Doe r/interviewer</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The interviewer with <code>NAME</code> must exist in the Scheduler.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 100%;">
@@ -110,10 +638,107 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </tr>
 </tbody>
 </table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">include</dt>
-</dl>
+<div class="sect2">
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">Logic component</a></h3>
+<div id="fig-LogicClassDiagram" class="imageblock">
+<div class="content">
+<img src="../images/LogicClassDiagram1_2.png" alt="LogicClassDiagram1 2">
+</div>
+<div class="title">Figure 1. Structure of the Logic Component</div>
+</div>
+<div class="paragraph">
+<p>Users should be able to manually key in input (i.e add interviewers and interviewees). We therefore changed the Logic
+package accordingly to suit our needs.</p>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> :
+<a href="{repoURL}/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+</li>
+<li>
+<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a person).</p>
+</li>
+<li>
+<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
+</li>
+<li>
+<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying help to the user.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
+</div>
+<div class="title">Figure 2. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 15:39:07 UTC</div></div></div></body></html>
+<div class="sect2">
+<h3 id="add-interviewee-interviewer-feature"><a class="link" href="#add-interviewee-interviewer-feature">Add Interviewee/Interviewer feature</a></h3>
+<div class="paragraph">
+<p>The add command is facilitated by the <code>AddCommandParser</code> class. It extends <code>AddCommandParser</code> by allowing it to parse
+prefixes specific to our Scheduler app, namely:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>r/ROLE</p>
+</li>
+<li>
+<p>f/FACULTY</p>
+</li>
+<li>
+<p>ep/PERSONAL_EMAIL and ew/NUS_WORK_EMAIL</p>
+</li>
+<li>
+<p>y/YEAR_OF_STUDY</p>
+</li>
+<li>
+<p>d/DEPARTMENT</p>
+</li>
+<li>
+<p>s/SLOT</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This command also requires access to the Model package, where the AddressBook implementation lives, as well as the
+Storage package, where the <code>JsonSerializableAddressBook</code> implementation lives. Consequently, the following json-friendly
+classes were added:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>JsonAdaptedInterviewee, JsonAdaptedInterviewer, JsonAdaptedDepartment, JsonAdaptedSlot</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following <strong>sequence diagram</strong> describes how the add command works when adding an interviewee:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddSequenceDiagram_1_2.png" alt="AddSequenceDiagram 1 2">
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows the steps needed to add a new interviewee:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddActivityDiagram_1_2.png" alt="AddActivityDiagram 1 2">
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 15:50:20 UTC</div></div></div></body></html>
