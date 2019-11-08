@@ -5,10 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.IntStream;
-
-import seedu.scheduler.commons.core.LogsCenter;
 
 /**
  * Represents the Hopcroft-Karp algorithm which can find the maximum number of matchings between interviewee and
