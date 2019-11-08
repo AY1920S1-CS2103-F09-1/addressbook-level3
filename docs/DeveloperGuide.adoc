@@ -262,26 +262,30 @@ image::AddActivityDiagram_1_2.png[]
 
 // end::add[]
 
-=== [Coming soon in v1.3] Scheduling Algorithm
+=== Scheduling Algorithm
 The scheduling of interviews is essentially a https://www.geeksforgeeks.org/maximum-bipartite-matching/[maximum bipartite matching problem].
-The application is trying to find the **maximum number of matching** between available interview slots
+The scheduling feature is trying to find the **maximum number of matching** between available interview slots
 and interviewees.
 
 In this application, the selected algorithm is https://www.geeksforgeeks.org/hopcroft-karp-algorithm-for-maximum-matching-set-1-introduction/[hopcroft-karp algorithm].
 The complexity of the algorithm is o(√v x e), which is reasonably fast. The relevant details of the algorithm are as below:
 
-**Vertex**
+**Vertex** +
+Interviewee and interview slot.
 
-**Edge**
+**Edge** +
+An edge represents a possible matching relationship  between interviewer and interview slot. An edge exists between interviewee and interview slot if any only if the interviewee can attend the slot.
 
 **Matching Criteria** +
-An interviewee matches an interview slot if **all** the criteria below are fulfilled:
+An interviewee can attend an interview slot (i.e. matches the interview slot) if **all** the criteria below are fulfilled:
 
 . The timing of the slot matches one of the available timings of the interviewee.
-. The department of the time slot matches the department of choice of the interviewee.
+. The department of the interviewer at that interview slot matches the department of choice of the interviewee.
 
-**Brief Explanation of the Algorithm** +
-Include an **activity diagram** here to summarise the algorithm.
+**Explanation of the Algorithm** +
+The **activity diagram** below to summarise the key steps in the algorithm.
+
+image::HopCroftKarp.png[]
 
 The proposed implementation of this algorithm is to encapsulate the logic of the algorithm into a `Command` class under
 `Logic` component, possibly with the help of some auxiliary classes. The command is then invoked when the user key in the relevant
