@@ -6,9 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
-import java.util.logging.Logger;
 
-import seedu.scheduler.commons.core.LogsCenter;
 import seedu.scheduler.commons.util.Pair;
 import seedu.scheduler.model.person.Department;
 import seedu.scheduler.model.person.Interviewee;
