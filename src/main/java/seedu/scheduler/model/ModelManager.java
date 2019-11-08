@@ -609,8 +609,6 @@ public class ModelManager implements Model {
         for (Schedule schedule : schedulesList) {
             schedule.clearAllocatedInterviewees();
         }
-
-        logger.info("Clear all allocated slots");
     }
 
     @Override

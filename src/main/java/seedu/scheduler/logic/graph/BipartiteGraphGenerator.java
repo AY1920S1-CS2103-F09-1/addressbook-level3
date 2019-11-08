@@ -19,7 +19,6 @@ import seedu.scheduler.model.person.Slot;
  * Generates a bipartite graph of interviewees linked to the the available interview slots.
  */
 public class BipartiteGraphGenerator {
-    private static final Logger logger = LogsCenter.getLogger(BipartiteGraph.class);
     private List<Interviewer> interviewers;
     private List<Interviewee> interviewees;
 
@@ -35,8 +34,6 @@ public class BipartiteGraphGenerator {
      * The interviewees and interview slots are each wrapped in a vertex.
      */
     public BipartiteGraph generate() {
-        logger.info("Starting to generate bipartite graph");
-
         Pair<List<Pair<Department, List<InterviewerSlotVertex>>>, Integer> result =
                 generateInterviewSlotsVertices(interviewers);
         List<Pair<Department, List<InterviewerSlotVertex>>> list = result.getHead();
@@ -67,7 +64,6 @@ public class BipartiteGraphGenerator {
             currIntervieweeVertexIndex++;
         }
 
-        logger.info("Bipartite graph of interviewees and interview slots is generated");
         return new BipartiteGraph(graph, interviewees.size(), numSlots);
     }
 
