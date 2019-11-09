@@ -112,6 +112,7 @@ interviewee allocated to each time slots. The slot that has no interviewee will 
 containing the schedules of the day.
 *Step 8. The MainWindow class will fill the Ui with the ScheduleViewPanel.
 
+.Schedule View Sequence Diagram
 image::ScheduleViewSequenceDiagram.png[]
 
 ==== Interviewee/Interviewer List View
@@ -160,6 +161,7 @@ of interviewees
 *Step 4. ScheduleViewPanel will firstly clear all the data and input the updated data from the .csv file.
 *Step 5. ScheduleViewPanel object will then be returned to the MainWindow and display the updated data.
 
+.UI Refresh During Data Import Sequence Diagram
 image::ImportUIRefreshSequenceDiagram.png[]
 
 // tag::logic[]
@@ -256,10 +258,12 @@ classes were added:
 
 The following *sequence diagram* describes how the add command works when adding an interviewee:
 
+.Add Interviewee Sequence Diagram
 image::AddSequenceDiagram_1_2.png[]
 
 The following activity diagram shows the steps needed to add a new interviewee:
 
+.Add Interviewee Activity Diagram
 image::AddActivityDiagram_1_2.png[]
 
 // end::add[]
@@ -288,7 +292,8 @@ An interviewee can match an interview slot(i.e. can attend it) if **all** the cr
 **Explanation of the Algorithm** +
 The **activity diagram** below summarises the key steps in the algorithm.
 
-image::HopcroftKarp.png[]
+.HopcroftKarp Algorithm Activity Diagram
+image::HopcroftKarp.png[300, 500]
 
 Referring to the diagram above, a graph between interviewees and interview slots will first be built. Specifically, the graph built is a bipartite
 graph where each interviewee is linked to the slot that it can match and vice versa, but interviewees are not linked with each
@@ -343,21 +348,45 @@ iterations of DFS.
 unmatched and matched vertices, except that the first layer of the graph are always a layer of free vertices. The last layer of the
 of the graph can either be a layer of matched vertices or free vertices (if augmenting path(s) exists). Below is an example of a layered graph:
 
-:!figure-caption:
 .Layered Graph (image taken from https://www-m9.ma.tum.de/graph-algorithms/matchings-hopcroft-karp/index_en.html)
-image::Layered_Graph.png[]
+image::Layered_Graph.png[300, 400]
+
 
 ==== Implementation
+The implementation of the algorithm is encapsulated in the the `graph` subpackage in the `logic` package. Below is a
+class diagram describing the essential components of the `graph` package.
 
-The proposed implementation of this algorithm is to encapsulate the logic of the algorithm into a `Command` class under
-`Logic` component, possibly with the help of some auxiliary classes. The command is then invoked when the user key in the relevant
+.Graph Subpackage
+image::GraphPackage.png[]
 
-The proposed implementation of this algorithm is to encapsulate the logic of the algorithm into a `Command` class under
-`Logic` component, possibly with the help of some auxiliary classes. The command is then invoked when the user key in the relevant
-command keyword (refer user guide).
+A `Command` object called `ScheduleCommand` makes use of the `graph` package to schedule the interviews for the interviewee.
+It first uses `BipartiteGraphGenerator` to generates a `BipartiteGraph` which models the graph of interviewee and
+interview slots. The `BipartiteGraph` object is then passed to a `HopcrofKarp` object which implements the logic of
+HopcroftKarp algorithm, where the BFS and DFS logic is split into `BfsHopcroftKarp` and `DfsHopcroftKarp` object to better
+manage the implementation of the algorithm.
 
-When the scheduling algorithm has finished running, it will update the data in the `Schedule` objects to reflect the
-allocated time slots to the interviewees, which the changes will then be reflected automatically in the UI.
+`HopcroftKarp` will then be executed which will run the algorithm and schedule interviews for the interviewees. To record
+the result of scheduling, it will modify the matching status between `IntervieweeVertex` and `InterviewSlotVertex` in the
+`BipartiteGraph` object passed to it.
+
+After the `HopcroftKarp` algorithm has finished executing, `ScheduleCommand` will then use the `BipartiteGraph` object
+to update the allocated slot to an `Interviewee`. It will also update the allocated slots to the `Interviewer` which will be
+interviewing the `Interviewee`. Finally, the `ScheduleCommand` will interact with `Model` to reflect the scheduling result in
+the `Ui`.
+
+Below are some class diagrams and a sequence diagram to aid the above explanation.
+
+.BipartiteGraphGenerator and BipartiteGraph with its components.
+image::BipartiteGraphGenerator.png[]
+
+.IntervieweeVertex
+image::IntervieweeVertex.png[200, 300]
+
+.InterviewSlotVertex
+image::InterviewSlotVertex.png[300, 550]
+
+.Executing Schedule Command Sequence Diagram
+image::ScheduleSequenceDiagram.png[]
 
 
 === Import
@@ -369,6 +398,7 @@ The import feature uses `CsvReader` in the Model to read the given .csv file and
 * `import interviewee <csv file>` stores the read data as a list of `Interviewee` objects in the model.
 * `CsvReader` makes use of `BufferedReader` to read data from the given file.
 
+.Import Interviewer's Schedules Sequence Diagram
 image::ImportSequenceDiagram.png[]
 Given above is an example of a sequence diagram for importing interviewer's schedules. It applies to both importing interviewee's and interviewer's data.
 
@@ -382,6 +412,7 @@ As seen in the above sequence diagram, the execution of the import feature consi
 
 The following activity diagram summarizes what happens when a user executes a new command:
 
+.Import Activity Diagram
 image::ImportActivityDiagram.png[]
 
 
@@ -394,6 +425,7 @@ CsvWriter facilitates the writing to the specified file.
 
 Below shows the sequence diagram of an example export command.
 
+.Export Sequence Diagram
 image::ExportSequenceDiagram.png[]
 
 The implementation is very similar to the Import feature. The only differences are in the Model where CsvWriter gets
@@ -401,6 +433,7 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 
 The Activity Diagram below summarises the execution of the export command.
 
+.Export Activity Diagram
 image::ExportActivityDiagram.png[]
 
 // tag::email[]
@@ -413,6 +446,7 @@ The Email feature makes use of the `java.awt.Desktop` package to activate the de
 * The `Cc:` field is configurable by the user via an optional configuration file.
 * The subject and message body are also automatically populated with details that are relevant to the Interviewee, depending on the context of the command used.
 
+.Email Sequence Diagram
 image::EmailSequenceDiagram.png[]
 
 ===== Example: Interview timeslot
@@ -715,23 +749,6 @@ A hypothetical person that refers to the user of the software and is tasked to a
 A date and time in which either the interviewer or interviewee is available for an interview.
 
 [appendix]
-== Product Survey
-
-*Product Name*
-
-Author: ...
-
-Pros:
-
-* ...
-* ...
-
-Cons:
-
-* ...
-* ...
-
-[appendix]
 == Instructions for Manual Testing
 
 Given below are instructions to test the app manually.
@@ -744,8 +761,9 @@ These instructions only provide a starting point for testers to work on; testers
 . Initial launch
 
 .. Download the jar file and copy into an empty folder
-.. Double-click the jar file +
-   Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+.. Open up terminal in the folder where the jar file is located and execute `java -jar scheduler.jar` +
+   Expected: Shows the GUI with three tabs(Schedules, Interviewers, Interviewees). The window size may not be optimum,
+   you can drag around the edge of the window to expand it accordingly.
 
 . Saving window preferences
 
@@ -753,7 +771,30 @@ These instructions only provide a starting point for testers to work on; testers
 .. Re-launch the app by double-clicking the jar file. +
    Expected: The most recent window size and location is retained.
 
-_{ more test cases ... }_
+=== Scheduling Interviews
+. Import .csv files of interviewers' availability and interviewees' details using the `import` command.
+
+. Type `schedule` in the text console of the app and press enter.
+
+. Expected: Schedules in the `Schedules` tab reflects the scheduled result accordingly, i.e. the name of the
+  interviewee shows up in the interview schedule if its availability falls in one of the available interview slots
+  (originally marked as 1 in the schedules when the interviewer's availability is imported). The text console will
+  also shows relevant message about the interview result, e.g. "All interviewees are allocated with a slot!",
+  "Interviewees that are not allocated a slot" followed by the name of the interviewees that are not allocated slot,
+  or "No matching is found :(".
+
+. You can use the sample test data below to test if the scheduling feature is working properly.
+... All interviewees are allocated a slot (<<Interviewers data>>, <<Interviewees data>>).
+... Some interviewees are allocated a slot (<<Interviewers data>>, <<Interviewees data>>).
+... All interviewees are not allocated a slot (<<Interviewers data>>, <<Interviewees data>>).
+
+. You can also design your own test data to check if the scheduling feature is working properly by adding some available
+  interview slots in the interviewer's availability template. Then, add interviewees which have availabilities that fall in the
+  available interview slots. Import the data and check if the interviewees name show up in the schedules.
+.. Note that some interviewees may not be allocated a slot because of unavoidable collisions between interviewees which have the same availability.
+.. You can also test the opposite way, i.e. design test data which contains interviewees that cannot be allocated a slot and check
+   if the name of the interviewee exists in the schedule.
+.. Please refer to the QuickStart section in the <<UserGuide#, user guide>> to download the templates of the interviewers' availability and interviewees details.
 
 === Deleting a person
 

@@ -15,8 +15,8 @@ import seedu.scheduler.commons.core.LogsCenter;
  * interview slots.
 * Crucial assumption: A bipartite graph is given to the algorithm.
  */
-public class HopCroftKarp {
-    private static final Logger logger = LogsCenter.getLogger(HopCroftKarp.class);
+public class HopcroftKarp {
+    private static final Logger logger = LogsCenter.getLogger(HopcroftKarp.class);
 
     /**
      * intervieweePredecessors -> predecessor of interviewee which is an interview slot matched to it.
@@ -32,7 +32,7 @@ public class HopCroftKarp {
     private boolean[] usedInterviewees;
     private boolean[] usedSlots;
 
-    public HopCroftKarp(BipartiteGraph graph) {
+    public HopcroftKarp(BipartiteGraph graph) {
         this.graph = graph;
     }
 
@@ -51,10 +51,10 @@ public class HopCroftKarp {
         List<InterviewerSlotVertex> lastLayer = new LinkedList<>();
 
         do {
-            lastLayer = new BfsHopCroftKarp(graph).execute(intervieweePredecessor, interviewSlotPredecessors);
+            lastLayer = new BfsHopcroftKarp(graph).execute(intervieweePredecessor, interviewSlotPredecessors);
             // If augmenting path(s) is found
             if (!lastLayer.isEmpty()) {
-                new DfsHopCroftKarp(graph).execute(lastLayer, intervieweePredecessor, interviewSlotPredecessors,
+                new DfsHopcroftKarp(graph).execute(lastLayer, intervieweePredecessor, interviewSlotPredecessors,
                         usedInterviewees, usedSlots);
             }
             cleanUp();

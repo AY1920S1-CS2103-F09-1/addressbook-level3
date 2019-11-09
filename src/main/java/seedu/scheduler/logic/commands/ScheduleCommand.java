@@ -12,9 +12,9 @@ import seedu.scheduler.commons.exceptions.ScheduleException;
 import seedu.scheduler.logic.commands.exceptions.CommandException;
 import seedu.scheduler.logic.graph.BipartiteGraph;
 import seedu.scheduler.logic.graph.BipartiteGraphGenerator;
-import seedu.scheduler.logic.graph.HopCroftKarp;
+import seedu.scheduler.logic.graph.HopcroftKarp;
+import seedu.scheduler.logic.graph.InterviewSlot;
 import seedu.scheduler.logic.graph.IntervieweeVertex;
-import seedu.scheduler.logic.graph.InterviewerSlot;
 import seedu.scheduler.model.Model;
 import seedu.scheduler.model.person.Interviewee;
 import seedu.scheduler.model.person.IntervieweeSlot;
@@ -56,7 +56,7 @@ public class ScheduleCommand extends Command {
             Collections.shuffle(interviewees);
 
             BipartiteGraph graph = new BipartiteGraphGenerator(interviewers, interviewees).generate();
-            HopCroftKarp algorithm = new HopCroftKarp(graph);
+            HopcroftKarp algorithm = new HopcroftKarp(graph);
             algorithm.execute();
             assignSlots(graph);
 
@@ -92,9 +92,9 @@ public class ScheduleCommand extends Command {
 
             if (intervieweeVertex.isMatched()) {
                 Interviewee interviewee = intervieweeVertex.getItem();
-                InterviewerSlot interviewerSlot = intervieweeVertex.getPartner().getItem();
-                Interviewer interviewer = interviewerSlot.getInterviewer();
-                Slot slot = interviewerSlot.getSlot();
+                InterviewSlot interviewSlot = intervieweeVertex.getPartner().getItem();
+                Interviewer interviewer = interviewSlot.getInterviewer();
+                Slot slot = interviewSlot.getSlot();
 
                 interviewee.setAllocatedSlot(slot);
                 interviewer.addAllocatedSlot(new IntervieweeSlot(interviewee, slot));
