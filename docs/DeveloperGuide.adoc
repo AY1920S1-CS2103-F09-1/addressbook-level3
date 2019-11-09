@@ -773,28 +773,30 @@ These instructions only provide a starting point for testers to work on; testers
 
 === Scheduling Interviews
 . Import .csv files of interviewers' availability and interviewees' details using the `import` command.
+.. Please refer to the QuickStart section in the <<UserGuide#, user guide>> to download the templates of the interviewers' availability and interviewees details.
 
 . Type `schedule` in the text console of the app and press enter.
 
 . Expected: Schedules in the `Schedules` tab reflects the scheduled result accordingly, i.e. the name of the
-  interviewee shows up in the interview schedule if its availability falls in one of the available interview slots
+  interviewee shows up in the interview schedule if its availability and department matches one of the available interview slots
   (originally marked as 1 in the schedules when the interviewer's availability is imported). The text console will
   also shows relevant message about the interview result, e.g. "All interviewees are allocated with a slot!",
-  "Interviewees that are not allocated a slot" followed by the name of the interviewees that are not allocated slot,
+  "Interviewees that are not allocated a slot" followed by the number and name of the interviewees that are not allocated a slot,
   or "No matching is found :(".
 
 . You can use the sample test data below to test if the scheduling feature is working properly.
-... All interviewees are allocated a slot (<<Interviewers data>>, <<Interviewees data>>).
-... Some interviewees are allocated a slot (<<Interviewers data>>, <<Interviewees data>>).
-... All interviewees are not allocated a slot (<<Interviewers data>>, <<Interviewees data>>).
+... http://bit.ly/2Ny64Q8[Interviewer Test Data]
+... All interviewees are allocated a slot (http://bit.ly/36KLxj4[Interviewees data]).
+... Some interviewees are allocated a slot (http://bit.ly/33wQ1I9[Interviewees data]).
+... All interviewees are not allocated a slot (http://bit.ly/33rVy2B[Interviewees data]).
 
 . You can also design your own test data to check if the scheduling feature is working properly by adding some available
-  interview slots in the interviewer's availability template. Then, add interviewees which have availabilities that fall in the
+  interview slots in the interviewer's availability template. Then, add interviewees which have availabilities and department that match the
   available interview slots. Import the data and check if the interviewees name show up in the schedules.
-.. Note that some interviewees may not be allocated a slot because of unavoidable collisions between interviewees which have the same availability.
+.. Note that some interviewees may not be allocated a slot because of unavoidable collisions between interviewees which have the same availability
+   and department.
 .. You can also test the opposite way, i.e. design test data which contains interviewees that cannot be allocated a slot and check
-   if the name of the interviewee exists in the schedule.
-.. Please refer to the QuickStart section in the <<UserGuide#, user guide>> to download the templates of the interviewers' availability and interviewees details.
+   if the name of the interviewee does not exist in the schedule.
 
 === Deleting a person
 
