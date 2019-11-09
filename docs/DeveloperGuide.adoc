@@ -262,30 +262,90 @@ image::AddActivityDiagram_1_2.png[]
 
 // end::add[]
 
-=== Scheduling Algorithm
+=== Scheduling Feature
+==== Algorithm
 The scheduling of interviews is essentially a https://www.geeksforgeeks.org/maximum-bipartite-matching/[maximum bipartite matching problem].
 The scheduling feature is trying to find the **maximum number of matching** between available interview slots
 and interviewees.
 
-In this application, the selected algorithm is https://www.geeksforgeeks.org/hopcroft-karp-algorithm-for-maximum-matching-set-1-introduction/[hopcroft-karp algorithm].
+In this application, the selected algorithm is https://www.geeksforgeeks.org/hopcroft-karp-algorithm-for-maximum-matching-set-1-introduction/[Hopcroft-Kap algorithm].
 The complexity of the algorithm is o(√v x e), which is reasonably fast. The relevant details of the algorithm are as below:
 
 **Vertex** +
 Interviewee and interview slot.
 
 **Edge** +
-An edge represents a possible matching relationship  between interviewer and interview slot. An edge exists between interviewee and interview slot if any only if the interviewee can attend the slot.
+An edge represents a possible matching relationship  between interviewee and interview slot. An edge exists between interviewee and interview slot if and only if the interviewee can attend the slot.
 
 **Matching Criteria** +
-An interviewee can attend an interview slot (i.e. matches the interview slot) if **all** the criteria below are fulfilled:
+An interviewee can match an interview slot(i.e. can attend it) if **all** the criteria below are fulfilled:
 
 . The timing of the slot matches one of the available timings of the interviewee.
 . The department of the interviewer at that interview slot matches the department of choice of the interviewee.
 
 **Explanation of the Algorithm** +
-The **activity diagram** below to summarise the key steps in the algorithm.
+The **activity diagram** below summarises the key steps in the algorithm.
 
-image::HopCroftKarp.png[]
+image::HopcroftKarp.png[]
+
+Referring to the diagram above, a graph between interviewees and interview slots will first be built. Specifically, the graph built is a bipartite
+graph where each interviewee is linked to the slot that it can match and vice versa, but interviewees are not linked with each
+other, same goes to interview slots. Thus, the 2 distinct groups of vertices in the graph are interviewee vertices and interview slot
+vertices. Before continuing, please read the below clarification about the terms **unmatched** and **free**.
+
+[IMPORTANT]
+The term **unmatched** refers to a vertex that is not matched to its previous adjacent vertex by DFS. The term **free** refers to
+a vertex that is not matched to any other vertex yet by DFS.
+
+A breadth-first-search(BFS) is then conducted on all **free** vertices in the graph to search for <<Notes,augmenting paths>> which in the process will construct a layered graph.
+The BFS is slightly special as it will visit adjacent vertex in an **<<Notes, alternating sequence of unmatched and matched edges>>**.
+
+****
+Starting from one of the free vertices in the graph, visit adjacent vertices(group x) that are **not matched to it (i.e. unmatched)** in a
+breath-first manner. This is then followed by visiting adjacent vertices that are **matched to** the vertices in group x
+in a breath-first manner.
+****
+
+The routine above is repeated until a layer of **free** vertices are found (i.e. augmenting path(s) is found) or the layered graph cannot be further extended
+(i.e. all augmenting path have been exhausted).
+
+If augmenting path(s) exists, depth-first-search(DFS) will then be applied to every **free** vertex in the last layer of the layered graph
+to increase the number of matching between interviewee and interview slot. The DFS will start on one of the free vertices in the last layer and traverse through one of the
+augmenting path(s) which the free vertex lies in. When DFS hits the ends of an augmenting path, the unmatched and matched relationships between the vertices along the path will be **flipped**.
+Due to this alternating unmatched and matched relationship, the number of matching(a.k.a. cardinality) along the path will be increased by exactly 1 when the relationships along the path are flipped.
+
+When the relationships are flipped, the vertices will be marked as used such that it cannot be used as one of the vertex
+along the other augmenting paths in the layered graph for the other iterations of DFS on the current layered graph.
+
+The process of BFS followed by DFS will keep repeating until no more augmenting path(s) can be found in the bipartite graph of interviewee and interview slots, which
+marks the termination of the algorithm. At this point, the maximum number of matching have been found. This is based on a simple graph theory:
+
+> The number of matching in a graph is maximal if and only if no more augmenting path exist.
+
+The theory above is so because if an augmenting path exists, it means that the number of matching along that path can be increased
+by 1, which in turn increases the number of matching in the graph.
+
+===== Notes
+
+. **Augmenting path**: A simple path alternating between unmatched edges and matched edges. An augmenting path must
+start with a *free* vertex and ends with a **free** vertex. Thus, the patten of the alternating edges will always be
+unmatched, matched, unmatched ...., matched, unmatched.
+
+. **Matched edge**: An edge is matched if the two vertices connected by it are matched to each other in previous iterations of
+the DFS. In the case of the application, one of the two vertices will be an interviewee and the other will be an interview slot.
+
+. **Unmatched edge**: An edge is unmatched if the two vertices connected by it are not matched to each other in previous
+iterations of DFS.
+
+. **Layered graph**: A layered graph is a graph formed by multiple layers of vertices. In this case, the layers are alternating between
+unmatched and matched vertices, except that the first layer of the graph are always a layer of free vertices. The last layer of the
+of the graph can either be a layer of matched vertices or free vertices (if augmenting path(s) exists). Below is an example of a layered graph:
+
+:!figure-caption:
+.Layered Graph (image taken from https://www-m9.ma.tum.de/graph-algorithms/matchings-hopcroft-karp/index_en.html)
+image::Layered_Graph.png[]
+
+==== Implementation
 
 The proposed implementation of this algorithm is to encapsulate the logic of the algorithm into a `Command` class under
 `Logic` component, possibly with the help of some auxiliary classes. The command is then invoked when the user key in the relevant
