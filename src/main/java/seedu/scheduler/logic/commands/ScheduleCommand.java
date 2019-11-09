@@ -52,7 +52,7 @@ public class ScheduleCommand extends Command {
             List<Interviewee> interviewees = new ArrayList<>(model.getUnfilteredIntervieweeList());
 
             BipartiteGraph optimumGraph = findOptimumGraph(model, interviewers, interviewees);
-            HopCroftKarp algorithm = new HopCroftKarp(optimumGraph);
+            HopcroftKarp algorithm = new HopcroftKarp(optimumGraph);
             algorithm.execute();
             assignSlots(optimumGraph);
 
@@ -116,7 +116,7 @@ public class ScheduleCommand extends Command {
             Collections.shuffle(interviewees);
 
             BipartiteGraph graph = new BipartiteGraphGenerator(interviewers, interviewees).generate();
-            HopCroftKarp algorithm = new HopCroftKarp(graph);
+            HopcroftKarp algorithm = new HopcroftKarp(graph);
             algorithm.execute();
             int currNumMatching = assignSlots(graph);
 

@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
  * interview slots.
 * Crucial assumption: A bipartite graph is given to the algorithm.
  */
-public class HopCroftKarp {
+public class HopcroftKarp {
     /**
      * intervieweePredecessors -> predecessor of interviewee which is an interview slot matched to it.
      * interviewSlotPredecessors predecessor(s) of interview slots which is interviewee(s) that can match the slot.
