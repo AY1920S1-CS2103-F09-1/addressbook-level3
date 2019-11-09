@@ -20,9 +20,9 @@ public class BfsHopcroftKarp {
      * structure of the layered graph.
      *
      * @param intervieweePredecessor a list used to keep track of the predecessor of an interviewee, which is a
-     *                               slot matched to it.
+     *                               slot matched to it
      * @param interviewSlotPredecessors a list used to keep track of predecessor(s) of an interview slot, which is
-     *                                  interviewee(s) that can match the interview slot.
+     *                                  interviewee(s) that can match the interview slot
      */
     public List<InterviewerSlotVertex> execute(List<InterviewerSlotVertex> intervieweePredecessor,
             List<List<IntervieweeVertex>> interviewSlotPredecessors) {
