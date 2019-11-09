@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 3 - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Scheduler - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Scheduler</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103-F09-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Scheduler</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103-F09-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Scheduler - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
@@ -23,7 +23,7 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#add-interviewee-interviewer-feature">3.1. Add Interviewee/Interviewer feature</a></li>
-<li><a href="#coming-soon-in-v1-3-scheduling-algorithm">3.2. [Coming soon in v1.3] Scheduling Algorithm</a></li>
+<li><a href="#scheduling-feature">3.2. Scheduling Feature</a></li>
 <li><a href="#import">3.3. Import</a></li>
 <li><a href="#export">3.4. Export</a></li>
 <li><a href="#coming-soon-in-v1-4-email">3.5. [Coming soon in v1.4] Email</a></li>
@@ -44,12 +44,12 @@
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">G.2. Deleting a person</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
+<li><a href="#scheduling-interviews">F.2. Scheduling Interviews</a></li>
+<li><a href="#deleting-a-person">F.3. Deleting a person</a></li>
+<li><a href="#saving-data">F.4. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -84,14 +84,15 @@
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/">diagrams</a> folder.
+The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S1-CS2103-F09-1/main/blob/master//docs/diagrams/">diagrams</a> folder.
 Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how to create and edit diagrams.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103-F09-1/main/blob/master//src/main/java/seedu/scheduler/Main.java"><code>Main</code></a> and
+<a href="https://github.com/AY1920S1-CS2103-F09-1/main/blob/master//src/main/java/seedu/scheduler/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -178,13 +179,14 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 4. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-F09-1/main/blob/master/src/main/java/seedu/scheduler/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the
+<a href="https://github.com/AY1920S1-CS2103-F09-1/main/blob/master/src/main/java/seedu/scheduler/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103-F09-1/main/blob/master//src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -230,6 +232,7 @@ containing the schedules of the day.
 <div class="content">
 <img src="images/ScheduleViewSequenceDiagram.png" alt="ScheduleViewSequenceDiagram">
 </div>
+<div class="title">Figure 5. Schedule View Sequence Diagram</div>
 </div>
 </div>
 <div class="sect3">
@@ -296,6 +299,7 @@ of interviewees
 <div class="content">
 <img src="images/ImportUIRefreshSequenceDiagram.png" alt="ImportUIRefreshSequenceDiagram">
 </div>
+<div class="title">Figure 6. UI Refresh During Data Import Sequence Diagram</div>
 </div>
 </div>
 </div>
@@ -305,7 +309,7 @@ of interviewees
 <div class="content">
 <img src="images/LogicClassDiagram1_2.png" alt="LogicClassDiagram1 2">
 </div>
-<div class="title">Figure 5. Structure of the Logic Component</div>
+<div class="title">Figure 7. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
 <p>Users should be able to manually key in input (i.e add interviewers and interviewees). We therefore changed the Logic
@@ -313,7 +317,7 @@ package accordingly to suit our needs.</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S1-CS2103-F09-1/main/blob/master//src/main/java/seedu/scheduler/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -341,7 +345,7 @@ package accordingly to suit our needs.</p>
 <div class="content">
 <img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -362,10 +366,10 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
 </div>
-<div class="title">Figure 7. Structure of the Model Component</div>
+<div class="title">Figure 9. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-F09-1/main/blob/master//src/main/java/seedu/scheduler/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -405,10 +409,10 @@ table in the imported interviewer&#8217;s availability. The data of the <code>Sc
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
-<div class="title">Figure 8. Structure of the Storage Component</div>
+<div class="title">Figure 10. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-F09-1/main/blob/master//src/main/java/seedu/scheduler/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -427,7 +431,7 @@ table in the imported interviewer&#8217;s availability. The data of the <code>Sc
 <div class="sect2">
 <h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
+<p>Classes used by multiple components are in the <code>seedu.scheduler.commons</code> package.</p>
 </div>
 </div>
 </div>
@@ -485,6 +489,7 @@ classes were added:</p>
 <div class="content">
 <img src="images/AddSequenceDiagram_1_2.png" alt="AddSequenceDiagram 1 2">
 </div>
+<div class="title">Figure 11. Add Interviewee Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>The following activity diagram shows the steps needed to add a new interviewee:</p>
@@ -493,28 +498,33 @@ classes were added:</p>
 <div class="content">
 <img src="images/AddActivityDiagram_1_2.png" alt="AddActivityDiagram 1 2">
 </div>
+<div class="title">Figure 12. Add Interviewee Activity Diagram</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="coming-soon-in-v1-3-scheduling-algorithm"><a class="link" href="#coming-soon-in-v1-3-scheduling-algorithm">3.2. [Coming soon in v1.3] Scheduling Algorithm</a></h3>
+<h3 id="scheduling-feature"><a class="link" href="#scheduling-feature">3.2. Scheduling Feature</a></h3>
+<div class="sect3">
+<h4 id="algorithm"><a class="link" href="#algorithm">3.2.1. Algorithm</a></h4>
 <div class="paragraph">
 <p>The scheduling of interviews is essentially a <a href="https://www.geeksforgeeks.org/maximum-bipartite-matching/">maximum bipartite matching problem</a>.
-The application is trying to find the <strong>maximum number of matching</strong> between available interview slots
+The scheduling feature is trying to find the <strong>maximum number of matching</strong> between available interview slots
 and interviewees.</p>
 </div>
 <div class="paragraph">
-<p>In this application, the selected algorithm is <a href="https://www.geeksforgeeks.org/hopcroft-karp-algorithm-for-maximum-matching-set-1-introduction/">hopcroft-karp algorithm</a>.
+<p>In this application, the selected algorithm is <a href="https://www.geeksforgeeks.org/hopcroft-karp-algorithm-for-maximum-matching-set-1-introduction/">Hopcroft-Kap algorithm</a>.
 The complexity of the algorithm is o(√v x e), which is reasonably fast. The relevant details of the algorithm are as below:</p>
 </div>
 <div class="paragraph">
-<p><strong>Vertex</strong></p>
+<p><strong>Vertex</strong><br>
+Interviewee and interview slot.</p>
 </div>
 <div class="paragraph">
-<p><strong>Edge</strong></p>
+<p><strong>Edge</strong><br>
+An edge represents a possible matching relationship  between interviewee and interview slot. An edge exists between interviewee and interview slot if and only if the interviewee can attend the slot.</p>
 </div>
 <div class="paragraph">
 <p><strong>Matching Criteria</strong><br>
-An interviewee matches an interview slot if <strong>all</strong> the criteria below are fulfilled:</p>
+An interviewee can match an interview slot (i.e. can attend it) if <strong>all</strong> the criteria below are fulfilled:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -522,32 +532,176 @@ An interviewee matches an interview slot if <strong>all</strong> the criteria be
 <p>The timing of the slot matches one of the available timings of the interviewee.</p>
 </li>
 <li>
-<p>The department of the time slot matches the department of choice of the interviewee.</p>
+<p>The department of the interviewer at that interview slot matches the department of choice of the interviewee.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p><strong>Brief Explanation of the Algorithm</strong><br>
-Include an <strong>activity diagram</strong> here to summarise the algorithm.</p>
+<p><strong>Explanation of the Algorithm</strong><br>
+The <strong>activity diagram</strong> below summarises the key steps in the algorithm.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/HopcroftKarp.png" alt="300" width="500">
+</div>
+<div class="title">Figure 13. HopcroftKarp Algorithm Activity Diagram</div>
 </div>
 <div class="paragraph">
-<p>The proposed implementation of this algorithm is to encapsulate the logic of the algorithm into a <code>Command</code> class under
-<code>Logic</code> component, possibly with the help of some auxiliary classes. The command is then invoked when the user key in the relevant</p>
+<p>Referring to the diagram above, a graph between interviewees and interview slots will first be built. Specifically, the graph built is a bipartite
+graph where each interviewee is linked to the slot that it can match and vice versa, but interviewees are not linked with each
+other, same goes to interview slots. Thus, the 2 distinct groups of vertices in the graph are interviewee vertices and interview slot
+vertices. Before continuing, please read the below clarification about the terms <strong>unmatched</strong> and <strong>free</strong>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The term <strong>unmatched</strong> refers to a vertex that is not matched to its previous adjacent vertex by DFS. The term <strong>free</strong> refers to
+a vertex that is not matched to any other vertex yet by DFS.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>The proposed implementation of this algorithm is to encapsulate the logic of the algorithm into a <code>Command</code> class under
-<code>Logic</code> component, possibly with the help of some auxiliary classes. The command is then invoked when the user key in the relevant
-command keyword (refer user guide).</p>
+<p>A breadth-first-search (BFS) is then conducted on all <strong>free</strong> vertices in the graph to search for <a href="#notes">augmenting paths</a> which in the process will construct a layered graph.
+The BFS is slightly special as it will visit adjacent vertex in an <strong><a href="#notes">alternating sequence of unmatched and matched edges</a></strong>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Starting from one of the free vertices in the graph, visit adjacent vertices(group x) that are <strong>not matched to it (i.e. unmatched)</strong> in a
+breath-first manner. This is then followed by visiting adjacent vertices that are <strong>matched to</strong> the vertices in group x
+in a breath-first manner.</p>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p>When the scheduling algorithm has finished running, it will update the data in the <code>Schedule</code> objects to reflect the
-allocated time slots to the interviewees, which the changes will then be reflected automatically in the UI.</p>
+<p>The routine above is repeated until a layer of <strong>free</strong> vertices are found (i.e. augmenting path(s) is found) or the layered graph cannot be further extended
+(i.e. all augmenting path have been exhausted).</p>
+</div>
+<div class="paragraph">
+<p>If augmenting path(s) exists, depth-first-search (DFS) will then be applied to every <strong>free</strong> vertex in the last layer of the layered graph
+to increase the number of matching between interviewee and interview slot. The DFS will start on one of the free vertices in the last layer and traverse through one of the
+augmenting path(s) which the free vertex lies in. When DFS hits the ends of an augmenting path, the unmatched and matched relationships between the vertices along the path will be <strong>flipped</strong>.
+Due to this alternating unmatched and matched relationship, the number of matching(a.k.a. cardinality) along the path will be increased by exactly 1 when the relationships along the path are flipped.</p>
+</div>
+<div class="paragraph">
+<p>When the relationships are flipped, the vertices will be marked as used such that it cannot be used as one of the vertex
+along the other augmenting paths in the layered graph for the other iterations of DFS on the current layered graph.</p>
+</div>
+<div class="paragraph">
+<p>The process of BFS followed by DFS will keep repeating until no more augmenting path(s) can be found in the bipartite graph of interviewee and interview slots, which
+marks the termination of the algorithm. At this point, the maximum number of matching have been found. This is based on a simple graph theory:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>The number of matching in a graph is maximal if and only if no more augmenting path exist.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>The theory above is so because if an augmenting path exists, it means that the number of matching along that path can be increased
+by 1, which in turn increases the number of matching in the graph.</p>
+</div>
+<div class="sect4">
+<h5 id="notes"><a class="link" href="#notes">Notes</a></h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Augmenting path</strong>: A simple path alternating between unmatched edges and matched edges. An augmenting path must
+start with a <strong>free</strong> vertex and ends with a <strong>free</strong> vertex. Thus, the patten of the alternating edges will always be
+unmatched, matched, unmatched &#8230;&#8203;., matched, unmatched.</p>
+</li>
+<li>
+<p><strong>Matched edge</strong>: An edge is matched if the two vertices connected by it are matched to each other in previous iterations of
+the DFS. In the case of the application, one of the two vertices will be an interviewee and the other will be an interview slot.</p>
+</li>
+<li>
+<p><strong>Unmatched edge</strong>: An edge is unmatched if the two vertices connected by it are not matched to each other in previous
+iterations of DFS.</p>
+</li>
+<li>
+<p><strong>Layered graph</strong>: A layered graph is a graph formed by multiple layers of vertices. In this case, the layers are alternating between
+unmatched and matched vertices, except that the first layer of the graph are always a layer of free vertices. The last layer of the
+of the graph can either be a layer of matched vertices or free vertices (if augmenting path(s) exists). Below is an example of a layered graph:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Layered_Graph.png" alt="300" width="400">
+</div>
+<div class="title">Figure 14. Layered Graph (image taken from <a href="https://www-m9.ma.tum.de/graph-algorithms/matchings-hopcroft-karp/index_en.html" class="bare">https://www-m9.ma.tum.de/graph-algorithms/matchings-hopcroft-karp/index_en.html</a>)</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.2.2. Implementation</a></h4>
+<div class="paragraph">
+<p>The implementation of the algorithm is encapsulated in the the <code>graph</code> subpackage in the <code>logic</code> package. Below is a
+class diagram describing the essential components of the <code>graph</code> package.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/GraphPackage.png" alt="GraphPackage">
+</div>
+<div class="title">Figure 15. Graph Subpackage</div>
+</div>
+<div class="paragraph">
+<p>A <code>Command</code> object called <code>ScheduleCommand</code> makes use of the <code>graph</code> package to schedule the interviews for the interviewee.
+It first uses <code>BipartiteGraphGenerator</code> to generates a <code>BipartiteGraph</code> which models the graph of interviewee and
+interview slots. The <code>BipartiteGraph</code> object is then passed to a <code>HopcrofKarp</code> object which implements the logic of
+HopcroftKarp algorithm, where the BFS and DFS logic is split into <code>BfsHopcroftKarp</code> and <code>DfsHopcroftKarp</code> object to better
+manage the implementation of the algorithm.</p>
+</div>
+<div class="paragraph">
+<p><code>HopcroftKarp</code> will then be executed which will run the algorithm and schedule interviews for the interviewees. To record
+the result of scheduling, it will modify the matching status between <code>IntervieweeVertex</code> and <code>InterviewSlotVertex</code> in the
+<code>BipartiteGraph</code> object passed to it.</p>
+</div>
+<div class="paragraph">
+<p>After the <code>HopcroftKarp</code> algorithm has finished executing, <code>ScheduleCommand</code> will then use the <code>BipartiteGraph</code> object
+to update the allocated slot to an <code>Interviewee</code>. It will also update the allocated slots to the <code>Interviewer</code> which will be
+interviewing the <code>Interviewee</code>. Finally, the <code>ScheduleCommand</code> will interact with <code>Model</code> to reflect the scheduling result in
+the <code>Ui</code>.</p>
+</div>
+<div class="paragraph">
+<p>Below are some class diagrams and a sequence diagram to aid the above explanation.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BipartiteGraphGenerator.png" alt="BipartiteGraphGenerator">
+</div>
+<div class="title">Figure 16. BipartiteGraphGenerator and BipartiteGraph with its components.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/IntervieweeVertex.png" alt="200" width="300">
+</div>
+<div class="title">Figure 17. IntervieweeVertex</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/InterviewSlotVertex.png" alt="300" width="550">
+</div>
+<div class="title">Figure 18. InterviewSlotVertex</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ScheduleSequenceDiagram.png" alt="ScheduleSequenceDiagram">
+</div>
+<div class="title">Figure 19. Executing Schedule Command Sequence Diagram</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="import"><a class="link" href="#import">3.3. Import</a></h3>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.3.1. Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.3.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The import feature uses <code>CsvReader</code> in the Model to read the given .csv file and stores the data into the model.</p>
 </div>
@@ -565,6 +719,7 @@ allocated time slots to the interviewees, which the changes will then be reflect
 <div class="content">
 <img src="images/ImportSequenceDiagram.png" alt="ImportSequenceDiagram">
 </div>
+<div class="title">Figure 20. Import Interviewer&#8217;s Schedules Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Given above is an example of a sequence diagram for importing interviewer&#8217;s schedules. It applies to both importing interviewee&#8217;s and interviewer&#8217;s data,
@@ -577,6 +732,7 @@ with the only difference being in the string processing methods in the <strong>C
 <div class="content">
 <img src="images/ImportActivityDiagram.png" alt="ImportActivityDiagram">
 </div>
+<div class="title">Figure 21. Import Activity Diagram</div>
 </div>
 <div class="sect4">
 <h5 id="csvreader"><a class="link" href="#csvreader">CsvReader</a></h5>
@@ -645,7 +801,7 @@ Exceptions will be thrown and the relevant error messages will be displayed in t
 <div class="sect2">
 <h3 id="export"><a class="link" href="#export">3.4. Export</a></h3>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">3.4.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.4.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The Export command gets the scheduled time slots from the Model and writes them in the specified .csv file.
 CsvWriter facilitates the writing to the specified file.</p>
@@ -664,6 +820,7 @@ CsvWriter facilitates the writing to the specified file.</p>
 <div class="content">
 <img src="images/ExportSequenceDiagram.png" alt="ExportSequenceDiagram">
 </div>
+<div class="title">Figure 22. Export Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>The implementation is very similar to the Import feature. The only differences are in the Model where CsvWriter gets
@@ -676,13 +833,14 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 <div class="content">
 <img src="images/ExportActivityDiagram.png" alt="ExportActivityDiagram">
 </div>
+<div class="title">Figure 23. Export Activity Diagram</div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="coming-soon-in-v1-4-email"><a class="link" href="#coming-soon-in-v1-4-email">3.5. [Coming soon in v1.4] Email</a></h3>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">3.5.1. Implementation</a></h4>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">3.5.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The Email feature makes use of the <code>java.awt.Desktop</code> package to activate the default Mail client of the user.</p>
 </div>
@@ -703,6 +861,7 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 <div class="content">
 <img src="images/EmailSequenceDiagram.png" alt="EmailSequenceDiagram">
 </div>
+<div class="title">Figure 24. Email Sequence Diagram</div>
 </div>
 <div class="sect4">
 <h5 id="example-interview-timeslot"><a class="link" href="#example-interview-timeslot">Example: Interview timeslot</a></h5>
@@ -744,7 +903,7 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 <div class="sect2">
 <h3 id="display"><a class="link" href="#display">3.6. Display</a></h3>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">3.6.1. Implementation</a></h4>
+<h4 id="implementation-6"><a class="link" href="#implementation-6">3.6.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The display feature allows user to toggle views of schedules, interviewer list and interviewee list. It uses an interface named TabListener and contains
 the following method:</p>
@@ -1348,44 +1507,7 @@ Use case resumes at step 1.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -1403,7 +1525,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1414,8 +1536,9 @@ These instructions only provide a starting point for testers to work on; testers
 <p>Download the jar file and copy into an empty folder</p>
 </li>
 <li>
-<p>Double-click the jar file<br>
-Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+<p>Open up terminal in the folder where the jar file is located and execute <code>java -jar scheduler.jar</code><br>
+Expected: Shows the GUI with three tabs(Schedules, Interviewers, Interviewees). The window size may not be optimum,
+you can drag around the edge of the window to expand it accordingly.</p>
 </li>
 </ol>
 </div>
@@ -1436,12 +1559,73 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect2">
+<h3 id="scheduling-interviews"><a class="link" href="#scheduling-interviews">F.2. Scheduling Interviews</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Import .csv files of interviewers' availability and interviewees' details using the <code>import</code> command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Please refer to the QuickStart section in the <a href="UserGuide.html">user guide</a> to download the templates of the interviewers' availability and interviewees details.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Type <code>schedule</code> in the text console of the app and press enter.</p>
+</li>
+<li>
+<p>Expected: Schedules in the <code>Schedules</code> tab reflects the scheduled result accordingly, i.e. the name of the
+interviewee shows up in the interview schedule if its availability and department matches one of the available interview slots
+(originally marked as 1 in the schedules when the interviewer&#8217;s availability is imported). The text console will
+also shows relevant message about the interview result, e.g. "All interviewees are allocated with a slot!",
+"Interviewees that are not allocated a slot" followed by the number and name of the interviewees that are not allocated a slot,
+or "No matching is found :(".</p>
+</li>
+<li>
+<p>You can use the sample test data below to test if the scheduling feature is working properly.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><a href="http://bit.ly/2Ny64Q8">Interviewer Test Data</a></p>
+</li>
+<li>
+<p>All interviewees are allocated a slot (<a href="http://bit.ly/36KLxj4">Interviewees data</a>).</p>
+</li>
+<li>
+<p>Some interviewees are allocated a slot (<a href="http://bit.ly/33wQ1I9">Interviewees data</a>).</p>
+</li>
+<li>
+<p>All interviewees are not allocated a slot (<a href="http://bit.ly/33rVy2B">Interviewees data</a>).</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>You can also design your own test data to check if the scheduling feature is working properly by adding some available
+interview slots in the interviewer&#8217;s availability template. Then, add interviewees which have availabilities and department that match the
+available interview slots. Import the data and check if the interviewees name show up in the schedules.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Note that some interviewees may not be allocated a slot because of unavoidable collisions between interviewees which have the same availability
+and department.</p>
+</li>
+<li>
+<p>You can also test the opposite way, i.e. design test data which contains interviewees that cannot be allocated a slot and check
+if the name of the interviewee does not exist in the schedule.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">G.2. Deleting a person</a></h3>
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">F.3. Deleting a person</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1473,7 +1657,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">F.4. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1493,4 +1677,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 16:40:36 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 16:42:40 UTC</div></div></div></body></html>
