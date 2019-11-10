@@ -539,6 +539,10 @@ their choice of department.
 
 Format: `schedule`
 
+[NOTE]
+To ensure that the displayed scheduling result is always updated with the latest database of interviewers and interviewees,
+add/delete/edit of interviewee or interviewer will remove the scheduling result, hence you will need to type `schedule` again.
+
 === Exporting of interview schedule `export`
 Exports the allocated interview schedule timetable to the specified comma separated values (CSV) file.
 
