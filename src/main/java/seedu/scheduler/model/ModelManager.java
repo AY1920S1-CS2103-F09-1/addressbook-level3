@@ -64,7 +64,7 @@ public class ModelManager implements Model {
      * Initializes a ModelManager with the given intervieweeList, interviewerList, userPrefs and schedulesList.
      */
     public ModelManager(ReadOnlyList<Interviewee> intervieweeList, ReadOnlyList<Interviewer> interviewerList,
-                        ReadOnlyUserPrefs userPrefs, List<Schedule> schedulesList) {
+            ReadOnlyUserPrefs userPrefs, List<Schedule> schedulesList) {
         super();
         this.schedulesList = cloneSchedulesList(schedulesList);
         requireAllNonNull(intervieweeList, interviewerList, userPrefs, schedulesList);
