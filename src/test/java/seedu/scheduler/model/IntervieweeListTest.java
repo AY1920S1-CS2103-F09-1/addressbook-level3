@@ -68,8 +68,8 @@ class IntervieweeListTest {
 
     @Test
     public void setEntity_invalidInterviewee_throwsPersonNotFoundException() {
-        assertThrows(PersonNotFoundException.class,
-                () -> intervieweeList.setEntity(ALICE_INTERVIEWEE, BENSON_INTERVIEWEE));
+        assertThrows(PersonNotFoundException.class, () ->
+                intervieweeList.setEntity(ALICE_INTERVIEWEE, BENSON_INTERVIEWEE));
     }
 
     @Test
