@@ -52,12 +52,28 @@ designed such that enhancements could be easily added.</p>
 </div>
 </li>
 <li>
+<p><strong>Minor enhancement</strong>: added the ability to clear all entities from Scheduler.</p>
+</li>
+<li>
 <p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=kendrickang&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contributed non-trivially to pull request code discussion</p>
+</li>
+<li>
+<p>Coordinated assignment of bugs after mock practical exam</p>
+</li>
+</ul>
+</div>
+</li>
 <li>
 <p>Enhancements to existing features:</p>
 <div class="ulist">
@@ -640,107 +656,140 @@ by the value of <code>duration</code> in <a href="#User Preferences">User Prefer
 </table>
 <div class="sect2">
 <h3 id="Design-Logic"><a class="link" href="#Design-Logic">Logic component</a></h3>
-<div id="fig-LogicClassDiagram" class="imageblock">
+<div id="fig-LogicClassDiagram" class="paragraph">
+<p>This section shows how the <code>Logic</code> component is structured. The class diagram below shows an overview of the <code>Logic</code> component:</p>
+</div>
+<div class="imageblock">
 <div class="content">
-<img src="../images/LogicClassDiagram1_2.png" alt="LogicClassDiagram1 2">
+<img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
 <div class="title">Figure 1. Structure of the Logic Component</div>
 </div>
-<div class="paragraph">
-<p>Users should be able to manually key in input (i.e add interviewers and interviewees). We therefore changed the Logic
-package accordingly to suit our needs.</p>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>XYZ</code> in <code>XYZCommand</code> can either be: Add, Edit, Delete, Clear, Exit, Help, Import, Export, Email, Schedule or Display.</p>
+</li>
+<li>
+<p><code>XYZ</code> in <code>XYZCommandParser</code> can either be Add, Edit, Delete, Import, Export, Email, Schedule or Display.</p>
+</li>
+<li>
+<p>The dependencies of <code>XYZCommand</code> with the <code>graph</code> package shown in the Class Diagram only applies to <code>ScheduleCommand</code>.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
 <a href="{repoURL}/src/main/java/seedu/scheduler/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
+<div class="paragraph">
+<p>The <code>Logic</code> component mainly handles the parsing of user input and creation of commands to execute, which in turn affects
+the <code>Model</code> and <code>Storage</code> components.</p>
+</div>
+<div class="paragraph">
+<p>A command entered by the user is processed as follows:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>SchedulerParser</code> class to parse the user command, producing a <code>Command</code> object.</p>
 </li>
 <li>
-<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
+<p>This <code>Command</code> object is executed by <code>LogicManager</code>, which may affect <code>Model</code> (e.g adding an interviewee).</p>
 </li>
 <li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a person).</p>
+<p>The execution produces a result, which is encapsulated in a <code>CommandResult</code> object and returned to <code>LogicManager</code>.</p>
 </li>
 <li>
-<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
+<p><code>LogicManager</code> the processes the <code>CommandResult</code>. The <code>CommandResult</code> can instruct to <code>Ui</code> to perform certain actions,
+such as displaying help to the user.</p>
 </li>
 <li>
-<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying help to the user.</p>
+<p>Finally, <code>LogicManager</code> calls the <code>Storage</code> components to save the current <code>Model</code> to the hard disk.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below is the general Sequence Diagram for interactions within the <code>Logic</code> component for the execution of the <code>add</code>,
+<code>edit</code> and <code>delete</code> API calls. Refer to <a href="#Implementation">Section 3: Implementation</a> for how different <code>Command</code> objects
+are executed and how they influence other components.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
+<img src="../images/LogicGeneralSequenceDiagram.png" alt="LogicGeneralSequenceDiagram">
 </div>
-<div class="title">Figure 2. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 2. General interactions Inside the Logic Component for the <code>add</code>, <code>edit</code> and <code>delete</code> Commands</div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>XYZCommandParser</code> and <code>XYZCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
 </div>
-<div class="sect2">
-<h3 id="add-interviewee-interviewer-feature"><a class="link" href="#add-interviewee-interviewer-feature">Add Interviewee/Interviewer feature</a></h3>
+<div class="sect3">
+<h4 id="add-interviewee-interviewer-feature"><a class="link" href="#add-interviewee-interviewer-feature">Add Interviewee/Interviewer feature</a></h4>
 <div class="paragraph">
-<p>The add command is facilitated by the <code>AddCommandParser</code> class. It extends <code>AddCommandParser</code> by allowing it to parse
-prefixes specific to our Scheduler app, namely:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>r/ROLE</p>
-</li>
-<li>
-<p>f/FACULTY</p>
-</li>
-<li>
-<p>ep/PERSONAL_EMAIL and ew/NUS_WORK_EMAIL</p>
-</li>
-<li>
-<p>y/YEAR_OF_STUDY</p>
-</li>
-<li>
-<p>d/DEPARTMENT</p>
-</li>
-<li>
-<p>s/SLOT</p>
-</li>
-</ul>
+<p>The <code>add</code> command feature essentially allows a user to add an <code>Interviewee</code> or <code>Interviewer</code> object to the underlying <code>IntervieweeList</code>
+ or <code>InterviewerList</code> of <code>ModelManager</code>.
+Upon successful parsing of the <code>add</code> command arguments, an instance of <code>Interviewee</code>/<code>Interviewer</code> is created based on the <code>r/ROLE</code> prefix supplied,
+which is added to its corresponding list in <code>ModelManager</code>.
+The underlying <code>UniquePersonList</code> of <code>IntervieweeList</code> and <code>InterviewerList</code> ensures
+that no duplicate entities are present at any time, checked by Interviewee#isSamePerson() and Interviewer#isSamePerson().</p>
 </div>
 <div class="paragraph">
-<p>This command also requires access to the Model package, where the AddressBook implementation lives, as well as the
-Storage package, where the <code>JsonSerializableAddressBook</code> implementation lives. Consequently, the following json-friendly
-classes were added:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>JsonAdaptedInterviewee, JsonAdaptedInterviewer, JsonAdaptedDepartment, JsonAdaptedSlot</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The following <strong>sequence diagram</strong> describes how the add command works when adding an interviewee:</p>
+<p>The following <strong>Sequence Diagram</strong> illustrates how the <code>add interviewee</code> command works. The <code>add interviewer</code> command works in a similar manner.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AddSequenceDiagram_1_2.png" alt="AddSequenceDiagram 1 2">
+<img src="../images/AddSequenceDiagram.png" alt="AddSequenceDiagram">
 </div>
 <div class="title">Figure 3. Add Interviewee Sequence Diagram</div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>AddCommandParser</code> and <code>AddIntervieweeCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>See the general logic sequence diagram in <a href="#Design-Logic">Section 2.3: Logic component</a> for a more complete view of how
+<code>Storage</code> is affected as well.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
-<p>The following activity diagram shows the steps needed to add a new interviewee:</p>
+<p>To better illustrate the flow of events from the moment a user inputs an add command till completion of the command,
+the continuation of the <strong>rake</strong> from the <a href="#Add Edit and Delete feature">general activity diagram</a> is shown below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AddActivityDiagram_1_2.png" alt="AddActivityDiagram 1 2">
+<img src="../images/AddActivityDiagram.png" alt="300" width="400">
 </div>
-<div class="title">Figure 4. Add Interviewee Activity Diagram</div>
+<div class="title">Figure 4. Activity diagram snippet of the add command</div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:13:54 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:15:31 UTC</div></div></div></body></html>

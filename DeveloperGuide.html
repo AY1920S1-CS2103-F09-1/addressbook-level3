@@ -22,7 +22,7 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#add-interviewee-interviewer-feature">3.1. Add Interviewee/Interviewer feature</a></li>
+<li><a href="#add-edit-and-delete-feature">3.1. Add, Edit and Delete feature</a></li>
 <li><a href="#scheduling-feature">3.2. Scheduling Feature</a></li>
 <li><a href="#import">3.3. Import</a></li>
 <li><a href="#export">3.4. Export</a></li>
@@ -47,9 +47,12 @@
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
-<li><a href="#scheduling-interviews">F.2. Scheduling Interviews</a></li>
-<li><a href="#deleting-a-person">F.3. Deleting a person</a></li>
-<li><a href="#saving-data">F.4. Saving data</a></li>
+<li><a href="#adding-an-entity-manually">F.2. Adding an entity manually</a></li>
+<li><a href="#editing-an-entity">F.3. Editing an entity</a></li>
+<li><a href="#deleting-an-entity">F.4. Deleting an entity</a></li>
+<li><a href="#scheduling-interviews">F.5. Scheduling Interviews</a></li>
+<li><a href="#deleting-a-person">F.6. Deleting a person</a></li>
+<li><a href="#saving-data">F.7. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -214,19 +217,37 @@ stored in a <code>ScheduleViewPanel</code> class. Within the <code>ScheduleViewP
 <div class="paragraph">
 <p>Given below is an example scenario of what will be displayed to the user.</p>
 </div>
-<div class="paragraph">
-<p>*Step 1. The user launches the application. The Ui will start and the MainWindow will be displayed first.
-*Step 2. MainWindow will call all the children such as the HelpWindow, CommandBox, Result Display, StatusBarFooter, ScheduleViewPanel, IntervieweeListPanel
-and InterviewerListPanel.
-*Step 3. Once ScheduleViewPanel is called, it will take in a list of titles and ObservableList data from the Logic class. The list of titles
-consist of the title column for each schedule table and the ObservableList data consists of the time slots allocated to each interviewee.
-*Step 4. ScheduleViewPanel will call the ScheduleView class to fill each table and populate each table with the data given by the Logic class.
-*Step 5. ScheduleView will have a .fxml file of a table and it will first be filled with the column titles, followed by the time slots and the
-interviewee allocated to each time slots. The slot that has no interviewee will be displayed as "0".
-*Step 6. ScheduleViewPanel will call and instantiate the ScheduleView object into a list card.
-*Step 7. Once all the ScheduleView objects are instantiated into the respective list cards, the ScheduleView Panel will form a list of tables
-containing the schedules of the day.
-*Step 8. The MainWindow class will fill the Ui with the ScheduleViewPanel.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1. The user launches the application. The Ui will start and the MainWindow will be displayed first.</p>
+</li>
+<li>
+<p>Step 2. MainWindow will call all the children such as the HelpWindow, CommandBox, Result Display, StatusBarFooter, ScheduleViewPanel, IntervieweeListPanel
+and InterviewerListPanel.</p>
+</li>
+<li>
+<p>Step 3. Once ScheduleViewPanel is called, it will take in a list of titles and ObservableList data from the Logic class. The list of titles
+consist of the title column for each schedule table and the ObservableList data consists of the time slots allocated to each interviewee.</p>
+</li>
+<li>
+<p>Step 4. ScheduleViewPanel will call the ScheduleView class to fill each table and populate each table with the data given by the Logic class.</p>
+</li>
+<li>
+<p>Step 5. ScheduleView will have a .fxml file of a table and it will first be filled with the column titles, followed by the time slots and the
+interviewee allocated to each time slots. The slot that has no interviewee will be displayed as "0".</p>
+</li>
+<li>
+<p>Step 6. ScheduleViewPanel will call and instantiate the ScheduleView object into a list card.</p>
+</li>
+<li>
+<p>Step 7. Once all the ScheduleView objects are instantiated into the respective list cards, the ScheduleView Panel will form a list of tables
+containing the schedules of the day.</p>
+</li>
+<li>
+<p>Step 8. The MainWindow class will fill the Ui with the ScheduleViewPanel.</p>
+</li>
+</ul>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -251,35 +272,57 @@ the table with data:</p>
 </div>
 <div class="paragraph">
 <p>Interviewee list will provide the following information:
-*1. Name
-*2. NUS/Personal emails
-*3. Faculty
-*4. Academic Year
-*5. Department Choice
-*6. Available Time Slots
-*7. Allocated Time Slot
-*8. Tags</p>
+* 1. Name
+* 2. NUS/Personal emails
+* 3. Faculty
+* 4. Academic Year
+* 5. Department Choice
+* 6. Available Time Slots
+* 7. Allocated Time Slot
+* 8. Tags</p>
 </div>
 <div class="paragraph">
 <p>Interviewer list view has the similar steps of displaying information of the interviewers. The difference is in the details of the interviewers.</p>
 </div>
 <div class="paragraph">
-<p>The interviewer list will provide the following information:
-*1. Name
-*2. Department
-*3. Available Time Slots</p>
+<p>The interviewer list will provide the following information:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1. Name</p>
+</li>
+<li>
+<p>2. Department</p>
+</li>
+<li>
+<p>3. Available Time Slots</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Given below is a scenario of how the IntervieweeListPanel/InterviewerListPanel is filled.</p>
 </div>
-<div class="paragraph">
-<p>*Step 1. The user launches the application. The Ui will start and the MainWindow will be displayed first.
-*Step 2. MainWindow will call all the children such as the HelpWindow, CommandBox, Result Display, StatusBarFooter, ScheduleViewPanel, IntervieweeListPanel
-and InterviewerListPanel.
-*Step 3. Once IntervieweeListPanel is called, it will take in an ObservableList data from the Logic class. It contains all the information of the list
-of interviewees
-*Step 4. The class will initialise, setting the necessary columns.
-*Step 5. Using the method <code>setItems()</code> from the tableView, data will be populated to their respective columns and form the interviewee list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1. The user launches the application. The Ui will start and the MainWindow will be displayed first.</p>
+</li>
+<li>
+<p>Step 2. MainWindow will call all the children such as the HelpWindow, CommandBox, Result Display, StatusBarFooter, ScheduleViewPanel, IntervieweeListPanel
+and InterviewerListPanel.</p>
+</li>
+<li>
+<p>Step 3. Once IntervieweeListPanel is called, it will take in an ObservableList data from the Logic class. It contains all the information of the list
+of interviewees</p>
+</li>
+<li>
+<p>Step 4. The class will initialise, setting the necessary columns.</p>
+</li>
+<li>
+<p>Step 5. Using the method <code>setItems()</code> from the tableView, data will be populated to their respective columns and form the interviewee list.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -288,12 +331,24 @@ of interviewees
 </div>
 <div class="sect3">
 <h4 id="ui-refresh-during-data-import"><a class="link" href="#ui-refresh-during-data-import">2.2.4. UI Refresh During Data Import</a></h4>
-<div class="paragraph">
-<p>*Step 1. Once User imports a new .csv file, it will call the RefreshListener Interface.
-*Step 2. UiManager will receive this method through the RefreshListener, thus calling dataUpdated to MainWindow class.
-*Step 3. The RefreshListenerManager will call the MainWindow to refresh the ScheduleViewPanel.
-*Step 4. ScheduleViewPanel will firstly clear all the data and input the updated data from the .csv file.
-*Step 5. ScheduleViewPanel object will then be returned to the MainWindow and display the updated data.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1. Once User imports a new .csv file, it will call the RefreshListener Interface.</p>
+</li>
+<li>
+<p>Step 2. UiManager will receive this method through the RefreshListener, thus calling dataUpdated to MainWindow class.</p>
+</li>
+<li>
+<p>Step 3. The RefreshListenerManager will call the MainWindow to refresh the ScheduleViewPanel.</p>
+</li>
+<li>
+<p>Step 4. ScheduleViewPanel will firstly clear all the data and input the updated data from the .csv file.</p>
+</li>
+<li>
+<p>Step 5. ScheduleViewPanel object will then be returned to the MainWindow and display the updated data.</p>
+</li>
+</ul>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -305,47 +360,73 @@ of interviewees
 </div>
 <div class="sect2">
 <h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
-<div id="fig-LogicClassDiagram" class="imageblock">
+<div id="fig-LogicClassDiagram" class="paragraph">
+<p>This section shows how the <code>Logic</code> component is structured. The class diagram below shows an overview of the <code>Logic</code> component:</p>
+</div>
+<div class="imageblock">
 <div class="content">
-<img src="images/LogicClassDiagram1_2.png" alt="LogicClassDiagram1 2">
+<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
 <div class="title">Figure 7. Structure of the Logic Component</div>
 </div>
-<div class="paragraph">
-<p>Users should be able to manually key in input (i.e add interviewers and interviewees). We therefore changed the Logic
-package accordingly to suit our needs.</p>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>XYZ</code> in <code>XYZCommand</code> can either be: Add, Edit, Delete, Clear, Exit, Help, Import, Export, Email, Schedule or Display.</p>
+</li>
+<li>
+<p><code>XYZ</code> in <code>XYZCommandParser</code> can either be Add, Edit, Delete, Import, Export, Email, Schedule or Display.</p>
+</li>
+<li>
+<p>The dependencies of <code>XYZCommand</code> with the <code>graph</code> package shown in the Class Diagram only applies to <code>ScheduleCommand</code>.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
 <a href="https://github.com/AY1920S1-CS2103-F09-1/main/blob/master//src/main/java/seedu/scheduler/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
+<div class="paragraph">
+<p>The <code>Logic</code> component mainly handles the parsing of user input and creation of commands to execute, which in turn affects
+the <code>Model</code> and <code>Storage</code> components.</p>
+</div>
+<div class="paragraph">
+<p>A command entered by the user is processed as follows:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>SchedulerParser</code> class to parse the user command, producing a <code>Command</code> object.</p>
 </li>
 <li>
-<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
+<p>This <code>Command</code> object is executed by <code>LogicManager</code>, which may affect <code>Model</code> (e.g adding an interviewee).</p>
 </li>
 <li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a person).</p>
+<p>The execution produces a result, which is encapsulated in a <code>CommandResult</code> object and returned to <code>LogicManager</code>.</p>
 </li>
 <li>
-<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
+<p><code>LogicManager</code> the processes the <code>CommandResult</code>. The <code>CommandResult</code> can instruct to <code>Ui</code> to perform certain actions,
+such as displaying help to the user.</p>
 </li>
 <li>
-<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying help to the user.</p>
+<p>Finally, <code>LogicManager</code> calls the <code>Storage</code> components to save the current <code>Model</code> to the hard disk.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below is the general Sequence Diagram for interactions within the <code>Logic</code> component for the execution of the <code>add</code>,
+<code>edit</code> and <code>delete</code> API calls. Refer to <a href="#implementation">Section 3: Implementation</a> for how different <code>Command</code> objects
+are executed and how they influence other components.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
+<img src="images/LogicGeneralSequenceDiagram.png" alt="LogicGeneralSequenceDiagram">
 </div>
-<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 8. General interactions Inside the Logic Component for the <code>add</code>, <code>edit</code> and <code>delete</code> Commands</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -354,7 +435,7 @@ package accordingly to suit our needs.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The lifeline for <code>DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+The lifeline for <code>XYZCommandParser</code> and <code>XYZCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </td>
 </tr>
 </table>
@@ -443,62 +524,219 @@ table in the imported interviewer&#8217;s availability. The data of the <code>Sc
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="add-interviewee-interviewer-feature"><a class="link" href="#add-interviewee-interviewer-feature">3.1. Add Interviewee/Interviewer feature</a></h3>
+<h3 id="add-edit-and-delete-feature"><a class="link" href="#add-edit-and-delete-feature">3.1. Add, Edit and Delete feature</a></h3>
 <div class="paragraph">
-<p>The add command is facilitated by the <code>AddCommandParser</code> class. It extends <code>AddCommandParser</code> by allowing it to parse
-prefixes specific to our Scheduler app, namely:</p>
+<p>The <code>add</code>, <code>edit</code> and <code>delete</code> features allow interviewees and interviewers to be manually added to Scheduler.</p>
+</div>
+<div class="paragraph">
+<p>An <code>Interviewee</code> is associated with the following <code>Prefix</code>:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>r/ROLE</p>
-</li>
-<li>
-<p>f/FACULTY</p>
-</li>
-<li>
-<p>ep/PERSONAL_EMAIL and ew/NUS_WORK_EMAIL</p>
-</li>
-<li>
-<p>y/YEAR_OF_STUDY</p>
-</li>
-<li>
-<p>d/DEPARTMENT</p>
-</li>
-<li>
-<p>s/SLOT</p>
+<p><code>n/NAME</code>, <code>p/PHONE</code>, <code>t/TAG</code>, <code>f/FACULTY</code>, <code>y/YEAR_OF_STUDY</code>, <code>d/DEPARTMENT</code>, <code>s/SLOT</code>, <code>ep/PERSONAL_EMAIL</code> and <code>ew/NUS_WORK_EMAIL</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>This command also requires access to the Model package, where the AddressBook implementation lives, as well as the
-Storage package, where the <code>JsonSerializableAddressBook</code> implementation lives. Consequently, the following json-friendly
-classes were added:</p>
+<p>An <code>Interviewer</code> is associated with the following <code>Prefix</code>:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>JsonAdaptedInterviewee, JsonAdaptedInterviewer, JsonAdaptedDepartment, JsonAdaptedSlot</p>
+<p><code>n/NAME</code>, <code>p/PHONE</code>, <code>t/TAG</code>, <code>s/SLOT</code>, <code>d/DEPARTMENT</code> and <code>ew/NUS_WORK_EMAIL</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The following <strong>sequence diagram</strong> describes how the add command works when adding an interviewee:</p>
+<p>The Activity Diagram below illustrates the general flow of logic from command input (by a user) to command execution:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/AddSequenceDiagram_1_2.png" alt="AddSequenceDiagram 1 2">
+<img src="images/LogicGeneralActivityDiagram.png" alt="LogicGeneralActivityDiagram">
 </div>
-<div class="title">Figure 11. Add Interviewee Sequence Diagram</div>
+<div class="title">Figure 11. A general Activity Diagram illustrating logic flow in the <code>Logic</code> component.</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The box labelled "Command execution" is a <strong>rake</strong>. It indicates that part of the activity is given as a separate diagram.
+Each of <a href="#add-interviewee-interviewer-feature">add</a>, <a href="#edit-interviewee-interviewer-feature">edit</a> and <a href="#delete-interviewee-interviewer-feature">delete</a> provide their own versions of "Command execution".
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="add-interviewee-interviewer-feature"><a class="link" href="#add-interviewee-interviewer-feature">3.1.1. Add Interviewee/Interviewer feature</a></h4>
+<div class="paragraph">
+<p>The <code>add</code> command feature essentially allows a user to add an <code>Interviewee</code> or <code>Interviewer</code> object to the underlying <code>IntervieweeList</code>
+ or <code>InterviewerList</code> of <code>ModelManager</code>.
+Upon successful parsing of the <code>add</code> command arguments, an instance of <code>Interviewee</code>/<code>Interviewer</code> is created based on the <code>r/ROLE</code> prefix supplied,
+which is added to its corresponding list in <code>ModelManager</code>.
+The underlying <code>UniquePersonList</code> of <code>IntervieweeList</code> and <code>InterviewerList</code> ensures
+that no duplicate entities are present at any time, checked by Interviewee#isSamePerson() and Interviewer#isSamePerson().</p>
 </div>
 <div class="paragraph">
-<p>The following activity diagram shows the steps needed to add a new interviewee:</p>
+<p>The following <strong>Sequence Diagram</strong> illustrates how the <code>add interviewee</code> command works. The <code>add interviewer</code> command works in a similar manner.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/AddActivityDiagram_1_2.png" alt="AddActivityDiagram 1 2">
+<img src="images/AddSequenceDiagram.png" alt="AddSequenceDiagram">
 </div>
-<div class="title">Figure 12. Add Interviewee Activity Diagram</div>
+<div class="title">Figure 12. Add Interviewee Sequence Diagram</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>AddCommandParser</code> and <code>AddIntervieweeCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>See the general logic sequence diagram in <a href="#Design-Logic">Section 2.3: Logic component</a> for a more complete view of how
+<code>Storage</code> is affected as well.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To better illustrate the flow of events from the moment a user inputs an add command till completion of the command,
+the continuation of the <strong>rake</strong> from the <a href="#Add Edit and Delete feature">general activity diagram</a> is shown below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddActivityDiagram.png" alt="300" width="400">
+</div>
+<div class="title">Figure 13. Activity diagram snippet of the add command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-interviewee-interviewer-feature"><a class="link" href="#edit-interviewee-interviewer-feature">3.1.2. Edit Interviewee/Interviewer feature</a></h4>
+<div class="paragraph">
+<p>The <code>edit</code> command allows a user to edit an <code>Interviewee</code> or <code>Interviewer</code> in the underlying <code>IntervieweeList</code> or <code>InterviewerList</code> of
+<code>ModelManager</code>.
+This is done through an <code>EditIntervieweeDescriptor</code> or <code>EditInterviewerDescriptor</code>, which stores the details to update the
+<code>Interviewee</code>/<code>Interviweer</code> with, which is created upon successful parsing of the <code>edit</code> command.
+A <strong>new instance</strong> of <code>Interviewee</code>/<code>Interviewer</code> is then created from the descriptor.
+The <code>Interviewee</code>/Interviewer` to be updated is then retrieved from the list by name, and is <strong>replaced with the new instance</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The following <strong>Sequence Diagram</strong> below shows how the <code>edit interviewee</code> command works. The <code>edit interviewer</code> command works in a similar manner.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EditSequenceDiagram.png" alt="EditSequenceDiagram">
+</div>
+<div class="title">Figure 14. Edit Interviewee Sequence Diagram</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>EditCommandParser</code> and <code>EditIntervieweeCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>See the general logic sequence diagram in <a href="#Design-Logic">Section 2.3: Logic component</a> for a more complete view of how
+<code>Storage</code> is affected as well.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To better illustrate the flow of events from the moment a user inputs an edit command till completion of the command,
+the continuation of the <strong>rake</strong> from the <a href="#Add Edit and Delete feature">general activity diagram</a> is shown below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EditActivityDiagram.png" alt="300" width="400">
+</div>
+<div class="title">Figure 15. Activity diagram snippet of the edit command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-interviewee-interviewer-feature"><a class="link" href="#delete-interviewee-interviewer-feature">3.1.3. Delete Interviewee/Interviewer feature</a></h4>
+<div class="paragraph">
+<p>The <code>delete</code> command allows a user to delete an <code>Interviewee</code> or <code>Interviewer</code> from the underlying <code>IntervieweeList</code> or <code>InterviewerList</code>
+of <code>ModelManager</code>.
+Upon successful parsing of the <code>delete</code> command&#8217;s arguments, the name of the person to delete is retrieved.
+Based on the <code>r/ROLE</code> prefix supplied, the <code>IntervieweeList</code> or <code>InterviewerList</code> is searched, and the <code>Interviewee</code>/<code>Interviewer</code> with
+a matching name is deleted.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Note that the underlying <code>UniquePersonList</code> ensures that there are no two same <code>Interviewee</code>/<code>Interviewer</code> with the same name in the list.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following <strong>Sequence Diagram</strong> below shows how the <code>delete interviewee</code> command works. The <code>delete interviewer</code> command works in a similar manner.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
+</div>
+<div class="title">Figure 16. Delete Interviewee Sequence Diagram</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>DeleteCommandParser</code> and <code>DeleteIntervieweeCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>See the general logic sequence diagram in <a href="#Design-Logic">Section 2.3: Logic component</a> for a more complete view of how
+<code>Storage</code> is affected as well.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To better illustrate the flow of events from the moment a user inputs a delete command till completion of the command,
+the continuation of the <strong>rake</strong> from the <a href="#Add Edit and Delete feature">general activity diagram</a> is shown below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteActivityDiagram.png" alt="300" width="400">
+</div>
+<div class="title">Figure 17. Activity diagram snippet of the delete command</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -544,7 +782,7 @@ The <strong>activity diagram</strong> below summarises the key steps in the algo
 <div class="content">
 <img src="images/HopcroftKarp.png" alt="300" width="500">
 </div>
-<div class="title">Figure 13. HopcroftKarp Algorithm Activity Diagram</div>
+<div class="title">Figure 18. HopcroftKarp Algorithm Activity Diagram</div>
 </div>
 <div class="paragraph">
 <p>Referring to the diagram above, a graph between interviewees and interview slots will first be built. Specifically, the graph built is a bipartite
@@ -635,7 +873,7 @@ of the graph can either be a layer of matched vertices or free vertices (if augm
 <div class="content">
 <img src="images/Layered_Graph.png" alt="300" width="400">
 </div>
-<div class="title">Figure 14. Layered Graph (image taken from <a href="https://www-m9.ma.tum.de/graph-algorithms/matchings-hopcroft-karp/index_en.html" class="bare">https://www-m9.ma.tum.de/graph-algorithms/matchings-hopcroft-karp/index_en.html</a>)</div>
+<div class="title">Figure 19. Layered Graph (image taken from <a href="https://www-m9.ma.tum.de/graph-algorithms/matchings-hopcroft-karp/index_en.html" class="bare">https://www-m9.ma.tum.de/graph-algorithms/matchings-hopcroft-karp/index_en.html</a>)</div>
 </div>
 </div>
 </div>
@@ -649,7 +887,7 @@ class diagram describing the essential components of the <code>graph</code> pack
 <div class="content">
 <img src="images/GraphPackage.png" alt="GraphPackage">
 </div>
-<div class="title">Figure 15. Graph Subpackage</div>
+<div class="title">Figure 20. Graph Subpackage</div>
 </div>
 <div class="paragraph">
 <p>A <code>Command</code> object called <code>ScheduleCommand</code> makes use of the <code>graph</code> package to schedule the interviews for the interviewee.
@@ -676,25 +914,25 @@ the <code>Ui</code>.</p>
 <div class="content">
 <img src="images/BipartiteGraphGenerator.png" alt="BipartiteGraphGenerator">
 </div>
-<div class="title">Figure 16. BipartiteGraphGenerator and BipartiteGraph with its components.</div>
+<div class="title">Figure 21. BipartiteGraphGenerator and BipartiteGraph with its components.</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/IntervieweeVertex.png" alt="200" width="300">
 </div>
-<div class="title">Figure 17. IntervieweeVertex</div>
+<div class="title">Figure 22. IntervieweeVertex</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/InterviewSlotVertex.png" alt="300" width="550">
 </div>
-<div class="title">Figure 18. InterviewSlotVertex</div>
+<div class="title">Figure 23. InterviewSlotVertex</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ScheduleSequenceDiagram.png" alt="ScheduleSequenceDiagram">
 </div>
-<div class="title">Figure 19. Executing Schedule Command Sequence Diagram</div>
+<div class="title">Figure 24. Executing Schedule Command Sequence Diagram</div>
 </div>
 </div>
 </div>
@@ -719,7 +957,7 @@ the <code>Ui</code>.</p>
 <div class="content">
 <img src="images/ImportSequenceDiagram.png" alt="ImportSequenceDiagram">
 </div>
-<div class="title">Figure 20. Import Interviewer&#8217;s Schedules Sequence Diagram</div>
+<div class="title">Figure 25. Import Interviewer&#8217;s Schedules Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>Given above is an example of a sequence diagram for importing interviewer&#8217;s schedules. It applies to both importing interviewee&#8217;s and interviewer&#8217;s data,
@@ -732,7 +970,7 @@ with the only difference being in the string processing methods in the <strong>C
 <div class="content">
 <img src="images/ImportActivityDiagram.png" alt="ImportActivityDiagram">
 </div>
-<div class="title">Figure 21. Import Activity Diagram</div>
+<div class="title">Figure 26. Import Activity Diagram</div>
 </div>
 <div class="sect4">
 <h5 id="csvreader"><a class="link" href="#csvreader">CsvReader</a></h5>
@@ -820,7 +1058,7 @@ CsvWriter facilitates the writing to the specified file.</p>
 <div class="content">
 <img src="images/ExportSequenceDiagram.png" alt="ExportSequenceDiagram">
 </div>
-<div class="title">Figure 22. Export Sequence Diagram</div>
+<div class="title">Figure 27. Export Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>The implementation is very similar to the Import feature. The only differences are in the Model where CsvWriter gets
@@ -833,7 +1071,7 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 <div class="content">
 <img src="images/ExportActivityDiagram.png" alt="ExportActivityDiagram">
 </div>
-<div class="title">Figure 23. Export Activity Diagram</div>
+<div class="title">Figure 28. Export Activity Diagram</div>
 </div>
 </div>
 </div>
@@ -861,7 +1099,7 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 <div class="content">
 <img src="images/EmailSequenceDiagram.png" alt="EmailSequenceDiagram">
 </div>
-<div class="title">Figure 24. Email Sequence Diagram</div>
+<div class="title">Figure 29. Email Sequence Diagram</div>
 </div>
 <div class="sect4">
 <h5 id="example-interview-timeslot"><a class="link" href="#example-interview-timeslot">Example: Interview timeslot</a></h5>
@@ -1561,7 +1799,131 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="scheduling-interviews"><a class="link" href="#scheduling-interviews">F.2. Scheduling Interviews</a></h3>
+<h3 id="adding-an-entity-manually"><a class="link" href="#adding-an-entity-manually">F.2. Adding an entity manually</a></h3>
+<div class="paragraph">
+<p>Please refer to the Add interviewees/interviewer section in the <a href="UserGuide.html">user guide</a> for more detailed information on the <code>add</code> command.</p>
+</div>
+<div class="paragraph">
+<p>For simplicity, we refer to interviewees and interviewers as <strong>entities</strong> collectively.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Upon launching Scheduler, input the following command to add an interviewee:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>add r/interviewee n/Ronald p/88888888 t/CAP5 t/dogLover f/School of Computing ep/JohnDoe@gmail.com ew/JohnDoe@u.nus.edu y/2018 d/Marketing s/20/09/2019 18:00-18:30</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>To add an interviewer, input the following command:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>add r/interviewer n/Delilah p/98765432 ew/delilah@u.nus.edu d/Marketing s/20/09/2019 18:00-18:30</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Expected: The Interviewees and Interviewers tab now reflects the newly added interviewee and interviewer, with each column in the tab corresponding to the various fields input.
+(i.e the column in the interviewees tab with header <code>name</code> now reflects <code>Ronald</code> as input by the user)</p>
+</li>
+<li>
+<p>You can change the different prefix fields (e.g <code>n/Ronald</code>) to any valid value, as stated in the User Guide under the <code>add</code> command section.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-an-entity"><a class="link" href="#editing-an-entity">F.3. Editing an entity</a></h3>
+<div class="paragraph">
+<p>Please refer to the Edit interviewees/interviewer section in the <a href="UserGuide.html">user guide</a> for more detailed information on the <code>edit</code> command.</p>
+</div>
+<div class="paragraph">
+<p>This section follows directly from the previous section, <a href="#adding-an-entity-manually">adding an entity manually</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>With Scheduler launched, input the following command in the user input field:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>edit Ronald r/interviewee p/91234567</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Expected: The Interviewees tab now reflects the edited interviewee, where <code>Ronald</code> now has a phone number <code>91234567</code>.</p>
+</li>
+<li>
+<p>Now enter the following command in the user input field:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>edit Delilah r/interviewer ew/delilah1995@u.nus.edu</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Expected: The Interviewers tab now reflects the edited interviewer, where <code>Delilah</code> now has an email <code>delilah1995@u.nus.edu</code>.</p>
+</li>
+<li>
+<p>You can change, include or exclude the different prefix fields as long as within the boundaries specified in the User Guide under the <code>edit</code> command section.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-entity"><a class="link" href="#deleting-an-entity">F.4. Deleting an entity</a></h3>
+<div class="paragraph">
+<p>Please refer to the Delete interviewees/interviewer section in the <a href="UserGuide.html">user guide</a> for more detailed information on the <code>delete</code> command.</p>
+</div>
+<div class="paragraph">
+<p>This section follows directly from the previous section, <a href="#editing-an-entity">Editing an entity</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>With Scheduler launched, input the following command in the user input field:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>delete Ronald r/interviewee</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Expected: The Interviewees tab now reflects the deleted interviewee, where <code>Ronald</code> is now missing from the tab.</p>
+</li>
+<li>
+<p>Now enter the following command in the user input field:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>delete Delilah r/interviewer</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Expected: The Interviewers tab now similar reflects the deleted interviewer <code>Delilah</code>.</p>
+</li>
+<li>
+<p>You can delete any entity as long as the entity&#8217;s name is shown in the Interviewee/Interviewer tab. See the User Guide under the <code>delete</code> command section for specifics.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scheduling-interviews"><a class="link" href="#scheduling-interviews">F.5. Scheduling Interviews</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1625,7 +1987,7 @@ if the name of the interviewee does not exist in the schedule.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">F.3. Deleting a person</a></h3>
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">F.6. Deleting a person</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1657,7 +2019,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.4. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">F.7. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1677,4 +2039,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:13:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:15:31 UTC</div></div></div></body></html>
