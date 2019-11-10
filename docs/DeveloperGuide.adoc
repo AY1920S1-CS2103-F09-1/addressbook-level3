@@ -219,13 +219,15 @@ image::ModelClassDiagram.png[]
 
 The `Model`,
 
+* stores an `AppStatus` singleton object which encapsulates the state of the application.
 * stores a `UserPref` object that represents the user's preferences.
 * stores a list of `Schedule`. Each `Schedule` represents a schedule timetable.
 * exposes a list of `ObservableList<ObservableList<String>>` that can be 'observed' by the UI. Each of the
   `ObservableList<ObservableList<String>>` represents the data of a `Schedule` object.
   The `ObservableList<ObservableList<String>>` objects are bound to the UI so that the UI automatically updates  when the data of the `Schedule` objects changes.
 * exposes a list of `ObservableList<Interviewee>` that can be 'observed' by the UI.
-* does not depend on any of the other three components.
+* stores a `RefreshListener` to refresh the displayed schedules in the UI indirectly.
+* does not depend on any of the three components.
 
 ==== Schedule
 The `Schedule` objects are filled up and created by the imported interviewer's availability. The inner data of a `Schedule` object is the same as the corresponding availability
