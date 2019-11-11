@@ -16,7 +16,7 @@ be inefficient. We therefore came up with Scheduler, a desktop application used 
 
 Its main feature is matching interviewees with interview time slots to generate an optimal interview timetable, and works with
 two types of data: data on interviewees and interviewers.
-The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.
 
 == Summary of contributions
 
