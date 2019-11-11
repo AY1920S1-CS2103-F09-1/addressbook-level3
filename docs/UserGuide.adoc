@@ -340,7 +340,7 @@ Constraints:
 === Scheduling `schedule`
 ==== Schedule the interviews
 Schedule and allocate interviewees to the available interview slots based on the availability of interviewees and
-their choice of department.
+their choice of department. The scheduled result will then be reflected in the Schedules tab of the Ui.
 
 Format: `schedule`
 
