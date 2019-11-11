@@ -7,14 +7,15 @@
 
 == Overview
 
-In many co-curricular activities (CCAs), interviews are usually conducted to recruit new members or committees during the beginning of
+In many co-curricular activities (CCAs), interviews are usually conducted to recruit new members during the beginning of
 the semester. However, the scheduling of interviews can be a very tedious process, especially when there are a lot of applicants.
-We therefore came up with Scheduler, a desktop application which aims to automate and streamline this laborious process of
-scheduling interviews and to minimise human errors in the scheduling process.
+In light of this, we created Scheduler, a desktop application which aims to automate and streamline the process of
+scheduling interviews to reduce the workload of the administrators.
 
-Its main feature is to match interviewees with interview time slots to generate an optimal interview timetable, and works with
-two types of data: data on interviewees and interviewers.
-The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.
+The main feature of Scheduler is to match interviewees with available interview time slots to generate an optimal interview schedule.
+Other features introduced to streamline the process of scheduling interviews include emailing the allocated slot to the respective
+interviewee. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and
+has around 20 kLoC.
 
 == Summary of contributions
 
