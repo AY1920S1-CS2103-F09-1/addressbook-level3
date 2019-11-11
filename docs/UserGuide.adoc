@@ -23,7 +23,7 @@ Due to vastly different timetables, scheduling interviews that don't clash for a
 Co-Curricular Activity (CCA) during peak recruitment period can be difficult. Scheduler is an app that can automate this scheduling of interviews for
 secretaries in NUS CCAs. Given templates adapted from exported NUSync CCA sign-up lists, Scheduler generates an optimal
 matching of interviewees to time slots. Scheduler also supports manual input. It is optimised for people who **prefer
-typing in a Command Line Interface (CLI)** to quickly access the functionalities of an app. +
+typing in a Command Line Interface (CLI)** to quickly access the functionality of an app. +
 
 Click on <<Quick Start, Quick Start>> to get started!
 
@@ -34,7 +34,7 @@ It also shows you basic tips on how to add or delete and edit interviewers/inter
 // tag::quickstart_import[]
 
 === Import your csv file into the application
-To begin, let's download sample interviewers availability and interviewees details in comma-separated value (.csv) files and import the data into Scheduler.
+To begin, let's download sample interviewers availability and interviewees details in comma-separated value (.csv) format and import the data into Scheduler.
 
 Sample/Template of Interviewer's Availability and Interviewee Details
 
@@ -47,8 +47,8 @@ interviewees details .csv file is located.
 
 When you have imported interviewers' availability, you will see that the interviewer's availability are displayed as tables in
 the Schedules tab. In the tables, there will be cells with 1 and 0s. 1 means that the interviewer of that column is available for interview at that particular
-time slot (at the leftmost column on the same row where the 1 is located), otherwise is 0. The imported interviewers details will also be displayed
-in the `Interviewers` tab.
+time slot (the time slot is at the leftmost column on the same row where the 1 is located), otherwise is 0. The imported interviewers details will also be displayed
+in the Interviewers tab.
 
 // end::quickstart_import[]
 
@@ -97,7 +97,7 @@ The added interviewer will be displayed in the Interviewers tab.
 === Schedule interviews
 Type `schedule` in the command line of the application. Scheduler will then schedule the interviews for you and the result
 will be displayed in the Schedules tab! If an interviewee is allocated a time slot, the name of the interviewee will be displayed
-in one of the tables in the `Schedule tab` depending on which slot is allocated to him/her.
+in one of the tables in the Schedules tab depending on which slot is allocated to him/her.
 
 At the cell which displays the interviewee's name, the time slot allocated to it is on the leftmost column of the same row, and the interviewer that will be interviewing
 him/her is the name displayed beside the department in the first row of the same column.
@@ -109,9 +109,9 @@ Want to email the allocated time slot to an interviewee? Simply type `email ct/t
 === Export Scheduled Result
 Now let's export the scheduled result to an external .csv file! Simply type `export fp/FILE_PATH`, replacing `FILE_PATH` with the full/absolute
 path to your target destination of the .csv file. If the .csv file has not exist, Scheduler will create the exported result file
-at the target destination you specify in `file path`!
+at the target destination you specify in `FILE_PATH`!
 
-That's all for the quick start and hope you enjoy using Scheduler!
+That's all for the quick start, hope you enjoy using Scheduler!
 
 // end::quickstart_everythingElse[]
 
@@ -196,7 +196,7 @@ Format: `help`
 
 // tag::UiDisplay[]
 
-=== UI Display
+=== UI Display `Display`
 
 ==== Display Schedules
 Display multiple tables that consist information of the schedules generated in a day format. The columns will show the date of the schedule followed by
