@@ -10,9 +10,10 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Scheduler is a desktop application which is used to automate the process of scheduling interviews.
-Its main feature is matching interviewees with interview time slots to generate an interview timetable.
-The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>In many student clubs or even in the corporate world, there are many instances in which the organisation needs to match interviewers with interviewees, especially during times of mass recruitment. Scheduler is a desktop application that was conceived to automate this laborious process of scheduling interviews and to minimise human errors in the scheduing process.</p>
+</div>
+<div class="paragraph">
+<p>The main feature of Scheduler is to match interviewees with the available time slots of interviewers, so as to generate an overall interview timetable for all interviewees and interviewers. The user is able to interact with the application using a command-line interface (CLI), and it also comes with a graphical user interface (GUI) created using JavaFX. It is written in Java and has about 10 kLoC.</p>
 </div>
 </div>
 </div>
@@ -26,7 +27,7 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: It allows the user to automatically generate the email to be used for sending to an interviewee. The email will be populated with information such as the allocated time slot and another content that can be configured as part of the user preferences.</p>
+<p>What it does: It allows the user to automatically generate the email to be used for sending to an interviewee after the interview scheduling process has been completed. The email will be populated with information such as the allocated time slot and another content that can be configured as part of the user preferences.</p>
 </li>
 <li>
 <p>Justification: This feature drastically improves the efficiency of the user as it is extremely tedious to extract out each interviewee&#8217;s email and allocated time slot and manually crafting a unique message to each interviewee after the interview allocation is completed.</p>
@@ -41,10 +42,10 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: Restructured the program&#8217;s Model to accommodate the change in the program&#8217;s architecture and integrated with changes from other aspects of the program.</p>
+<p><strong>Minor enhancement</strong>: Restructured the program&#8217;s Model and Storage to accommodate the change in the program&#8217;s architecture and integrated with changes from other aspects of the program.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=dcshzj">Functional code</a>]</p>
+<p><strong>Code contributed</strong>: <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#=undefined&amp;search=dcshzj">Functional &amp; Test code</a></p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -57,6 +58,9 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <li>
 <p>Ensuring that the team is keeping up with weekly progress to ensure almost 100% of the tasks for each milestone is hit.</p>
 </li>
+<li>
+<p>Managed the allocation of issues and PRs to corresponding milestones and the triaging of issues reported.</p>
+</li>
 </ul>
 </div>
 </li>
@@ -65,6 +69,12 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
+<p>Expanded the functionality of the user preferences storage to allow for the customisation of the email message body sent to interviewees (Pull request <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/107">#107</a>)</p>
+</li>
+<li>
+<p>Developed unit tests for various aspects of the codebase to bring the code coverage from 70% to 80%. (Pull requests <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/158">#158</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/168">#168</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/172">#172</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/180">#180</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/184">#184</a>)</p>
+</li>
+<li>
 <p>Designed and developed integration tests to ensure compatibility among different aspects of the program.</p>
 </li>
 </ul>
@@ -72,12 +82,23 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </li>
 <li>
 <p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Documented the use of the email feature in both the user and developer guide (Pull requests <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/34">#34</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/77">#77</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/100">#100</a>)</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Community:</p>
-</li>
+<div class="ulist">
+<ul>
 <li>
-<p>Tools:</p>
+<p>PRs reviewed: <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/61">#61</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/88">#88</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/90">#90</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/95">#95</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/150">#150</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/152">#152</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/167">#167</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/176">#176</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/179">#179</a> <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/181">#181</a></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -99,6 +120,94 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="sending-of-email-code-email-code"><a class="link" href="#sending-of-email-code-email-code">Sending of email <code>email</code></a></h3>
+<div class="sect3">
+<h4 id="sending-of-interview-time-slot-to-interviewee"><a class="link" href="#sending-of-interview-time-slot-to-interviewee">Sending of interview time slot to interviewee</a></h4>
+<div class="paragraph">
+<p>Opens an email dialog containing the interviewee’s allocated interview time slot to a particular interviewee specified, including other details such as the interviewer and location.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>email ct/timeslot n/INTERVIEWEE NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sending-of-interview-time-slot-to-all-interviewees"><a class="link" href="#sending-of-interview-time-slot-to-all-interviewees">Sending of interview time slot to all interviewees</a></h4>
+<div class="paragraph">
+<p>Opens an email dialog containing the interviewee&#8217;s allocated interview time slot to every interviewee, including other details such as the interviewer and location. A summary report is then generated at the end of the command execution.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>email ct/alltimeslot</code></p>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="checking-status-of-emails-sent"><a class="link" href="#checking-status-of-emails-sent">Checking status of emails sent</a></h4>
+<div class="paragraph">
+<p>Provides a summary report of the number of interviewees with emails sent and the total number of interviewees stored in the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>email ct/status</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sending-of-interview-results-to-an-interviewee-code-coming-in-v2-0-code"><a class="link" href="#sending-of-interview-results-to-an-interviewee-code-coming-in-v2-0-code">Sending of interview results to an interviewee <code>[Coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>Opens an email dialog containing the interviewee’s result/interview outcome and other details that you might want to include.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>email ct/results n/INTERVIEWEE NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Note:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The email dialog will only appear if the interviewee&#8217;s email is present in the database and the interview results has been updated.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sending-of-interview-results-to-all-interviewees-code-coming-in-v2-0-code"><a class="link" href="#sending-of-interview-results-to-all-interviewees-code-coming-in-v2-0-code">Sending of interview results to all interviewees <code>[Coming in v2.0]</code></a></h4>
+<div class="paragraph">
+<p>Opens an email dialog containing the interviewee&#8217;s result/interview outcome and other details that you might want to include for all interviewees.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>email ct/allresults</code></p>
+</div>
+<div class="paragraph">
+<p>Note:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The email dialog will only appear if the interviewee&#8217;s email is present in the database and the interview results has been updated.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -115,7 +224,7 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="coming-soon-in-v1-4-email"><a class="link" href="#coming-soon-in-v1-4-email">[Coming soon in v1.4] Email</a></h3>
+<h3 id="email"><a class="link" href="#email">Email</a></h3>
 <div class="sect3">
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <div class="paragraph">
@@ -178,4 +287,4 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 07:37:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:17:19 UTC</div></div></div></body></html>

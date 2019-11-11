@@ -1315,6 +1315,139 @@ Tags an interview slot with a name.</p>
 <p>Format: <code>filter tag TAG_NAME</code></p>
 </div>
 <div class="paragraph">
+<p>=== Scheduling <code>schedule</code>
+==== Schedule the interviews
+Schedule and allocate interviewees to the available interview slots based on the availability of interviewees and
+their choice of department.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>schedule</code></p>
+</div>
+<div class="paragraph">
+<p>=== Exporting of interview schedule <code>export</code>
+Exports the allocated interview schedule timetable to the specified comma separated values (CSV) file.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>export fp/FILE_PATH</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>PATH_TO_FILE is the absolute path to the file.</p>
+</li>
+<li>
+<p>E.g C:\\Users\Bob\file.csv</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If <code>FILE_PATH</code> is a valid .csv file but does not exist, it will be created in the specified path.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>export fp/C:\Users\johndoe\schedules.csv</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Exported data format:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The exported data will follow the format of the schedules in 'schedules' tab.</p>
+</li>
+<li>
+<p>Each schedule (table) will be separated from the previous with 2 empty lines.</p>
+</li>
+<li>
+<p>Timeslots with "0" indicates that the interviewer is not available for the timeslot.
+Timeslots with "1" indicates that it is an available slot that has not been filled up by an interviewee.</p>
+</li>
+<li>
+<p>Csv file can be converted into an excel file by following this guide - <a href="https://www.ablebits.com/office-addins-blog/2014/05/01/convert-csv-excel/" class="bare">https://www.ablebits.com/office-addins-blog/2014/05/01/convert-csv-excel/</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This command requires the interview schedule to be generated first.</p>
+</li>
+<li>
+<p>Although the specified filepath does not need to exist, it needs to be of .csv extension.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The exported data will erase and replace all pre-existing data in the specified file.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>=== Sending of email <code>email</code>
+==== Sending of interview time slot to interviewee
+Opens an email dialog containing the interviewee’s allocated interview time slot to a particular interviewee specified, including other details such as the interviewer and location.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>email ct/timeslot n/INTERVIEWEE NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>==== Sending of interview time slot to all interviewees
+Opens an email dialog containing the interviewee&#8217;s allocated interview time slot to every interviewee, including other details such as the interviewer and location. A summary report is then generated at the end of the command execution.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>email ct/alltimeslot</code></p>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>==== Checking status of emails sent
+Provides a summary report of the number of interviewees with emails sent and the total number of interviewees stored in the database.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>email ct/status</code></p>
+</div>
+<div class="paragraph">
 <p>==== Sending of interview results to an interviewee <code>[Coming in v2.0]</code>
 Opens an email dialog containing the interviewee’s result/interview outcome and other details that you might want to include.</p>
 </div>
@@ -1476,4 +1609,4 @@ d/DEPARTMENT&#8230;&#8203; s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 07:37:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:17:19 UTC</div></div></div></body></html>
