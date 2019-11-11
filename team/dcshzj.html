@@ -130,7 +130,8 @@
 <div class="ulist">
 <ul>
 <li>
-<p>A supported mail client should be installed on your machine. This mail client should be able to handle the <code>mailto:</code> URI scheme.</p>
+<p>A supported mail client should be installed on your machine. This mail client should be able to handle the <code>mailto:</code> URI scheme.
+You can open your web browser and type <code>mailto:test@example.com</code> to verify if your machine has a supported mail client installed.</p>
 </li>
 <li>
 <p>In the software, an email is considered to be sent if the email dialog has successfully appeared on your screen. It <strong>does not</strong> recognise whether or not you have actually sent the email across the Internet successfully.</p>
@@ -209,36 +210,319 @@
 <div class="paragraph">
 <p>Format: <code>email ct/results n/INTERVIEWEE NAME</code></p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exporting-of-interview-schedule-code-export-code"><a class="link" href="#exporting-of-interview-schedule-code-export-code">Exporting of interview schedule <code>export</code></a></h3>
 <div class="paragraph">
-<p>Note:</p>
+<p>Exports the allocated interview schedule timetable to the specified comma separated values (CSV) file.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>export fp/FILE_PATH</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The email dialog will only appear if the interviewee&#8217;s email is present in the database and the interview results has been updated.</p>
+<p>FILE_PATH is the path to the file.</p>
+</li>
+<li>
+<p>E.g C:\\Users\Bob\file.csv</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If <code>FILE_PATH</code> is a valid .csv file but does not exist, it will be created in the specified path.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>export fp/C:\Users\johndoe\schedules.csv</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Exported data format:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The exported data will follow the format of the schedules in 'schedules' tab.</p>
+</li>
+<li>
+<p>Each schedule (table) will be separated from the previous by 2 empty lines.</p>
+</li>
+<li>
+<p>Timeslots with "0" indicates that the interviewer is not available for the timeslot.
+Timeslots with "1" indicates that it is an available slot that has not been filled up by an interviewee.</p>
+</li>
+<li>
+<p>Csv file can be converted into an excel file by following this guide - <a href="https://www.ablebits.com/office-addins-blog/2014/05/01/convert-csv-excel/" class="bare">https://www.ablebits.com/office-addins-blog/2014/05/01/convert-csv-excel/</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This command requires the interview schedule to be generated first.</p>
+</li>
+<li>
+<p>Although the specified filepath does not need to exist, it needs to be of .csv extension.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The exported data will erase and replace all pre-existing data in the specified file.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="get-interview-schedule-code-get-code-code-coming-in-v2-0-code"><a class="link" href="#get-interview-schedule-code-get-code-code-coming-in-v2-0-code">Get interview schedule <code>get</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Find an interviewer/interviewee and display his/her interview schedule.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>get NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>get "John Doe"</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tag-interview-slot-code-tag-code-code-coming-in-v2-0-code"><a class="link" href="#tag-interview-slot-code-tag-code-code-coming-in-v2-0-code">Tag interview slot <code>tag</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Tags an interview slot with a name.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>tag TAG_NAME</code></p>
+</div>
+<div class="paragraph">
+<p>User will also be able to filter by tags.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>filter tag TAG_NAME</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code"><a class="link" href="#recording-of-additional-statuses-code-record-code-code-coming-in-v2-0-code">Recording of additional statuses: <code>record</code> <code>[Coming in v2.0]</code></a></h3>
+<div class="sect3">
+<h4 id="recording-of-interviewee-s-attendance"><a class="link" href="#recording-of-interviewee-s-attendance">Recording of interviewee’s attendance</a></h4>
+<div class="paragraph">
+<p>Bring up the window to record the attendance of interviewees. You can navigate through the table in the window (GUI)
+using the directions key to record the attendance of the interviewees. Hit Enter at the target cell to record the
+attendance.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>record attendance</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sending-of-interview-results-to-all-interviewees-code-coming-in-v2-0-code"><a class="link" href="#sending-of-interview-results-to-all-interviewees-code-coming-in-v2-0-code">Sending of interview results to all interviewees <code>[Coming in v2.0]</code></a></h4>
+<h4 id="recording-of-interview-result"><a class="link" href="#recording-of-interview-result">Recording of interview result</a></h4>
 <div class="paragraph">
-<p>Opens an email dialog containing the interviewee&#8217;s result/interview outcome and other details that you might want to include for all interviewees.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>email ct/allresults</code></p>
+<p>Bring up the window to record the interview result. The way to record the result is the same as 2.12.1.</p>
 </div>
 <div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The email dialog will only appear if the interviewee&#8217;s email is present in the database and the interview results has been updated.</p>
-</li>
-</ul>
+<p>Format: <code>record result</code></p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="ranking-of-interviewees"><a class="link" href="#ranking-of-interviewees">Ranking of interviewees</a></h4>
+<div class="paragraph">
+<p>Bring up the window to rank the interviewees. The way to record the result is the same as 2.12.1.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>record rank</code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q:</strong> Where can I download the application?<br>
+<strong>A:</strong> Check out the assets in our project release page <a href="https://github.com/AY1920S1-CS2103-F09-1/main/releases" class="bare">https://github.com/AY1920S1-CS2103-F09-1/main/releases</a> to download our latest releases!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Table Command Summary</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command Description</th>
+<th class="tableblock halign-left valign-top">Command Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Help</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display schedule</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>display schedule</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display interviewee</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>display interviewee</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display interviewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>display interviewer</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Import existing availabilities</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>import interviewer fp/FILE_PATH</code><br>
+  <code>import interviewee fp/FILE_PATH</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add interviewee</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add interviewee n/NAME p/PHONE f/FACULTY y/YEAR_OF_STUDY ep/PERSONAL_EMAIL ew/NUS_WORK_EMAIL
+d/DEPARTMENT&#8230;&#8203; s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add interviewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add interviewer n/NAME p/PHONE ew/NUS_WORK_EMAIL d/DEPARTMENT s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit interviewee</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit NAME r/interviewee [n/NAME] [p/PHONE] [f/FACULTY] [y/YEAR_OF_STUDY] [ep/PERSONAL_EMAIL] [ew/NUS_WORK_EMAIL]
+[d/DEPARTMENT]&#8230;&#8203; [s/SLOT]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit interviewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit NAME r/interviewer [n/NAME] [p/PHONE] [t/TAG]&#8230;&#8203; [d/DEPARTMENT] [ew/NUS_WORK_EMAIL] [s/SLOT&#8230;&#8203;]</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete interviewee</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete NAME r/interviewee</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete interviewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete NAME r/interviewer</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clear imported data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Schedule</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>schedule</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Email interviewee</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>email ct/timeslot n/INTERVIEWEE NAME</code><br>
+ <code>email ct/alltimeslot</code><br>
+ <code>email ct/status</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Export</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>export fp/FILE_PATH</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter tag TAG_NAME</code><br></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Record</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>record attendance</code><br>
+ <code>record result</code><br>
+ <code>record rank</code><br></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tip-converting-an-excel-file-to-csv-format"><a class="link" href="#tip-converting-an-excel-file-to-csv-format">Appendix A: TIP: Converting an Excel file to .csv format</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>1) Open Excel and click <strong>File &#8594; Open</strong>.</p>
+</div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="../images/quickstart/1_excel.png" alt="1 excel" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>2) In the dialog box, find the Excel file on your computer and click <strong>Open</strong>.</p>
+</div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="../images/quickstart/2_excel.png" alt="2 excel" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>3) On the Excel toolbar, select <strong>File &gt; Save As</strong>.</p>
+</div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="../images/quickstart/3_excel.png" alt="3 excel" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>4) In the dialog box, type a new name for your file in the <strong>File Name</strong> field.</p>
+</div>
+<div class="paragraph">
+<p>5) In the "Save as Type" drop-down menu, scroll down to locate and select <strong>CSV (comma delimited)</strong>.</p>
+</div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="../images/quickstart/4_excel.png" alt="4 excel" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>6) Click <strong>Save</strong>.</p>
+</div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="../images/quickstart/5_excel.png" alt="5 excel" width="500">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Solution and images referenced from <a href="https://knowledgebase.constantcontact.com" class="bare">https://knowledgebase.constantcontact.com</a>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -528,4 +812,4 @@ To the application, an email is considered as sent when the email window success
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:16:04 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:23:56 UTC</div></div></div></body></html>
