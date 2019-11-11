@@ -12,7 +12,7 @@
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
-:warning-caption: :warning_sign:
+:warning-caption: :warning:
 endif::[]
 :repoURL: https://github.com/AY1920S1-CS2103-F09-1/main
 
@@ -610,6 +610,17 @@ add/delete/edit of interviewee or interviewer will remove the scheduling result,
 // tag::email[]
 
 === Sending of email `email`
+
+====
+Constraints
+
+* A supported mail client should be installed on your machine. This mail client should be able to handle the `mailto:` URI scheme.
+You can open your web browser and type `mailto:test@example.com` to verify if your machine has a supported mail client installed.
+* In the software, an email is considered to be sent if the email dialog has successfully appeared on your screen. It *does not* recognise whether or not you have actually sent the email across the Internet successfully.
+* For all command types, the `schedule` command must be run first, as an email dialog will only appear for interviewees that have slots allocated to them.
+====
+
+
 ==== Sending of interview time slot to interviewee
 Opens an email dialog containing the interviewee’s allocated interview time slot to a particular interviewee specified, including other details such as the interviewer and location.
 
@@ -618,6 +629,8 @@ Format: `email ct/timeslot n/INTERVIEWEE NAME`
 Notes:
 
 * The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.
+* The email dialog will appear even if the interviewee has been emailed before.
+* The email dialog will also not appear if you do not have a supported mail client installed on your computer.
 
 ==== Sending of interview time slot to all interviewees
 Opens an email dialog containing the interviewee's allocated interview time slot to every interviewee, including other details such as the interviewer and location. A summary report is then generated at the end of the command execution.
@@ -627,6 +640,8 @@ Format: `email ct/alltimeslot`
 Notes:
 
 * The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.
+* The email dialog will not appear if the interviewee has been emailed previously.
+* The email dialog will also not appear if you do not have a supported mail client installed on your computer.
 
 ==== Checking status of emails sent
 Provides a summary report of the number of interviewees with emails sent and the total number of interviewees stored in the database.
@@ -638,20 +653,6 @@ Opens an email dialog containing the interviewee’s result/interview outcome an
 
 Format: `email ct/results n/INTERVIEWEE NAME`
 
-Note:
-
-* The email dialog will only appear if the interviewee's email is present in the database and the interview results has been updated.
-
-==== Sending of interview results to all interviewees `[Coming in v2.0]`
-Opens an email dialog containing the interviewee's result/interview outcome and other details that you might want to include for all interviewees.
-
-Format: `email ct/allresults`
-
-Note:
-
-* The email dialog will only appear if the interviewee's email is present in the database and the interview results has been updated.
-
-// end::email[]
 
 // tag::export[]
 
