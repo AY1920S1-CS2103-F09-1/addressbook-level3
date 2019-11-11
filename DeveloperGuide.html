@@ -56,6 +56,9 @@
 <li><a href="#deleting-an-entity">F.6. Deleting an entity</a></li>
 <li><a href="#displaying-different-views-from-the-scheduler">F.7. Displaying different views from the Scheduler</a></li>
 <li><a href="#scheduling-interviews">F.8. Scheduling Interviews</a></li>
+<li><a href="#emailing-an-interviewee">F.9. Emailing an Interviewee</a></li>
+<li><a href="#emailing-all-interviewees">F.10. Emailing all Interviewees</a></li>
+<li><a href="#getting-the-status-of-the-email-sending-process">F.11. Getting the status of the email sending process</a></li>
 </ul>
 </li>
 </ul>
@@ -2006,7 +2009,11 @@ Use case resumes at step 1.</p>
 </dd>
 <dt class="hdlist1"><a id="email-blast"></a> Email blast</dt>
 <dd>
-<p>A process of sending an email to multiple recipients, which may or may not be tailored to the recipient.</p>
+<p>A process of sending an email to multiple recipients in rapid succession.</p>
+</dd>
+<dt class="hdlist1"><a id="headless-machine"></a> Headless machine</dt>
+<dd>
+<p>A machine that is able to run the software, but does not have a graphical user interface (GUI) screen (i.e. monitor) attached.</p>
 </dd>
 <dt class="hdlist1"><a id="interview"></a> Interview</dt>
 <dd>
@@ -2019,6 +2026,10 @@ Use case resumes at step 1.</p>
 <dt class="hdlist1"><a id="interviewer"></a> Interviewer</dt>
 <dd>
 <p>A person that is conducting interviews and is required to meet multiple interviewees.</p>
+</dd>
+<dt class="hdlist1"><a id="mail-client"></a> Mail client</dt>
+<dd>
+<p>A software that is capable of sending emails over the Internet and is able to respond to the "mailto:" URI scheme.</p>
 </dd>
 <dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
 <dd>
@@ -2427,5 +2438,168 @@ if the name of the interviewee does not exist in the schedule.</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="emailing-an-interviewee"><a class="link" href="#emailing-an-interviewee">F.9. Emailing an Interviewee</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Import .csv files of interviewers' availability and interviewees' details using the <code>import</code> command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Please refer to the QuickStart section in the <a href="UserGuide.html">user guide</a> to download the templates of the interviewers' availability and interviewees details.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:03:29 UTC</div></div></div></body></html>
+</li>
+<li>
+<p>Type <code>schedule</code> in the text console of the app and press Enter.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>You can use the sample test data below to get a combination of interviewees and interviewers that can be matched.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><a href="http://bit.ly/2Ny64Q8">Interviewers test data</a></p>
+</li>
+<li>
+<p><a href="http://bit.ly/36KLxj4">Interviewees test data</a></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>After an interview schedule has been successfully generated, you can try to email one of the interviewees that have been allocated a slot using the <code>email ct/timeslot</code> command. For the sample test data above, you can try <code>email ct/timeslot n/John Doe</code> to send an email to John Doe.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Expected: Your <a href="#mail-client">mail client</a> will open with the Compose window. The <code>To</code>, <code>Cc</code>, <code>Subject</code> and message body is pre-populated with the details specific to the interviewee that you have selected.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>If you do not have a mail client installed, or you are running this software in a headless machine, it is expected that no Compose windows will appear, and an error message will be returned about having a missing mail client.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="emailing-all-interviewees"><a class="link" href="#emailing-all-interviewees">F.10. Emailing all Interviewees</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Import .csv files of interviewers' availability and interviewees' details using the <code>import</code> command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Please refer to the QuickStart section in the <a href="UserGuide.html">user guide</a> to download the templates of the interviewers' availability and interviewees details.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Type <code>schedule</code> in the text console of the app and press Enter.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>You can use the sample test data below to get a combination of interviewees and interviewers that can be matched.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><a href="http://bit.ly/2Ny64Q8">Interviewers test data</a></p>
+</li>
+<li>
+<p><a href="http://bit.ly/36KLxj4">Interviewees test data</a></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>After an interview schedule has been successfully generated, email one interviewee using the <code>email ct/timeslot</code> command and choosing any interviewee that has a slot allocated.</p>
+</li>
+<li>
+<p>After you emailed one of the interviewees, you can try to email the remaining interviewees using the <code>email ct/alltimeslot</code> command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Expected: Your mail client will open with multiple Compose windows for each of the interviewees that have been allocated a slot but have not been emailed yet. The interviewee that was emailed in step 3 will not appear again.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>If you do not have a mail client installed, or you are running this software in a <a href="#headless-machine">headless machine</a>, it is expected that no Compose windows will appear, and an error message will be returned about having a missing mail client.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="getting-the-status-of-the-email-sending-process"><a class="link" href="#getting-the-status-of-the-email-sending-process">F.11. Getting the status of the email sending process</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Import .csv files of interviewers' availability and interviewees' details using the <code>import</code> command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Please refer to the QuickStart section in the <a href="UserGuide.html">user guide</a> to download the templates of the interviewers' availability and interviewees details.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Type <code>schedule</code> in the text console of the app and press Enter.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>You can use the sample test data below to get a combination of interviewees and interviewers that can be matched.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><a href="http://bit.ly/2Ny64Q8">Interviewers test data</a></p>
+</li>
+<li>
+<p><a href="http://bit.ly/36KLxj4">Interviewees test data</a></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>After an interview schedule has been successfully generated, you can obtain the status of the email sending process using the <code>email ct/status</code> command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Expected: A message will appear with the statistics on the number of interviewees that have been emailed before. There should be 0 interviewees in this case.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Send an email to an interviewee that has a slot allocated using the <code>email ct/timeslot</code> command.</p>
+</li>
+<li>
+<p>After sending the email to the interviewee, you can obtain the status of the email sending process again using the <code>email ct/status</code> command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Expected: The same message will appear as in step 3, except that the message will reflect that there is 1 interviewee that has been sent an email.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:38:27 UTC</div></div></div></body></html>

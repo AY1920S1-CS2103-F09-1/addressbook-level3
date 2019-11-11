@@ -1612,6 +1612,26 @@ The exported data will erase and replace all pre-existing data in the specified 
 </div>
 <div class="sect2">
 <h3 id="sending-of-email-code-email-code-2"><a class="link" href="#sending-of-email-code-email-code-2">4.16. Sending of email <code>email</code></a></h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A supported mail client should be installed on your machine. This mail client should be able to handle the <code>mailto:</code> URI scheme.</p>
+</li>
+<li>
+<p>In the software, an email is considered to be sent if the email dialog has successfully appeared on your screen. It <strong>does not</strong> recognise whether or not you have actually sent the email across the Internet successfully.</p>
+</li>
+<li>
+<p>For all command types, the <code>schedule</code> command must be run first, as an email dialog will only appear for interviewees that have slots allocated to them.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="sect3">
 <h4 id="sending-of-interview-time-slot-to-interviewee-2"><a class="link" href="#sending-of-interview-time-slot-to-interviewee-2">4.16.1. Sending of interview time slot to interviewee</a></h4>
 <div class="paragraph">
@@ -1627,6 +1647,12 @@ The exported data will erase and replace all pre-existing data in the specified 
 <ul>
 <li>
 <p>The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
+</li>
+<li>
+<p>The email dialog will appear even if the interviewee has been emailed before.</p>
+</li>
+<li>
+<p>The email dialog will also not appear if you do not have a supported mail client installed on your computer.</p>
 </li>
 </ul>
 </div>
@@ -1646,6 +1672,12 @@ The exported data will erase and replace all pre-existing data in the specified 
 <ul>
 <li>
 <p>The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.</p>
+</li>
+<li>
+<p>The email dialog will not appear if the interviewee has been emailed previously.</p>
+</li>
+<li>
+<p>The email dialog will also not appear if you do not have a supported mail client installed on your computer.</p>
 </li>
 </ul>
 </div>
@@ -1893,4 +1925,4 @@ Solution and images referenced from <a href="https://knowledgebase.constantconta
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:03:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:38:27 UTC</div></div></div></body></html>
