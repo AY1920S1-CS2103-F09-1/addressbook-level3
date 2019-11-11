@@ -11,14 +11,16 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>People who hold leadership positions, especially those in student-led clubs, have to usually schedule interviews with those interested in applying to
-leadership positions during recruitment period. Usually, there are clashing preferred time slots between interviewees, which the interviewer has to resolve.
-We found that the current practice of constant back-and-forth messaging between interviewees and interviewers to resolve this to
-be inefficient. We therefore came up with Scheduler, a desktop application used to automate and streamline the process of interview scheduling.</p>
-</div>
-<div class="paragraph">
-<p>Its main feature is matching interviewees with interview time slots to generate an optimal interview timetable, and works with
-two types of data: data on interviewees and interviewers.
+leadership positions during recruitment period. Usually, there are clashing preferred time slots between interviewees, which the interviewer has to slowly and manually resolve.
+We therefore came up with Scheduler, a desktop application used to automate and streamline the process of interview scheduling.
+Scheduler matches interviewees with interview time slots to generate an optimal interview timetable.
 The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui">
+</div>
+<div class="title">Figure 1. Graphical user interface of Scheduler</div>
 </div>
 </div>
 </div>
@@ -41,23 +43,37 @@ withdraw due to urgent business. There may also be more applicants, and hence in
 manually change data in Scheduler is essential.</p>
 </li>
 <li>
-<p>Highlights: This enhancement deeply affects the foundational structure of Scheduler. It required an in-depth understanding of
-the existing code base. The implementation was also challenging as it required changes to existing commands and needed to be
-designed such that enhancements could be easily added. The large number of possible input arguments for these commands also required extensive testing
-to ensure Scheduler was bug-free.</p>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This enhancement deeply affects the foundational structure of Scheduler in <code>Logic</code> and <code>Model</code>.</p>
 </li>
 <li>
-<p>Credits: Joshua Bloch, author of Effective Java, for his ideas on Builder patterns as a way to generate objects with optional parameters.</p>
+<p>It required an in-depth understanding of the existing code base, as well as other concepts like regex expressions to ensure input validity and the Jackson library to convert objects to JSON format.</p>
+</li>
+<li>
+<p>The implementation was also challenging as it required changes to existing commands and deletion of irrelevant fields. The large number of possible
+input arguments for these commands (e.g the <code>add</code> command has 8 possible input prefixes) also each required extensive testing to ensure users could not input invalid values.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added the ability to <code>clear</code> all entities from Scheduler&#8217;s internal model.</p>
+<p>Credits: Joshua Bloch, author of Effective Java, for his ideas on Builder patterns as a way to generate objects with optional parameters.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=kendrickang&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=KendrickAng&amp;tabRepo=AY1920S1-CS2103-F09-1%2Fmain%5Bmaster%5D">Functional code</a>]
-[<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=kendrickang&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=KendrickAng&amp;tabRepo=AY1920S1-CS2103-F09-1%2Fmain%5Bmaster%5D">Test code</a>]</p>
+<p>Relevant pull requests: <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/46">#46</a>, <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/60">#60</a>, <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/66">#66</a>,
+<a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/86">#86</a>, <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/90">#90</a>, <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/102">#102</a>, <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/156">#156</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Added the <code>clear</code> command, allowing the user to clear all entities and schedules from Scheduler&#8217;s internal model.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=kendrickang&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=KendrickAng&amp;tabRepo=AY1920S1-CS2103-F09-1%2Fmain%5Bmaster%5D">View on RepoSense</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -404,7 +420,7 @@ properly in the user interface. See <a href="#Duration of Timeslot">Duration of 
 <div class="content">
 <img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 1. Structure of the Logic Component</div>
+<div class="title">Figure 2. Structure of the Logic Component</div>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -450,7 +466,7 @@ the <code>Model</code> and <code>Storage</code> components.</p>
 such as displaying help to the user.</p>
 </li>
 <li>
-<p>Finally, <code>LogicManager</code> calls the <code>Storage</code> components to save the current <code>Model</code> to the hard disk.</p>
+<p>Finally, <code>LogicManager</code> calls the <code>Storage</code> component to save the current <code>Model</code> to the hard disk.</p>
 </li>
 </ol>
 </div>
@@ -463,7 +479,7 @@ are executed and how they influence other components.</p>
 <div class="content">
 <img src="../images/LogicGeneralSequenceDiagram.png" alt="LogicGeneralSequenceDiagram">
 </div>
-<div class="title">Figure 2. General interactions Inside the Logic Component for the <code>add</code>, <code>edit</code> and <code>delete</code> Commands</div>
+<div class="title">Figure 3. General interactions Inside the Logic Component for the <code>add</code>, <code>edit</code> and <code>delete</code> Commands</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -485,33 +501,30 @@ The lifeline for <code>XYZCommandParser</code> and <code>XYZCommand</code> shoul
 <p>The <code>add</code>, <code>edit</code> and <code>delete</code> features allow interviewees and interviewers to be manually added to Scheduler.</p>
 </div>
 <div class="paragraph">
-<p>An <code>Interviewee</code> is associated with the following <code>Prefix</code>:</p>
+<p>The flow of logic for a successful execution of these commands can be summarised as follows:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><code>n/NAME</code>, <code>p/PHONE</code>, <code>t/TAG</code>, <code>f/FACULTY</code>, <code>y/YEAR_OF_STUDY</code>, <code>d/DEPARTMENT</code>, <code>s/SLOT</code>, <code>ep/PERSONAL_EMAIL</code> and <code>ew/NUS_WORK_EMAIL</code>.</p>
+<p>Parse user input and populate an <code>ArgumentMultimap</code> instance with a mapping of prefixes (from user input) to String arguments following those prefixes.</p>
 </li>
-</ul>
+<li>
+<p>Check the validity of these arguments using the <code>ParserUtil</code> class.</p>
+</li>
+<li>
+<p>If the arguments are valid, carry out the necessary modifications to the <code>ModelManager</code> class, which contains the underlying <code>IntervieweeList</code> and <code>InterviewerList</code>
+, which we store our entities in.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>An <code>Interviewer</code> is associated with the following <code>Prefix</code>:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>n/NAME</code>, <code>p/PHONE</code>, <code>t/TAG</code>, <code>s/SLOT</code>, <code>d/DEPARTMENT</code> and <code>ew/NUS_WORK_EMAIL</code>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The Activity Diagram below illustrates the general flow of logic from command input (by a user) to command execution:</p>
+<p>The Activity Diagram below further illustrates the general flow of logic from command input (by a user) to command execution:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/LogicGeneralActivityDiagram.png" alt="200" width="400">
 </div>
-<div class="title">Figure 3. A general Activity Diagram illustrating logic flow in the <code>Logic</code> component.</div>
+<div class="title">Figure 4. A general Activity Diagram illustrating logic flow in the <code>Logic</code> component.</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -529,12 +542,33 @@ Each of <a href="#add-interviewee-interviewer-feature">add</a>, <a href="#Edit I
 <div class="sect3">
 <h4 id="add-interviewee-interviewer-feature"><a class="link" href="#add-interviewee-interviewer-feature">Add Interviewee/Interviewer feature</a></h4>
 <div class="paragraph">
-<p>The <code>add</code> command feature essentially allows a user to add an <code>Interviewee</code> or <code>Interviewer</code> object to the underlying <code>IntervieweeList</code>
- or <code>InterviewerList</code> of <code>ModelManager</code>.
-Upon successful parsing of the <code>add</code> command arguments, an instance of <code>Interviewee</code>/<code>Interviewer</code> is created based on the preamble supplied,
-which is added to its corresponding list in <code>ModelManager</code>.
-The underlying <code>UniquePersonList</code> of <code>IntervieweeList</code> and <code>InterviewerList</code> ensures
+<p>The <code>add</code> command feature allows a user to add an <code>Interviewee</code> or <code>Interviewer</code> object to the underlying <code>IntervieweeList</code>
+ or <code>InterviewerList</code> of <code>ModelManager</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Upon successful parsing of the <code>add</code> command arguments, an instance of <code>Interviewee</code>/<code>Interviewer</code> is created. (depending on the preamble supplied in the user input)</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>I.e: <code>add interviewee n/John Doe</code>. The preamble starts after the command word "add" and before the first prefix "n/".</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>ModelManager#addInterviewee() is then called to add the entity to its corresponding list in <code>ModelManager</code>.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The underlying <code>UniquePersonList</code> of <code>IntervieweeList</code> and <code>InterviewerList</code> ensures
 that no duplicate entities are present at any time, checked by Interviewee#isSamePerson() and Interviewer#isSamePerson().</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>The following <strong>Sequence Diagram</strong> illustrates how the <code>add interviewee</code> command works. The <code>add interviewer</code> command works in a similar manner.</p>
@@ -543,7 +577,7 @@ that no duplicate entities are present at any time, checked by Interviewee#isSam
 <div class="content">
 <img src="../images/AddSequenceDiagram.png" alt="AddSequenceDiagram">
 </div>
-<div class="title">Figure 4. Add Interviewee Sequence Diagram</div>
+<div class="title">Figure 5. Add Interviewee Sequence Diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -565,6 +599,9 @@ The lifeline for <code>AddCommandParser</code> and <code>AddIntervieweeCommand</
 <p>See the general logic sequence diagram in <a href="#Design-Logic">Section 2.3: Logic component</a> for a more complete view of how
 <code>Storage</code> is affected as well.</p>
 </li>
+<li>
+<p>For brevity, the input arguments to functions referenced in this guide may be omitted.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -577,9 +614,9 @@ the continuation of the <strong>rake</strong> from the <a href="#Add Edit and De
 <div class="content">
 <img src="../images/AddActivityDiagram.png" alt="300" width="400">
 </div>
-<div class="title">Figure 5. Activity diagram snippet of the add command</div>
+<div class="title">Figure 6. Activity diagram snippet of the add command</div>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:25:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:40:37 UTC</div></div></div></body></html>
