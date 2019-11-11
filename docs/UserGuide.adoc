@@ -917,7 +917,7 @@ d/DEPARTMENT... s/SLOT... [t/TAG]...` +
 |===
 
 [appendix]
-=== TIP: Converting an Excel file to .csv format
+== TIP: Converting an Excel file to .csv format
 
 1) Open Excel and click *File -> Open*.
 
