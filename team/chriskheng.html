@@ -3,16 +3,23 @@
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Scheduler</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103-F09-1/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Kheng Yau Dong - Project Portfolio</h1></div><div id="content"><div class="sect1">
 <h2 id="project-scheduler"><a class="link" href="#project-scheduler">PROJECT: Scheduler</a></h2>
 <div class="sectionbody">
-<hr>
+
 </div>
 </div>
 <div class="sect1">
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Scheduler is a desktop application which is used to automate the process of scheduling interviews.
-Its main feature is matching interviewees with interview time slots to generate an interview timetable.
-The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>In many co-curricular activities (CCAs), interviews are usually conducted to recruit new members during the beginning of
+the semester. However, the scheduling of interviews can be a very tedious process, especially when there are a lot of applicants.
+In light of this, we created Scheduler, a desktop application which aims to automate and streamline the process of
+scheduling interviews to reduce the workload of the administrators.</p>
+</div>
+<div class="paragraph">
+<p>The main feature of Scheduler is to match interviewees with available interview time slots to generate an optimal interview schedule.
+Other features introduced to streamline the process of scheduling interviews include emailing the allocated slot to the respective
+interviewee. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and
+has around 20 kLoC.</p>
 </div>
 </div>
 </div>
@@ -22,33 +29,64 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added the <strong>ability to schedule interview</strong></p>
+<p><strong>Major enhancement</strong>: added the <strong>ability to schedule interviews automatically</strong> using a graph algorithm</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to schedule interviews for the interviewees using the imported interviewer
-availability and interviewee details.</p>
+<p>What it does: allows the user to schedule interviews automatically for the interviewees using the imported interviewers
+availability and interviewees details.</p>
 </li>
 <li>
 <p>Justification: This feature is the central feature behind the idea of the entire Scheduler application which is to schedule interviews
-automatically so that the user do not have to manually schedule interviews and thus reduce their workload significantly.</p>
+automatically so that the user does not have to manually schedule interviews and thus reduce their workload significantly.</p>
 </li>
 <li>
-<p>Highlights: The scheduling feature uses an algorithm which tries to maximise the number of interviewees who are allocated
+<p>Highlights: The scheduling feature uses an algorithm known as <strong>Hopcroft Karp algorithm</strong> which tries to maximise the number of interviewees who are allocated
 with an interview slot. Please refer to the developer guide for more information regarding the algorithm.</p>
 </li>
 <li>
 <p>Credits:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>John Hopcroft, Richard Karp, Alexander Karzanov, the creators of Hopcroft-Karp algorithm which enables our application to maximise
+the number of interviewees which are allocated an interview slot.</p>
+</li>
+<li>
+<p>Authors of <a href="https://www-m9.ma.tum.de/graph-algorithms/matchings-hopcroft-karp/index_en.html" class="bare">https://www-m9.ma.tum.de/graph-algorithms/matchings-hopcroft-karp/index_en.html</a>, for the clear explanation of
+the logic behind Hopcroft Karp algorithm.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: Created a data structure which model a schedule timetable as can be seen in the application. The data structure
+<p><strong>Minor enhancement</strong>: Updated the link in the help window.</p>
+</li>
+<li>
+<p><strong>Other contributions to features</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Created a data structure <code>Schedule</code> which models a schedule timetable as can be seen in the application. The data structure
 is used to link multiple features together, such as adding an interviewer and displaying it on the ui.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Modified and implemented the logic which links the displayed schedules in the UI to the underlying <code>Schedule</code> data structures
+such that changes to the schedules data can be updated in the UI by using the <strong>Observer pattern</strong>.</p>
+</li>
+<li>
+<p>Created an <code>AppStatus</code> class using the <strong>Singleton design principle</strong> to help to manage the status of the application
+across different functionalities.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=ChrisKheng&amp;tabRepo=AY1920S1-CS2103-F09-1%2Fmain%5Bmaster%5D">Functional code</a>]
+[<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=true&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=ChrisKheng&amp;tabRepo=AY1920S1-CS2103-F09-1%2Fmain%5Bmaster%5D">Test code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -61,20 +99,52 @@ is used to link multiple features together, such as adding an interviewer and di
 <li>
 <p>Managed releases v1.0-v1.4 (4 releases) on GitHub.</p>
 </li>
+<li>
+<p>Managed milestones v1.0-v1.4 on Github.</p>
+</li>
+<li>
+<p>Drafted project plan for the development of the application.</p>
+</li>
 </ul>
 </div>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Improve the appearance of the Developer Guide (<a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/177">#177</a>)</p>
 </li>
 <li>
-<p>Documentation:</p>
+<p>Updated the Model and Ui class diagram to match the updated architecture of the application (PR here)</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments) (<a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/151">#151</a>,
+<a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/182">#182</a>)</p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (<a href="https://github.com/ChrisKheng/ped/issues/2">#2</a>,
+<a href="https://github.com/ChrisKheng/ped/issues/3">#3</a>)</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Set up Coveralls and AppVeyor for the team repository (<a href="https://github.com/mrchensheng21/main/pull/1">#1</a>)</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -96,14 +166,37 @@ is used to link multiple features together, such as adding an interviewer and di
 </tr>
 </tbody>
 </table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">include</dt>
-<dd>
-<p>== Contributions to the Developer Guide</p>
-</dd>
-</dl>
+<div class="sect2">
+<h3 id="scheduling-code-schedule-code"><a class="link" href="#scheduling-code-schedule-code">Scheduling <code>schedule</code></a></h3>
+<div class="sect3">
+<h4 id="schedule-the-interviews"><a class="link" href="#schedule-the-interviews">Schedule the interviews</a></h4>
+<div class="paragraph">
+<p>Schedule and allocate interviewees to the available interview slots based on the availability of interviewees and
+their choice of department.</p>
 </div>
+<div class="paragraph">
+<p>Format: <code>schedule</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To ensure that the displayed scheduling result is always updated with the latest database of interviewers and interviewees,
+add/delete/edit of interviewee or interviewer will remove the scheduling result, hence you will need to type <code>schedule</code> again.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 100%;">
@@ -114,10 +207,274 @@ is used to link multiple features together, such as adding an interviewer and di
 </tr>
 </tbody>
 </table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">include</dt>
-</dl>
+<div class="sect2">
+<h3 id="em-explanation-of-implementation-em"><a class="link" href="#em-explanation-of-implementation-em"><em>Explanation of Implementation</em></a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="scheduling-feature"><a class="link" href="#scheduling-feature">Scheduling Feature</a></h3>
+<div class="sect3">
+<h4 id="algorithm"><a class="link" href="#algorithm">Algorithm</a></h4>
+<div class="paragraph">
+<p>The scheduling of interviews is essentially a <a href="https://www.geeksforgeeks.org/maximum-bipartite-matching/">maximum bipartite matching problem</a>.
+The scheduling feature is trying to find the <strong>maximum number of matching</strong> between available interview slots
+and interviewees.</p>
+</div>
+<div class="paragraph">
+<p>In this application, the selected algorithm is <a href="https://www.geeksforgeeks.org/hopcroft-karp-algorithm-for-maximum-matching-set-1-introduction/">Hopcroft-Kap algorithm</a>.
+The complexity of the algorithm is o(√v x e), which is reasonably fast. The relevant details of the algorithm are as below:</p>
+</div>
+<div class="paragraph">
+<p><strong>Vertex</strong><br>
+Interviewee and interview slot.</p>
+</div>
+<div class="paragraph">
+<p><strong>Edge</strong><br>
+An edge represents a possible matching relationship  between interviewee and interview slot. An edge exists between interviewee and interview slot if and only if the interviewee can attend the slot.</p>
+</div>
+<div class="paragraph">
+<p><strong>Matching Criteria</strong><br>
+An interviewee can match an interview slot (i.e. can attend it) if <strong>all</strong> the criteria below are fulfilled:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The timing of the slot matches one of the available timings of the interviewee.</p>
+</li>
+<li>
+<p>The department of the interviewer at that interview slot matches the department of choice of the interviewee.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Explanation of the Algorithm</strong><br>
+The <strong>activity diagram</strong> below summarises the key steps in the algorithm.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/HopcroftKarp.png" alt="300" width="500">
+</div>
+<div class="title">Figure 1. HopcroftKarp Algorithm Activity Diagram</div>
+</div>
+<div class="paragraph">
+<p>Referring to the diagram above, a graph between interviewees and interview slots will first be built. Specifically, the graph built is a bipartite
+graph where each interviewee is linked to the slot that it can match and vice versa, but interviewees are not linked with each
+other, same goes to interview slots. Thus, the 2 distinct groups of vertices in the graph are interviewee vertices and interview slot
+vertices. Before continuing, please read the below clarification about the terms <strong>unmatched</strong> and <strong>free</strong>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The term <strong>unmatched</strong> refers to a vertex that is not matched to its previous adjacent vertex by DFS. The term <strong>free</strong> refers to
+a vertex that is not matched to any other vertex yet by DFS.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A breadth-first-search (BFS) is then conducted on all <strong>free</strong> vertices in the graph to search for <a href="#notes">augmenting paths</a> which in the process will construct a layered graph.
+The BFS is slightly special as it will visit adjacent vertex in an <strong><a href="#notes">alternating sequence of unmatched and matched edges</a></strong>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Starting from one of the free vertices in the graph, visit adjacent vertices(group x) that are <strong>not matched to it (i.e. unmatched)</strong> in a
+breath-first manner. This is then followed by visiting adjacent vertices that are <strong>matched to</strong> the vertices in group x
+in a breath-first manner.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:25:30 UTC</div></div></div></body></html>
+</div>
+<div class="paragraph">
+<p>The routine above is repeated until a layer of <strong>free</strong> vertices are found (i.e. augmenting path(s) is found) or the layered graph cannot be further extended
+(i.e. all augmenting path have been exhausted).</p>
+</div>
+<div class="paragraph">
+<p>If augmenting path(s) exists, depth-first-search (DFS) will then be applied to every <strong>free</strong> vertex in the last layer of the layered graph
+to increase the number of matching between interviewee and interview slot. The DFS will start on one of the free vertices in the last layer and traverse through one of the
+augmenting path(s) which the free vertex lies in. When DFS hits the ends of an augmenting path, the unmatched and matched relationships between the vertices along the path will be <strong>flipped</strong>.
+Due to this alternating unmatched and matched relationship, the number of matching(a.k.a. cardinality) along the path will be increased by exactly 1 when the relationships along the path are flipped.</p>
+</div>
+<div class="paragraph">
+<p>When the relationships are flipped, the vertices will be marked as used such that it cannot be used as one of the vertex
+along the other augmenting paths in the layered graph for the other iterations of DFS on the current layered graph.</p>
+</div>
+<div class="paragraph">
+<p>The process of BFS followed by DFS will keep repeating until no more augmenting path(s) can be found in the bipartite graph of interviewee and interview slots, which
+marks the termination of the algorithm. At this point, the maximum number of matching have been found. This is based on a simple graph theory:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>The number of matching in a graph is maximal if and only if no more augmenting path exist.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>The theory above is so because if an augmenting path exists, it means that the number of matching along that path can be increased
+by 1, which in turn increases the number of matching in the graph.</p>
+</div>
+<div class="sect4">
+<h5 id="notes"><a class="link" href="#notes">Notes</a></h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Augmenting path</strong>: A simple path alternating between unmatched edges and matched edges. An augmenting path must
+start with a <strong>free</strong> vertex and ends with a <strong>free</strong> vertex. Thus, the patten of the alternating edges will always be
+unmatched, matched, unmatched &#8230;&#8203;., matched, unmatched.</p>
+</li>
+<li>
+<p><strong>Matched edge</strong>: An edge is matched if the two vertices connected by it are matched to each other in previous iterations of
+the DFS. In the case of the application, one of the two vertices will be an interviewee and the other will be an interview slot.</p>
+</li>
+<li>
+<p><strong>Unmatched edge</strong>: An edge is unmatched if the two vertices connected by it are not matched to each other in previous
+iterations of DFS.</p>
+</li>
+<li>
+<p><strong>Layered graph</strong>: A layered graph is a graph formed by multiple layers of vertices. In this case, the layers are alternating between
+unmatched and matched vertices, except that the first layer of the graph are always a layer of free vertices. The last layer of the
+of the graph can either be a layer of matched vertices or free vertices (if augmenting path(s) exists). Below is an example of a layered graph:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Layered_Graph.png" alt="300" width="400">
+</div>
+<div class="title">Figure 2. Layered Graph (image taken from <a href="https://www-m9.ma.tum.de/graph-algorithms/matchings-hopcroft-karp/index_en.html" class="bare">https://www-m9.ma.tum.de/graph-algorithms/matchings-hopcroft-karp/index_en.html</a>)</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>The implementation of the algorithm is encapsulated in the the <code>graph</code> subpackage in the <code>logic</code> package. Below is a
+class diagram describing the essential components of the <code>graph</code> package.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/GraphPackage.png" alt="GraphPackage">
+</div>
+<div class="title">Figure 3. Graph Subpackage</div>
+</div>
+<div class="paragraph">
+<p>A <code>Command</code> object called <code>ScheduleCommand</code> makes use of the <code>graph</code> package to schedule the interviews for the interviewee.
+It first uses <code>BipartiteGraphGenerator</code> to generates a <code>BipartiteGraph</code> which models the graph of interviewee and
+interview slots. The <code>BipartiteGraph</code> object is then passed to a <code>HopcrofKarp</code> object which implements the logic of
+HopcroftKarp algorithm, where the BFS and DFS logic is split into <code>BfsHopcroftKarp</code> and <code>DfsHopcroftKarp</code> object to better
+manage the implementation of the algorithm.</p>
+</div>
+<div class="paragraph">
+<p><code>HopcroftKarp</code> will then be executed which will run the algorithm and schedule interviews for the interviewees. To record
+the result of scheduling, it will modify the matching status between <code>IntervieweeVertex</code> and <code>InterviewSlotVertex</code> in the
+<code>BipartiteGraph</code> object passed to it.</p>
+</div>
+<div class="paragraph">
+<p>After the <code>HopcroftKarp</code> algorithm has finished executing, <code>ScheduleCommand</code> will then use the <code>BipartiteGraph</code> object
+to update the allocated slot to an <code>Interviewee</code>. It will also update the allocated slots to the <code>Interviewer</code> which will be
+interviewing the <code>Interviewee</code>. Finally, the <code>ScheduleCommand</code> will interact with <code>Model</code> to reflect the scheduling result in
+the <code>Ui</code>.</p>
+</div>
+<div class="paragraph">
+<p>Below are some class diagrams and a sequence diagram to aid the above explanation.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BipartiteGraphGenerator.png" alt="BipartiteGraphGenerator">
+</div>
+<div class="title">Figure 4. BipartiteGraphGenerator and BipartiteGraph with its components.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/IntervieweeVertex.png" alt="200" width="300">
+</div>
+<div class="title">Figure 5. IntervieweeVertex</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/InterviewSlotVertex.png" alt="300" width="550">
+</div>
+<div class="title">Figure 6. InterviewSlotVertex</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ScheduleSequenceDiagram.png" alt="ScheduleSequenceDiagram">
+</div>
+<div class="title">Figure 7. Executing Schedule Command Sequence Diagram</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="em-instructions-of-manual-testing-em"><a class="link" href="#em-instructions-of-manual-testing-em"><em>Instructions of Manual Testing</em></a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="scheduling-interviews"><a class="link" href="#scheduling-interviews">Scheduling Interviews</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Import .csv files of interviewers' availability and interviewees' details using the <code>import</code> command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Please refer to the QuickStart section in the <a href="UserGuide.html">user guide</a> to download the templates of the interviewers' availability and interviewees details.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Type <code>schedule</code> in the text console of the app and press enter.</p>
+</li>
+<li>
+<p>Expected: Schedules in the <code>Schedules</code> tab reflects the scheduled result accordingly, i.e. the name of the
+interviewee shows up in the interview schedule if its availability and department matches one of the available interview slots
+(originally marked as 1 in the schedules when the interviewer&#8217;s availability is imported). The text console will
+also shows relevant message about the interview result, e.g. "All interviewees are allocated with a slot!",
+"Interviewees that are not allocated a slot" followed by the number and name of the interviewees that are not allocated a slot,
+or "No matching is found :(".</p>
+</li>
+<li>
+<p>You can use the sample test data below to test if the scheduling feature is working properly.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><a href="http://bit.ly/2Ny64Q8">Interviewer Test Data</a></p>
+</li>
+<li>
+<p>All interviewees are allocated a slot (<a href="http://bit.ly/36KLxj4">Interviewees data</a>).</p>
+</li>
+<li>
+<p>Some interviewees are allocated a slot (<a href="http://bit.ly/33wQ1I9">Interviewees data</a>).</p>
+</li>
+<li>
+<p>All interviewees are not allocated a slot (<a href="http://bit.ly/33rVy2B">Interviewees data</a>).</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>You can also design your own test data to check if the scheduling feature is working properly by adding some available
+interview slots in the interviewer&#8217;s availability template. Then, add interviewees which have availabilities and department that match the
+available interview slots. Import the data and check if the interviewees name show up in the schedules.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Note that some interviewees may not be allocated a slot because of unavoidable collisions between interviewees which have the same availability
+and department.</p>
+</li>
+<li>
+<p>You can also test the opposite way, i.e. design test data which contains interviewees that cannot be allocated a slot and check
+if the name of the interviewee does not exist in the schedule.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:31:51 UTC</div></div></div></body></html>
