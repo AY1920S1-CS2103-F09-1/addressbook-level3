@@ -7,12 +7,12 @@
 
 == Overview
 
-People who hold leadership positions, especially those in student-led clubs, have to usually schedule interviews with those interested in applying to
-leadership positions. Usually, there are clashing preferred time slots between interviewees, which the interviewer has to resolve.
-We found that the current practice of constant back-and-forth messaging between interviewees and interviewers to resolve this to
-be inefficient. We therefore came up with Scheduler, a desktop application used to automate the process of interview scheduling.
+In many co-curricular activities (CCAs), interviews are usually conducted to recruit new members or committees during the beginning of
+the semester. However, the scheduling of interviews can be a very tedious process, especially when there are a lot of applicants.
+We therefore came up with Scheduler, a desktop application which aims to automate and streamline this laborious process of
+scheduling interviews and to minimise human errors in the scheduling process.
 
-Its main feature is matching interviewees with interview time slots to generate an optimal interview timetable, and works with
+Its main feature is to match interviewees with interview time slots to generate an optimal interview timetable, and works with
 two types of data: data on interviewees and interviewers.
 The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.
 
