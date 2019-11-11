@@ -129,7 +129,7 @@ to ensure Scheduler was bug-free.</p>
 <div class="sect2">
 <h3 id="add-interviewees-interviewers-manually-code-add-code"><a class="link" href="#add-interviewees-interviewers-manually-code-add-code">Add interviewees/interviewers manually <code>add</code></a></h3>
 <div class="paragraph">
-<p>Manually add a new entity to the database. The command format differs on the <code>r/ROLE</code> prefix supplied:</p>
+<p>Manually add a new entity to the database. The command format differs on the preamble supplied, which should be <code>interviewee</code> or <code>interviewer</code>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -147,15 +147,32 @@ to ensure Scheduler was bug-free.</p>
 <p>Manually add a new interviewee to the database.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add r/interviewee n/NAME p/PHONE f/FACULTY y/YEAR_OF_STUDY ep/PERSONAL_EMAIL ew/NUS_WORK_EMAIL d/DEPARTMENT&#8230;&#8203; s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
+<p>Format: <code>add interviewee n/NAME p/PHONE f/FACULTY y/YEAR_OF_STUDY ep/PERSONAL_EMAIL ew/NUS_WORK_EMAIL d/DEPARTMENT&#8230;&#8203; s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>add r/interviewee n/John Doe p/88888888 t/CAP5 t/dogLover f/School of Computing ep/JohnDoe@gmail.com ew/JohnDoe@u.nus.edu y/2018 d/Marketing s/20/09/2019 18:00-18:30</pre>
+<pre>add interviewee n/John Doe p/91234567 f/School of Computing y/1 ep/john_doe@gmail.com ew/john_doe@u.nus.edu d/Marketing s/17/10/2019 13:30-14:00 t/friends</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If a name prefix <code>n/</code> is supplied, the <code>NAME</code> given should not match (case-insensitive) that of other interviewees already in Scheduler.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>John Doit</code> and <code>John Do it</code> are considered different names.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -164,15 +181,32 @@ to ensure Scheduler was bug-free.</p>
 <p>Manually add a new interviewer to the database.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add r/interviewer n/NAME p/PHONE ew/NUS_WORK_EMAIL d/DEPARTMENT  s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
+<p>Format: <code>add interviewer n/NAME p/PHONE ew/NUS_WORK_EMAIL d/DEPARTMENT  s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>add r/interviewer n/Mary Jane p/98765432 ew/mary_jane@u.nus.edu d/Marketing s/20/09/2019 18:00-18:30</pre>
+<pre>add interviewer n/Mary Jane p/98765432 ew/mary_jane@u.nus.edu d/Marketing s/20/09/2019 18:00-18:30</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If a name prefix <code>n/</code> is supplied, the <code>NAME</code> given should not match (case-insensitive) that of other interviewers already in Scheduler.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>John Doit</code> and <code>John Do it</code> are considered different names.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -188,10 +222,10 @@ to ensure Scheduler was bug-free.</p>
 <p>A <code>p/PHONE</code> must only contain numbers, and should be at least 3 digits long.</p>
 </li>
 <li>
-<p>A <code>f/FACULTY</code> can take any value in english, but should not be blank.</p>
+<p>A <code>f/FACULTY</code> can take any value in English, but should not be blank.</p>
 </li>
 <li>
-<p>A <code>y/YEAR_OF_STUDY</code> must be a positive integer.</p>
+<p>A <code>y/YEAR_OF_STUDY</code> must be a positive integer within the range [1,5].</p>
 </li>
 <li>
 <p>A <code>ep/PERSONAL_EMAIL</code> or <code>ew/NUS_WORK_EMAIL</code> must be of format local-part@domain.</p>
@@ -207,7 +241,7 @@ to ensure Scheduler was bug-free.</p>
 </div>
 </li>
 <li>
-<p>A <code>d/DEPARTMENT</code> can take any value in english, but should not be blank.</p>
+<p>A <code>d/DEPARTMENT</code> should be in English, and should not be blank.</p>
 </li>
 <li>
 <p>A <code>t/TAG</code> must only be alphanumeric and one word, i.e <code>t/catLover</code> is correct while <code>t/cat lover</code> is not.</p>
@@ -220,19 +254,20 @@ and the rightmost <strong>HH:mm</strong> refers to the <strong>end duration</str
 <p>The date <strong>dd/MM/yyyy</strong> must strictly be a valid date, i.e 30/02/2019  cannot be supplied as a date.</p>
 </li>
 <li>
-<p>The duration of a <code>s/SLOT</code> must follow these constraints:</p>
+<p>The <strong>start duration</strong> and <strong>end duration</strong> of a <code>s/SLOT</code> must follow these constraints:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>A duration must be in 24-hour format.</p>
+<p>A <strong>start duration</strong> and <strong>end duration</strong> must be in 24-hour format.</p>
 </li>
 <li>
-<p>The range of durations available for input must be within <a href="#Working Hours">Working Hours</a>.</p>
+<p>The range of <strong>start durations</strong> and <strong>end durations</strong> available for input must be within <a href="#Working Hours">Working Hours</a>.</p>
 </li>
 <li>
-<p>The start duration must be earlier than the end duration, and be in increments of <code>duration</code>.
-The time elapsed from the start duration to end duration must also follow the number of minutes as specified
-by the value of <code>duration</code> in <a href="#User Preferences">User Preferences</a>. See <a href="#Duration of Time slot">Duration of Time slot</a> for more details.</p>
+<p>The <strong>start duration</strong> must be earlier than the <strong>end duration</strong>, and be in increments of <code>duration</code>.
+The time elapsed from the <strong>start duration</strong> to <strong>end duration</strong> must also follow the number of minutes as specified
+by the value of <code>duration</code> in <a href="#User Preferences">User Preferences</a>. Otherwise, scheduled data will not be displayed
+properly in the user interface. See <a href="#Duration of Timeslot">Duration of Timeslot</a> for more details.</p>
 </li>
 </ul>
 </div>
@@ -265,7 +300,7 @@ by the value of <code>duration</code> in <a href="#User Preferences">User Prefer
 <p>Manually edit an existing interviewee in the database.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>edit NAME r/interviewee [p/PHONE] [f/FACULTY] [y/YEAR_OF_STUDY] [ep/PERSONAL_EMAIL] [ew/NUS_WORK_EMAIL]
+<p>Format: <code>edit NAME r/interviewee [n/NAME] [p/PHONE] [f/FACULTY] [y/YEAR_OF_STUDY] [ep/PERSONAL_EMAIL] [ew/NUS_WORK_EMAIL]
 [d/DEPARTMENT]&#8230;&#8203; [s/SLOT]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
@@ -282,6 +317,16 @@ by the value of <code>duration</code> in <a href="#User Preferences">User Prefer
 <li>
 <p>If a slot prefix <code>s/</code> is supplied, at least one valid, non-empty slot must be provided.</p>
 </li>
+<li>
+<p>If a name prefix <code>n/</code> is supplied, the <code>NAME</code> given should not match (case-insensitive) that of other interviewees.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>John Doit</code> and <code>John Do it</code> are considered different names.</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -289,7 +334,7 @@ by the value of <code>duration</code> in <a href="#User Preferences">User Prefer
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>edit John Doe r/interviewee p/91234567 f/School of Computing s/05/11/2019 18:00-19:00</pre>
+<pre>edit John Doe r/interviewee p/91234567 f/School of Computing s/05/11/2019 18:30-19:00</pre>
 </div>
 </div>
 </div>
@@ -299,7 +344,7 @@ by the value of <code>duration</code> in <a href="#User Preferences">User Prefer
 <p>Manually edit an existing interviewer in the database.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>edit NAME r/interviewer [p/PHONE] [t/TAG]&#8230;&#8203; [d/DEPARTMENT] [ew/NUS_WORK_EMAIL] [s/SLOT&#8230;&#8203;]</code></p>
+<p>Format: <code>edit NAME r/interviewer [n/NAME] [p/PHONE] [t/TAG]&#8230;&#8203; [d/DEPARTMENT] [ew/NUS_WORK_EMAIL] [s/SLOT]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Notes:</p>
@@ -307,10 +352,20 @@ by the value of <code>duration</code> in <a href="#User Preferences">User Prefer
 <div class="ulist">
 <ul>
 <li>
-<p>An empty tag prefix <code>t/</code> can be supplied to reset the tags of an interviewee.</p>
+<p>An empty tag prefix <code>t/</code> can be supplied to reset the tags of an interviewer.</p>
 </li>
 <li>
 <p>If a slot prefix <code>s/</code> is supplied, at least one valid, non-empty slot must be provided.</p>
+</li>
+<li>
+<p>If a name prefix <code>n/</code> is supplied, the <code>NAME</code> given should not match (case-insensitive) that of other interviewers.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>John Doit</code> and <code>John Do it</code> are considered different names.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -319,7 +374,7 @@ by the value of <code>duration</code> in <a href="#User Preferences">User Prefer
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>edit John Doe r/interviewee p/91234567 f/School of Computing s/05/11/2019 18:00-19:00</pre>
+<pre>edit John Doe r/interviewer p/91234567 s/05/11/2019 18:30-19:00</pre>
 </div>
 </div>
 <hr>
@@ -476,7 +531,7 @@ Each of <a href="#add-interviewee-interviewer-feature">add</a>, <a href="#Edit I
 <div class="paragraph">
 <p>The <code>add</code> command feature essentially allows a user to add an <code>Interviewee</code> or <code>Interviewer</code> object to the underlying <code>IntervieweeList</code>
  or <code>InterviewerList</code> of <code>ModelManager</code>.
-Upon successful parsing of the <code>add</code> command arguments, an instance of <code>Interviewee</code>/<code>Interviewer</code> is created based on the <code>r/ROLE</code> prefix supplied,
+Upon successful parsing of the <code>add</code> command arguments, an instance of <code>Interviewee</code>/<code>Interviewer</code> is created based on the preamble supplied,
 which is added to its corresponding list in <code>ModelManager</code>.
 The underlying <code>UniquePersonList</code> of <code>IntervieweeList</code> and <code>InterviewerList</code> ensures
 that no duplicate entities are present at any time, checked by Interviewee#isSamePerson() and Interviewer#isSamePerson().</p>
@@ -527,4 +582,4 @@ the continuation of the <strong>rake</strong> from the <a href="#Add Edit and De
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:31:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:30:48 UTC</div></div></div></body></html>

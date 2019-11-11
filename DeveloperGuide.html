@@ -588,7 +588,7 @@ Each of <a href="#add-interviewee-interviewer-feature">add</a>, <a href="#edit-i
 <div class="paragraph">
 <p>The <code>add</code> command feature essentially allows a user to add an <code>Interviewee</code> or <code>Interviewer</code> object to the underlying <code>IntervieweeList</code>
  or <code>InterviewerList</code> of <code>ModelManager</code>.
-Upon successful parsing of the <code>add</code> command arguments, an instance of <code>Interviewee</code>/<code>Interviewer</code> is created based on the <code>r/ROLE</code> prefix supplied,
+Upon successful parsing of the <code>add</code> command arguments, an instance of <code>Interviewee</code>/<code>Interviewer</code> is created based on the preamble supplied,
 which is added to its corresponding list in <code>ModelManager</code>.
 The underlying <code>UniquePersonList</code> of <code>IntervieweeList</code> and <code>InterviewerList</code> ensures
 that no duplicate entities are present at any time, checked by Interviewee#isSamePerson() and Interviewer#isSamePerson().</p>
@@ -2130,7 +2130,7 @@ with the newly imported data. You can test this by importing a new set of interv
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><code>add r/interviewee n/Ronald p/88888888 t/CAP5 t/dogLover f/School of Computing ep/JohnDoe@gmail.com ew/JohnDoe@u.nus.edu y/2018 d/Marketing s/20/09/2019 18:00-18:30</code></p>
+<p><code>add interviewee n/Ronald p/88888888 t/CAP5 t/dogLover f/School of Computing ep/JohnDoe@gmail.com ew/JohnDoe@u.nus.edu y/2 d/Marketing s/20/09/2019 18:00-18:30</code></p>
 </li>
 </ol>
 </div>
@@ -2140,7 +2140,7 @@ with the newly imported data. You can test this by importing a new set of interv
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><code>add r/interviewer n/Delilah p/98765432 ew/delilah@u.nus.edu d/Marketing s/20/09/2019 18:00-18:30</code></p>
+<p><code>add interviewer n/Delilah p/98765432 ew/delilah@u.nus.edu d/Marketing s/20/09/2019 18:00-18:30</code></p>
 </li>
 </ol>
 </div>
@@ -2344,4 +2344,4 @@ if the name of the interviewee does not exist in the schedule.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:31:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 09:30:48 UTC</div></div></div></body></html>
