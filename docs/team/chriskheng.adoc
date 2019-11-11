@@ -26,7 +26,7 @@ automatically so that the user does not have to manually schedule interviews and
 ** Highlights: The scheduling feature uses an algorithm known as **Hopcroft Karp algorithm** which tries to maximise the number of interviewees who are allocated
 with an interview slot. Please refer to the developer guide for more information regarding the algorithm.
 ** Credits:
-*** John Hopcroft, Richard Karp, Alexander Karzanov, the creator of Hopcroft-Karp algorithm which enables our application to maximise
+*** John Hopcroft, Richard Karp, Alexander Karzanov, the creators of Hopcroft-Karp algorithm which enables our application to maximise
 the number of interviewees which are allocated an interview slot.
 *** Authors of https://www-m9.ma.tum.de/graph-algorithms/matchings-hopcroft-karp/index_en.html, for the clear explanation of
 the logic behind Hopcroft Karp algorithm.
