@@ -38,7 +38,7 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </li>
 <li>
 <p>Justification: This feature is necessary to the product as interview schedules change frequently - interviewees may suddenly
-be unable to attend an interview, withdraw from the interview. Interviewers may also be forced to
+be unable to attend an interview and withdraw from the interview. Interviewers may also be forced to
 withdraw due to urgent business. There may also be more applicants, and hence interviewees. In these cases, the ability to
 manually change data in Scheduler is essential.</p>
 </li>
@@ -50,10 +50,10 @@ manually change data in Scheduler is essential.</p>
 <p>This enhancement deeply affects the foundational structure of Scheduler in <code>Logic</code> and <code>Model</code>.</p>
 </li>
 <li>
-<p>It required an in-depth understanding of the existing code base, as well as other concepts like regex expressions to ensure input validity and the Jackson library to convert objects to JSON format.</p>
+<p>It requires an in-depth understanding of the existing code base, concepts like regex expression design to ensure input validity and the Jackson library to convert objects to JSON format.</p>
 </li>
 <li>
-<p>The implementation was also challenging as it required changes to existing commands and deletion of irrelevant fields. The large number of possible
+<p>The implementation was also challenging as it required changes to existing commands and deletion of irrelevant fields that were highly coupled to other components. The large number of possible
 input arguments for these commands (e.g the <code>add</code> command has 8 possible input prefixes) also each required extensive testing to ensure users could not input invalid values.</p>
 </li>
 </ul>
@@ -619,4 +619,4 @@ the continuation of the <strong>rake</strong> from the <a href="#Add Edit and De
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:38:27 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:16:04 UTC</div></div></div></body></html>
