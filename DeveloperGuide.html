@@ -640,7 +640,7 @@ The lifeline for <code>AddCommandParser</code> and <code>AddIntervieweeCommand</
 <div class="ulist">
 <ul>
 <li>
-<p>See the general logic sequence diagram in <a href="#Design-Logic">Section 2.3: Logic component</a> for a more complete view of how
+<p>See the general logic diagram in <a href="#Design-Logic">Section 2.3: Logic component</a> for a more complete view of how
 <code>Storage</code> is affected as well.</p>
 </li>
 <li>
@@ -1184,8 +1184,8 @@ we are able to update the current schedules by slotting in the allocated intervi
 </div>
 <div class="paragraph">
 <p>To prevent confusion and to ensure that the scheduled result is always updated with the latest database of interviewees
-and interviewers, add/delete/edit of interviewee or interviewer after scheduling will clear the scheduled result and reset
-the displayed schedules such that the schedules only display the availabilities of the interviewers. Thus, the user will need
+and interviewers, add/delete/edit of interviewee or interviewer after scheduling will clear the scheduled result and <strong>reset
+the displayed schedules such that the schedules only display the availabilities of the interviewers</strong>. Thus, the user will need
 to run the schedule command again to re-schedule the interviews.</p>
 </div>
 </div>
@@ -1261,15 +1261,17 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 <div class="paragraph">
 <p>The user is also able to check the email sending status (i.e. if a particular interviewee has been emailed before) using the <code>status</code> command type. It is simply going through the list of interviewees stored in the application and counting the number of interviewees with the <code>emailSent</code> boolean variable set to true.</p>
 </div>
-<div class="paragraph">
-<p>Notes:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>To the application, an email is considered as sent when the email window successfully opens on the user&#8217;s computer. It does not recognise the actual email being sent across the Internet.</p>
-</li>
-</ul>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To the application, an email is considered as sent when the email window successfully opens on the user&#8217;s computer. It does not recognise the actual email being sent across the Internet.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect4">
 <h5 id="example-email-interview-timeslot-to-an-interviewee"><a class="link" href="#example-email-interview-timeslot-to-an-interviewee">Example: Email interview timeslot to an interviewee</a></h5>
@@ -2346,16 +2348,19 @@ with the newly imported data. You can test this by importing a new set of interv
 <div class="content">
 <img src="images/intervieweeListFormat.png" alt="intervieweeListFormat">
 </div>
+<div class="title">Figure 32. Interviewee Format</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/interviewerListFormat.png" alt="interviewerListFormat">
 </div>
+<div class="title">Figure 33. Interviewer Format</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/scheduleListFormat.png" alt="scheduleListFormat">
 </div>
+<div class="title">Figure 34. Schedule Format</div>
 </div>
 </div>
 <div class="sect2">
@@ -2423,4 +2428,4 @@ if the name of the interviewee does not exist in the schedule.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:02:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:03:29 UTC</div></div></div></body></html>
