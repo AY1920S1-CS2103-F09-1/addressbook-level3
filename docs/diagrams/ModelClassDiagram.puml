@@ -46,8 +46,8 @@ ModelManager o--> "*" Interviewee
 ModelManager o-left-> "1" AppStatus
 ModelManager o-left> "1" UserPrefs
 ModelManager o-right> "1..*" Schedule
-ModelManager --> RefreshListener
-ModelManager --> TabListener
+ModelManager o--> RefreshListener
+ModelManager o--> TabListener
 UserPrefs .up.|> ReadOnlyUserPrefs
 UserPrefs -[hidden]down-> UserPrefs
 

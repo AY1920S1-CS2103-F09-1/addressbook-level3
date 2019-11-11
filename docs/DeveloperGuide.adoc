@@ -222,11 +222,13 @@ The `Model`,
 * stores an `AppStatus` singleton object which encapsulates the state of the application.
 * stores a `UserPref` object that represents the user's preferences.
 * stores a list of `Schedule`. Each `Schedule` represents a schedule timetable.
+* stores a `RefreshListener` to refresh the displayed schedules in the UI indirectly when the data of interviewers, interviewees,
+or the schedules changes.
+* stores a `TabListener` to refresh the tabs in the UI when data changes.
 * exposes a list of `ObservableList<ObservableList<String>>` that can be 'observed' by the UI. Each of the
   `ObservableList<ObservableList<String>>` represents the data of a `Schedule` object.
   The `ObservableList<ObservableList<String>>` objects are bound to the UI so that the UI automatically updates  when the data of the `Schedule` objects changes.
 * exposes a list of `ObservableList<Interviewee>` that can be 'observed' by the UI.
-* stores a `RefreshListener` to refresh the displayed schedules in the UI indirectly.
 * does not depend on any of the three components.
 
 ==== Schedule
@@ -368,6 +370,8 @@ image::DeleteActivityDiagram.png[300, 400]
 
 // end::delete[]
 
+// tag::schedule[]
+
 === Scheduling Feature
 ==== Algorithm
 The scheduling of interviews is essentially a https://www.geeksforgeeks.org/maximum-bipartite-matching/[maximum bipartite matching problem].
@@ -488,6 +492,7 @@ image::InterviewSlotVertex.png[300, 550]
 .Executing Schedule Command Sequence Diagram
 image::ScheduleSequenceDiagram.png[]
 
+// end::schedule[]
 
 === Import
 ==== Implementation
@@ -935,6 +940,8 @@ This section follows directly from the previous section, <<Editing an entity, Ed
 . Expected: The Interviewers tab now similar reflects the deleted interviewer `Delilah`.
 . You can delete any entity as long as the entity's name is shown in the Interviewee/Interviewer tab. See the User Guide under the `delete` command section for specifics.
 
+// tag::scheduleTest[]
+
 === Scheduling Interviews
 . Import .csv files of interviewers' availability and interviewees' details using the `import` command.
 .. Please refer to the QuickStart section in the <<UserGuide#, user guide>> to download the templates of the interviewers' availability and interviewees details.
@@ -961,3 +968,5 @@ This section follows directly from the previous section, <<Editing an entity, Ed
    and department.
 .. You can also test the opposite way, i.e. design test data which contains interviewees that cannot be allocated a slot and check
    if the name of the interviewee does not exist in the schedule.
+
+// end::scheduleTest[]

@@ -36,8 +36,8 @@ HiddenOutside ..> Ui
 Ui -down-|> RefreshListener
 Ui --|> TabListener
 
-Model -> RefreshListener
-Model --> TabListener
+Model o-> RefreshListener
+Model o--> TabListener
 
 UiManager .right.|> Ui
 UiManager -down--> MainWindow
