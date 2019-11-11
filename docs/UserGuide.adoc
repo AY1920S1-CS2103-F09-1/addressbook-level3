@@ -597,7 +597,7 @@ WARNING: Data erased cannot be undone!
 
 === Scheduling the interviews `schedule`
 Schedule and allocate interviewees to the available interview slots based on the availability of interviewees and
-their choice of department.
+their choice of department. The scheduled result will then be displayed in the Schedules tab of the UI of Scheduler.
 
 Format: `schedule`
 
