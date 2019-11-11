@@ -72,9 +72,6 @@ https://github.com/ChrisKheng/ped/issues/3[#3])
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-=== _Quick Start (Import)_
-include::../UserGuide.adoc[tag=quickstart_import]
-
 === _Quick Start (Schedule, Email, Export)_
 include::../UserGuide.adoc[tag=quickstart_everythingElse]
 
