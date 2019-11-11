@@ -10,9 +10,10 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Scheduler is a desktop application which is used to automate the process of scheduling interviews.
-Its main feature is matching interviewees with interview time slots to generate an interview timetable.
-The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p><em>Scheduler</em> automates the tedious process of interview scheduling for organisations. It is designed with convenience in mind,
+and apart from the efficient scheduling of interviews, it also empowers user with the ability to import/export timetables and even mass email the interviewees all on the same platform.
+The algorithm behind <em>Scheduler</em> ensures the efficient and fair allocation interview slots, effectively minimising human-error.
+The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.</p>
 </div>
 </div>
 </div>
@@ -65,7 +66,7 @@ with colleagues/interviewers. It also allows the user to use third party applica
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>:</p>
+<p><strong>Minor enhancement</strong>: Implemented responsive UI for <code>add</code>, <code>delete</code>, <code>edit</code>, <code>import</code> and <code>clear</code> commands, together with team mate Yau Dong.</p>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=mirozo&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=mirozo&amp;tabRepo=AY1920S1-CS2103-F09-1%2Fmain%5Bmaster%5D">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
@@ -75,33 +76,14 @@ with colleagues/interviewers. It also allows the user to use third party applica
 <div class="ulist">
 <ul>
 <li>
-<p>Designed a way to update Schedules by re-generating the list of schedules solely from a given list of Interviewers. This is the
-backbone for the integration between UI and Model after the execution commands that modifies the model e.g. <code>add</code>, <code>delete</code>,
-<code>edit</code>, <code>import</code> and <code>clear</code> commands. The subsequent schedule command&#8217;s integration with UI also builds upon this method.
-Look at section "Updating Schedule List" in Developer&#8217;s Guide for a better idea of the above.</p>
-</li>
-<li>
-<p>Implemented responsive UI for <code>add</code>, <code>delete</code>, <code>edit</code>, <code>import</code> and <code>clear</code> commands, together with team mate Yau Dong.</p>
-</li>
-<li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Enhancements to existing features:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Designed a way to update Schedules by re-generating the list of schedules solely from a given list of Interviewers. This is the
+backbone for the integration between UI and Model after the execution commands that modifies the model e.g. <code>add</code>, <code>delete</code>,
+<code>edit</code>, <code>import</code> and <code>clear</code> commands. The subsequent schedule command&#8217;s integration with UI also builds upon this method.
+Look at section "Updating Schedule List" in Developer&#8217;s Guide for a better idea of the above.</p>
 </li>
 </ul>
 </div>
@@ -111,7 +93,13 @@ Look at section "Updating Schedule List" in Developer&#8217;s Guide for a better
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Did cosmetic tweaks to existing contents of the Developers Guide:</p>
+</li>
+<li>
+<p>Added User Preferences section into User Guide: <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/164">164</a></p>
+</li>
+<li>
+<p>Added User Stories <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/35">35</a> and Use Cases <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/186">186</a></p>
 </li>
 </ul>
 </div>
@@ -121,29 +109,10 @@ Look at section "Updating Schedule List" in Developer&#8217;s Guide for a better
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/161">#161</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Handled merge conflicts for team: <a href="https://github.com/AY1920S1-CS2103-F09-1/main/pull/80">#80</a></p>
 </li>
 </ul>
 </div>
@@ -152,9 +121,6 @@ Look at section "Updating Schedule List" in Developer&#8217;s Guide for a better
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -172,76 +138,273 @@ Look at section "Updating Schedule List" in Developer&#8217;s Guide for a better
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="delete-interviewees-interviewers-manually-code-delete-code"><a class="link" href="#delete-interviewees-interviewers-manually-code-delete-code">Delete interviewees/interviewers manually <code>delete</code></a></h3>
+<h3 id="importing-existing-availabilities-code-import-code"><a class="link" href="#importing-existing-availabilities-code-import-code">Importing existing availabilities <code>import</code></a></h3>
 <div class="paragraph">
-<p>Manually delete an entity from the database.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>delete NAME r/ROLE</code></p>
+<p>2 types of data can be imported - interviewers' availabilities and interviewees' details.
+Both of these details needs to be in CSV format and must follow the format given in the templates below.
+These templates were adapted versions of NUSync&#8217;s interview sign up excel sheets.
+The templates for the import commands can be found here:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>If <code>interviewee</code> is supplied as <code>ROLE</code>, refer to <a href="#delete-an-existing-interviewee">Delete an existing interviewee</a>.</p>
+<p>Interviewers' availability: <a href="http://bit.ly/interviewerTemplate" class="bare">http://bit.ly/interviewerTemplate</a></p>
 </li>
 <li>
-<p>If <code>interviewer</code> is supplied as <code>ROLE</code>, refer to <a href="#delete-an-existing-interviewer">Delete an existing interviewer</a>.</p>
+<p>Interviewees' details: <a href="http://bit.ly/intervieweeDetails" class="bare">http://bit.ly/intervieweeDetails</a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you wish to import a new set of data of the same type, we strongly recommend that you use the <a href="#Clear all data <code>clear</code>">Clear</a> command to clear pre-existing data before re-importing newer data.
+This is because Scheduler does not allow duplicate persons, for both interviewer and interviewee. Unless you are very certain that the
+the second import does not contain any duplicate data, we would suggest that you run the 'clear' command beforehand.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Data in .csv file must follow the settings defined in the user preference file. View <a href="#User Preferences">User Preferences</a> if you wish to change the
+default settings.</p>
+</li>
+<li>
+<p>Data to be imported should only be in English and should strictly follow the format of the templates given above, e.g. format of headers and timeslots.</p>
 </li>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="delete-an-existing-interviewee"><a class="link" href="#delete-an-existing-interviewee">Delete an existing interviewee</a></h4>
+<h4 id="importing-interviewers-availability"><a class="link" href="#importing-interviewers-availability">Importing interviewers’ availability</a></h4>
 <div class="paragraph">
-<p>Deletes the specified interviewee from the database.</p>
+<p>Imports interviewers’ availability from a comma separated values (CSV) file. After import command is ran, the GUI should display the imported data.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The schedule displayed will only show timeslots within the <a href="#Working Hours">Working Hours</a> and <a href="#Duration of Timeslot">Duration</a> that the user has specified.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete NAME r/interviewee</code></p>
+<p>Key formatting information for Interviewer&#8217;s Data:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/InterviewerData.png" alt="InterviewerData">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1. The first column of each day&#8217;s schedule will consist of the timeslots for that day.</p>
+</li>
+<li>
+<p>2. Each timeslot should also be in the format <code>HH:mm - HH:mm</code>.</p>
+</li>
+<li>
+<p>3. The very first header at the top left-hand corner should indicate the day of the schedule. The subsequent headers should indicate the interviewers in the format <code>DEPARTMENT - INTERVIEWER&#8217;S_NAME</code>.</p>
+</li>
+<li>
+<p>4. A "1" in a timeslot represents that the interviewer in that column is <strong>available</strong> and "0" represents that he/she is <strong>unavailable</strong> for that particular timeslot.</p>
+</li>
+<li>
+<p>5. Separation of different days of schedules is made by leaving 2 empty lines after the end of the first table.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Format of command: <code>import interviewer fp/FILE_PATH</code><br>
+    - FILE_PATH needs to be of .csv extension<br>
+    - E.g. C:\\Users\Bob\file.csv</p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>delete John Doe r/interviewee</pre>
+<pre>import interviewer fp/C:\Users\johndoe\Interviewers.csv</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Notes:</p>
+<p>Constraints:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>An interviewee with the same name as the given <code>NAME</code> argument (case-insensitive) should exist in Scheduler.</p>
+<p>Timeslots must obey the allowed values that are specified in the <a href="#User Preferences">User Preferences</a>.</p>
+</li>
+<li>
+<p>Duplicate entries of the same interviewer (same name) cannot be presented in the CSV file to be imported.</p>
+</li>
+<li>
+<p>If none of the interviewers are available for a particular day, e.g. all "0" for all timeslots on that day, the GUI will not display the schedule for that day.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-an-existing-interviewer"><a class="link" href="#delete-an-existing-interviewer">Delete an existing interviewer</a></h4>
+<h4 id="importing-interviewees-availability"><a class="link" href="#importing-interviewees-availability">Importing interviewees’ availability</a></h4>
 <div class="paragraph">
-<p>Deletes the specified interviewer from the database.</p>
+<p>Imports interviewees’ availability from a comma separated values (CSV) file.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There will be no changes in the schedules tab after the import of interviewee&#8217;s data. The changes will be made after <a href="#Scheduling <code>schedule</code>">Schedule</a> command has been ran.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete NAME r/interviewer</code></p>
+<p>Key formatting information for Interviewee&#8217;s Data:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/IntervieweeData.png" alt="IntervieweeData">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Headers specify the details of the Interviewee to be imported. The order of the headers must be strictly followed as shown in the above template.</p>
+</li>
+<li>
+<p>Timeslots: Each timeslot should be in the format <code>dd/MM/yyy HH:mm - HH:mm</code>. Use commas to separate the timeslots if there are more than 1.</p>
+</li>
+<li>
+<p>There can only be 1 unique value for all other fields. Commas should not be used in these fields.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Format: <code>import interviewee fp/FILE_PATH</code><br>
+    - FILE_PATH needs to be of .csv extension.<br>
+    - E.g C:\\Users\Bob\file.csv</p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>delete Bohn Doe r/interviewer</pre>
+<pre>import interviewer fp/C:\Users\johndoe\Interviewees.csv</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Notes:</p>
+<p>Constraints:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>An interviewer with the same name as the given <code>NAME</code> argument (case-insensitive) should exist in Scheduler.</p>
+<p>Timeslots must obey the allowed values that are specified in the <a href="#User Preferences">User Preferences</a>.</p>
+</li>
+<li>
+<p>Duplicate entries of the same interviewee cannot be presented in the CSV file to be imported.</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exporting-of-interview-schedule-code-export-code"><a class="link" href="#exporting-of-interview-schedule-code-export-code">Exporting of interview schedule <code>export</code></a></h3>
+<div class="paragraph">
+<p>Exports the allocated interview schedule timetable to the specified comma separated values (CSV) file.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>export fp/FILE_PATH</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>FILE_PATH is the path to the file.</p>
+</li>
+<li>
+<p>E.g C:\\Users\Bob\file.csv</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If <code>FILE_PATH</code> is a valid .csv file but does not exist, it will be created in the specified path.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>export fp/C:\Users\johndoe\schedules.csv</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Exported data format:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The exported data will follow the format of the schedules in 'schedules' tab.</p>
+</li>
+<li>
+<p>Each schedule (table) will be separated from the previous by 2 empty lines.</p>
+</li>
+<li>
+<p>Timeslots with "0" indicates that the interviewer is not available for the timeslot.
+Timeslots with "1" indicates that it is an available slot that has not been filled up by an interviewee.</p>
+</li>
+<li>
+<p>Csv file can be converted into an excel file by following this guide - <a href="https://www.ablebits.com/office-addins-blog/2014/05/01/convert-csv-excel/" class="bare">https://www.ablebits.com/office-addins-blog/2014/05/01/convert-csv-excel/</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This command requires the interview schedule to be generated first.</p>
+</li>
+<li>
+<p>Although the specified filepath does not need to exist, it needs to be of .csv extension.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The exported data will erase and replace all pre-existing data in the specified file.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -259,11 +422,208 @@ Look at section "Updating Schedule List" in Developer&#8217;s Guide for a better
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="import"><a class="link" href="#import">Import</a></h3>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>The import feature uses <code>CsvReader</code> in the Model to read the given .csv file and stores the data into the model.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import interviewer fp/FILE_PATH</code> stores the read data as a list of <code>Interviewer</code> objects in the model.</p>
+</li>
+<li>
+<p><code>import interviewee fp/FILE_PATH</code> stores the read data as a list of <code>Interviewee</code> objects in the model.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ImportSequenceDiagram.png" alt="ImportSequenceDiagram">
+</div>
+<div class="title">Figure 1. Import Interviewer&#8217;s Schedules Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>Given above is an example of a sequence diagram for importing interviewer&#8217;s schedules. It applies to both importing interviewee&#8217;s and interviewer&#8217;s data,
+with the only difference being in the string processing methods in the <code>CsvReader</code> class.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ImportActivityDiagram.png" alt="ImportActivityDiagram">
+</div>
+<div class="title">Figure 2. Import Activity Diagram<br></div>
+</div>
+<div class="sect4">
+<h5 id="csvreader"><a class="link" href="#csvreader">CsvReader</a></h5>
+<div class="paragraph">
+<p><code>CsvReader</code> class encapsulates the string processing process that happens in an import command. It makes use of <code>BufferedReader</code> to
+access and read from the specified CSV file. It has 2 key methods - <code>readInterviewers()</code> and <code>readInterviewees()</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following are some of the notable areas of implementation of these 2 methods:</p>
+</div>
+<div class="paragraph">
+<p><code>readInterviewers()</code>:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ReadInterviewersSequenceDiagram.png" alt="ReadInterviewersSequenceDiagram">
+</div>
+<div class="title">Figure 3. Reading interviewers Sequence Diagram<br></div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This method reads the imported file line-by-line. Number of days (each day is represented by 1 table) and the number of interviewers has to be specified at the beginning of the CSV file.</p>
+</li>
+<li>
+<p>It generates a list of interviewers (with no availabilities yet) from the headers of each table.</p>
+</li>
+<li>
+<p>Then, it will iterate through every line of each table and adds the availabilities to the respective interviewers.</p>
+</li>
+<li>
+<p>The complexity of this method is O(N x D), where N is the number of interviewers and D is the number of days, assuming there are a constant number of timeslots per day.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>readInterviewees()</code>:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This method is quite straightforward, reading each attribute from the given table into an interviewee object.</p>
+</li>
+<li>
+<p>There can also be more than 1 preferred timeslot, which are separated by commas in the imported file.</p>
+</li>
+<li>
+<p>The complexity of this method is O(N), where N is the number of interviewees.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The imported data must obey the pre-existing conditions for each property of both interviewees and interviewers.
+E.g. <code>name</code> still cannot contain any characters other than alphabetical letters. No duplicate person is allowed as well.
+Exceptions will be thrown and the relevant error messages will be displayed in the UI if such error occurs.
+</td>
+</tr>
+</table>
 </div>
 </div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:25:30 UTC</div></div></div></body></html>
+</div>
+<div class="sect2">
+<h3 id="updating-schedules-in-the-model"><a class="link" href="#updating-schedules-in-the-model">Updating Schedules in the Model</a></h3>
+<div class="paragraph">
+<p>The list of schedules in the <a href="#Model component">model</a> should be updated every time a command modifies
+the IntervieweeList or InterviewerList in the model. This is because Schedules are dependent on both Interviewers and Interviews
+as shown in the class diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ScheduleClassDiagram.png" alt="ScheduleClassDiagram">
+</div>
+<div class="title">Figure 4. Schedule Class Diagram<br></div>
+</div>
+<div class="paragraph">
+<p>These are the commands that requires the update of the list
+of schedules - <code>add</code>, <code>delete</code>, <code>edit</code>, <code>import</code>, <code>clear</code> and <code>schedule</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="before-scheduling-of-interviews"><a class="link" href="#before-scheduling-of-interviews">Before Scheduling of Interviews</a></h4>
+<div class="paragraph">
+<p>Before the 'schedule' command is ran, the list of schedules is <strong>solely dependent on the InterviewerList</strong>, since
+it is only through the scheduling of interviews that the data in the IntervieweeList is integrated with
+the data of the InterviewerList. Therefore, modification of IntervieweeList will not require changes
+in the list of schedules at this point of time.</p>
+</div>
+<div class="paragraph">
+<p>To update the list of schedules in the model every time the InterviewerList is modified, the method
+<code>updateScheduleList()</code> is called in the model. The notable implementations of this method are discussed below.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>updateScheduleList()</code> basically re-generates the list of schedules in the model from the updated InterviewerList.</p>
+</li>
+<li>
+<p>It will get <code>startTime</code>, <code>endTime</code> and <code>duration</code> of a timeslot from <code>UserPref</code> and generates the
+allowed timeslots for daily schedules.</p>
+</li>
+<li>
+<p>Then, it will get a list of unique dates from the <code>availabilities</code> from each of the interviewers
+in the updated InterviewerList.</p>
+</li>
+<li>
+<p>It will then loop through the each date, generating a table of the Interviewers' availabilities based on
+the allowed timeslots for each day. Each unique date should generate a Schedule object. The result is
+a list of Schedules.</p>
+</li>
+<li>
+<p>Lastly, it will set the <code>scheduleList</code> in the model with the newly generated list of schedules.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>By re-generating the schedule list every time InterviewerList is modified, it does not matter whether
+an Interviewer is added or deleted, or if an attribute of an interviewer is modified, the schedule list
+will be responsive to these changes. The only trade-off is performance, due to the re-generation of
+the schedules every time a command is ran. However, this will not be a big issue if the number of
+interviewers is &lt; 100.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="export"><a class="link" href="#export">Export</a></h3>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<div class="paragraph">
+<p>The Export command gets the scheduled time slots from the Model and writes them in the specified .csv file.
+CsvWriter facilitates the writing to the specified file.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CsvWriter makes use of <code>BufferedWriter</code> to write data into the specified file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below shows the sequence diagram of an example export command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ExportSequenceDiagram.png" alt="ExportSequenceDiagram">
+</div>
+<div class="title">Figure 5. Export Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>The implementation is similar to the Import feature. The only differences are in the Model where CsvWriter gets
+the scheduled time slots from the Model and proceeds to write it into the specified file using a <code>BufferedWriter</code>.</p>
+</div>
+<div class="paragraph">
+<p>The Activity Diagram below summarises the execution of the export command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ExportActivityDiagram.png" alt="ExportActivityDiagram">
+</div>
+<div class="title">Figure 6. Export Activity Diagram</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 11:58:38 UTC</div></div></div></body></html>
