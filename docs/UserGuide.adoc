@@ -196,7 +196,7 @@ Format: `help`
 
 // tag::UiDisplay[]
 
-=== UI Display `Display`
+=== UI Display `display`
 
 ==== Display Schedules
 Display multiple tables that consist information of the schedules generated in a day format. The columns will show the date of the schedule followed by
