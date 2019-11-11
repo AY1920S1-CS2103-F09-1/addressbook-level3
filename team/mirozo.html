@@ -22,34 +22,67 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: Import and Export command</p>
+<p><strong>Major enhancements</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does:</p>
+<p><strong>Added the ability to import both interviewer&#8217;s data and interviewee&#8217;s data.</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to conveniently import all interviewers and interviewees data, consisting of
+their personal details, as well as, their availabilities.</p>
 </li>
 <li>
-<p>Justification:</p>
+<p>Justification: It is incredibly tedious for the user to make use of the 'add' command to manually add each interviewer and interviewee into Scheduler.
+Hence, the automation of this process, which is to import data, is absolutely necessary. It also allows the user to conveniently make changes
+in the raw data (CSV file) which allows the flexibility of using formatting tools or automation (VBA) in Microsoft Excel, rather than manually edit the entries
+in the application.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: Implementing this feature requires a good understanding of the model and the 'add' feature as it builds upon it.
+String processing of the imported data was also tedious and very prone to bugs due to many formatting issues that could happen.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Added the ability to export schedules.</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to conveniently export the scheduled interview timetables.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification: Exporting these schedules to an external file allows the flexibility of sharing these timetables
+with colleagues/interviewers. It also allows the user to use third party applications (Excel) to touch-up/re-format the data.
+ Most importantly, it frees Scheduler of the need to hold the current schedules so that it can be used again to schedule other interviews.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=mirozo&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=mirozo&amp;tabRepo=AY1920S1-CS2103-F09-1%2Fmain%5Bmaster%5D">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
+<li>
+<p>Designed a way to update Schedules by re-generating the list of schedules solely from a given list of Interviewers. This is the
+backbone for the integration between UI and Model after the execution commands that modifies the model e.g. <code>add</code>, <code>delete</code>,
+<code>edit</code>, <code>import</code> and <code>clear</code> commands. The subsequent schedule command&#8217;s integration with UI also builds upon this method.
+Look at section "Updating Schedule List" in Developer&#8217;s Guide for a better idea of the above.</p>
+</li>
+<li>
+<p>Implemented responsive UI for <code>add</code>, <code>delete</code>, <code>edit</code>, <code>import</code> and <code>clear</code> commands, together with team mate Yau Dong.</p>
+</li>
 <li>
 <p>Project management:</p>
 <div class="ulist">
@@ -241,4 +274,4 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="sectionbody">
 
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 06:42:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 07:37:56 UTC</div></div></div></body></html>

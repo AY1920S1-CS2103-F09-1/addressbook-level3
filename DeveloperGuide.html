@@ -25,10 +25,11 @@
 <li><a href="#add-edit-and-delete-feature">3.1. Add, Edit and Delete feature</a></li>
 <li><a href="#scheduling-feature">3.2. Scheduling Feature</a></li>
 <li><a href="#import">3.3. Import</a></li>
-<li><a href="#export">3.4. Export</a></li>
-<li><a href="#coming-soon-in-v1-4-email">3.5. [Coming soon in v1.4] Email</a></li>
-<li><a href="#display">3.6. Display</a></li>
-<li><a href="#logging">3.7. Logging</a></li>
+<li><a href="#updating-schedules-in-the-model">3.4. Updating Schedules in the Model</a></li>
+<li><a href="#export">3.5. Export</a></li>
+<li><a href="#coming-soon-in-v1-4-email">3.6. [Coming soon in v1.4] Email</a></li>
+<li><a href="#display">3.7. Display</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
 <li><a href="#configuration">Configuration</a></li>
 </ul>
 </li>
@@ -40,6 +41,7 @@
 <li><a href="#use-cases">Appendix C: Use Cases</a>
 <ul class="sectlevel2">
 <li><a href="#use-case-uc-5-display-list-of-interviewee">C.1. Use case: (UC-5) Display list of interviewee</a></li>
+<li><a href="#use-case-uc-6-export-schedules">C.2. Use Case: (UC-6) Export Schedules</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
@@ -47,12 +49,14 @@
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
-<li><a href="#adding-an-entity-manually">F.2. Adding an entity manually</a></li>
-<li><a href="#editing-an-entity">F.3. Editing an entity</a></li>
-<li><a href="#deleting-an-entity">F.4. Deleting an entity</a></li>
-<li><a href="#scheduling-interviews">F.5. Scheduling Interviews</a></li>
-<li><a href="#deleting-a-person">F.6. Deleting a person</a></li>
-<li><a href="#saving-data">F.7. Saving data</a></li>
+<li><a href="#importing-data">F.2. Importing data</a></li>
+<li><a href="#exporting-schedules">F.3. Exporting Schedules</a></li>
+<li><a href="#adding-an-entity-manually">F.4. Adding an entity manually</a></li>
+<li><a href="#editing-an-entity">F.5. Editing an entity</a></li>
+<li><a href="#deleting-an-entity">F.6. Deleting an entity</a></li>
+<li><a href="#scheduling-interviews">F.7. Scheduling Interviews</a></li>
+<li><a href="#deleting-a-person">F.8. Deleting a person</a></li>
+<li><a href="#saving-data">F.9. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -961,7 +965,7 @@ the <code>Ui</code>.</p>
 </div>
 <div class="paragraph">
 <p>Given above is an example of a sequence diagram for importing interviewer&#8217;s schedules. It applies to both importing interviewee&#8217;s and interviewer&#8217;s data,
-with the only difference being in the string processing methods in the <strong>CsvReader</strong> class</p>
+with the only difference being in the string processing methods in the <code>CsvReader</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a new command:</p>
@@ -970,7 +974,7 @@ with the only difference being in the string processing methods in the <strong>C
 <div class="content">
 <img src="images/ImportActivityDiagram.png" alt="ImportActivityDiagram">
 </div>
-<div class="title">Figure 26. Import Activity Diagram</div>
+<div class="title">Figure 26. Import Activity Diagram<br></div>
 </div>
 <div class="sect4">
 <h5 id="csvreader"><a class="link" href="#csvreader">CsvReader</a></h5>
@@ -983,6 +987,12 @@ access and read from the specified CSV file. It has 2 key methods - <code>readIn
 </div>
 <div class="paragraph">
 <p><code>readInterviewers()</code>:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ReadInterviewersSequenceDiagram.png" alt="ReadInterviewersSequenceDiagram">
+</div>
+<div class="title">Figure 27. Reading interviewers Sequence Diagram<br></div>
 </div>
 <div class="ulist">
 <ul>
@@ -1007,9 +1017,6 @@ access and read from the specified CSV file. It has 2 key methods - <code>readIn
 <ul>
 <li>
 <p>This method is quite straightforward, reading each attribute from the given table into an interviewee object.</p>
-</li>
-<li>
-<p>There can be more than 1 work email or personal email, which are separated by whitespaces in the imported file.</p>
 </li>
 <li>
 <p>There can also be more than 1 preferred timeslot, which are separated by commas in the imported file.</p>
@@ -1037,9 +1044,84 @@ Exceptions will be thrown and the relevant error messages will be displayed in t
 </div>
 </div>
 <div class="sect2">
-<h3 id="export"><a class="link" href="#export">3.4. Export</a></h3>
+<h3 id="updating-schedules-in-the-model"><a class="link" href="#updating-schedules-in-the-model">3.4. Updating Schedules in the Model</a></h3>
+<div class="paragraph">
+<p>The list of schedules in the <a href="#Design-Model">model</a> should be updated every time a command modifies
+the IntervieweeList or InterviewerList in the model. This is because Schedules are dependent on both Interviewers and Interviews
+as shown in the class diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ScheduleClassDiagram.png" alt="ScheduleClassDiagram">
+</div>
+<div class="title">Figure 28. Schedule Class Diagram<br></div>
+</div>
+<div class="paragraph">
+<p>These are the commands that requires the update of the list
+of schedules - <code>add</code>, <code>delete</code>, <code>edit</code>, <code>import</code>, <code>clear</code> and <code>schedule</code>.</p>
+</div>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">3.4.1. Implementation</a></h4>
+<h4 id="before-scheduling-of-interviews"><a class="link" href="#before-scheduling-of-interviews">3.4.1. Before Scheduling of Interviews</a></h4>
+<div class="paragraph">
+<p>Before the 'schedule' command is ran, the list of schedules is <strong>solely dependent on the InterviewerList</strong>, since
+it is only through the scheduling of interviews that the data in the IntervieweeList is integrated with
+the data of the InterviewerList. Therefore, modification of IntervieweeList will not require changes
+in the list of schedules at this point of time.</p>
+</div>
+<div class="paragraph">
+<p>To update the list of schedules in the model every time the InterviewerList is modified, the method
+<code>updateScheduleList()</code> is called in the model. The notable implementations of this method is discussed below.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>updateScheduleList()</code> basically re-generates the list of schedules in the model from the updated InterviewerList.</p>
+</li>
+<li>
+<p>It will get <code>startTime</code>, <code>endTime</code> and <code>duration</code> of a timeslot from <code>UserPref</code> and generates the
+allowed timeslots for daily schedules.</p>
+</li>
+<li>
+<p>Then, it will get a list of unique dates from the <code>availabilities</code> from each of the interviewers
+in the updated InterviewerList.</p>
+</li>
+<li>
+<p>It will then loop through the each date, generating a table of the Interviewers' availabilities based on
+the allowed timeslots for each day. Each unique date should generate a Schedule object. The result is
+a list of Schedules.</p>
+</li>
+<li>
+<p>Lastly, it will set the <code>scheduleList</code> in the model with the newly generated list of schedules.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>By re-generating the schedule list every time InterviewerList is modified, it does not matter whether
+an Interviewer is added or deleted, or if an attribute of an interviewer is modified, the schedule list
+will be responsive to these changes. The only trade-off is performance, due to the re-generation of
+the schedules every time a command is ran. However, this will not be a big issue if the number of
+interviewers is &lt; 100.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="after-scheduling-of-interviews"><a class="link" href="#after-scheduling-of-interviews">3.4.2. After Scheduling of Interviews</a></h4>
+<div class="paragraph">
+<p>After the scheduling algorithm is ran, each interviewer should have a list of allocated interviewee slots.
+With these slots and the current time table (with interviewers only) generated before the scheduling of interviews,
+we are able to update the current schedules by slotting in the allocated interviewee&#8217;s slots.</p>
+</div>
+<div class="paragraph">
+<p>To prevent confusion and to ensure that the scheduled result is always updated with the latest database of interviewees
+and interviewers, add/delete/edit of interviewee or interviewer after scheduling will clear the scheduled result and reset
+the displayed schedules such that the schedules only display the availabilities of the interviewers. Thus, the user will need
+to run the schedule command again to re-schedule the interviews.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="export"><a class="link" href="#export">3.5. Export</a></h3>
+<div class="sect3">
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.5.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The Export command gets the scheduled time slots from the Model and writes them in the specified .csv file.
 CsvWriter facilitates the writing to the specified file.</p>
@@ -1058,10 +1140,10 @@ CsvWriter facilitates the writing to the specified file.</p>
 <div class="content">
 <img src="images/ExportSequenceDiagram.png" alt="ExportSequenceDiagram">
 </div>
-<div class="title">Figure 27. Export Sequence Diagram</div>
+<div class="title">Figure 29. Export Sequence Diagram</div>
 </div>
 <div class="paragraph">
-<p>The implementation is very similar to the Import feature. The only differences are in the Model where CsvWriter gets
+<p>The implementation is similar to the Import feature. The only differences are in the Model where CsvWriter gets
 the scheduled time slots from the Model and proceeds to write it into the specified file using a <code>BufferedWriter</code>.</p>
 </div>
 <div class="paragraph">
@@ -1071,14 +1153,14 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 <div class="content">
 <img src="images/ExportActivityDiagram.png" alt="ExportActivityDiagram">
 </div>
-<div class="title">Figure 28. Export Activity Diagram</div>
+<div class="title">Figure 30. Export Activity Diagram</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="coming-soon-in-v1-4-email"><a class="link" href="#coming-soon-in-v1-4-email">3.5. [Coming soon in v1.4] Email</a></h3>
+<h3 id="coming-soon-in-v1-4-email"><a class="link" href="#coming-soon-in-v1-4-email">3.6. [Coming soon in v1.4] Email</a></h3>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">3.5.1. Implementation</a></h4>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">3.6.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The Email feature makes use of the <code>java.awt.Desktop</code> package to activate the default Mail client of the user.</p>
 </div>
@@ -1099,7 +1181,7 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 <div class="content">
 <img src="images/EmailSequenceDiagram.png" alt="EmailSequenceDiagram">
 </div>
-<div class="title">Figure 29. Email Sequence Diagram</div>
+<div class="title">Figure 31. Email Sequence Diagram</div>
 </div>
 <div class="sect4">
 <h5 id="example-interview-timeslot"><a class="link" href="#example-interview-timeslot">Example: Interview timeslot</a></h5>
@@ -1139,9 +1221,9 @@ the scheduled time slots from the Model and proceeds to write it into the specif
 </div>
 </div>
 <div class="sect2">
-<h3 id="display"><a class="link" href="#display">3.6. Display</a></h3>
+<h3 id="display"><a class="link" href="#display">3.7. Display</a></h3>
 <div class="sect3">
-<h4 id="implementation-6"><a class="link" href="#implementation-6">3.6.1. Implementation</a></h4>
+<h4 id="implementation-6"><a class="link" href="#implementation-6">3.7.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The display feature allows user to toggle views of schedules, interviewer list and interviewee list. It uses an interface named TabListener and contains
 the following method:</p>
@@ -1168,7 +1250,7 @@ the following method:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -1480,17 +1562,89 @@ the following method:</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-uc-2-import-interviewee-s-time-slots" class="discrete">Use case: (UC-2) Import interviewee&#8217;s time slots</h3>
+<h3 id="use-case-uc-2-import-interviewee-s-details" class="discrete">Use case: (UC-2) Import interviewee&#8217;s details</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to import interviewee&#8217;s time slots and specify file location</p>
+<p>User requests to import interviewee&#8217;s details and specify file location.</p>
 </li>
 <li>
-<p>Scheduler imports interviewee&#8217;s time slots from specified file</p>
+<p>Scheduler adds each imported interviewee into storage.</p>
+</li>
+<li>
+<p>Scheduler imports interviewee&#8217;s details from specified file.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Specified file doesn&#8217;t exist.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. Scheduler displays file not found error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. Specified file doesn&#8217;t follow correct format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. Scheduler displays incorrect file format error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. There is duplicated data being added into storage.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. Scheduler immediately terminates command.</p>
+</li>
+<li>
+<p>2a2. Scheduler displays duplicated data error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-uc-3-import-interviewer-s-details" class="discrete">Use case: (UC-3) Import interviewer&#8217;s details</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to import interviewer&#8217;s details and specify file location.</p>
+</li>
+<li>
+<p>Scheduler adds each imported interviewer into storage.</p>
+</li>
+<li>
+<p>Scheduler displays success message, as well as the imported data in the GUI.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1507,7 +1661,7 @@ the following method:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1a1. Scheduler shows error message</p>
+<p>1b1. Scheduler displays file not found error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -1520,44 +1674,7 @@ the following method:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1b1. Scheduler shows error message</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-uc-3-import-interviewer-s-time-slots" class="discrete">Use case: (UC-3) Import interviewer&#8217;s time slots</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to import interviewer&#8217;s time slots and specify file location</p>
-</li>
-<li>
-<p>Scheduler imports interviewer&#8217;s time slots from specified file</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Specified file doesn&#8217;t exist</p>
-<div class="ulist">
-<ul>
-<li>
-<p>1a1. Scheduler shows error message</p>
+<p>1b1. Scheduler displays incorrect file format error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -1566,11 +1683,14 @@ the following method:</p>
 </div>
 </li>
 <li>
-<p>1b. Specified file doesn&#8217;t follow correct format</p>
+<p>2a. There is duplicated data being added into storage.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>1b1. Scheduler shows error message</p>
+<p>2a1. Scheduler immediately terminates command.</p>
+</li>
+<li>
+<p>2a2. Scheduler displays duplicated data error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -1665,6 +1785,77 @@ Use case resumes at step 1.</p>
 <p>1b1. Scheduler display invalid command to user.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-uc-6-export-schedules"><a class="link" href="#use-case-uc-6-export-schedules">C.2. Use Case: (UC-6) Export Schedules</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User <em>schedules interview slots (UC-4)</em>.</p>
+</li>
+<li>
+<p>User requests to export scheduled data to external file path.</p>
+</li>
+<li>
+<p>Scheduler gets scheduled data from storage.</p>
+</li>
+<li>
+<p>Scheduler exports data to the specified file path.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. File path is not of the correct extension (.csv).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. Scheduler displays error message in UI.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. External file path does not exist.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. Scheduler creates a new file with the indicated file path.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. There is no scheduled data in storage.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. Scheduler displays error message in the UI.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
 </div>
 </li>
 </ul>
@@ -1799,7 +1990,109 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-an-entity-manually"><a class="link" href="#adding-an-entity-manually">F.2. Adding an entity manually</a></h3>
+<h3 id="importing-data"><a class="link" href="#importing-data">F.2. Importing data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Import .csv files of interviewers' availability or interviewees' details using the <code>import</code> command.</p>
+</li>
+<li>
+<p>Expected Outcomes:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><strong>Importing interviewers' data:</strong> The Schedules tab of the UI should be populated with the availability tables, similar to the format of the data imported.
+If none of the imported interviewers are available for any timeslot, ie. no "1"s in imported data, the Schedules tab will be empty.
+The Interviewer tab should also be accurately populated with the imported interviewers.</p>
+</li>
+<li>
+<p><strong>Importing interviewees' data:</strong> The Interviewee tab should be accurately populated with the imported data.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>You can download the sample test data below to test if the import feature is working properly.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><a href="http://bit.ly/2Ny64Q8">Typical Interviewer Test Data</a></p>
+</li>
+<li>
+<p><a href="http://bit.ly/36KLxj4">Typical Interviewees Test Data</a></p>
+</li>
+<li>
+<p>Interviewer data with zero availabilities: <a href="https://drive.google.com/file/d/1oeplvSHd0gGuCjFSG2Q6jvl2K5ljoPY8/view?usp=sharing">Interviewer Data</a></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Both types of imported data should not contain any duplicates entries.</p>
+</li>
+<li>
+<p>You can use the sample test data below to test if the duplicates are being detected correctly.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><a href="https://drive.google.com/file/d/1xOzrBaB1XFSlN1WrEW5JUrntVTrNGhSz/view?usp=sharing">Duplicate Interviewer Data</a></p>
+</li>
+<li>
+<p><a href="https://drive.google.com/file/d/1uU2wuMYY5nu1X8AqXbV8Y3NMhpjollnV/view?usp=sharing">Duplicate interviewee Data</a></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Import command can only be of 2 types - 'interviewer' or 'interviewee'. Test this by using any other combinations e.g. <code>import inTeVieWer</code></p>
+</li>
+<li>
+<p>File path specified must be of .csv extension and must exist.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test this by using any file path without .csv extension. You can also try inputting a file path with .csv extension
+that does not exist. Both cases should induce error messages.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Importing interviewers' data after you have scheduled interviews should replace the existing tables in the Schedule tab
+with the newly imported data. You can test this by importing a new set of interviewer&#8217;s data after <a href="#scheduling-interviews">scheduling the interviews</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exporting-schedules"><a class="link" href="#exporting-schedules">F.3. Exporting Schedules</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Export the schedules generated by using the <code>export</code> command.</p>
+</li>
+<li>
+<p>Expected Outcomes: The external file that you input into the command should contain the schedule time tables, with all information represented accurately.</p>
+</li>
+<li>
+<p>The export command should only work after you have ran the <code>schedule</code> command.</p>
+</li>
+<li>
+<p>File path specified must be of .csv extension, but does not need to exist. Valid file paths that do not exist will be created after the command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>To test this you can use type in the following after a schedule command has been ran:<br>
+<code>export fp/doesNotExistFile.csv</code> a file named "doesNotExistFile.csv" should be created in the same directory containing Scheduler.jar file.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-an-entity-manually"><a class="link" href="#adding-an-entity-manually">F.4. Adding an entity manually</a></h3>
 <div class="paragraph">
 <p>Please refer to the Add interviewees/interviewer section in the <a href="UserGuide.html">user guide</a> for more detailed information on the <code>add</code> command.</p>
 </div>
@@ -1839,7 +2132,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-an-entity"><a class="link" href="#editing-an-entity">F.3. Editing an entity</a></h3>
+<h3 id="editing-an-entity"><a class="link" href="#editing-an-entity">F.5. Editing an entity</a></h3>
 <div class="paragraph">
 <p>Please refer to the Edit interviewees/interviewer section in the <a href="UserGuide.html">user guide</a> for more detailed information on the <code>edit</code> command.</p>
 </div>
@@ -1881,7 +2174,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-an-entity"><a class="link" href="#deleting-an-entity">F.4. Deleting an entity</a></h3>
+<h3 id="deleting-an-entity"><a class="link" href="#deleting-an-entity">F.6. Deleting an entity</a></h3>
 <div class="paragraph">
 <p>Please refer to the Delete interviewees/interviewer section in the <a href="UserGuide.html">user guide</a> for more detailed information on the <code>delete</code> command.</p>
 </div>
@@ -1923,7 +2216,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="scheduling-interviews"><a class="link" href="#scheduling-interviews">F.5. Scheduling Interviews</a></h3>
+<h3 id="scheduling-interviews"><a class="link" href="#scheduling-interviews">F.7. Scheduling Interviews</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1987,7 +2280,7 @@ if the name of the interviewee does not exist in the schedule.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">F.6. Deleting a person</a></h3>
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">F.8. Deleting a person</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2019,7 +2312,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.7. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">F.9. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2039,4 +2332,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 06:42:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 07:37:56 UTC</div></div></div></body></html>
