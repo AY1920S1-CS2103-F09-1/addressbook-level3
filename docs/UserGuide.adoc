@@ -96,11 +96,11 @@ in one of the tables in the `Schedule tab` depending on which slot is allocated 
 At the cell which displays the interviewee's name, the time slot allocated to it is on the leftmost column of the same row, and the interviewer that will be interviewing
 him/her is the name displayed beside the department in the first row of the same column.
 
-=== Email
+=== Email Interviewee
 Want to email the allocated time slot to an interviewee? Simply type `email ct/timeslot n/INTERVIEWEE NAME`, replacing
 `INTERVIEWEE NAME` with the name of the interviewee.
 
-=== Export
+=== Export Scheduled Result
 Now let's export the scheduled result to an external .csv file! Simply type `export fp/FILE_PATH`, replacing `FILE_PATH` with the full/absolute
 path to your target destination of the .csv file. If the .csv file has not exist, Scheduler will create the exported result file
 at the target destination you specify in `file path`!
@@ -186,6 +186,68 @@ IMPORTANT: The indicated timeslots, in adding or importing interviewers/intervie
 Shows helpful information on using this software.
 Format: `help`
 
+// tag::UiDisplay[]
+
+=== UI Display
+
+==== Display Schedules
+Display multiple tables that consist information of the schedules generated in a day format. The columns will show the date of the schedule followed by
+the interviewers and their respective departments. The rows consists of the time slots as well as names of the interviewee.
+
+Format: `display schedule`
+
+Notes:
+* You are also able to toggle to display schedule by clicking on the Schedules tab.
+
+====
+
+Constraints:
+
+* The command must be exactly the same as the format.
+
+====
+
+==== Display Interviewee
+Display information of the interviewees in a table format.
+
+Format: `display interviewee`
+
+Notes:
+* You are also able to toggle to display schedule by clicking on the Interviewee tab.
+
+====
+
+Constraints:
+
+* The command must be exactly the same as the format.
+
+====
+
+==== Display Interviewer
+Display information of the interviewers in a table format.
+
+Format: `display interviewer`
+
+Notes:
+* You are also able to toggle to display schedule by clicking on the Interviewer tab.
+
+====
+
+Constraints:
+
+* The command must be exactly the same as the format.
+
+====
+
+==== Differentiating the importance of timetable slots through colours `[Coming in v2.0]`
+To edit time slots and change their colour so to show the importance of that slots.
+There are 3 importance: Low, Medium and High.
+
+Format: `change s/SLOT IMPORTANCE`
+
+Example: `change s/17/10/2019 13:00-14:00 medium`
+
+// end::UiDisplay[]
 
 // tag::import[]
 
@@ -274,129 +336,6 @@ Constraints:
 * Duplicate entries of the same interviewee cannot be presented in the CSV file to be imported.
 
 // end::import[]
-
-// tag::clear
-=== Clear all data `clear`
-Clears both interviewee and interviewer data in Scheduler. Will not remove user preferences.
-
-Format: `clear`
-
-WARNING: Data erased cannot be undone!
-//end::clear
-
-// tag::add[]
-
-=== UI Display
-
-==== Display Schedules
-Display multiple tables that consist information of the schedules generated in a day format. The columns will show the date of the schedule followed by
-the interviewers and their respective departments. The rows consists of the time slots as well as names of the interviewee.
-
-Format: `display schedule`
-
-Notes:
-* You are also able to toggle to display schedule by clicking on the Schedules tab.
-
-====
-
-Constraints:
-
-* The command must be exactly the same as the format.
-
-====
-
-==== Display Interviewee
-Display information of the interviewees in a table format.
-
-Format: `display interviewee`
-
-Notes:
-* You are also able to toggle to display schedule by clicking on the Interviewee tab.
-
-====
-
-Constraints:
-
-* The command must be exactly the same as the format.
-
-====
-
-==== Display interviewer
-Display information of the interviewers in a table format.
-
-Format: `display interviewer`
-
-Notes:
-* You are also able to toggle to display schedule by clicking on the Interviewer tab.
-
-====
-
-Constraints:
-
-* The command must be exactly the same as the format.
-
-====
-
-=== Scheduling `schedule`
-==== Schedule the interviews
-Schedule and allocate interviewees to the available interview slots based on the availability of interviewees and
-their choice of department.
-
-Format: `schedule`
-
-=== Exporting of interview schedule `export`
-Exports the allocated interview schedule timetable to the specified comma separated values (CSV) file.
-
-Format: `export fp/FILE_PATH`
-
-* PATH_TO_FILE is the absolute path to the file.
-* E.g C:\\Users\Bob\file.csv
-
-NOTE: If `FILE_PATH` is a valid .csv file but does not exist, it will be created in the specified path.
-
-Example:
-
- export fp/C:\Users\johndoe\schedules.csv
-
-Exported data format:
-
-* The exported data will follow the format of the schedules in 'schedules' tab.
-* Each schedule (table) will be separated from the previous with 2 empty lines.
-* Timeslots with "0" indicates that the interviewer is not available for the timeslot.
-Timeslots with "1" indicates that it is an available slot that has not been filled up by an interviewee.
-* Csv file can be converted into an excel file by following this guide - https://www.ablebits.com/office-addins-blog/2014/05/01/convert-csv-excel/.
-
-Constraints:
-
-* This command requires the interview schedule to be generated first.
-* Although the specified filepath does not need to exist, it needs to be of .csv extension.
-
-WARNING: The exported data will erase and replace all pre-existing data in the specified file.
-
-// tag::email
-=== Sending of email `email`
-==== Sending of interview time slot to interviewee
-Opens an email dialog containing the interviewee’s allocated interview time slot to a particular interviewee specified, including other details such as the interviewer and location.
-
-Format: `email ct/timeslot n/INTERVIEWEE NAME`
-
-Notes:
-
-* The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.
-
-==== Sending of interview time slot to all interviewees
-Opens an email dialog containing the interviewee's allocated interview time slot to every interviewee, including other details such as the interviewer and location. A summary report is then generated at the end of the command execution.
-
-Format: `email ct/alltimeslot`
-
-Notes:
-
-* The email dialog will only appear if the interviewee’s email is present in the database and that the interview schedule has already been generated.
-
-==== Checking status of emails sent
-Provides a summary report of the number of interviewees with emails sent and the total number of interviewees stored in the database.
-
-Format: `email ct/status`
 
 // tag::add_interviewee[]
 
@@ -635,100 +574,20 @@ Notes:
 
 // end::delete[]
 
-// tag::UiDisplay[]
 
-=== UI Display
-
-==== Display Schedules
-Display multiple tables that consist information of the schedules generated in a day format. The columns will show the date of the schedule followed by
-the interviewers and their respective departments. The rows consists of the time slots as well as names of the interviewee.
-
-Format: `display schedule`
-
-Notes:
-* You are also able to toggle to display schedule by clicking on the Schedules tab.
-
-====
-
-Constraints:
-
-* The command must be exactly the same as the format.
-
-====
-
-==== Display Interviewee
-Display information of the interviewees in a table format.
-
-Format: `display interviewee`
-
-Notes:
-* You are also able to toggle to display schedule by clicking on the Interviewee tab.
-
-====
-
-Constraints:
-
-* The command must be exactly the same as the format.
-
-====
-
-==== Display Interviewer
-Display information of the interviewers in a table format.
-
-Format: `display interviewer`
-
-Notes:
-* You are also able to toggle to display schedule by clicking on the Interviewer tab.
-
-====
-
-Constraints:
-
-* The command must be exactly the same as the format.
-
-====
-
-==== Differentiating the importance of timetable slots through colours `[Coming in v2.0]`
-To edit time slots and change their colour so to show the importance of that slots.
-There are 3 importance: Low, Medium and High.
-
-Format: `change s/SLOT IMPORTANCE`
-
-Example: `change s/17/10/2019 13:00-14:00 medium`
-
-// end::UiDisplay[]
-
-// tag::clear[]
-
-=== Clear all interviewees/interviewers `clear`
-Clears all interviewees, interviewers and schedules from Scheduler.
+// tag::clear
+=== Clear all data `clear`
+Clears both interviewee and interviewer data in Scheduler. Will not remove user preferences.
 
 Format: `clear`
 
-// end::clear[]
+WARNING: Data erased cannot be undone!
+//end::clear
 
-=== Get interview schedule `get` `[Coming in v2.0]`
-Find an interviewer/interviewee and display his/her interview schedule.
-
-Format: `get NAME`
-
-Example:
-
- get "John Doe"
-
-=== Tag interview slot `tag` `[Coming in v2.0]`
-Tags an interview slot with a name.
-
-Format: `tag TAG_NAME`
-
-User will also be able to filter by tags.
-
-Format: `filter tag TAG_NAME`
 
 // tag::schedule[]
 
-=== Scheduling `schedule`
-==== Schedule the interviews
+=== Scheduling the interviews `schedule`
 Schedule and allocate interviewees to the available interview slots based on the availability of interviewees and
 their choice of department.
 
@@ -739,40 +598,6 @@ To ensure that the displayed scheduling result is always updated with the latest
 add/delete/edit of interviewee or interviewer will remove the scheduling result, hence you will need to type `schedule` again.
 
 // end::schedule[]
-
-
-// tag::export[]
-
-=== Exporting of interview schedule `export`
-Exports the allocated interview schedule timetable to the specified comma separated values (CSV) file.
-
-Format: `export fp/FILE_PATH`
-
-* FILE_PATH is the path to the file.
-* E.g C:\\Users\Bob\file.csv
-
-NOTE: If `FILE_PATH` is a valid .csv file but does not exist, it will be created in the specified path.
-
-Example:
-
- export fp/C:\Users\johndoe\schedules.csv
-
-Exported data format:
-
-* The exported data will follow the format of the schedules in 'schedules' tab.
-* Each schedule (table) will be separated from the previous by 2 empty lines.
-* Timeslots with "0" indicates that the interviewer is not available for the timeslot.
-Timeslots with "1" indicates that it is an available slot that has not been filled up by an interviewee.
-* Csv file can be converted into an excel file by following this guide - https://www.ablebits.com/office-addins-blog/2014/05/01/convert-csv-excel/.
-
-Constraints:
-
-* This command requires the interview schedule to be generated first.
-* Although the specified filepath does not need to exist, it needs to be of .csv extension.
-
-WARNING: The exported data will erase and replace all pre-existing data in the specified file.
-
-// end::export[]
 
 // tag::email[]
 
@@ -820,6 +645,57 @@ Note:
 
 // end::email[]
 
+// tag::export[]
+
+=== Exporting of interview schedule `export`
+Exports the allocated interview schedule timetable to the specified comma separated values (CSV) file.
+
+Format: `export fp/FILE_PATH`
+
+* FILE_PATH is the path to the file.
+* E.g C:\\Users\Bob\file.csv
+
+NOTE: If `FILE_PATH` is a valid .csv file but does not exist, it will be created in the specified path.
+
+Example:
+
+ export fp/C:\Users\johndoe\schedules.csv
+
+Exported data format:
+
+* The exported data will follow the format of the schedules in 'schedules' tab.
+* Each schedule (table) will be separated from the previous by 2 empty lines.
+* Timeslots with "0" indicates that the interviewer is not available for the timeslot.
+Timeslots with "1" indicates that it is an available slot that has not been filled up by an interviewee.
+* Csv file can be converted into an excel file by following this guide - https://www.ablebits.com/office-addins-blog/2014/05/01/convert-csv-excel/.
+
+Constraints:
+
+* This command requires the interview schedule to be generated first.
+* Although the specified filepath does not need to exist, it needs to be of .csv extension.
+
+WARNING: The exported data will erase and replace all pre-existing data in the specified file.
+
+// end::export[]
+
+=== Get interview schedule `get` `[Coming in v2.0]`
+Find an interviewer/interviewee and display his/her interview schedule.
+
+Format: `get NAME`
+
+Example:
+
+ get "John Doe"
+
+=== Tag interview slot `tag` `[Coming in v2.0]`
+Tags an interview slot with a name.
+
+Format: `tag TAG_NAME`
+
+User will also be able to filter by tags.
+
+Format: `filter tag TAG_NAME`
+
 === Recording of additional statuses: `record` `[Coming in v2.0]`
 ==== Recording of interviewee’s attendance
 Bring up the window to record the attendance of interviewees. You can navigate through the table in the window (GUI)
@@ -851,12 +727,18 @@ Format: `record rank`
 |Help
 |`help` +
 
+|Display schedule
+|`display schedule` +
+
+|Display interviewee
+|`display interviewee` +
+
+|Display interviewer
+|`display interviewer` +
+
 |Import existing availabilities
 |`import interviewer fp/FILE_PATH` +
   `import interviewee fp/FILE_PATH`
-
-|Clear imported data
-|`clear` +
 
 |Add interviewee
 |`add interviewee n/NAME p/PHONE f/FACULTY y/YEAR_OF_STUDY ep/PERSONAL_EMAIL ew/NUS_WORK_EMAIL
@@ -878,28 +760,22 @@ d/DEPARTMENT... s/SLOT... [t/TAG]...` +
 |Delete interviewer
 |`delete NAME r/interviewer` +
 
-|Display schedule
-|`display schedule` +
-
-|Display interviewee
-|`display interviewee` +
-
-|Display interviewer
-|`display interviewer` +
-
-|Filter
-|`filter tag TAG_NAME` +
+|Clear imported data
+|`clear` +
 
 |Schedule
 |`schedule` +
-
-|Export
-|`export fp/FILE_PATH` +
 
 |Email interviewee
 |`email ct/timeslot n/INTERVIEWEE NAME` +
  `email ct/alltimeslot` +
  `email ct/status` +
+
+|Export
+|`export fp/FILE_PATH` +
+
+|Filter
+|`filter tag TAG_NAME` +
 
 |Record
 |`record attendance` +
