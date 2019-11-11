@@ -1269,11 +1269,83 @@ Deletes the specified interviewer from the database.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>=== Clear all interviewees/interviewers <code>clear</code>
-Clears all interviewees, interviewers and schedules from Scheduler.</p>
+<p>=== UI Display</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>clear</code></p>
+<p>==== Display Schedules
+Display multiple tables that consist information of the schedules generated in a day format. The columns will show the date of the schedule followed by
+the interviewers and their respective departments. The rows consists of the time slots as well as names of the interviewee.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>display schedule</code></p>
+</div>
+<div class="paragraph">
+<p>Notes:
+* You are also able to toggle to display schedule by clicking on the Schedules tab.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The command must be exactly the same as the format.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>==== Display Interviewee
+Display information of the interviewees in a table format.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>display interviewee</code></p>
+</div>
+<div class="paragraph">
+<p>Notes:
+* You are also able to toggle to display schedule by clicking on the Interviewee tab.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The command must be exactly the same as the format.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>==== Display Interviewer
+Display information of the interviewers in a table format.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>display interviewer</code></p>
+</div>
+<div class="paragraph">
+<p>Notes:
+* You are also able to toggle to display schedule by clicking on the Interviewer tab.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The command must be exactly the same as the format.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>==== Differentiating the importance of timetable slots through colours <code>[Coming in v2.0]</code>
@@ -1285,6 +1357,13 @@ There are 3 importance: Low, Medium and High.</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>change s/17/10/2019 13:00-14:00 medium</code></p>
+</div>
+<div class="paragraph">
+<p>=== Clear all interviewees/interviewers <code>clear</code>
+Clears all interviewees, interviewers and schedules from Scheduler.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clear</code></p>
 </div>
 <div class="paragraph">
 <p>=== Get interview schedule <code>get</code> <code>[Coming in v2.0]</code>
@@ -1609,4 +1688,4 @@ d/DEPARTMENT&#8230;&#8203; s/SLOT&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:17:19 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:25:30 UTC</div></div></div></body></html>
